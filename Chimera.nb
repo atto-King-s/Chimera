@@ -1,16 +1,16 @@
 Notebook[{
 
 Cell[CellGroupData[{
-Cell[TextData[StyleBox["BlankPackage: a Mathematica package template ",
+Cell[TextData[StyleBox["Chimera: Chiral Measures Research Assistant",
  FontSize->
   24]], "Title",ExpressionUUID->"7f209d14-bba5-4705-b124-d36a87c1beee"],
 
-Cell["\[Copyright] Emilio Pisanty 2023. Licensed under the MIT License.", \
+Cell["\[Copyright] Emilio Pisanty 2024", \
 "Text",ExpressionUUID->"d33e8ba8-08ed-4b04-9664-dabb00321cca"],
 
 Cell[CellGroupData[{
 
-Cell["Introduction", "Subchapter",
+Cell["Introduction", "Chapter",
  CellTags->
   "Introduction",ExpressionUUID->"7ff79276-309e-493c-89fa-91d9bc963997"],
 
@@ -19,41 +19,24 @@ Cell[CellGroupData[{
 Cell["Readme", \
 "Subsection",ExpressionUUID->"d2f11658-47f6-4acb-beb4-751bcdb6d763"],
 
-Cell[TextData[{
- "This notebook is a template to start Mathematica packages. \n\n",
- StyleBox["How to use",
-  FontWeight->"Bold"],
- "\nTo use, basically, replace \[OpenCurlyDoubleQuote]BlankPackage\
-\[CloseCurlyDoubleQuote] with your package name (and any descriptions with \
-the descriptions for your package) on all the relevant places:\n - Most \
-importantly, open this notebook file, BlankPackage.nb, on a text editor, and \
-search-and-replace the string \[OpenCurlyQuote]BlankPackage\[CloseCurlyQuote] \
-for your chosen package name.\n - Update the package description and homepage \
-on the initialization cell below this one, which prints out a brief \
-description onto the .m package (after which you can collapse the cell and \
-forget about it).\n - Update the headers on File > Printing Settings > \
-Headers and Footers.\n - Update this Readme cell with your own package \
-description.\n - Update the Licensing section below with your chosen license.\
-\n - Start writing! This is probably best done where the SampleFunction \
-definition is.\n\n",
- StyleBox["Features",
-  FontWeight->"Bold"],
- "\nAfter all that, you will have created a notebook master from which \
-Mathematica will automatically create a package .m file every time you save \
-the notebook. Why use this template?\n - The package privacy options have \
-been set correctly: the Track Notebook History option has been turned off \
-(ensuring that this notebook file can play reasonably well with \
-source-control software), and FileOutlineCache has been set to False.\n - You \
-get a number of handy commands for dealing with the package infrastructure, \
-including a version number that includes the timestamp at which the notebook \
-file was last saved, and an interface with git.\n \n"
-}], "Text",ExpressionUUID->"c9b2e7fc-7753-4295-b3fc-79d88f05e06e"],
+Cell["\<\
+The Mathematica package Chimera \[Dash] Chiral Measures Research Assistant \
+\[Dash] contains code and tools useful to quantify the chirality of a \
+distribution, and to apply those tools to photoelectron momentum spectra, \
+such as might be obtained from strong-field ionization of chiral molecules, \
+or of achiral systems driven by chiral fields.\
+\>", "Text",ExpressionUUID->"39ad9fd6-028d-a244-9262-68dd80b62ab5"],
 
 Cell[CellGroupData[{
 
-Cell[TextData[StyleBox["(Expand the cell below for a brief package \
-description which will be included in the package .m file)",
- FontSize->14]], "Text",
+Cell[TextData[{
+ StyleBox["(Expand the cell below for a brief package description which will \
+be included in the package .m file)\n\n",
+  FontSize->14],
+ StyleBox["TO DO: update this",
+  FontSize->14,
+  FontWeight->"Bold"]
+}], "Text",
  CellGroupingRules->{
   GroupTogetherGrouping, 
    10000.},ExpressionUUID->"9a8d960d-6d88-4fad-945a-a1f7691d577b"],
@@ -61,13 +44,13 @@ description which will be included in the package .m file)",
 Cell[BoxData[
  RowBox[{
   RowBox[{"(*", " ", 
-   RowBox[{"BlankPackage", ":", " ", 
-    RowBox[{"a", " ", "Mathematica", " ", "package", " ", "template"}]}], " ",
-    "*)"}], "\[IndentingNewLine]", 
+   RowBox[{"Chimera", ":", " ", 
+    RowBox[{"Chiral", " ", "Measures", " ", "Research", " ", "Assistant"}]}], 
+   " ", "*)"}], "\[IndentingNewLine]", 
   RowBox[{"(*", " ", 
    RowBox[{
     RowBox[{"\[Copyright]", " ", "Emilio", " ", "Pisanty"}], ",", " ", 
-    "2023"}], " ", "*)"}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+    "2024"}], " ", "*)"}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
   RowBox[{"(*", " ", 
    RowBox[{
     RowBox[{"For", " ", "more", " ", "information"}], ",", " ", 
@@ -75,13 +58,19 @@ Cell[BoxData[
      RowBox[{"see", " ", 
       RowBox[{"https", ":"}]}], "//", 
      RowBox[{
-      RowBox[{
-       RowBox[{"github", ".", "com"}], "/", "episanty"}], "/", 
-      "BlankPackage"}]}]}], " ", "*)"}]}]], "Input",
+      RowBox[{"github", ".", "com"}], "/", 
+      RowBox[{"??", 
+       RowBox[{"??", 
+        RowBox[{"/", 
+         RowBox[{"??", "??"}]}]}]}]}]}]}], " ", "*)"}], "\[IndentingNewLine]",
+   "\[IndentingNewLine]", 
+  RowBox[{"(*", 
+   RowBox[{"TODO", " ", "-", " ", 
+    RowBox[{"update", " ", "this"}]}], "*)"}]}]], "Input",
  CellGroupingRules->{GroupTogetherGrouping, 10000.},
- InitializationCell->True,
- CellLabel->"In[1]:=",ExpressionUUID->"ac44aa9d-1eed-401b-86e5-fd78cdf4c3f0"]
-}, Open  ]]
+ InitializationCell->
+  True,ExpressionUUID->"ac44aa9d-1eed-401b-86e5-fd78cdf4c3f0"]
+}, Closed]]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -89,25 +78,24 @@ Cell[CellGroupData[{
 Cell["Licensing", \
 "Subsection",ExpressionUUID->"a68d7089-cb80-4cb6-9591-e6af9b4adf98"],
 
-Cell["\<\
-This template is licensed under the MIT License. If you distribute it \
-unchanged or in the form of an edited template file, then please abide by the \
-conditions of that license (which essentially mean, retain the copyright \
-notice). That said, if you use this template to create a new package, then \
-please feel free to remove all of the BlankPackage copyright information and \
-deal with your package files as you see fit.\
-\>", "Text",ExpressionUUID->"e4dc8b2a-3f71-489d-9066-76331a14d173"]
-}, Open  ]]
+Cell["This package is licensed under ?????.", \
+"Text",ExpressionUUID->"e4dc8b2a-3f71-489d-9066-76331a14d173"]
+}, Closed]]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell["Implementation", \
-"Subchapter",ExpressionUUID->"a9df0d23-9b67-49e1-b9e3-1a72859431af"],
+"Chapter",ExpressionUUID->"a9df0d23-9b67-49e1-b9e3-1a72859431af"],
 
 Cell[CellGroupData[{
 
-Cell["Initialization and package infrastructure", \
+Cell["Initialization", \
+"Section",ExpressionUUID->"bdfae675-611c-6943-82a0-863300687142"],
+
+Cell[CellGroupData[{
+
+Cell["Initialization and most package infrastructure", \
 "Subsection",ExpressionUUID->"577dcd29-2522-4f35-8241-66fdaeaf85c3"],
 
 Cell[CellGroupData[{
@@ -117,7 +105,7 @@ Cell["Package initialization", \
 
 Cell[BoxData[
  RowBox[{
-  RowBox[{"BeginPackage", "[", "\"\<BlankPackage`\>\"", "]"}], ";"}]], "Input",
+  RowBox[{"BeginPackage", "[", "\"\<Chimera`\>\"", "]"}], ";"}]], "Input",
  InitializationCell->True,
  CellLabel->"In[2]:=",ExpressionUUID->"a3fe781e-8db1-4219-aeaa-3f8c593d8fa5"]
 }, Closed]],
@@ -129,33 +117,32 @@ Cell["Version number", "Subsubsection",
   "version-section",ExpressionUUID->"7967eb43-4226-4d1a-9004-c579590a2692"],
 
 Cell["\<\
-The variable $BlankPackageVersion gives the version of the BlankPackage \
-package currently loaded, and its timestamp\
+The variable $ChimeraVersion gives the version of the Chimera package \
+currently loaded, and its timestamp\
 \>", "Text",ExpressionUUID->"a28c2cef-44a8-4f88-a13e-dcfb21613da5"],
 
 Cell[BoxData[{
  RowBox[{
   RowBox[{
-   RowBox[{"$BlankPackageVersion", "::", "usage"}], "=", 
-   "\"\<$BlankPackageVersion prints the current version of the BlankPackage \
-package in use and its timestamp.\>\""}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{"$ChimeraVersion", "::", "usage"}], "=", 
+   "\"\<$ChimeraVersion prints the current version of the Chimera package in \
+use and its timestamp.\>\""}], ";"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{
-   RowBox[{"$BlankPackageTimestamp", "::", "usage"}], "=", 
-   "\"\<$BlankPackageTimestamp prints the timestamp of the current version of \
-the BlankPackage package.\>\""}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{"$ChimeraTimestamp", "::", "usage"}], "=", 
+   "\"\<$ChimeraTimestamp prints the timestamp of the current version of the \
+Chimera package.\>\""}], ";"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{"Begin", "[", "\"\<`Private`\>\"", "]"}], 
   ";"}], "\[IndentingNewLine]", 
  RowBox[{
-  RowBox[{"$BlankPackageVersion", ":=", 
-   RowBox[{
-   "\"\<BlankPackage v1.0.0, \>\"", "<>", "$BlankPackageTimestamp"}]}], 
+  RowBox[{"$ChimeraVersion", ":=", 
+   RowBox[{"\"\<Chimera v0.1, \>\"", "<>", "$ChimeraTimestamp"}]}], 
   ";"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{"End", "[", "]"}], ";"}]}], "Input",
- InitializationCell->True,
- CellLabel->"In[3]:=",ExpressionUUID->"06ed43a3-15ef-433b-bd29-4de20889334f"],
+ InitializationCell->
+  True,ExpressionUUID->"06ed43a3-15ef-433b-bd29-4de20889334f"],
 
 Cell[BoxData[
  RowBox[{"\[IndentingNewLine]", 
@@ -194,8 +181,7 @@ Cell[BoxData[
                RowBox[{"RowBox", "[", 
                 RowBox[{"{", 
                  RowBox[{
-                 "\"\<Begin[\\\"`Private`\\\"];$BlankPackageTimestamp=\\\"\>\"\
-", "<>", 
+                 "\"\<Begin[\\\"`Private`\\\"];$ChimeraTimestamp=\\\"\>\"", "<>", 
                   RowBox[{"DateString", "[", "]"}], "<>", 
                   "\"\<\\\";End[];\>\""}], "}"}], "]"}], "]"}], 
               "\[IndentingNewLine]", ",", "\"\<Input\>\"", ",", 
@@ -232,31 +218,15 @@ Cell[BoxData[
 
 Cell[CellGroupData[{
 
-Cell["Timestamp", \
-"Subsubsection",ExpressionUUID->"e4ba443b-8328-40ca-a2ea-2f059da3b0d7"],
-
-Cell[BoxData[
- RowBox[{
-  RowBox[{"Begin", "[", "\"\<`Private`\>\"", "]"}], ";", 
-  RowBox[{"$BlankPackageTimestamp", "=", "\"\<Mon 13 Feb 2023 18:14:34\>\""}],
-   ";", 
-  RowBox[{"End", "[", "]"}], ";"}]], "Input",
- InitializationCell->True,
- CellTags->
-  "version-timestamp",ExpressionUUID->"9805c05c-789d-4ab2-a5c0-4daa0861721e"]
-}, Open  ]],
-
-Cell[CellGroupData[{
-
 Cell["Directory", \
 "Subsubsection",ExpressionUUID->"a08baa08-be3a-4c5a-841c-4752dd040189"],
 
 Cell[BoxData[
  RowBox[{
   RowBox[{
-   RowBox[{"$BlankPackageDirectory", "::", "usage"}], "=", 
-   "\"\<$BlankPackageDirectory is the directory where the current \
-BlankPackage package instance is located.\>\""}], ";"}]], "Input",
+   RowBox[{"$ChimeraDirectory", "::", "usage"}], "=", 
+   "\"\<$ChimeraDirectory is the directory where the current Chimera package \
+instance is located.\>\""}], ";"}]], "Input",
  InitializationCell->True,
  CellLabel->"In[9]:=",ExpressionUUID->"7118bda8-aff5-475a-947f-062f4095057b"],
 
@@ -291,7 +261,7 @@ Cell[BoxData[{
         " ", "a", " ", "soft", " ", "link", " ", "to", " ", "the", " ", 
         "actual", " ", 
         RowBox[{"directory", "."}]}], "*)"}], "\[IndentingNewLine]", 
-      RowBox[{"$BlankPackageDirectory", "=", 
+      RowBox[{"$ChimeraDirectory", "=", 
        RowBox[{"StringReplace", "[", 
         RowBox[{
          RowBox[{"DirectoryName", "[", 
@@ -302,7 +272,7 @@ Cell[BoxData[{
           RowBox[{"\"\< \>\"", "\[Rule]", "\"\<\\\\ \>\""}], "}"}]}], "]"}]}],
        ",", "\[IndentingNewLine]", 
       RowBox[{
-       RowBox[{"$BlankPackageDirectory", "=", 
+       RowBox[{"$ChimeraDirectory", "=", 
         RowBox[{"StringReplace", "[", 
          RowBox[{
           RowBox[{"DirectoryName", "[", "$InputFileName", "]"}], ",", 
@@ -313,8 +283,7 @@ Cell[BoxData[{
  RowBox[{
   RowBox[{"End", "[", "]"}], ";"}]}], "Input",
  InitializationCell->True,
- CellLabel->
-  "In[10]:=",ExpressionUUID->"2b7faeb3-0b7f-4278-a4ce-f42af4a5710c"]
+ CellLabel->"In[10]:=",ExpressionUUID->"2b7faeb3-0b7f-4278-a4ce-f42af4a5710c"]
 }, Closed]],
 
 Cell[CellGroupData[{
@@ -325,14 +294,13 @@ Cell["Git commit hash and message", \
 Cell[BoxData[{
  RowBox[{
   RowBox[{
-   RowBox[{"$BlankPackageCommit", "::", "usage"}], "=", 
-   "\"\<$BlankPackageCommit returns the git commit log at the location of the \
-BlankPackage package if there is one.\>\""}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{"$ChimeraCommit", "::", "usage"}], "=", 
+   "\"\<$ChimeraCommit returns the git commit log at the location of the \
+Chimera package if there is one.\>\""}], ";"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{
-   RowBox[{"$BlankPackageCommit", "::", "OS"}], "=", 
-   "\"\<$BlankPackageCommit has only been tested on Linux.\>\""}], 
-  ";"}]}], "Input",
+   RowBox[{"$ChimeraCommit", "::", "OS"}], "=", 
+   "\"\<$ChimeraCommit has only been tested on Linux.\>\""}], ";"}]}], "Input",
  InitializationCell->True,
  CellLabel->"In[13]:=",ExpressionUUID->"f3d4f095-f46c-475e-8c2f-250286e5d436"],
 
@@ -341,14 +309,14 @@ Cell[BoxData[{
   RowBox[{"Begin", "[", "\"\<`Private`\>\"", "]"}], 
   ";"}], "\[IndentingNewLine]", 
  RowBox[{
-  RowBox[{"$BlankPackageCommit", ":=", 
+  RowBox[{"$ChimeraCommit", ":=", 
    RowBox[{"(", 
     RowBox[{
      RowBox[{"If", "[", 
       RowBox[{
        RowBox[{"$OperatingSystem", "\[NotEqual]", "\"\<Unix\>\""}], ",", 
        RowBox[{"Message", "[", 
-        RowBox[{"$BlankPackageCommit", "::", "OS"}], "]"}]}], "]"}], ";", 
+        RowBox[{"$ChimeraCommit", "::", "OS"}], "]"}]}], "]"}], ";", 
      "\[IndentingNewLine]", 
      RowBox[{"StringJoin", "[", 
       RowBox[{"Riffle", "[", 
@@ -356,16 +324,36 @@ Cell[BoxData[{
         RowBox[{"ReadList", "[", 
          RowBox[{
           RowBox[{
-          "\"\<!cd \>\"", "<>", "$BlankPackageDirectory", "<>", 
+          "\"\<!cd \>\"", "<>", "$ChimeraDirectory", "<>", 
            "\"\< && git log -1\>\""}], ",", "String"}], "]"}], ",", 
         RowBox[{"{", "\"\<\\n\>\"", "}"}]}], "]"}], "]"}]}], ")"}]}], 
   ";"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{"End", "[", "]"}], ";"}]}], "Input",
  InitializationCell->True,
- CellLabel->
-  "In[15]:=",ExpressionUUID->"a8480c42-c519-423d-a120-4aa44435c59d"]
+ CellLabel->"In[15]:=",ExpressionUUID->"a8480c42-c519-423d-a120-4aa44435c59d"]
 }, Closed]]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Timestamp", \
+"Subsection",ExpressionUUID->"d68fc167-5460-2f4f-98cc-5ad5a1323f72"],
+
+Cell[CellGroupData[{
+
+Cell["Timestamp", \
+"Subsubsection",ExpressionUUID->"e4ba443b-8328-40ca-a2ea-2f059da3b0d7"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Begin", "[", "\"\<`Private`\>\"", "]"}], ";", 
+  RowBox[{"$ChimeraTimestamp", "=", "\"\<Sat 22 Jun 2024 17:17:00\>\""}], ";", 
+  RowBox[{"End", "[", "]"}], ";"}]], "Input",
+ InitializationCell->True,
+ CellTags->
+  "version-timestamp",ExpressionUUID->"4ef841e4-a34f-a140-9e8b-bc141cff36a0"]
+}, Open  ]]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -375,44 +363,45 @@ Cell["Usage of the package-infrastructure variables", \
 
 Cell[CellGroupData[{
 
-Cell[BoxData["$BlankPackageVersion"], "Input",
+Cell[BoxData["$ChimeraVersion"], "Input",
  CellLabel->"In[25]:=",ExpressionUUID->"527689ac-2432-47cc-8f05-db58812bafd0"],
 
-Cell[BoxData["\<\"BlankPackage v1.0.0, Mon 13 Feb 2023 17:44:42\"\>"], \
-"Output",
- CellLabel->
-  "Out[25]=",ExpressionUUID->"d31a4710-7056-406a-bb22-3703e344629e"]
+Cell[BoxData["\<\"Chimera v1.0.0, Mon 13 Feb 2023 17:44:42\"\>"], "Output",
+ CellLabel->"Out[25]=",ExpressionUUID->"d31a4710-7056-406a-bb22-3703e344629e"]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
-Cell[BoxData["$BlankPackageTimestamp"], "Input",
+Cell[BoxData["$ChimeraTimestamp"], "Input",
  CellLabel->"In[26]:=",ExpressionUUID->"f0576bbe-58c6-4120-bc07-10f60357dbc7"],
 
 Cell[BoxData["\<\"Mon 13 Feb 2023 17:44:42\"\>"], "Output",
- CellLabel->
-  "Out[26]=",ExpressionUUID->"2a8f34f0-72cb-4ed9-8b2a-92899007ecc5"]
+ CellLabel->"Out[26]=",ExpressionUUID->"2a8f34f0-72cb-4ed9-8b2a-92899007ecc5"]
 }, Open  ]],
 
-Cell[BoxData["$BlankPackageDirectory"], "Input",
+Cell[BoxData["$ChimeraDirectory"], "Input",
  CellLabel->"In[27]:=",ExpressionUUID->"955ab3a4-146f-419a-87ae-b3b94a772427"],
 
 Cell["\<\
-The $BlankPackageCommit command only works if you have a working git \
-repository on the same directory as the notebook file. It also (so far) only \
-works on Linux.\
+The $ChimeraCommit command only works if you have a working git repository on \
+the same directory as the notebook file. It also (so far) only works on Linux.\
 \>", "Text",ExpressionUUID->"f467db72-3bf3-4912-b922-c4b06a158a99"],
 
 Cell[CellGroupData[{
 
-Cell[BoxData["$BlankPackageCommit"], "Input",
+Cell[BoxData["$ChimeraCommit"], "Input",
  CellLabel->"In[28]:=",ExpressionUUID->"095a6e5e-777b-4250-a1f1-aa5fbd436ce6"],
 
 Cell[BoxData["\<\"\"\>"], "Output",
- CellLabel->
-  "Out[28]=",ExpressionUUID->"74316309-74a1-45d1-a127-a4da943fce60"]
+ CellLabel->"Out[28]=",ExpressionUUID->"74316309-74a1-45d1-a127-a4da943fce60"]
 }, Open  ]]
+}, Closed]]
 }, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Package code", \
+"Section",ExpressionUUID->"5b5390db-5772-b44a-9140-b30555028a05"],
 
 Cell[CellGroupData[{
 
@@ -426,7 +415,7 @@ Cell[BoxData[{
  RowBox[{
   RowBox[{
    RowBox[{"SampleFunction", "::", "usage"}], "=", 
-   "\"\<This is a sample function for the BlankPackage template.\>\""}], 
+   "\"\<This is a sample function for the Chimera template.\>\""}], 
   ";"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{"Begin", "[", "\"\<`Private`\>\"", "]"}], 
@@ -434,18 +423,24 @@ Cell[BoxData[{
  RowBox[{
   RowBox[{"SampleFunction", "[", "x___", "]"}], ":=", 
   RowBox[{
-  "\"\<You have evaluated the BlankPackage sample function, SampleFunction, \
-on the input \>\"", "<>", 
+  "\"\<You have evaluated the Chimera sample function, SampleFunction, on the \
+input \>\"", "<>", 
    RowBox[{"ToString", "[", "x", "]"}]}]}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{"End", "[", "]"}], ";"}]}], "Input",
  InitializationCell->
   True,ExpressionUUID->"4a177859-4e6e-4aef-85fd-a223127e7011"]
+}, Open  ]]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell["Package closure", \
+"Section",ExpressionUUID->"c4e2ecf0-63aa-f040-8cf2-5eaf8951815d"],
+
+Cell[CellGroupData[{
+
+Cell["Package closure code", \
 "Subsection",ExpressionUUID->"c4ab4a77-e2dd-4fc0-a41b-1a66eeb20238"],
 
 Cell[CellGroupData[{
@@ -457,8 +452,7 @@ Cell[BoxData[
  RowBox[{
   RowBox[{"EndPackage", "[", "]"}], ";"}]], "Input",
  InitializationCell->True,
- CellLabel->
-  "In[22]:=",ExpressionUUID->"41e28dd9-26c5-47b9-8875-713ef3971763"]
+ CellLabel->"In[22]:=",ExpressionUUID->"41e28dd9-26c5-47b9-8875-713ef3971763"]
 }, Closed]],
 
 Cell[CellGroupData[{
@@ -468,13 +462,13 @@ Cell["Add to distributed contexts.", \
 
 Cell[BoxData[
  RowBox[{
-  RowBox[{"DistributeDefinitions", "[", "\"\<BlankPackage`\>\"", "]"}], 
+  RowBox[{"DistributeDefinitions", "[", "\"\<Chimera`\>\"", "]"}], 
   ";"}]], "Input",
  InitializationCell->True,
- CellLabel->
-  "In[23]:=",ExpressionUUID->"80571e19-793e-4d30-a315-1c3eda65d555"]
+ CellLabel->"In[23]:=",ExpressionUUID->"80571e19-793e-4d30-a315-1c3eda65d555"]
 }, Closed]]
-}, Open  ]]
+}, Closed]]
+}, Closed]]
 }, Open  ]]
 }, Open  ]]
 },
@@ -484,28 +478,27 @@ NotebookEventActions->{{"MenuCommand", "Save"} :> (NotebookWrite[
       Cells[CellTags -> "version-timestamp"], 1], 
      Cell[
       BoxData[
-       RowBox[{("Begin[\"`Private`\"];$BlankPackageTimestamp=\"" <> 
-          DateString[]) <> "\";End[];"}]], "Input", InitializationCell -> 
-      True, CellTags -> "version-timestamp"], None, AutoScroll -> False]; 
-   NotebookSave[]), PassEventsDown -> True},
-WindowSize->{1374.75, 1197.},
-WindowMargins->{{Automatic, 609.75}, {33.75, Automatic}},
+       RowBox[{("Begin[\"`Private`\"];$ChimeraTimestamp=\"" <> DateString[]) <> 
+         "\";End[];"}]], "Input", InitializationCell -> True, CellTags -> 
+      "version-timestamp"], None, AutoScroll -> False]; NotebookSave[]), 
+  PassEventsDown -> True},
+WindowSize->{1142.1, 648.9},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
 PrintingCopies->1,
 PrintingStartingPageNumber->1,
 PrintingPageRange->{Automatic, Automatic},
 PageHeaders->{{None, None, 
    Cell[
     TextData[{
-     "RB", "-", "SFA", ":", " ", "Rotating", " ", "Bicircular", " ", "HHG", 
-      " ", "in", " ", "the", " ", "Strong", " ", "Field", " ", 
-      "Approximation", "|", "   ", 
+     "Chimera", ":", " ", "Chiral", " ", "Measures", " ", "Research", " ", 
+      "Assistant", "|", "   ", 
       StyleBox[
        CounterBox["Page"], "PageNumber"]}], "Header", 
     CellMargins -> {{Inherited, 0}, {Inherited, Inherited}}]}, {None, None, 
    Cell[
     TextData[{
-     "BlankPackage", " ", "-", " ", "a", " ", "Mathematica", " ", "package", 
-      " ", "template", "|", "   ", 
+     "Chimera", ":", " ", "Chiral", " ", "Measures", " ", "Research", " ", 
+      "Assistant", "|", "   ", 
       StyleBox[
        CounterBox["Page"], "PageNumber"]}], "Header", 
     CellMargins -> {{Inherited, 0}, {Inherited, Inherited}}]}},
@@ -527,7 +520,7 @@ TrackCellChangeTimes->False,
 SpellingDictionaries->{"CorrectWords"->{
  "subpackage", "Pisanty", "subpackages"}},
 Background->None,
-FrontEndVersion->"13.0 for Linux x86 (64-bit) (February 4, 2022)",
+FrontEndVersion->"14.0 for Microsoft Windows (64-bit) (December 12, 2023)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[StyleDefinitions -> "Default.nb"]], 
@@ -537,7 +530,7 @@ StyleDefinitions->Notebook[{
     FontVariations -> {
      "Outline" -> False, "Shadow" -> False, "StrikeThrough" -> False, 
       "Underline" -> False}]}, Visible -> False, FrontEndVersion -> 
-  "13.0 for Linux x86 (64-bit) (February 4, 2022)", StyleDefinitions -> 
+  "14.0 for Microsoft Windows (64-bit) (December 12, 2023)", StyleDefinitions -> 
   "PrivateStylesheetFormatting.nb"],
 ExpressionUUID->"d1cc7f40-ea02-494c-9758-0c8d4ee5ba2e"
 ]
