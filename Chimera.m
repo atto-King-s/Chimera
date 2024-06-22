@@ -67,7 +67,562 @@ End[];
 
 
 (* ::Input::Initialization:: *)
-Begin["`Private`"];$ChimeraTimestamp="Sat 22 Jun 2024 17:17:00";End[];
+Begin["`Private`"];$ChimeraTimestamp="Sat 22 Jun 2024 17:27:17";End[];
+
+
+(* ::Input::Initialization:: *)
+SolidHarmonicS::usage="SolidHarmonicS[l,m,x,y,z] calculates the solid harmonic \!\(\*SubscriptBox[\(S\), \(lm\)]\)(x,y,z)=\!\(\*SuperscriptBox[\(r\), \(l\)]\)\!\(\*SubscriptBox[\(Y\), \(lm\)]\)(x,y,z).
+
+SolidHarmonicS[l,m,{x,y,z}] does the same.";
+Begin["`Private`"];
+SolidHarmonicS[\[Lambda]_Integer,\[Mu]_Integer,x_,y_,z_]/;\[Lambda]>=Abs[\[Mu]]:=Sqrt[(2 \[Lambda]+1)/(4 \[Pi])] Sqrt[Gamma[\[Lambda]-Abs[\[Mu]]+1]/Gamma[\[Lambda]+Abs[\[Mu]]+1]] 2^-\[Lambda] (-1)^((\[Mu]-Abs[\[Mu]])/2)*
+If[Rationalize[\[Mu]]==0,1,(x+Sign[\[Mu]]I y)^Abs[\[Mu]]]*
+Sum[
+(-1)^(\[Mu]+k) Binomial[\[Lambda],k] Binomial[2 \[Lambda]-2 k,\[Lambda]] Pochhammer[\[Lambda]-Abs[\[Mu]]-2 k+1,Abs[\[Mu]]] *
+If[TrueQ[Pochhammer[\[Lambda]-Abs[\[Mu]]-2 k+1,Abs[\[Mu]]]==0],1,
+If[Rationalize[k]==0,1,(x^2+y^2+z^2)^k]If[Rationalize[\[Lambda]-Abs[\[Mu]]-2 k]==0,1,z^(\[Lambda]-Abs[\[Mu]]-2 k)]
+]
+,{k,0,Quotient[\[Lambda],2]}]
+SolidHarmonicS[\[Lambda]_Integer,\[Mu]_Integer,{x_,y_,z_}]/;\[Lambda]>=Abs[\[Mu]]:=SolidHarmonicS[\[Lambda],\[Mu],x,y,z]
+End[];
+
+
+(* ::Input::Initialization:: *)
+cleanContourPlot::usage="cleanContourPlot[plot] Cleans up a contour plot by coalescing complex polygons into single FilledCurve instances. See MM.SE/a/3279 for source and documentation.";
+
+
+(* ::Input::Initialization:: *)
+Begin["`Private`"];
+cleanContourPlot[cp_] :=
+ Module[{points, groups, regions, lines},
+  groups = 
+   Cases[cp, {style__, g_GraphicsGroup} :> {{style}, g}, Infinity];
+  points = 
+   First@Cases[cp, GraphicsComplex[pts_, ___] :> pts, Infinity];
+  regions = Table[
+    Module[{group, style, polys, edges, cover, graph},
+     {style, group} = g;
+     polys = Join @@ Cases[group, Polygon[pt_, ___] :> pt, Infinity];
+     edges = Join @@ (Partition[#, 2, 1, 1] & /@ polys);
+     cover = Cases[Tally[Sort /@ edges], {e_, 1} :> e];
+     graph = Graph[UndirectedEdge @@@ cover];
+     {Sequence @@ style, 
+      FilledCurve[
+       List /@ Line /@ First /@ 
+          Map[First, 
+           FindEulerianCycle /@ (Subgraph[graph, #] &) /@ 
+             ConnectedComponents[graph], {3}]]}
+     ],
+    {g, groups}];
+  lines = Cases[cp, _Tooltip, Infinity];
+  Graphics[GraphicsComplex[points, {regions, lines}], 
+   Sequence @@ Options[cp]]
+  ]
+End[];
+
+
+(* ::Input::Initialization:: *)
+photoElectronSpectrumList::usage="photoElectronSpectrumList[data,range,\[CapitalDelta]p] returns a histogram photoelectron spectrum for the data sets data[h], where h covers the given range, using bin width \[CapitalDelta]p.";
+
+photoElectronSpectrumList[dataSet_,range_,pBin_,options___]:=Map[photoElectronSpectrum[dataSet[#],pBin,options,PlotLabel->#]&,range]
+
+
+(* ::Input::Initialization:: *)
+photoElectronSpectrum::usage="photoElectronSpectrum[data,\[CapitalDelta]p] returns a histogram photoelectron spectrum for the given data set, which must be in the standard format, using bin width \[CapitalDelta]p.";
+
+photoElectronSpectrum[dataSet_,pBin_,options___]:=Block[{dataSet2,histogramAssoc},
+If[
+Dimensions[dataSet][[2]]==5,
+dataSet2=dataSet,
+dataSet2=Map[Join[#,{Norm[#[[1;;3]]]}]&,dataSet]
+];
+histogramAssoc=Map[
+Total,
+KeySort[GroupBy[dataSet2,Floor[#[[5]],pBin]&]][[1;;,All,4]]
+];
+Show[{
+Graphics[{
+EdgeForm[{Opacity[0.665`],Thickness[Small]}],
+FaceForm[RGBColor[0.987148, 0.8073604000000001, 0.49470040000000004`]],
+KeyValueMap[
+Function[{p,value},Rectangle[{p,0},{p+pBin,value}]],
+histogramAssoc
+]
+}]
+}
+,options
+,Frame->True
+,ImageSize->400
+,AspectRatio->1/1.6
+,PlotRangePadding->{{None,None},{None,Scaled[0.07]}}
+]
+]
+
+
+(* ::Input::Initialization:: *)
+SetSphericalDecomposition::usage="SetSphericalDecomposition[\[Rho]Symbol,dataSet] creates memoizable definitions for \[Rho]Symbol[h,\[ScriptL],m,{pmin,pmax}] to be the spherical decomposition with angular-momentum numbers \[ScriptL],m over momentum bin {pmin,pmax} for the dataset dataSet[h].";
+
+SetSphericalDecomposition[\[Rho]Symbol_,dataSet_]:=Block[{},
+\[Rho]Symbol::usage=StringJoin[
+ToString[\[Rho]Symbol],
+"[h,\[ScriptL],m,{pmin,pmax}] memoizes and returns the spherical decomposition with angular-momentum numbers \[ScriptL],m over momentum bin {pmin,pmax} for the dataset ",
+ToString[dataSet],
+"[h]."
+];
+SetSharedFunction[\[Rho]Symbol];
+
+\[Rho]Symbol[h_,\[ScriptL]_,m_/;(m>=0),{pmin_,pmax_}]:=Parallel`Developer`SendBack[
+\[Rho]Symbol[h,\[ScriptL],m,{pmin,pmax}]=Block[{momentumFilteredData},
+momentumFilteredData=Select[dataSet[h],pmin<#[[5]]<pmax&];
+1/electronCount[dataSet,h] Sum[
+record[[4]]SolidHarmonicS[\[ScriptL],m,record[[1;;3]]]\[Conjugate]
+,{record,momentumFilteredData}]
+]
+];
+\[Rho]Symbol[h_,\[ScriptL]_,m_/;(m<0),{pmin_,pmax_}]:=(-1)^m Conjugate[\[Rho]Symbol[h,\[ScriptL],-m,{pmin,pmax}]]
+]
+
+
+(* ::Input::Initialization:: *)
+Options[SetExactSphericalDecomposition]=Options[NIntegrate];
+
+SetExactSphericalDecomposition::usage="SetExactSphericalDecomposition[\[Rho]Symbol,PDF] creates memoizable definitions for \[Rho]Symbol[h,\[ScriptL],m,{pmin,pmax}] to be the spherical decomposition with angular-momentum numbers \[ScriptL],m over momentum bin {pmin,pmax} for the symbolic probability density function PDF[h].";
+
+SetExactSphericalDecomposition[\[Rho]Symbol_,PDF_,options:OptionsPattern[]]:=Block[{},
+\[Rho]Symbol::usage=StringJoin[
+ToString[\[Rho]Symbol],
+"[h,\[ScriptL],m,{pmin,pmax}] memoizes and returns the spherical decomposition with angular-momentum numbers \[ScriptL],m over momentum bin {pmin,pmax}, numerically integrated for the PDF ",
+ToString[PDF],
+"[h]."
+];
+\[Rho]Symbol::integrationError="Encountered integration errors in the calculation of "<>ToString[\[Rho]Symbol]<>" with parameters {h,\[ScriptL],m,{pmin,pmax}}= `1`.";
+\[Rho]Symbol::integrating="Beginning numerical integration for "<>ToString[\[Rho]Symbol]<>"[`1`,`2`,`3`,`4`]";
+Off[\[Rho]Symbol::integrating];
+SetSharedFunction[\[Rho]Symbol];
+
+\[Rho]Symbol[h_,\[ScriptL]_,m_/;(m>=0),{pmin_,pmax_}]:=Parallel`Developer`SendBack[
+\[Rho]Symbol[h,\[ScriptL],m,{pmin,pmax}]=Block[{pdf,fromSphericalCoordinates,integral},
+pdf[{p_,\[Theta]_,\[Phi]_}]:=PDF[h][p,\[Theta],\[Phi]];
+fromSphericalCoordinates[{pp_,\[Theta]_,\[Phi]_}]=FromSphericalCoordinates[{pp,\[Theta],\[Phi]}];
+Message[\[Rho]Symbol::integrating,h,\[ScriptL],m,{pmin,pmax}];
+
+Check[
+integral=NIntegrate[
+Times[
+pdf[fromSphericalCoordinates[{p,\[Theta],\[Phi]}]],
+SolidHarmonicS[\[ScriptL],m,fromSphericalCoordinates[{p,\[Theta],\[Phi]}]]\[Conjugate],
+p^2 Sin[\[Theta]]
+],{\[Theta],0,\[Pi]},{\[Phi],0,2\[Pi]},{p,pmin,pmax}
+,Evaluate[Sequence@@FilterRules[{options},Options[NIntegrate]]]
+],
+Message[\[Rho]Symbol::integrationError,{h,\[ScriptL],m,{pmin,pmax}}];
+integral
+]
+]
+];
+\[Rho]Symbol[h_,\[ScriptL]_,m_/;(m<0),{pmin_,pmax_}]:=(-1)^m Conjugate[\[Rho]Symbol[h,\[ScriptL],-m,{pmin,pmax}]]
+]
+
+
+(* ::Input::Initialization:: *)
+Options[SetSymbolicSphericalDecomposition]={Assumptions->{}}(*Options[NIntegrate]*);
+
+SetSymbolicSphericalDecomposition::usage="SetSymbolicSphericalDecomposition[\[Rho]Symbol,distribution] creates memoizable definitions for \[Rho]Symbol[\[ScriptL],m] to be the spherical decomposition with angular-momentum numbers \[ScriptL],m over momentum space for the given symbolic distribution.";
+
+SetSymbolicSphericalDecomposition[\[Rho]Symbol_,distribution_,options:OptionsPattern[]]:=Block[{},
+\[Rho]Symbol::usage=StringJoin[
+ToString[\[Rho]Symbol],
+"[\[ScriptL],m] memoizes and returns the spherical decomposition with angular-momentum numbers \[ScriptL],m, symbollically calculated for the distribution ",
+ToString[distribution],
+"."
+];
+(*\[Rho]Symbol::integrationError="Encountered integration errors in the calculation of "<>ToString[\[Rho]Symbol]<>" with parameters {h,\[ScriptL],m}= `1`.";*)
+\[Rho]Symbol::integrating="Beginning symbolic integration for "<>ToString[\[Rho]Symbol]<>"[`1`,`2`]";
+Off[\[Rho]Symbol::integrating];
+SetSharedFunction[\[Rho]Symbol];
+
+\[Rho]Symbol[\[ScriptL]_,m_/;(m>=0)]:=Parallel`Developer`SendBack[
+\[Rho]Symbol[\[ScriptL],m]=Block[{px,py,pz},
+Message[\[Rho]Symbol::integrating,\[ScriptL],m];
+Expectation[
+SolidHarmonicS[\[ScriptL],m,{px,py,pz}]/.{I->-I},
+{px,py,pz}\[Distributed]distribution
+]
+]
+];
+\[Rho]Symbol[\[ScriptL]_,m_/;(m<0)]:=Simplify[
+(-1)^m Conjugate[\[Rho]Symbol[\[ScriptL],-m]]
+,Assumptions->OptionValue[Assumptions]
+]
+]
+
+
+(* ::Input::Initialization:: *)
+\[Rho]1mToCartesian[{\[Rho]1m1_,\[Rho]10_,\[Rho]11_}]:=Chop[Sqrt[(2\[Pi])/3]{(\[Rho]11-\[Rho]1m1)/-1,(\[Rho]11+\[Rho]1m1)/I,Sqrt[2]\[Rho]10}]
+
+
+
+(* ::Input::Initialization:: *)
+\[Rho]ToCenterOfMass[{{\[Rho]00_},{\[Rho]1m1_,\[Rho]10_,\[Rho]11_}}]:=Chop[(Sqrt[(2\[Pi])/3]{(\[Rho]11-\[Rho]1m1)/-1,(\[Rho]11+\[Rho]1m1)/I,Sqrt[2]\[Rho]10})/(2Sqrt[\[Pi]]\[Rho]00)]
+
+
+(* ::Input::Initialization:: *)
+ClearAll[COMfromPDF];
+
+Options[COMfromPDF]=Join[{PrecisionGoal->8,AccuracyGoal->8},DeleteCases[Options[NIntegrate],Alternatives[PrecisionGoal->_,AccuracyGoal->_]]];
+
+COMfromPDF::integrationError="Encountered integration errors in the calculation of COMfromPDF with pdf `1` and {pmin,pmax}= `2`.";
+
+SetSharedFunction[COMfromPDF];
+
+COMfromPDF[PDF_,{pmin_,pmax_},options:OptionsPattern[]]:=COMfromPDF[PDF,{pmin,pmax},options]=Block[{pdf,fromSphericalCoordinates,integrals},
+pdf[{p_,\[Theta]_,\[Phi]_}]:=PDF[p,\[Theta],\[Phi]];
+fromSphericalCoordinates[{pp_,\[Theta]_,\[Phi]_}]=FromSphericalCoordinates[{pp,\[Theta],\[Phi]}];
+
+Check[
+integrals=NIntegrate[
+Times[
+pdf[fromSphericalCoordinates[{p,\[Theta],\[Phi]}]],
+Join[{1},fromSphericalCoordinates[{p,\[Theta],\[Phi]}]],
+p^2 Sin[\[Theta]]
+],{\[Theta],0,\[Pi]},{\[Phi],-\[Pi],\[Pi]},{p,pmin,pmax}
+,Evaluate[Sequence@@FilterRules[{options},Options[NIntegrate]]]
+];,
+Message[COMfromPDF::integrationError,PDF,{pmin,pmax}];
+];
+
+;
+
+integrals[[2;;4]]/integrals[[1]]
+]
+
+
+(* ::Input::Initialization:: *)
+ClearAll[COMfromPDFcartesian];
+
+Options[COMfromPDFcartesian]=Join[{PrecisionGoal->8,AccuracyGoal->8},DeleteCases[Options[NIntegrate],Alternatives[PrecisionGoal->_,AccuracyGoal->_]]];
+
+COMfromPDFcartesian::integrationError="Encountered integration errors in the calculation of COMfromPDFcartesian with pdf `1` and {pmin,pmax}= `2`.";
+
+COMfromPDFcartesian::integrating="Beginning numerical integration for COMfromPDFcartesian[`1`,`2`]";
+(*Off[COMfromPDFcartesian::integrating];*)
+
+SetSharedFunction[COMfromPDFcartesian];
+
+COMfromPDFcartesian[PDF_,{pmin_,pmax_},options:OptionsPattern[]]:=COMfromPDFcartesian[PDF,{pmin,pmax},options]=Block[{integrals},
+Message[COMfromPDFcartesian::integrating,PDF,{pmin,pmax}];
+
+Check[
+integrals=NIntegrate[
+Times[
+PDF[px,py,pz],
+{1,px,py,pz},
+Boole[pmin^2<px^2+py^2+pz^2<pmax^2]
+],{px,-pmax,pmax},{py,-pmax,pmax},{pz,-pmax,pmax}
+,Evaluate[Sequence@@FilterRules[{options},Options[NIntegrate]]]
+];,
+Message[COMfromPDFcartesian::integrationError,PDF,{pmin,pmax}];
+];
+
+;
+
+integrals[[2;;4]]/integrals[[1]]
+]
+
+
+(* ::Input::Initialization:: *)
+SetChiralityMeasure::usage="SetChiralityMeasure[\[Chi]Symbol,\[Rho]Symbol] creates memoizable definitions for \[Chi]Symbol[h,{\[ScriptL]1,\[ScriptL]2,\[ScriptL]3},{p1,p2,p3},\[CapitalDelta]p], which return the spherical chirality measure formed from the spherical decomposition \[Rho]Symbol with  helicity h, angular-momentum combination {\[ScriptL]1,\[ScriptL]2,\[ScriptL]3}, and with the corresponding spherical decompositions integrated between momenta p1, p2, p3 and p1+\[CapitalDelta]p, p2+\[CapitalDelta]p, p3+\[CapitalDelta]p, respectively.";
+
+SetChiralityMeasure[measureSymbol_,\[Rho]Symbol_]:=Block[{},
+measureSymbol::usage=StringJoin[
+ToString[measureSymbol],
+"[h,{\[ScriptL]1,\[ScriptL]2,\[ScriptL]3},{p1,p2,p3},\[CapitalDelta]p] memoizes and returns the spherical chirality measure formed from the spherical decomposition ",
+ToString[\[Rho]Symbol]," with the angular-momentum combination {\[ScriptL]1,\[ScriptL]2,\[ScriptL]3}, and with the corresponding spherical decompositions integrated between momenta p1, p2, p3 and p1+\[CapitalDelta]p, p2+\[CapitalDelta]p, p3+\[CapitalDelta]p, respectively."
+];
+
+
+measureSymbol[h_,{\[ScriptL]1_,\[ScriptL]2_,\[ScriptL]3_},{p1_,p2_,p3_},\[CapitalDelta]p_]:=Block[{},
+
+(*Print["Beginning calculation of chirality measure ",measureSymbol," at parameters ",{h,{\[ScriptL]1,\[ScriptL]2,\[ScriptL]3},{p1,p2,p3},\[CapitalDelta]p}];*)
+
+Sum[
+If[
+Abs[m1+m2]<=\[ScriptL]3,
+Times[
+ClebschGordan[{\[ScriptL]1,m1},{\[ScriptL]2,m2},{\[ScriptL]3,m1+m2}],
+\[Rho]Symbol[h,\[ScriptL]1,m1,{p1,p1+\[CapitalDelta]p}],
+\[Rho]Symbol[h,\[ScriptL]2,m2,{p2,p2+\[CapitalDelta]p}],
+\[Rho]Symbol[h,\[ScriptL]3,m1+m2,{p3,p3+\[CapitalDelta]p}]//Conjugate
+],
+0
+]
+,{m1,-\[ScriptL]1,\[ScriptL]1},{m2,-\[ScriptL]2,\[ScriptL]2}
+]
+]
+]
+
+
+(* ::Input::Initialization:: *)
+SetSymbolicChiralityMeasure::usage="SetSymbolicChiralityMeasure[\[Chi]Symbol,\[Rho]Symbol] creates memoizable definitions for \[Chi]Symbol[{\[ScriptL]1,\[ScriptL]2,\[ScriptL]3}], which return the spherical chirality measure formed from the spherical decomposition \[Rho]Symbol with the angular-momentum combination {\[ScriptL]1,\[ScriptL]2,\[ScriptL]3}.";
+
+SetSymbolicChiralityMeasure[measureSymbol_,\[Rho]Symbol_]:=Block[{},
+measureSymbol::usage=StringJoin[
+ToString[measureSymbol],
+"[{\[ScriptL]1,\[ScriptL]2,\[ScriptL]3}] memoizes and returns the spherical chirality measure formed from the spherical decomposition ",
+ToString[\[Rho]Symbol]," with the angular-momentum combination {\[ScriptL]1,\[ScriptL]2,\[ScriptL]3}."
+];
+
+
+measureSymbol[{\[ScriptL]1_,\[ScriptL]2_,\[ScriptL]3_}]:=Block[{},
+
+(*Print["Beginning calculation of chirality measure ",measureSymbol," at parameters ",{h,{\[ScriptL]1,\[ScriptL]2,\[ScriptL]3},{p1,p2,p3},\[CapitalDelta]p}];*)
+
+Sum[
+If[
+Abs[m1+m2]<=\[ScriptL]3,
+Times[
+ClebschGordan[{\[ScriptL]1,m1},{\[ScriptL]2,m2},{\[ScriptL]3,m1+m2}],
+\[Rho]Symbol[\[ScriptL]1,m1],
+\[Rho]Symbol[\[ScriptL]2,m2],
+\[Rho]Symbol[\[ScriptL]3,m1+m2]//Conjugate
+],
+0
+]
+,{m1,-\[ScriptL]1,\[ScriptL]1},{m2,-\[ScriptL]2,\[ScriptL]2}
+]
+]
+]
+
+
+(* ::Input::Initialization:: *)
+scaleBar[\[Chi]Max_]:=ContourPlot[
+y,{x,0,1},{y,-\[Chi]Max,\[Chi]Max}
+,ImageSize->{{350},{350}}
+,PlotRangePadding->None
+,Contours->\[Chi]Max*Subdivide[-1.,1,16]
+,ColorFunctionScaling->False
+,ColorFunction->Function[Directive[Blend[{{-1,Blue},{0,White},{1,Red}},#/\[Chi]Max]]]
+,AspectRatio->15
+,FrameTicks->{{None,\[Chi]Max*Subdivide[-1.,1,16][[1;;;;2]]},{None,None}}
+]
+
+
+(* ::Input::Initialization:: *)
+plotCOMvectorDirect[COMvector_,color_:Darker[Red]]:=Block[{COM=COMvector},
+Graphics3D[{
+color,
+Tube[{{0,0,0},0.9COM},0.02Norm[COM]],
+Cone[{0.85COM,COM},0.05Norm[COM]]
+}]
+]
+
+
+(* ::Input::Initialization:: *)
+plotCOMvector[\[Rho]Symbol_,h_,pInt_]:=Block[{COM},
+COM=\[Rho]ToCenterOfMass[
+Table[Table[
+\[Rho]Symbol[h,\[ScriptL],m,pInt]
+,{m,-\[ScriptL],\[ScriptL]}],{\[ScriptL],0,1}]
+];
+
+plotCOMvectorDirect[COM]
+(*Graphics3D[{
+Darker[Red],
+Tube[{{0,0,0},0.9COM},0.02Norm[COM]],
+Cone[{0.85COM,COM},0.075Norm[COM]]
+}]*)
+]
+
+
+(* ::Input::Initialization:: *)
+plotDistributionOnSphere[distribution_,p_,options:OptionsPattern[]]:=Block[{max},
+max=NMaximize[
+distribution@@FromSphericalCoordinates[{p,\[Theta],\[Phi]}]Sin[\[Theta]]
+,{\[Theta],\[Phi]}][[1]];
+ContourPlot3D[
+px^2+py^2+pz^2==p^2
+,{px,-1.1p,1.1p},{py,-1.1p,1.1p},{pz,-1.1p,1.1p}
+,options
+,ColorFunctionScaling->False
+,ColorFunction->Function[{px,py,pz,pp},Blend[{RGBColor[1,1,1,0],Darker[Red,0.3]},1/max distribution[px,py,pz]]]
+,MeshFunctions->{#1&,#2&,#3&,distribution[#1,#2,#3]&}
+,MeshStyle->{Directive[GrayLevel[0.3],Opacity[0.25]],Directive[GrayLevel[0.3],Opacity[0.25]],Directive[GrayLevel[0.3],Opacity[0.25]],Black}
+,Mesh->{10,10,10,15}
+,AxesLabel->{"\!\(\*SubscriptBox[\(p\), \(x\)]\)","\!\(\*SubscriptBox[\(p\), \(y\)]\)","\!\(\*SubscriptBox[\(p\), \(z\)]\)"}
+,SphericalRegion->True
+,ImageSize->500
+,PerformanceGoal->"Quality"
+]
+]
+
+
+(* ::Input::Initialization:: *)
+contourPlotOfDistributionOverSphericalShell[distribution_,p_,options:OptionsPattern[]]:=Block[{max},
+max=NMaximize[
+distribution@@FromSphericalCoordinates[{p,\[Theta],\[Phi]}]Sin[\[Theta]]
+,{\[Theta],\[Phi]}][[1]];
+cleanContourPlot[
+ContourPlot[
+Evaluate[
+distribution@@FromSphericalCoordinates[{p,\[Theta],\[Phi]}]Sin[\[Theta]]
+]
+,{\[Phi],0,2\[Pi]},{\[Theta],0,\[Pi]}
+,options
+,PlotRangePadding->None
+,AspectRatio->Automatic
+,ImageSize->500
+,PlotRange->Full
+,ColorFunctionScaling->False
+,ColorFunction->Function[dist,Blend[{RGBColor[1,1,1,0],Darker[Red,0.3]},1/max dist]]
+]
+]
+]
+
+
+(* ::Input::Initialization:: *)
+plotCOMvectorTrio[\[Rho]Symbol_,h_,pIntervals_]:=Block[{COMs,s},
+COMs=Table[
+\[Rho]ToCenterOfMass[
+Table[Table[
+\[Rho]Symbol[h,\[ScriptL],m,pInt]
+,{m,-\[ScriptL],\[ScriptL]}],{\[ScriptL],0,1}]
+]
+,{pInt,pIntervals}];
+s=Mean[Norm/@COMs];
+
+Show[{
+Graphics3D[{
+Darker[Red],
+Table[{
+Tube[{{0,0,0},0.9COM},0.02s],
+Cone[{(1-0.15s)COM,COM},0.075s]
+},{COM,COMs}],
+Opacity[0.1],
+Parallelepiped[{0,0,0},COMs]
+}]
+}
+,SphericalRegion->True
+,ImageSize->450
+,PlotLabel->Det[COMs]
+]
+]
+
+
+(* ::Input::Initialization:: *)
+calculate\[Rho]ScaledMax[\[Rho]Symbol_,\[ScriptL]max_?IntegerQ]:=calculate\[Rho]ScaledMax[\[Rho]Symbol,{0,\[ScriptL]max}]
+
+calculate\[Rho]ScaledMax[\[Rho]Symbol_,{\[ScriptL]min_,\[ScriptL]max_}]:=Max[Flatten[Table[Table[
+(*{\[ScriptL],m}->*)Abs[\[Rho]Symbol[\[ScriptL],m]]^(1/Max[\[ScriptL],1])
+,{m,-\[ScriptL],\[ScriptL]}],{\[ScriptL],0,\[ScriptL]max}]]]
+
+
+(* ::Input::Initialization:: *)
+Options[sphericalDecompositionPlot]={ColorFunction->ColorData["BlueGreenYellow"],Tolerance->10.^-5};
+
+
+(* ::Input::Initialization:: *)
+sphericalDecompositionPlot::usage="sphericalDecompositionPlot[\[Rho]Symbol,\[ScriptL]max] plots the spherical decomposition \[Rho]Symbol[\[ScriptL],m].
+sphericalDecompositionPlot[\[Rho]Symbol,\[ScriptL]max,{\[ScriptL]1,\[ScriptL]2,\[ScriptL]3}]";
+
+
+(* ::Input::Initialization:: *)
+sphericalDecompositionPlot[\[Rho]Symbol_,\[ScriptL]max_?IntegerQ,options:OptionsPattern[]]:=sphericalDecompositionPlot[\[Rho]Symbol,{0,\[ScriptL]max},options]
+sphericalDecompositionPlot[\[Rho]Symbol_,{\[ScriptL]min_,\[ScriptL]max_},OptionsPattern[]]:=Block[{\[Rho]ScaledMax},
+\[Rho]ScaledMax=calculate\[Rho]ScaledMax[\[Rho]Symbol,{\[ScriptL]min,\[ScriptL]max}];
+Show[{
+Table[
+Table[
+(*{\[ScriptL],m}->*)Graphics[{
+OptionValue[ColorFunction][Abs[\[Rho]Symbol[\[ScriptL],m]]^((1/Max[\[ScriptL],1]))/\[Rho]ScaledMax],
+Tooltip[
+Rectangle[{m-1/2,\[ScriptL]-1/2},{m+1/2,\[ScriptL]+1/2}]
+,Row[{"\[ScriptL]=",\[ScriptL],", m=",m,", |\!\(\*SubscriptBox[OverscriptBox[\(\[Rho]\), \(~\)], \(\[ScriptL], m\)]\)\!\(\*SuperscriptBox[\(|\), \(1/\[ScriptL]\)]\)=",Abs[\[Rho]Symbol[\[ScriptL],m]]^((1/Max[\[ScriptL],1]))/\[Rho]ScaledMax}]]
+}]
+,{m,-\[ScriptL],\[ScriptL]}]
+,{\[ScriptL],\[ScriptL]min,\[ScriptL]max}]
+}
+,Frame->True
+,ImageSize->650
+,PlotRangePadding->None
+,AspectRatio->Automatic
+,FrameLabel->{"m","\[ScriptL]"}
+,PlotLabel->"|\!\(\*SubscriptBox[\(\[Rho]\), \(\[ScriptL], m\)]\)\!\(\*SuperscriptBox[\(|\), \(1/max \((\[ScriptL], 1)\)\)]\)"
+]
+]
+
+
+(* ::Input::Initialization:: *)
+sphericalDecompositionPlot[\[Rho]Symbol_,\[ScriptL]max_,{\[ScriptL]1_,\[ScriptL]2_,\[ScriptL]3_},options:OptionsPattern[]]:=sphericalDecompositionPlot[\[Rho]Symbol,{0,\[ScriptL]max},{\[ScriptL]1,\[ScriptL]2,\[ScriptL]3},options]
+
+sphericalDecompositionPlot[\[Rho]Symbol_,{\[ScriptL]min_,\[ScriptL]max_},{\[ScriptL]1_,\[ScriptL]2_,\[ScriptL]3_},options:OptionsPattern[]]:=Block[{\[Rho]ScaledMax,tolerance=OptionValue[Tolerance],CG\[Rho]Product,CG\[Rho]ProductMax},
+\[Rho]ScaledMax=calculate\[Rho]ScaledMax[\[Rho]Symbol,{\[ScriptL]min,\[ScriptL]max}];
+CG\[Rho]ProductMax=Max[Flatten[Table[
+CG\[Rho]Product[m1,m2]=Abs[Times[
+Quiet[ClebschGordan[{\[ScriptL]1,m1},{\[ScriptL]2,m2},{\[ScriptL]3,m1+m2}],ClebschGordan::phy],
+\[Rho]Symbol[\[ScriptL]1,m1],
+\[Rho]Symbol[\[ScriptL]2,m2],
+\[Rho]Symbol[\[ScriptL]3,m1+m2]//Conjugate
+]]
+,{m1,-\[ScriptL]1,\[ScriptL]1},{m2,-\[ScriptL]2,\[ScriptL]2}]]];
+
+Show[{
+
+sphericalDecompositionPlot[\[Rho]Symbol,{\[ScriptL]min,\[ScriptL]max},options],
+
+Graphics[{
+White,
+PointSize[0.01],
+Values@KeySortBy[Last]@Association@Table[
+If[
+CG\[Rho]Product[m1,m2]/CG\[Rho]ProductMax>=tolerance,
+{m1,m2,CG\[Rho]Product[m1,m2]/CG\[Rho]ProductMax}->{
+Tooltip[{
+Blend[{{-\[ScriptL]2,Orange},{0,Blend[{{-\[ScriptL]1,Red},{\[ScriptL]1,Blue}},m1]},{\[ScriptL]2,Darker[Green]}},m2],
+EdgeForm[{Opacity[CG\[Rho]Product[m1,m2]/CG\[Rho]ProductMax],Thickness[0.001]}],
+FaceForm[Opacity[0.8CG\[Rho]Product[m1,m2]/CG\[Rho]ProductMax]],
+Triangle[{{m1,\[ScriptL]1},{m2,\[ScriptL]2},{m1+m2,\[ScriptL]3}}],
+Opacity[CG\[Rho]Product[m1,m2]/CG\[Rho]ProductMax],
+Point[{{m1,\[ScriptL]1},{m2,\[ScriptL]2},{m1+m2,\[ScriptL]3}}],
+}
+,Row[{{m1,m2,m1+m2},"\[Rule]",Round[CG\[Rho]Product[m1,m2]/CG\[Rho]ProductMax,0.01]}]]
+}
+,Nothing]
+,{m1,-\[ScriptL]1,\[ScriptL]1},{m2,-\[ScriptL]2,\[ScriptL]2}]
+}]
+}]
+]
+
+
+(* ::Input::Initialization:: *)
+RasterPlot3D[data_,options___:OptionsPattern[]]:=Block[{reshapedData},
+Show[{
+Graphics3D[{
+Raster3D[
+Map[
+#[[1,4]]&,
+Map[
+Values,
+GroupBy[
+data,
+{#[[3]]&,#[[2]]&,#[[1]]&}
+]
+,{0,2}]
+,{3}],
+Transpose[Table[MinMax[data[[All,i]]],{i,1,3}]],
+MinMax[data[[All,4]]]
+,Evaluate[Sequence@@FilterRules[{options},Options[Raster3D]]]
+,ColorFunction->Function[Directive[Opacity[0.15#,Black]]]
+]
+}]
+}
+,Evaluate[Sequence@@FilterRules[{options},Options[Show]]]
+,Axes->True
+,AxesLabel->{"\!\(\*SubscriptBox[\(p\), \(x\)]\)","\!\(\*SubscriptBox[\(p\), \(y\)]\)","\!\(\*SubscriptBox[\(p\), \(z\)]\)"}
+,BoxRatios->Automatic
+,SphericalRegion->True
+,ImageSize->700
+]
+]
 
 
 (* ::Input::Initialization:: *)
