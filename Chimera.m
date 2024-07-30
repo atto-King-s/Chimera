@@ -67,7 +67,24 @@ End[];
 
 
 (* ::Input::Initialization:: *)
-Begin["`Private`"];$ChimeraTimestamp="Sat 22 Jun 2024 17:27:17";End[];
+Begin["`Private`"];$ChimeraTimestamp="Tue 30 Jul 2024 21:03:07";End[];
+
+
+(* ::Input::Initialization:: *)
+LR={"L","R"};
+LRA={"L","R","A"};
+
+
+(* ::Input::Initialization:: *)
+XYZ={"x","y","z"};
+
+
+(* ::Input::Initialization:: *)
+MegabyteCount[expr_]:=UnitConvert[Quantity[N@ByteCount[expr],"Bytes"],"Megabytes"]
+
+
+(* ::Input::Initialization:: *)
+electronCount[data_,h_]:=electronCount[data,h]=Total[data[h][[All,4]]]
 
 
 (* ::Input::Initialization:: *)

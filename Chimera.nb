@@ -363,11 +363,11 @@ Cell["Timestamp", \
 Cell[BoxData[
  RowBox[{
   RowBox[{"Begin", "[", "\"\<`Private`\>\"", "]"}], ";", 
-  RowBox[{"$ChimeraTimestamp", "=", "\"\<Sat 22 Jun 2024 17:27:17\>\""}], ";", 
+  RowBox[{"$ChimeraTimestamp", "=", "\"\<Tue 30 Jul 2024 21:03:07\>\""}], ";", 
   RowBox[{"End", "[", "]"}], ";"}]], "Input",
  InitializationCell->True,
  CellTags->
-  "version-timestamp",ExpressionUUID->"3670f7ae-01a5-5548-b0ea-95416c8fee02"]
+  "version-timestamp",ExpressionUUID->"7fa368ea-3549-49d7-bc4c-f3c8729cf7b1"]
 }, Open  ]]
 }, Open  ]],
 
@@ -420,6 +420,148 @@ Cell[CellGroupData[{
 
 Cell["Package code", \
 "Section",ExpressionUUID->"5b5390db-5772-b44a-9140-b30555028a05"],
+
+Cell[CellGroupData[{
+
+Cell["General utilities", \
+"Subsection",ExpressionUUID->"674dc631-2858-459a-a272-e0b9f810e1c9"],
+
+Cell[CellGroupData[{
+
+Cell["LRA, XYZ", \
+"Subsubsection",ExpressionUUID->"95c2f6da-74f3-410e-907e-29ec773779a3"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"LR", "=", 
+   RowBox[{"{", 
+    RowBox[{"\"\<L\>\"", ",", "\"\<R\>\""}], "}"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"LRA", "=", 
+   RowBox[{"{", 
+    RowBox[{"\"\<L\>\"", ",", "\"\<R\>\"", ",", "\"\<A\>\""}], "}"}]}], 
+  ";"}]}], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.897108407315451*^9, 3.897108410830072*^9}, {
+  3.897110930012847*^9, 3.897110937877269*^9}, {3.8999626465635157`*^9, 
+  3.8999626469299097`*^9}},
+ CellLabel->"In[2]:=",ExpressionUUID->"a7199599-b1ed-4c74-856e-276e7b8d89b1"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"XYZ", "=", 
+   RowBox[{"{", 
+    RowBox[{"\"\<x\>\"", ",", "\"\<y\>\"", ",", "\"\<z\>\""}], "}"}]}], 
+  ";"}]], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.899965709355588*^9, 3.899965719914709*^9}},
+ CellLabel->"In[4]:=",ExpressionUUID->"1a2faff1-be08-4968-852a-31a15b74a6c4"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["MegabyteCount", \
+"Subsubsection",ExpressionUUID->"04c5a4b8-ee05-4fd3-9deb-ef35f07cb3e1"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"MegabyteCount", "[", "expr_", "]"}], ":=", 
+  RowBox[{"UnitConvert", "[", 
+   RowBox[{
+    RowBox[{"Quantity", "[", 
+     RowBox[{
+      RowBox[{"N", "@", 
+       RowBox[{"ByteCount", "[", "expr", "]"}]}], ",", "\"\<Bytes\>\""}], 
+     "]"}], ",", "\"\<Megabytes\>\""}], "]"}]}]], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.899962560446334*^9, 3.8999625767429595`*^9}},
+ CellLabel->"In[5]:=",ExpressionUUID->"fbb2740f-f46c-4dc5-99fb-5eddddad3331"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["electronCount", \
+"Subsubsection",ExpressionUUID->"7cfc4ed4-5926-4950-a46f-c16d69b052c0"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"electronCount", "[", 
+   RowBox[{"data_", ",", "h_"}], "]"}], ":=", 
+  RowBox[{
+   RowBox[{"electronCount", "[", 
+    RowBox[{"data", ",", "h"}], "]"}], "=", 
+   RowBox[{"Total", "[", 
+    RowBox[{
+     RowBox[{"data", "[", "h", "]"}], "[", 
+     RowBox[{"[", 
+      RowBox[{"All", ",", "4"}], "]"}], "]"}], "]"}]}]}]], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.900072772321396*^9, 3.900072824738744*^9}},
+ CellLabel->"In[6]:=",ExpressionUUID->"a3e3f7a4-033b-4e99-aee5-3b3f673818a1"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Standardized data format", "Subsection",
+ CellChangeTimes->{{3.899961325095443*^9, 
+  3.899961331252469*^9}},ExpressionUUID->"eb1cfcb3-f01c-495c-be66-\
+ae67fbc9f60f"],
+
+Cell["The standard format for data is as follows:", "Text",
+ CellChangeTimes->{{3.899961338492952*^9, 
+  3.899961351471325*^9}},ExpressionUUID->"ebd5ad92-5c93-4485-a008-\
+0a0a8f196e7e"],
+
+Cell[BoxData[{
+ RowBox[{"{", 
+  RowBox[{"px", ",", "py", ",", "pz", ",", "weight"}], 
+  "}"}], "\[IndentingNewLine]", 
+ RowBox[{"{", 
+  RowBox[{"px", ",", "py", ",", "pz", ",", "weight", ",", "p"}], 
+  "}"}]}], "Input",
+ CellChangeTimes->{{3.899961352925164*^9, 
+  3.8999613634400935`*^9}},ExpressionUUID->"5e1477cf-46f3-4502-ba52-\
+10722559778d"],
+
+Cell[TextData[{
+ "The weight can be an integer (e.g. number of counts) or a float (e.g. ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"|", 
+    RowBox[{"\[Psi]", "(", 
+     StyleBox["p",
+      FontWeight->"Bold"], ")"}], 
+    SuperscriptBox["|", "2"]}], TraditionalForm]],ExpressionUUID->
+  "637056de-0f65-453d-b5df-a7fd7740f0a9"],
+ ", or a direct value from an analytical probability density function). \n\n\
+The fifth entry is optional, but recommended -- the total momentum ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"p", "=", 
+    SqrtBox[
+     RowBox[{
+      SuperscriptBox["px", "2"], "+", 
+      SuperscriptBox["py", "2"], "+", 
+      SuperscriptBox["pz", "2"]}]]}], TraditionalForm]],ExpressionUUID->
+  "af0bab43-fe9e-44d6-a45c-a95f8608876d"],
+ ". Ideally datasets should have this pre-computed right after import, and \
+this entry can then be used for binning: to create histograms over momentum, \
+to bin together for calculating spherical decompositions, etc."
+}], "Text",
+ CellChangeTimes->{{3.8999616328615017`*^9, 
+  3.899961781779638*^9}},ExpressionUUID->"5c656d48-9219-4e4d-addf-\
+86d9d9712a00"],
+
+Cell["\<\
+As a general rule, the import process should remove any records for which \
+weight=0.\
+\>", "Text",
+ CellChangeTimes->{{3.899962800339543*^9, 
+  3.899962819223578*^9}},ExpressionUUID->"f6c06f23-798e-4907-aa92-\
+df0c3e750bad"]
+}, Closed]],
 
 Cell[CellGroupData[{
 
