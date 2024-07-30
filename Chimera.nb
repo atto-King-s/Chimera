@@ -363,11 +363,11 @@ Cell["Timestamp", \
 Cell[BoxData[
  RowBox[{
   RowBox[{"Begin", "[", "\"\<`Private`\>\"", "]"}], ";", 
-  RowBox[{"$ChimeraTimestamp", "=", "\"\<Tue 30 Jul 2024 21:03:07\>\""}], ";", 
+  RowBox[{"$ChimeraTimestamp", "=", "\"\<Tue 30 Jul 2024 21:08:57\>\""}], ";", 
   RowBox[{"End", "[", "]"}], ";"}]], "Input",
  InitializationCell->True,
  CellTags->
-  "version-timestamp",ExpressionUUID->"7fa368ea-3549-49d7-bc4c-f3c8729cf7b1"]
+  "version-timestamp",ExpressionUUID->"9d67c9b2-8ed2-4ecb-9289-c84316074fed"]
 }, Open  ]]
 }, Open  ]],
 
@@ -457,6 +457,34 @@ Cell[BoxData[
  InitializationCell->True,
  CellChangeTimes->{{3.899965709355588*^9, 3.899965719914709*^9}},
  CellLabel->"In[4]:=",ExpressionUUID->"1a2faff1-be08-4968-852a-31a15b74a6c4"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Sign on L, R, A", \
+"Subsubsection",ExpressionUUID->"b42db07b-6d86-4408-95e0-9417f95404a9"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"Unprotect", "[", "Sign", "]"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"Sign", "[", "\"\<L\>\"", "]"}], "=", "1"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"Sign", "[", "\"\<R\>\"", "]"}], "=", 
+   RowBox[{"-", "1"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"Sign", "[", "\"\<A\>\"", "]"}], "=", "0"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Protect", "[", "Sign", "]"}], ";"}]}], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.901709082892302*^9, 3.901709109543913*^9}},
+ CellLabel->
+  "In[22]:=",ExpressionUUID->"fd309fce-e401-4b87-8b9c-79612a158d77"]
 }, Open  ]],
 
 Cell[CellGroupData[{

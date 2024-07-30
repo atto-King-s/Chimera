@@ -67,7 +67,7 @@ End[];
 
 
 (* ::Input::Initialization:: *)
-Begin["`Private`"];$ChimeraTimestamp="Tue 30 Jul 2024 21:03:07";End[];
+Begin["`Private`"];$ChimeraTimestamp="Tue 30 Jul 2024 21:08:57";End[];
 
 
 (* ::Input::Initialization:: *)
@@ -77,6 +77,14 @@ LRA={"L","R","A"};
 
 (* ::Input::Initialization:: *)
 XYZ={"x","y","z"};
+
+
+(* ::Input::Initialization:: *)
+Unprotect[Sign];
+Sign["L"]=1;
+Sign["R"]=-1;
+Sign["A"]=0;
+Protect[Sign];
 
 
 (* ::Input::Initialization:: *)
