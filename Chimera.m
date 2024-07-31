@@ -67,7 +67,7 @@ End[];
 
 
 (* ::Input::Initialization:: *)
-Begin["`Private`"];$ChimeraTimestamp="Tue 30 Jul 2024 21:08:57";End[];
+Begin["`Private`"];$ChimeraTimestamp="Wed 31 Jul 2024 14:44:15";End[];
 
 
 (* ::Input::Initialization:: *)
@@ -149,11 +149,17 @@ End[];
 (* ::Input::Initialization:: *)
 photoElectronSpectrumList::usage="photoElectronSpectrumList[data,range,\[CapitalDelta]p] returns a histogram photoelectron spectrum for the data sets data[h], where h covers the given range, using bin width \[CapitalDelta]p.";
 
+Begin["`Private`"];
+
 photoElectronSpectrumList[dataSet_,range_,pBin_,options___]:=Map[photoElectronSpectrum[dataSet[#],pBin,options,PlotLabel->#]&,range]
+
+End[];
 
 
 (* ::Input::Initialization:: *)
 photoElectronSpectrum::usage="photoElectronSpectrum[data,\[CapitalDelta]p] returns a histogram photoelectron spectrum for the given data set, which must be in the standard format, using bin width \[CapitalDelta]p.";
+
+Begin["`Private`"];
 
 photoElectronSpectrum[dataSet_,pBin_,options___]:=Block[{dataSet2,histogramAssoc},
 If[
@@ -183,9 +189,13 @@ histogramAssoc
 ]
 ]
 
+End[];
+
 
 (* ::Input::Initialization:: *)
 SetSphericalDecomposition::usage="SetSphericalDecomposition[\[Rho]Symbol,dataSet] creates memoizable definitions for \[Rho]Symbol[h,\[ScriptL],m,{pmin,pmax}] to be the spherical decomposition with angular-momentum numbers \[ScriptL],m over momentum bin {pmin,pmax} for the dataset dataSet[h].";
+
+Begin["`Private`"];
 
 SetSphericalDecomposition[\[Rho]Symbol_,dataSet_]:=Block[{},
 \[Rho]Symbol::usage=StringJoin[
@@ -207,11 +217,15 @@ record[[4]]SolidHarmonicS[\[ScriptL],m,record[[1;;3]]]\[Conjugate]
 \[Rho]Symbol[h_,\[ScriptL]_,m_/;(m<0),{pmin_,pmax_}]:=(-1)^m Conjugate[\[Rho]Symbol[h,\[ScriptL],-m,{pmin,pmax}]]
 ]
 
+End[];
+
 
 (* ::Input::Initialization:: *)
 Options[SetExactSphericalDecomposition]=Options[NIntegrate];
 
 SetExactSphericalDecomposition::usage="SetExactSphericalDecomposition[\[Rho]Symbol,PDF] creates memoizable definitions for \[Rho]Symbol[h,\[ScriptL],m,{pmin,pmax}] to be the spherical decomposition with angular-momentum numbers \[ScriptL],m over momentum bin {pmin,pmax} for the symbolic probability density function PDF[h].";
+
+Begin["`Private`"];
 
 SetExactSphericalDecomposition[\[Rho]Symbol_,PDF_,options:OptionsPattern[]]:=Block[{},
 \[Rho]Symbol::usage=StringJoin[
@@ -248,11 +262,15 @@ integral
 \[Rho]Symbol[h_,\[ScriptL]_,m_/;(m<0),{pmin_,pmax_}]:=(-1)^m Conjugate[\[Rho]Symbol[h,\[ScriptL],-m,{pmin,pmax}]]
 ]
 
+End[];
+
 
 (* ::Input::Initialization:: *)
 Options[SetSymbolicSphericalDecomposition]={Assumptions->{}}(*Options[NIntegrate]*);
 
 SetSymbolicSphericalDecomposition::usage="SetSymbolicSphericalDecomposition[\[Rho]Symbol,distribution] creates memoizable definitions for \[Rho]Symbol[\[ScriptL],m] to be the spherical decomposition with angular-momentum numbers \[ScriptL],m over momentum space for the given symbolic distribution.";
+
+Begin["`Private`"];
 
 SetSymbolicSphericalDecomposition[\[Rho]Symbol_,distribution_,options:OptionsPattern[]]:=Block[{},
 \[Rho]Symbol::usage=StringJoin[
@@ -281,24 +299,42 @@ SolidHarmonicS[\[ScriptL],m,{px,py,pz}]/.{I->-I},
 ]
 ]
 
+End[];
+
 
 (* ::Input::Initialization:: *)
+\[Rho]1mToCartesian::usage="\[Rho]1mToCartesian[{\[Rho]1m1,\[Rho]10,\[Rho]11}]";
+
+Begin["`Private`"];
+
 \[Rho]1mToCartesian[{\[Rho]1m1_,\[Rho]10_,\[Rho]11_}]:=Chop[Sqrt[(2\[Pi])/3]{(\[Rho]11-\[Rho]1m1)/-1,(\[Rho]11+\[Rho]1m1)/I,Sqrt[2]\[Rho]10}]
 
+End[];
+
 
 
 (* ::Input::Initialization:: *)
+\[Rho]ToCenterOfMass::usage="\[Rho]ToCenterOfMass[{{\[Rho]00},{\[Rho]1m1,\[Rho]10,\[Rho]11}}]";
+
+Begin["`Private`"];
+
 \[Rho]ToCenterOfMass[{{\[Rho]00_},{\[Rho]1m1_,\[Rho]10_,\[Rho]11_}}]:=Chop[(Sqrt[(2\[Pi])/3]{(\[Rho]11-\[Rho]1m1)/-1,(\[Rho]11+\[Rho]1m1)/I,Sqrt[2]\[Rho]10})/(2Sqrt[\[Pi]]\[Rho]00)]
+
+End[];
 
 
 (* ::Input::Initialization:: *)
 ClearAll[COMfromPDF];
+
+COMfromPDF::usage="COMfromPDF[PDF,{pmin,pmax},]";
 
 Options[COMfromPDF]=Join[{PrecisionGoal->8,AccuracyGoal->8},DeleteCases[Options[NIntegrate],Alternatives[PrecisionGoal->_,AccuracyGoal->_]]];
 
 COMfromPDF::integrationError="Encountered integration errors in the calculation of COMfromPDF with pdf `1` and {pmin,pmax}= `2`.";
 
 SetSharedFunction[COMfromPDF];
+
+Begin["`Private`"];
 
 COMfromPDF[PDF_,{pmin_,pmax_},options:OptionsPattern[]]:=COMfromPDF[PDF,{pmin,pmax},options]=Block[{pdf,fromSphericalCoordinates,integrals},
 pdf[{p_,\[Theta]_,\[Phi]_}]:=PDF[p,\[Theta],\[Phi]];
@@ -321,9 +357,13 @@ Message[COMfromPDF::integrationError,PDF,{pmin,pmax}];
 integrals[[2;;4]]/integrals[[1]]
 ]
 
+End[];
+
 
 (* ::Input::Initialization:: *)
 ClearAll[COMfromPDFcartesian];
+
+COMfromPDFcartesian::usage="COMfromPDFcartesian[PDF,{pmin,pmax}]";
 
 Options[COMfromPDFcartesian]=Join[{PrecisionGoal->8,AccuracyGoal->8},DeleteCases[Options[NIntegrate],Alternatives[PrecisionGoal->_,AccuracyGoal->_]]];
 
@@ -333,6 +373,8 @@ COMfromPDFcartesian::integrating="Beginning numerical integration for COMfromPDF
 (*Off[COMfromPDFcartesian::integrating];*)
 
 SetSharedFunction[COMfromPDFcartesian];
+
+Begin["`Private`"];
 
 COMfromPDFcartesian[PDF_,{pmin_,pmax_},options:OptionsPattern[]]:=COMfromPDFcartesian[PDF,{pmin,pmax},options]=Block[{integrals},
 Message[COMfromPDFcartesian::integrating,PDF,{pmin,pmax}];
@@ -354,9 +396,13 @@ Message[COMfromPDFcartesian::integrationError,PDF,{pmin,pmax}];
 integrals[[2;;4]]/integrals[[1]]
 ]
 
+End[];
+
 
 (* ::Input::Initialization:: *)
 SetChiralityMeasure::usage="SetChiralityMeasure[\[Chi]Symbol,\[Rho]Symbol] creates memoizable definitions for \[Chi]Symbol[h,{\[ScriptL]1,\[ScriptL]2,\[ScriptL]3},{p1,p2,p3},\[CapitalDelta]p], which return the spherical chirality measure formed from the spherical decomposition \[Rho]Symbol with  helicity h, angular-momentum combination {\[ScriptL]1,\[ScriptL]2,\[ScriptL]3}, and with the corresponding spherical decompositions integrated between momenta p1, p2, p3 and p1+\[CapitalDelta]p, p2+\[CapitalDelta]p, p3+\[CapitalDelta]p, respectively.";
+
+Begin["`Private`"];
 
 SetChiralityMeasure[measureSymbol_,\[Rho]Symbol_]:=Block[{},
 measureSymbol::usage=StringJoin[
@@ -385,10 +431,13 @@ ClebschGordan[{\[ScriptL]1,m1},{\[ScriptL]2,m2},{\[ScriptL]3,m1+m2}],
 ]
 ]
 ]
+End[];
 
 
 (* ::Input::Initialization:: *)
 SetSymbolicChiralityMeasure::usage="SetSymbolicChiralityMeasure[\[Chi]Symbol,\[Rho]Symbol] creates memoizable definitions for \[Chi]Symbol[{\[ScriptL]1,\[ScriptL]2,\[ScriptL]3}], which return the spherical chirality measure formed from the spherical decomposition \[Rho]Symbol with the angular-momentum combination {\[ScriptL]1,\[ScriptL]2,\[ScriptL]3}.";
+
+Begin["`Private`"];
 
 SetSymbolicChiralityMeasure[measureSymbol_,\[Rho]Symbol_]:=Block[{},
 measureSymbol::usage=StringJoin[
@@ -418,8 +467,13 @@ ClebschGordan[{\[ScriptL]1,m1},{\[ScriptL]2,m2},{\[ScriptL]3,m1+m2}],
 ]
 ]
 
+End[];
+
 
 (* ::Input::Initialization:: *)
+scaleBar::usage="scaleBar[\[Chi]Max]";
+
+Begin["`Private`"];
 scaleBar[\[Chi]Max_]:=ContourPlot[
 y,{x,0,1},{y,-\[Chi]Max,\[Chi]Max}
 ,ImageSize->{{350},{350}}
@@ -431,8 +485,11 @@ y,{x,0,1},{y,-\[Chi]Max,\[Chi]Max}
 ,FrameTicks->{{None,\[Chi]Max*Subdivide[-1.,1,16][[1;;;;2]]},{None,None}}
 ]
 
+End[];
+
 
 (* ::Input::Initialization:: *)
+Begin["`Private`"];
 plotCOMvectorDirect[COMvector_,color_:Darker[Red]]:=Block[{COM=COMvector},
 Graphics3D[{
 color,
@@ -440,9 +497,12 @@ Tube[{{0,0,0},0.9COM},0.02Norm[COM]],
 Cone[{0.85COM,COM},0.05Norm[COM]]
 }]
 ]
+End[];
 
 
 (* ::Input::Initialization:: *)
+Begin["`Private`"];
+
 plotCOMvector[\[Rho]Symbol_,h_,pInt_]:=Block[{COM},
 COM=\[Rho]ToCenterOfMass[
 Table[Table[
@@ -458,8 +518,12 @@ Cone[{0.85COM,COM},0.075Norm[COM]]
 }]*)
 ]
 
+End[];
+
 
 (* ::Input::Initialization:: *)
+Begin["`Private`"];
+
 plotDistributionOnSphere[distribution_,p_,options:OptionsPattern[]]:=Block[{max},
 max=NMaximize[
 distribution@@FromSphericalCoordinates[{p,\[Theta],\[Phi]}]Sin[\[Theta]]
@@ -480,8 +544,12 @@ px^2+py^2+pz^2==p^2
 ]
 ]
 
+End[];
+
 
 (* ::Input::Initialization:: *)
+Begin["`Private`"];
+
 contourPlotOfDistributionOverSphericalShell[distribution_,p_,options:OptionsPattern[]]:=Block[{max},
 max=NMaximize[
 distribution@@FromSphericalCoordinates[{p,\[Theta],\[Phi]}]Sin[\[Theta]]
@@ -503,8 +571,12 @@ distribution@@FromSphericalCoordinates[{p,\[Theta],\[Phi]}]Sin[\[Theta]]
 ]
 ]
 
+End[];
+
 
 (* ::Input::Initialization:: *)
+Begin["`Private`"];
+
 plotCOMvectorTrio[\[Rho]Symbol_,h_,pIntervals_]:=Block[{COMs,s},
 COMs=Table[
 \[Rho]ToCenterOfMass[
@@ -532,13 +604,19 @@ Parallelepiped[{0,0,0},COMs]
 ]
 ]
 
+End[];
+
 
 (* ::Input::Initialization:: *)
+Begin["`Private`"];
+
 calculate\[Rho]ScaledMax[\[Rho]Symbol_,\[ScriptL]max_?IntegerQ]:=calculate\[Rho]ScaledMax[\[Rho]Symbol,{0,\[ScriptL]max}]
 
 calculate\[Rho]ScaledMax[\[Rho]Symbol_,{\[ScriptL]min_,\[ScriptL]max_}]:=Max[Flatten[Table[Table[
 (*{\[ScriptL],m}->*)Abs[\[Rho]Symbol[\[ScriptL],m]]^(1/Max[\[ScriptL],1])
 ,{m,-\[ScriptL],\[ScriptL]}],{\[ScriptL],0,\[ScriptL]max}]]]
+
+End[];
 
 
 (* ::Input::Initialization:: *)
@@ -548,6 +626,10 @@ Options[sphericalDecompositionPlot]={ColorFunction->ColorData["BlueGreenYellow"]
 (* ::Input::Initialization:: *)
 sphericalDecompositionPlot::usage="sphericalDecompositionPlot[\[Rho]Symbol,\[ScriptL]max] plots the spherical decomposition \[Rho]Symbol[\[ScriptL],m].
 sphericalDecompositionPlot[\[Rho]Symbol,\[ScriptL]max,{\[ScriptL]1,\[ScriptL]2,\[ScriptL]3}]";
+
+
+(* ::Input::Initialization:: *)
+Begin["`Private`"];
 
 
 (* ::Input::Initialization:: *)
@@ -619,6 +701,16 @@ Point[{{m1,\[ScriptL]1},{m2,\[ScriptL]2},{m1+m2,\[ScriptL]3}}],
 
 
 (* ::Input::Initialization:: *)
+End[];
+
+
+(* ::Input::Initialization:: *)
+RasterPlot3D::usage="RasterPlot3D[data]";
+
+
+(* ::Input::Initialization:: *)
+Begin["`Private`"];
+
 RasterPlot3D[data_,options___:OptionsPattern[]]:=Block[{reshapedData},
 Show[{
 Graphics3D[{
@@ -649,11 +741,6 @@ MinMax[data[[All,4]]]
 ]
 ]
 
-
-(* ::Input::Initialization:: *)
-SampleFunction::usage="This is a sample function for the Chimera template.";
-Begin["`Private`"];
-SampleFunction[x___]:="You have evaluated the Chimera sample function, SampleFunction, on the input "<>ToString[x]
 End[];
 
 
