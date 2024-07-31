@@ -79,12 +79,8 @@ Cell["TO DO", \
 "Subsection",ExpressionUUID->"bfd84542-7b8f-604a-9eee-157164c0d04d"],
 
 Cell["\<\
-- Update SphericalHarmonicS to reflect the new normalization.
-- Replace all the code based on ClebschGordan and replace it with \
-ThreeJSymbol
-- Add Private brackets to all code.
 - Check all functions have usage statements.
-- Pull in helixDataDistribution as well as three-gaussians distributions.\
+- Pull in helixDataDistribution as well as three-gaussians distributions?\
 \>", "Text",ExpressionUUID->"7760ff8a-a77f-9c49-9cf2-64a8f6fa928a"]
 }, Open  ]],
 
@@ -123,7 +119,7 @@ Cell[BoxData[
   RowBox[{"BeginPackage", "[", "\"\<Chimera`\>\"", "]"}], ";"}]], "Input",
  InitializationCell->True,
  CellLabel->"In[2]:=",ExpressionUUID->"a3fe781e-8db1-4219-aeaa-3f8c593d8fa5"]
-}, Open  ]],
+}, Closed]],
 
 Cell[CellGroupData[{
 
@@ -152,12 +148,12 @@ Chimera package.\>\""}], ";"}], "\[IndentingNewLine]",
   ";"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{"$ChimeraVersion", ":=", 
-   RowBox[{"\"\<Chimera v0.1, \>\"", "<>", "$ChimeraTimestamp"}]}], 
+   RowBox[{"\"\<Chimera v0.2, \>\"", "<>", "$ChimeraTimestamp"}]}], 
   ";"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{"End", "[", "]"}], ";"}]}], "Input",
- InitializationCell->True,
- CellLabel->"In[3]:=",ExpressionUUID->"06ed43a3-15ef-433b-bd29-4de20889334f"],
+ InitializationCell->
+  True,ExpressionUUID->"06ed43a3-15ef-433b-bd29-4de20889334f"],
 
 Cell[BoxData[
  RowBox[{"\[IndentingNewLine]", 
@@ -229,7 +225,7 @@ Cell[BoxData[
         RowBox[{"NotebookSave", "[", "]"}], ")"}]}], ",", 
       RowBox[{"PassEventsDown", "\[Rule]", "True"}]}], "}"}]}]}], 
   "]"}]], "Input",ExpressionUUID->"8b66dfc7-af3c-410b-8fa6-50468f5c81a1"]
-}, Open  ]],
+}, Closed]],
 
 Cell[CellGroupData[{
 
@@ -349,7 +345,7 @@ Cell[BoxData[{
  CellLabel->
   "In[14]:=",ExpressionUUID->"a8480c42-c519-423d-a120-4aa44435c59d"]
 }, Closed]]
-}, Open  ]],
+}, Closed]],
 
 Cell[CellGroupData[{
 
@@ -364,11 +360,11 @@ Cell["Timestamp", \
 Cell[BoxData[
  RowBox[{
   RowBox[{"Begin", "[", "\"\<`Private`\>\"", "]"}], ";", 
-  RowBox[{"$ChimeraTimestamp", "=", "\"\<Wed 31 Jul 2024 18:24:25\>\""}], ";", 
+  RowBox[{"$ChimeraTimestamp", "=", "\"\<Wed 31 Jul 2024 19:09:06\>\""}], ";", 
   RowBox[{"End", "[", "]"}], ";"}]], "Input",
  InitializationCell->True,
  CellTags->
-  "version-timestamp",ExpressionUUID->"f07c4cf5-fe82-4ef8-bd51-14063b027975"]
+  "version-timestamp",ExpressionUUID->"38e0cbb5-f04d-46df-8536-097d9d632f49"]
 }, Open  ]]
 }, Open  ]],
 
@@ -612,7 +608,7 @@ Cell["General functions", "Subsection",
 
 Cell[CellGroupData[{
 
-Cell["SolidHarmonicS - NEEDS UPDATING", \
+Cell["SolidHarmonicS", \
 "Subsubsection",ExpressionUUID->"7e8790b2-92ee-5c40-afe1-b28aa175f24c"],
 
 Cell[TextData[{
@@ -843,7 +839,7 @@ Cell[BoxData[
    SqrtBox["10"]}]]], "Output",
  CellLabel->"Out[129]=",ExpressionUUID->"88175729-0248-4d98-83be-f7948fc3a122"]
 }, Open  ]]
-}, Open  ]],
+}, Closed]],
 
 Cell[CellGroupData[{
 
@@ -3067,7 +3063,7 @@ between momenta p1, p2, p3 and p1+\[CapitalDelta]p, p2+\[CapitalDelta]p, p3+\
   RowBox[{"End", "[", "]"}], ";"}]}], "Input",
  InitializationCell->
   True,ExpressionUUID->"0c0495dd-cfd6-b448-a5dc-15829137bf9b"]
-}, Open  ]],
+}, Closed]],
 
 Cell[CellGroupData[{
 
@@ -3193,7 +3189,7 @@ the spherical chirality measure formed from the spherical decomposition \>\"",
   RowBox[{"End", "[", "]"}], ";"}]}], "Input",
  InitializationCell->
   True,ExpressionUUID->"593b4912-8d91-df48-933f-4fae62929f8e"]
-}, Open  ]]
+}, Closed]]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -13520,7 +13516,7 @@ Cell[BoxData[{
   RowBox[{"End", "[", "]"}], ";"}]}], "Input",
  InitializationCell->True,
  CellLabel->"In[111]:=",ExpressionUUID->"2f88db80-3140-a944-ace3-5393379078a0"]
-}, Open  ]],
+}, Closed]],
 
 Cell[CellGroupData[{
 
@@ -13911,7 +13907,7 @@ Cell[BoxData[
   RowBox[{"End", "[", "]"}], ";"}]], "Input",
  InitializationCell->True,
  CellLabel->"In[122]:=",ExpressionUUID->"07742da7-0d11-4e32-bdc5-cf3931a3eb0b"]
-}, Open  ]],
+}, Closed]],
 
 Cell[CellGroupData[{
 
@@ -14057,7 +14053,7 @@ Cell[BoxData[
   RowBox[{"EndPackage", "[", "]"}], ";"}]], "Input",
  InitializationCell->True,
  CellLabel->"In[127]:=",ExpressionUUID->"41e28dd9-26c5-47b9-8875-713ef3971763"]
-}, Open  ]],
+}, Closed]],
 
 Cell[CellGroupData[{
 
@@ -14071,8 +14067,8 @@ Cell[BoxData[
  InitializationCell->True,
  CellLabel->"In[128]:=",ExpressionUUID->"80571e19-793e-4d30-a315-1c3eda65d555"]
 }, Closed]]
-}, Open  ]]
-}, Open  ]]
+}, Closed]]
+}, Closed]]
 }, Open  ]]
 }, Open  ]]
 },

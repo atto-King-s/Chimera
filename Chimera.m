@@ -36,7 +36,7 @@ BeginPackage["Chimera`"];
 $ChimeraVersion::usage="$ChimeraVersion prints the current version of the Chimera package in use and its timestamp.";
 $ChimeraTimestamp::usage="$ChimeraTimestamp prints the timestamp of the current version of the Chimera package.";
 Begin["`Private`"];
-$ChimeraVersion:="Chimera v0.1, "<>$ChimeraTimestamp;
+$ChimeraVersion:="Chimera v0.2, "<>$ChimeraTimestamp;
 End[];
 
 
@@ -67,7 +67,7 @@ End[];
 
 
 (* ::Input::Initialization:: *)
-Begin["`Private`"];$ChimeraTimestamp="Wed 31 Jul 2024 18:24:25";End[];
+Begin["`Private`"];$ChimeraTimestamp="Wed 31 Jul 2024 19:09:06";End[];
 
 
 (* ::Input::Initialization:: *)
