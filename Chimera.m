@@ -67,7 +67,7 @@ End[];
 
 
 (* ::Input::Initialization:: *)
-Begin["`Private`"];$ChimeraTimestamp="Wed 31 Jul 2024 18:05:05";End[];
+Begin["`Private`"];$ChimeraTimestamp="Wed 31 Jul 2024 18:24:25";End[];
 
 
 (* ::Input::Initialization:: *)
@@ -418,16 +418,18 @@ measureSymbol[h_,{\[ScriptL]1_,\[ScriptL]2_,\[ScriptL]3_},{p1_,p2_,p3_},\[Capita
 
 Sum[
 If[
-Abs[m1+m2]<=\[ScriptL]3,
+m1+m2+m3==0,
 Times[
-ClebschGordan[{\[ScriptL]1,m1},{\[ScriptL]2,m2},{\[ScriptL]3,m1+m2}],
+Quiet[
+ThreeJSymbol[{\[ScriptL]1,m1},{\[ScriptL]2,m2},{\[ScriptL]3,m3}]
+,ClebschGordan::phy],
 \[Rho]Symbol[h,\[ScriptL]1,m1,{p1,p1+\[CapitalDelta]p}],
 \[Rho]Symbol[h,\[ScriptL]2,m2,{p2,p2+\[CapitalDelta]p}],
-\[Rho]Symbol[h,\[ScriptL]3,m1+m2,{p3,p3+\[CapitalDelta]p}]//Conjugate
+\[Rho]Symbol[h,\[ScriptL]3,m3,{p3,p3+\[CapitalDelta]p}]
 ],
 0
 ]
-,{m1,-\[ScriptL]1,\[ScriptL]1},{m2,-\[ScriptL]2,\[ScriptL]2}
+,{m1,-\[ScriptL]1,\[ScriptL]1},{m2,-\[ScriptL]2,\[ScriptL]2},{m3,-\[ScriptL]3,\[ScriptL]3}
 ]
 ]
 ]
@@ -453,16 +455,18 @@ measureSymbol[{\[ScriptL]1_,\[ScriptL]2_,\[ScriptL]3_}]:=Block[{},
 
 Sum[
 If[
-Abs[m1+m2]<=\[ScriptL]3,
+m1+m2+m3==0,
 Times[
-ClebschGordan[{\[ScriptL]1,m1},{\[ScriptL]2,m2},{\[ScriptL]3,m1+m2}],
+Quiet[
+ThreeJSymbol[{\[ScriptL]1,m1},{\[ScriptL]2,m2},{\[ScriptL]3,m3}]
+,ClebschGordan::phy],
 \[Rho]Symbol[\[ScriptL]1,m1],
 \[Rho]Symbol[\[ScriptL]2,m2],
-\[Rho]Symbol[\[ScriptL]3,m1+m2]//Conjugate
+\[Rho]Symbol[\[ScriptL]3,m3]
 ],
 0
 ]
-,{m1,-\[ScriptL]1,\[ScriptL]1},{m2,-\[ScriptL]2,\[ScriptL]2}
+,{m1,-\[ScriptL]1,\[ScriptL]1},{m2,-\[ScriptL]2,\[ScriptL]2},{m3,-\[ScriptL]3,\[ScriptL]3}
 ]
 ]
 ]
@@ -664,13 +668,13 @@ sphericalDecompositionPlot[\[Rho]Symbol_,\[ScriptL]max_,{\[ScriptL]1_,\[ScriptL]
 sphericalDecompositionPlot[\[Rho]Symbol_,{\[ScriptL]min_,\[ScriptL]max_},{\[ScriptL]1_,\[ScriptL]2_,\[ScriptL]3_},options:OptionsPattern[]]:=Block[{\[Rho]ScaledMax,tolerance=OptionValue[Tolerance],CG\[Rho]Product,CG\[Rho]ProductMax},
 \[Rho]ScaledMax=calculate\[Rho]ScaledMax[\[Rho]Symbol,{\[ScriptL]min,\[ScriptL]max}];
 CG\[Rho]ProductMax=Max[Flatten[Table[
-CG\[Rho]Product[m1,m2]=Abs[Times[
-Quiet[ClebschGordan[{\[ScriptL]1,m1},{\[ScriptL]2,m2},{\[ScriptL]3,m1+m2}],ClebschGordan::phy],
+CG\[Rho]Product[m1,m2,m3]=Abs[Times[
+Quiet[ThreeJSymbol[{\[ScriptL]1,m1},{\[ScriptL]2,m2},{\[ScriptL]3,m3}],ClebschGordan::phy],
 \[Rho]Symbol[\[ScriptL]1,m1],
 \[Rho]Symbol[\[ScriptL]2,m2],
-\[Rho]Symbol[\[ScriptL]3,m1+m2]//Conjugate
+\[Rho]Symbol[\[ScriptL]3,m3]
 ]]
-,{m1,-\[ScriptL]1,\[ScriptL]1},{m2,-\[ScriptL]2,\[ScriptL]2}]]];
+,{m1,-\[ScriptL]1,\[ScriptL]1},{m2,-\[ScriptL]2,\[ScriptL]2},{m3,-\[ScriptL]3,\[ScriptL]3}]]];
 
 Show[{
 
@@ -681,20 +685,20 @@ White,
 PointSize[0.01],
 Values@KeySortBy[Last]@Association@Table[
 If[
-CG\[Rho]Product[m1,m2]/CG\[Rho]ProductMax>=tolerance,
-{m1,m2,CG\[Rho]Product[m1,m2]/CG\[Rho]ProductMax}->{
+CG\[Rho]Product[m1,m2,m3]/CG\[Rho]ProductMax>=tolerance,
+{m1,m2,CG\[Rho]Product[m1,m2,m3]/CG\[Rho]ProductMax}->{
 Tooltip[{
 Blend[{{-\[ScriptL]2,Orange},{0,Blend[{{-\[ScriptL]1,Red},{\[ScriptL]1,Blue}},m1]},{\[ScriptL]2,Darker[Green]}},m2],
-EdgeForm[{Opacity[CG\[Rho]Product[m1,m2]/CG\[Rho]ProductMax],Thickness[0.001]}],
-FaceForm[Opacity[0.8CG\[Rho]Product[m1,m2]/CG\[Rho]ProductMax]],
-Triangle[{{m1,\[ScriptL]1},{m2,\[ScriptL]2},{m1+m2,\[ScriptL]3}}],
-Opacity[CG\[Rho]Product[m1,m2]/CG\[Rho]ProductMax],
-Point[{{m1,\[ScriptL]1},{m2,\[ScriptL]2},{m1+m2,\[ScriptL]3}}],
+EdgeForm[{Opacity[CG\[Rho]Product[m1,m2,m3]/CG\[Rho]ProductMax],Thickness[0.001]}],
+FaceForm[Opacity[0.8CG\[Rho]Product[m1,m2,m3]/CG\[Rho]ProductMax]],
+Triangle[{{m1,\[ScriptL]1},{m2,\[ScriptL]2},{m3,\[ScriptL]3}}],
+Opacity[CG\[Rho]Product[m1,m2,m3]/CG\[Rho]ProductMax],
+Point[{{m1,\[ScriptL]1},{m2,\[ScriptL]2},{m3,\[ScriptL]3}}]
 }
 ,Row[{{m1,m2,m1+m2},"\[Rule]",Round[CG\[Rho]Product[m1,m2]/CG\[Rho]ProductMax,0.01]}]]
 }
 ,Nothing]
-,{m1,-\[ScriptL]1,\[ScriptL]1},{m2,-\[ScriptL]2,\[ScriptL]2}]
+,{m1,-\[ScriptL]1,\[ScriptL]1},{m2,-\[ScriptL]2,\[ScriptL]2},{m3,-\[ScriptL]3,\[ScriptL]3}]
 }]
 }]
 ]

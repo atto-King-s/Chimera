@@ -364,11 +364,11 @@ Cell["Timestamp", \
 Cell[BoxData[
  RowBox[{
   RowBox[{"Begin", "[", "\"\<`Private`\>\"", "]"}], ";", 
-  RowBox[{"$ChimeraTimestamp", "=", "\"\<Wed 31 Jul 2024 18:05:05\>\""}], ";", 
+  RowBox[{"$ChimeraTimestamp", "=", "\"\<Wed 31 Jul 2024 18:24:25\>\""}], ";", 
   RowBox[{"End", "[", "]"}], ";"}]], "Input",
  InitializationCell->True,
  CellTags->
-  "version-timestamp",ExpressionUUID->"8371d06e-6831-4518-8967-39977bcc81da"]
+  "version-timestamp",ExpressionUUID->"f07c4cf5-fe82-4ef8-bd51-14063b027975"]
 }, Open  ]]
 }, Open  ]],
 
@@ -3016,20 +3016,22 @@ between momenta p1, p2, p3 and p1+\[CapitalDelta]p, p2+\[CapitalDelta]p, p3+\
           RowBox[{"If", "[", "\[IndentingNewLine]", 
            RowBox[{
             RowBox[{
-             RowBox[{"Abs", "[", 
-              RowBox[{"m1", "+", "m2"}], "]"}], "<=", "\[ScriptL]3"}], ",", 
+             RowBox[{"m1", "+", "m2", "+", "m3"}], "==", "0"}], ",", 
             "\[IndentingNewLine]", 
             RowBox[{"Times", "[", "\[IndentingNewLine]", 
              RowBox[{
-              RowBox[{"ClebschGordan", "[", 
+              RowBox[{"Quiet", "[", "\[IndentingNewLine]", 
                RowBox[{
-                RowBox[{"{", 
-                 RowBox[{"\[ScriptL]1", ",", "m1"}], "}"}], ",", 
-                RowBox[{"{", 
-                 RowBox[{"\[ScriptL]2", ",", "m2"}], "}"}], ",", 
-                RowBox[{"{", 
-                 RowBox[{"\[ScriptL]3", ",", 
-                  RowBox[{"m1", "+", "m2"}]}], "}"}]}], "]"}], ",", 
+                RowBox[{"ThreeJSymbol", "[", 
+                 RowBox[{
+                  RowBox[{"{", 
+                   RowBox[{"\[ScriptL]1", ",", "m1"}], "}"}], ",", 
+                  RowBox[{"{", 
+                   RowBox[{"\[ScriptL]2", ",", "m2"}], "}"}], ",", 
+                  RowBox[{"{", 
+                   RowBox[{"\[ScriptL]3", ",", "m3"}], "}"}]}], "]"}], 
+                "\[IndentingNewLine]", ",", 
+                RowBox[{"ClebschGordan", "::", "phy"}]}], "]"}], ",", 
               "\[IndentingNewLine]", 
               RowBox[{"\[Rho]Symbol", "[", 
                RowBox[{"h", ",", "\[ScriptL]1", ",", "m1", ",", 
@@ -3043,30 +3045,29 @@ between momenta p1, p2, p3 and p1+\[CapitalDelta]p, p2+\[CapitalDelta]p, p3+\
                  RowBox[{"p2", ",", 
                   RowBox[{"p2", "+", "\[CapitalDelta]p"}]}], "}"}]}], "]"}], 
               ",", "\[IndentingNewLine]", 
-              RowBox[{
-               RowBox[{"\[Rho]Symbol", "[", 
-                RowBox[{"h", ",", "\[ScriptL]3", ",", 
-                 RowBox[{"m1", "+", "m2"}], ",", 
-                 RowBox[{"{", 
-                  RowBox[{"p3", ",", 
-                   RowBox[{"p3", "+", "\[CapitalDelta]p"}]}], "}"}]}], "]"}], 
-               "//", "Conjugate"}]}], "\[IndentingNewLine]", "]"}], ",", 
-            "\[IndentingNewLine]", "0"}], "\[IndentingNewLine]", "]"}], 
-          "\[IndentingNewLine]", ",", 
+              RowBox[{"\[Rho]Symbol", "[", 
+               RowBox[{"h", ",", "\[ScriptL]3", ",", "m3", ",", 
+                RowBox[{"{", 
+                 RowBox[{"p3", ",", 
+                  RowBox[{"p3", "+", "\[CapitalDelta]p"}]}], "}"}]}], "]"}]}],
+              "\[IndentingNewLine]", "]"}], ",", "\[IndentingNewLine]", "0"}],
+            "\[IndentingNewLine]", "]"}], "\[IndentingNewLine]", ",", 
           RowBox[{"{", 
            RowBox[{"m1", ",", 
             RowBox[{"-", "\[ScriptL]1"}], ",", "\[ScriptL]1"}], "}"}], ",", 
           RowBox[{"{", 
            RowBox[{"m2", ",", 
-            RowBox[{"-", "\[ScriptL]2"}], ",", "\[ScriptL]2"}], "}"}]}], 
+            RowBox[{"-", "\[ScriptL]2"}], ",", "\[ScriptL]2"}], "}"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"m3", ",", 
+            RowBox[{"-", "\[ScriptL]3"}], ",", "\[ScriptL]3"}], "}"}]}], 
          "\[IndentingNewLine]", "]"}]}], "\[IndentingNewLine]", "]"}]}]}]}], 
    "\[IndentingNewLine]", "]"}]}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{"End", "[", "]"}], ";"}]}], "Input",
- InitializationCell->True,
- CellLabel->
-  "In[84]:=",ExpressionUUID->"0c0495dd-cfd6-b448-a5dc-15829137bf9b"]
-}, Closed]],
+ InitializationCell->
+  True,ExpressionUUID->"0c0495dd-cfd6-b448-a5dc-15829137bf9b"]
+}, Open  ]],
 
 Cell[CellGroupData[{
 
@@ -3149,20 +3150,22 @@ the spherical chirality measure formed from the spherical decomposition \>\"",
            RowBox[{"If", "[", "\[IndentingNewLine]", 
             RowBox[{
              RowBox[{
-              RowBox[{"Abs", "[", 
-               RowBox[{"m1", "+", "m2"}], "]"}], "<=", "\[ScriptL]3"}], ",", 
+              RowBox[{"m1", "+", "m2", "+", "m3"}], "==", "0"}], ",", 
              "\[IndentingNewLine]", 
              RowBox[{"Times", "[", "\[IndentingNewLine]", 
               RowBox[{
-               RowBox[{"ClebschGordan", "[", 
+               RowBox[{"Quiet", "[", "\[IndentingNewLine]", 
                 RowBox[{
-                 RowBox[{"{", 
-                  RowBox[{"\[ScriptL]1", ",", "m1"}], "}"}], ",", 
-                 RowBox[{"{", 
-                  RowBox[{"\[ScriptL]2", ",", "m2"}], "}"}], ",", 
-                 RowBox[{"{", 
-                  RowBox[{"\[ScriptL]3", ",", 
-                   RowBox[{"m1", "+", "m2"}]}], "}"}]}], "]"}], ",", 
+                 RowBox[{"ThreeJSymbol", "[", 
+                  RowBox[{
+                   RowBox[{"{", 
+                    RowBox[{"\[ScriptL]1", ",", "m1"}], "}"}], ",", 
+                   RowBox[{"{", 
+                    RowBox[{"\[ScriptL]2", ",", "m2"}], "}"}], ",", 
+                   RowBox[{"{", 
+                    RowBox[{"\[ScriptL]3", ",", "m3"}], "}"}]}], "]"}], 
+                 "\[IndentingNewLine]", ",", 
+                 RowBox[{"ClebschGordan", "::", "phy"}]}], "]"}], ",", 
                "\[IndentingNewLine]", 
                RowBox[{"\[Rho]Symbol", "[", 
                 RowBox[{"\[ScriptL]1", ",", "m1"}], "]"}], ",", 
@@ -3170,10 +3173,8 @@ the spherical chirality measure formed from the spherical decomposition \>\"",
                RowBox[{"\[Rho]Symbol", "[", 
                 RowBox[{"\[ScriptL]2", ",", "m2"}], "]"}], ",", 
                "\[IndentingNewLine]", 
-               RowBox[{
-                RowBox[{"\[Rho]Symbol", "[", 
-                 RowBox[{"\[ScriptL]3", ",", 
-                  RowBox[{"m1", "+", "m2"}]}], "]"}], "//", "Conjugate"}]}], 
+               RowBox[{"\[Rho]Symbol", "[", 
+                RowBox[{"\[ScriptL]3", ",", "m3"}], "]"}]}], 
               "\[IndentingNewLine]", "]"}], ",", "\[IndentingNewLine]", "0"}],
              "\[IndentingNewLine]", "]"}], "\[IndentingNewLine]", ",", 
            RowBox[{"{", 
@@ -3181,16 +3182,18 @@ the spherical chirality measure formed from the spherical decomposition \>\"",
              RowBox[{"-", "\[ScriptL]1"}], ",", "\[ScriptL]1"}], "}"}], ",", 
            RowBox[{"{", 
             RowBox[{"m2", ",", 
-             RowBox[{"-", "\[ScriptL]2"}], ",", "\[ScriptL]2"}], "}"}]}], 
+             RowBox[{"-", "\[ScriptL]2"}], ",", "\[ScriptL]2"}], "}"}], ",", 
+           RowBox[{"{", 
+            RowBox[{"m3", ",", 
+             RowBox[{"-", "\[ScriptL]3"}], ",", "\[ScriptL]3"}], "}"}]}], 
           "\[IndentingNewLine]", "]"}]}], "\[IndentingNewLine]", "]"}]}]}]}], 
     "\[IndentingNewLine]", "]"}]}], 
   "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{"End", "[", "]"}], ";"}]}], "Input",
- InitializationCell->True,
- CellLabel->
-  "In[88]:=",ExpressionUUID->"593b4912-8d91-df48-933f-4fae62929f8e"]
-}, Closed]]
+ InitializationCell->
+  True,ExpressionUUID->"593b4912-8d91-df48-933f-4fae62929f8e"]
+}, Open  ]]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -13517,7 +13520,7 @@ Cell[BoxData[{
   RowBox[{"End", "[", "]"}], ";"}]}], "Input",
  InitializationCell->True,
  CellLabel->"In[111]:=",ExpressionUUID->"2f88db80-3140-a944-ace3-5393379078a0"]
-}, Closed]],
+}, Open  ]],
 
 Cell[CellGroupData[{
 
@@ -13726,21 +13729,20 @@ Cell[BoxData[{
          RowBox[{
           RowBox[{
            RowBox[{"CG\[Rho]Product", "[", 
-            RowBox[{"m1", ",", "m2"}], "]"}], "=", 
+            RowBox[{"m1", ",", "m2", ",", "m3"}], "]"}], "=", 
            RowBox[{"Abs", "[", 
             RowBox[{"Times", "[", "\[IndentingNewLine]", 
              RowBox[{
               RowBox[{"Quiet", "[", 
                RowBox[{
-                RowBox[{"ClebschGordan", "[", 
+                RowBox[{"ThreeJSymbol", "[", 
                  RowBox[{
                   RowBox[{"{", 
                    RowBox[{"\[ScriptL]1", ",", "m1"}], "}"}], ",", 
                   RowBox[{"{", 
                    RowBox[{"\[ScriptL]2", ",", "m2"}], "}"}], ",", 
                   RowBox[{"{", 
-                   RowBox[{"\[ScriptL]3", ",", 
-                    RowBox[{"m1", "+", "m2"}]}], "}"}]}], "]"}], ",", 
+                   RowBox[{"\[ScriptL]3", ",", "m3"}], "}"}]}], "]"}], ",", 
                 RowBox[{"ClebschGordan", "::", "phy"}]}], "]"}], ",", 
               "\[IndentingNewLine]", 
               RowBox[{"\[Rho]Symbol", "[", 
@@ -13749,10 +13751,8 @@ Cell[BoxData[{
               RowBox[{"\[Rho]Symbol", "[", 
                RowBox[{"\[ScriptL]2", ",", "m2"}], "]"}], ",", 
               "\[IndentingNewLine]", 
-              RowBox[{
-               RowBox[{"\[Rho]Symbol", "[", 
-                RowBox[{"\[ScriptL]3", ",", 
-                 RowBox[{"m1", "+", "m2"}]}], "]"}], "//", "Conjugate"}]}], 
+              RowBox[{"\[Rho]Symbol", "[", 
+               RowBox[{"\[ScriptL]3", ",", "m3"}], "]"}]}], 
              "\[IndentingNewLine]", "]"}], "]"}]}], "\[IndentingNewLine]", 
           ",", 
           RowBox[{"{", 
@@ -13760,7 +13760,10 @@ Cell[BoxData[{
             RowBox[{"-", "\[ScriptL]1"}], ",", "\[ScriptL]1"}], "}"}], ",", 
           RowBox[{"{", 
            RowBox[{"m2", ",", 
-            RowBox[{"-", "\[ScriptL]2"}], ",", "\[ScriptL]2"}], "}"}]}], 
+            RowBox[{"-", "\[ScriptL]2"}], ",", "\[ScriptL]2"}], "}"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"m3", ",", 
+            RowBox[{"-", "\[ScriptL]3"}], ",", "\[ScriptL]3"}], "}"}]}], 
          "]"}], "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
      "\[IndentingNewLine]", 
      RowBox[{"Show", "[", 
@@ -13788,7 +13791,7 @@ Cell[BoxData[{
                   RowBox[{
                    RowBox[{
                     RowBox[{"CG\[Rho]Product", "[", 
-                    RowBox[{"m1", ",", "m2"}], "]"}], "/", 
+                    RowBox[{"m1", ",", "m2", ",", "m3"}], "]"}], "/", 
                     "CG\[Rho]ProductMax"}], ">=", "tolerance"}], ",", 
                   "\[IndentingNewLine]", 
                   RowBox[{
@@ -13796,7 +13799,7 @@ Cell[BoxData[{
                     RowBox[{"m1", ",", "m2", ",", 
                     RowBox[{
                     RowBox[{"CG\[Rho]Product", "[", 
-                    RowBox[{"m1", ",", "m2"}], "]"}], "/", 
+                    RowBox[{"m1", ",", "m2", ",", "m3"}], "]"}], "/", 
                     "CG\[Rho]ProductMax"}]}], "}"}], "->", 
                    RowBox[{"{", "\[IndentingNewLine]", 
                     RowBox[{"Tooltip", "[", 
@@ -13832,7 +13835,7 @@ Cell[BoxData[{
                     RowBox[{"Opacity", "[", 
                     RowBox[{
                     RowBox[{"CG\[Rho]Product", "[", 
-                    RowBox[{"m1", ",", "m2"}], "]"}], "/", 
+                    RowBox[{"m1", ",", "m2", ",", "m3"}], "]"}], "/", 
                     "CG\[Rho]ProductMax"}], "]"}], ",", 
                     RowBox[{"Thickness", "[", "0.001", "]"}]}], "}"}], "]"}], 
                     ",", "\[IndentingNewLine]", 
@@ -13841,7 +13844,7 @@ Cell[BoxData[{
                     RowBox[{"0.8", 
                     RowBox[{
                     RowBox[{"CG\[Rho]Product", "[", 
-                    RowBox[{"m1", ",", "m2"}], "]"}], "/", 
+                    RowBox[{"m1", ",", "m2", ",", "m3"}], "]"}], "/", 
                     "CG\[Rho]ProductMax"}]}], "]"}], "]"}], ",", 
                     "\[IndentingNewLine]", 
                     RowBox[{"Triangle", "[", 
@@ -13852,13 +13855,12 @@ Cell[BoxData[{
                     RowBox[{"{", 
                     RowBox[{"m2", ",", "\[ScriptL]2"}], "}"}], ",", 
                     RowBox[{"{", 
-                    RowBox[{
-                    RowBox[{"m1", "+", "m2"}], ",", "\[ScriptL]3"}], "}"}]}], 
-                    "}"}], "]"}], ",", "\[IndentingNewLine]", 
+                    RowBox[{"m3", ",", "\[ScriptL]3"}], "}"}]}], "}"}], "]"}],
+                     ",", "\[IndentingNewLine]", 
                     RowBox[{"Opacity", "[", 
                     RowBox[{
                     RowBox[{"CG\[Rho]Product", "[", 
-                    RowBox[{"m1", ",", "m2"}], "]"}], "/", 
+                    RowBox[{"m1", ",", "m2", ",", "m3"}], "]"}], "/", 
                     "CG\[Rho]ProductMax"}], "]"}], ",", "\[IndentingNewLine]", 
                     RowBox[{"Point", "[", 
                     RowBox[{"{", 
@@ -13868,9 +13870,8 @@ Cell[BoxData[{
                     RowBox[{"{", 
                     RowBox[{"m2", ",", "\[ScriptL]2"}], "}"}], ",", 
                     RowBox[{"{", 
-                    RowBox[{
-                    RowBox[{"m1", "+", "m2"}], ",", "\[ScriptL]3"}], "}"}]}], 
-                    "}"}], "]"}], ","}], "\[IndentingNewLine]", "}"}], 
+                    RowBox[{"m3", ",", "\[ScriptL]3"}], "}"}]}], "}"}], 
+                    "]"}]}], "\[IndentingNewLine]", "}"}], 
                     "\[IndentingNewLine]", ",", 
                     RowBox[{"Row", "[", 
                     RowBox[{"{", 
@@ -13894,31 +13895,23 @@ Cell[BoxData[{
                 ",", 
                 RowBox[{"{", 
                  RowBox[{"m2", ",", 
-                  RowBox[{"-", "\[ScriptL]2"}], ",", "\[ScriptL]2"}], "}"}]}],
+                  RowBox[{"-", "\[ScriptL]2"}], ",", "\[ScriptL]2"}], "}"}], 
+                ",", 
+                RowBox[{"{", 
+                 RowBox[{"m3", ",", 
+                  RowBox[{"-", "\[ScriptL]3"}], ",", "\[ScriptL]3"}], "}"}]}],
                 "]"}]}]}]}]}], "\[IndentingNewLine]", "}"}], "]"}]}], 
        "\[IndentingNewLine]", "}"}], "]"}]}]}], "\[IndentingNewLine]", 
    "]"}]}]}], "Input",
- InitializationCell->True,
- CellChangeTimes->{{3.902571051466564*^9, 3.902571080842297*^9}, {
-   3.902571157711526*^9, 3.90257131004222*^9}, {3.902571402547418*^9, 
-   3.902571498828352*^9}, {3.902571574046079*^9, 3.902571690341512*^9}, {
-   3.902571871338149*^9, 3.90257188758834*^9}, {3.902571917893162*^9, 
-   3.902571938562567*^9}, {3.9025720047328997`*^9, 3.902572043750915*^9}, {
-   3.902572090911968*^9, 3.902572415895211*^9}, {3.902572465606452*^9, 
-   3.9025725862372293`*^9}, {3.902572617308557*^9, 3.9025726465546293`*^9}, {
-   3.902572693203016*^9, 3.9025727833041773`*^9}, {3.902572826390121*^9, 
-   3.9025728643080177`*^9}, {3.902572959296229*^9, 3.902573471222639*^9}, 
-   3.90257354400707*^9, {3.902573641198013*^9, 3.9025736653181143`*^9}, {
-   3.90465638873663*^9, 3.9046564325871744`*^9}, 3.904656587851487*^9},
- CellLabel->
-  "In[120]:=",ExpressionUUID->"2b23d589-507b-1d4d-a856-b6db4aa784cd"],
+ InitializationCell->
+  True,ExpressionUUID->"2b23d589-507b-1d4d-a856-b6db4aa784cd"],
 
 Cell[BoxData[
  RowBox[{
   RowBox[{"End", "[", "]"}], ";"}]], "Input",
  InitializationCell->True,
  CellLabel->"In[122]:=",ExpressionUUID->"07742da7-0d11-4e32-bdc5-cf3931a3eb0b"]
-}, Closed]],
+}, Open  ]],
 
 Cell[CellGroupData[{
 
