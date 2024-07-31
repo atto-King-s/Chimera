@@ -80,10 +80,11 @@ Cell["TO DO", \
 
 Cell["\<\
 - Update SphericalHarmonicS to reflect the new normalization.
+- Replace all the code based on ClebschGordan and replace it with \
+ThreeJSymbol
 - Add Private brackets to all code.
 - Check all functions have usage statements.
-- Pull in helixDataDistribution as well as three-gaussians distributions.
-- Replace all the code based on ClebschGordan and replace it with ThreeJSymbol\
+- Pull in helixDataDistribution as well as three-gaussians distributions.\
 \>", "Text",ExpressionUUID->"7760ff8a-a77f-9c49-9cf2-64a8f6fa928a"]
 }, Open  ]],
 
@@ -228,7 +229,7 @@ Cell[BoxData[
         RowBox[{"NotebookSave", "[", "]"}], ")"}]}], ",", 
       RowBox[{"PassEventsDown", "\[Rule]", "True"}]}], "}"}]}]}], 
   "]"}]], "Input",ExpressionUUID->"8b66dfc7-af3c-410b-8fa6-50468f5c81a1"]
-}, Closed]],
+}, Open  ]],
 
 Cell[CellGroupData[{
 
@@ -363,11 +364,11 @@ Cell["Timestamp", \
 Cell[BoxData[
  RowBox[{
   RowBox[{"Begin", "[", "\"\<`Private`\>\"", "]"}], ";", 
-  RowBox[{"$ChimeraTimestamp", "=", "\"\<Wed 31 Jul 2024 14:44:15\>\""}], ";", 
+  RowBox[{"$ChimeraTimestamp", "=", "\"\<Wed 31 Jul 2024 18:05:05\>\""}], ";", 
   RowBox[{"End", "[", "]"}], ";"}]], "Input",
  InitializationCell->True,
  CellTags->
-  "version-timestamp",ExpressionUUID->"7af9af99-b303-42ec-ba9c-0708b0f6877e"]
+  "version-timestamp",ExpressionUUID->"8371d06e-6831-4518-8967-39977bcc81da"]
 }, Open  ]]
 }, Open  ]],
 
@@ -446,7 +447,8 @@ Cell[BoxData[{
  CellChangeTimes->{{3.897108407315451*^9, 3.897108410830072*^9}, {
   3.897110930012847*^9, 3.897110937877269*^9}, {3.8999626465635157`*^9, 
   3.8999626469299097`*^9}},
- CellLabel->"In[2]:=",ExpressionUUID->"a7199599-b1ed-4c74-856e-276e7b8d89b1"]
+ CellLabel->
+  "In[18]:=",ExpressionUUID->"a7199599-b1ed-4c74-856e-276e7b8d89b1"]
 }, Closed]],
 
 Cell[CellGroupData[{
@@ -462,7 +464,8 @@ Cell[BoxData[
   ";"}]], "Input",
  InitializationCell->True,
  CellChangeTimes->{{3.899965709355588*^9, 3.899965719914709*^9}},
- CellLabel->"In[4]:=",ExpressionUUID->"1a2faff1-be08-4968-852a-31a15b74a6c4"]
+ CellLabel->
+  "In[20]:=",ExpressionUUID->"1a2faff1-be08-4968-852a-31a15b74a6c4"]
 }, Closed]],
 
 Cell[CellGroupData[{
@@ -490,7 +493,7 @@ Cell[BoxData[{
  InitializationCell->True,
  CellChangeTimes->{{3.901709082892302*^9, 3.901709109543913*^9}},
  CellLabel->
-  "In[22]:=",ExpressionUUID->"fd309fce-e401-4b87-8b9c-79612a158d77"]
+  "In[21]:=",ExpressionUUID->"fd309fce-e401-4b87-8b9c-79612a158d77"]
 }, Closed]],
 
 Cell[CellGroupData[{
@@ -510,7 +513,8 @@ Cell[BoxData[
      "]"}], ",", "\"\<Megabytes\>\""}], "]"}]}]], "Input",
  InitializationCell->True,
  CellChangeTimes->{{3.899962560446334*^9, 3.8999625767429595`*^9}},
- CellLabel->"In[5]:=",ExpressionUUID->"fbb2740f-f46c-4dc5-99fb-5eddddad3331"]
+ CellLabel->
+  "In[26]:=",ExpressionUUID->"fbb2740f-f46c-4dc5-99fb-5eddddad3331"]
 }, Closed]],
 
 Cell[CellGroupData[{
@@ -532,7 +536,8 @@ Cell[BoxData[
       RowBox[{"All", ",", "4"}], "]"}], "]"}], "]"}]}]}]], "Input",
  InitializationCell->True,
  CellChangeTimes->{{3.900072772321396*^9, 3.900072824738744*^9}},
- CellLabel->"In[6]:=",ExpressionUUID->"a3e3f7a4-033b-4e99-aee5-3b3f673818a1"]
+ CellLabel->
+  "In[27]:=",ExpressionUUID->"a3e3f7a4-033b-4e99-aee5-3b3f673818a1"]
 }, Closed]]
 }, Open  ]],
 
@@ -621,6 +626,11 @@ Cell[TextData[{
      StyleBox["r",
       FontWeight->"Bold"], ")"}], "=", 
     RowBox[{
+     SqrtBox[
+      FractionBox[
+       RowBox[{"4", "\[Pi]"}], 
+       RowBox[{
+        RowBox[{"2", "l"}], "+", "1"}]]], 
      SuperscriptBox["r", "l"], 
      RowBox[{
       SubscriptBox["Y", 
@@ -635,11 +645,31 @@ Cell[TextData[{
 spherical harmonics.\n\nCode provided by J.M. at \
 http://mathematica.stackexchange.com/a/124336/1000 under the WTFPL. This \
 version was copied from the RBSFA package, which lives at \
-https://github.com/episanty/RB-SFA."
-}], "Text",
- CellChangeTimes->{{3.899965811399004*^9, 
-  3.899965853055344*^9}},ExpressionUUID->"7b3afe9c-3d07-a948-950e-\
-449aa6c39eb7"],
+https://github.com/episanty/RB-SFA, and it has been modified from that code \
+to account for the added normalization factor of ",
+ Cell[BoxData[
+  FormBox[
+   SqrtBox[
+    FractionBox[
+     RowBox[{"4", "\[Pi]"}], 
+     RowBox[{
+      RowBox[{"2", "l"}], "+", "1"}]]], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "68a0ee63-0d71-41e2-8215-2e88a7bda930"],
+ " (in practice, by removing the factor of ",
+ Cell[BoxData[
+  RowBox[{"Sqrt", "[", 
+   FractionBox[
+    RowBox[{
+     RowBox[{"2", " ", "\[Lambda]"}], "+", "1"}], 
+    RowBox[{"4", " ", "\[Pi]"}]], "]"}]], "Input",
+  InitializationCell->True,ExpressionUUID->
+  "5e517f30-bd30-4009-9d7e-c3593631f024"],
+ ").\n\nNote that a similar function is available from the Wolfram Function \
+Repository via ResourceFunction[\[OpenCurlyDoubleQuote]SolidHarmonicR\
+\[CloseCurlyDoubleQuote]]. However, this package includes the explicit \
+definition in the spirit of backwards compatibility ."
+}], "Text",ExpressionUUID->"7b3afe9c-3d07-a948-950e-449aa6c39eb7"],
 
 Cell[BoxData[{
  RowBox[{
@@ -660,12 +690,13 @@ does the same.\>\""}], ";"}], "\[IndentingNewLine]",
      "z_"}], "]"}], "/;", 
    RowBox[{"\[Lambda]", "\[GreaterEqual]", 
     RowBox[{"Abs", "[", "\[Mu]", "]"}]}]}], ":=", 
-  RowBox[{
+  RowBox[{"(*", 
    RowBox[{"Sqrt", "[", 
     FractionBox[
      RowBox[{
       RowBox[{"2", " ", "\[Lambda]"}], "+", "1"}], 
-     RowBox[{"4", " ", "\[Pi]"}]], "]"}], " ", 
+     RowBox[{"4", " ", "\[Pi]"}]], "]"}], " ", "*)"}], 
+  RowBox[{
    RowBox[{"Sqrt", "[", 
     FractionBox[
      RowBox[{"Gamma", "[", 
@@ -773,7 +804,7 @@ does the same.\>\""}], ";"}], "\[IndentingNewLine]",
  RowBox[{
   RowBox[{"End", "[", "]"}], ";"}]}], "Input",
  InitializationCell->True,
- CellLabel->"In[18]:=",ExpressionUUID->"56087145-df42-7a43-b557-370358a32a51"],
+ CellLabel->"In[28]:=",ExpressionUUID->"56087145-df42-7a43-b557-370358a32a51"],
 
 Cell["One example:", "Text",
  CellChangeTimes->{{3.899965876814926*^9, 
@@ -789,7 +820,7 @@ Cell[BoxData[
     RowBox[{"x", ",", "y", ",", "z"}], "}"}]}], "]"}]], "Input",
  CellChangeTimes->{{3.899965862278886*^9, 3.899965885394013*^9}},
  CellLabel->
-  "In[151]:=",ExpressionUUID->"0731478f-053e-e24b-91e8-6848f6af0213"],
+  "In[129]:=",ExpressionUUID->"0731478f-053e-e24b-91e8-6848f6af0213"],
 
 Cell[BoxData[
  FractionBox[
@@ -808,11 +839,9 @@ Cell[BoxData[
         SuperscriptBox["x", "2"], "+", 
         SuperscriptBox["y", "2"], "+", 
         SuperscriptBox["z", "2"]}], ")"}]}]}], ")"}]}], 
-  RowBox[{"64", " ", 
-   SqrtBox[
-    RowBox[{"10", " ", "\[Pi]"}]]}]]], "Output",
- CellChangeTimes->{{3.8999658708169365`*^9, 3.899965885644018*^9}},
- CellLabel->"Out[151]=",ExpressionUUID->"4dc50549-cf7e-be41-bb00-8abf2e2fd17c"]
+  RowBox[{"96", " ", 
+   SqrtBox["10"]}]]], "Output",
+ CellLabel->"Out[129]=",ExpressionUUID->"88175729-0248-4d98-83be-f7948fc3a122"]
 }, Open  ]]
 }, Open  ]],
 
@@ -847,7 +876,7 @@ Cell[BoxData[
 polygons into single FilledCurve instances. See MM.SE/a/3279 for source and \
 documentation.\>\""}], ";"}]], "Input",
  InitializationCell->True,
- CellLabel->"In[23]:=",ExpressionUUID->"6f0a50fd-e1c5-9347-92c0-452ec94e444c"],
+ CellLabel->"In[33]:=",ExpressionUUID->"6f0a50fd-e1c5-9347-92c0-452ec94e444c"],
 
 Cell[BoxData[{
  RowBox[{
@@ -966,7 +995,7 @@ Cell[BoxData[{
   RowBox[{"End", "[", "]"}], ";"}]}], "Input",
  InitializationCell->True,
  CellLabel->
-  "In[24]:=",ExpressionUUID->"b0830100-951f-e041-98a0-4cd75a9bd257"]
+  "In[34]:=",ExpressionUUID->"b0830100-951f-e041-98a0-4cd75a9bd257"]
 }, Closed]]
 }, Open  ]],
 
@@ -1013,8 +1042,9 @@ the given range, using bin width \[CapitalDelta]p.\>\""}], ";"}],
     "]"}]}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{"End", "[", "]"}], ";"}]}], "Input",
- InitializationCell->
-  True,ExpressionUUID->"528a5102-5294-df4c-9dc9-e2b1be1eefd4"]
+ InitializationCell->True,
+ CellLabel->
+  "In[37]:=",ExpressionUUID->"528a5102-5294-df4c-9dc9-e2b1be1eefd4"]
 }, Closed]],
 
 Cell[CellGroupData[{
@@ -1136,8 +1166,9 @@ format, using bin width \[CapitalDelta]p.\>\""}], ";"}],
   "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{"End", "[", "]"}], ";"}]}], "Input",
- InitializationCell->
-  True,ExpressionUUID->"27d562e3-c452-af46-bdd6-1a0189009280"]
+ InitializationCell->True,
+ CellLabel->
+  "In[41]:=",ExpressionUUID->"27d562e3-c452-af46-bdd6-1a0189009280"]
 }, Closed]]
 }, Open  ]],
 
@@ -1526,8 +1557,8 @@ decomposition with angular-momentum numbers \[ScriptL],m over momentum bin \
   "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{"End", "[", "]"}], ";"}]}], "Input",
- InitializationCell->
-  True,ExpressionUUID->"382c2302-83c9-434c-8fa2-6758cd582a6a"],
+ InitializationCell->True,
+ CellLabel->"In[45]:=",ExpressionUUID->"382c2302-83c9-434c-8fa2-6758cd582a6a"],
 
 Cell["\<\
 The Parallel`Developer`SendBack[] call is to ensure proper parallelization of \
@@ -1725,8 +1756,8 @@ decomposition with angular-momentum numbers \[ScriptL],m over momentum bin \
   "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{"End", "[", "]"}], ";"}]}], "Input",
- InitializationCell->
-  True,ExpressionUUID->"874fbca4-f495-7e43-b4a4-8e1d45afa3ea"],
+ InitializationCell->True,
+ CellLabel->"In[49]:=",ExpressionUUID->"874fbca4-f495-7e43-b4a4-8e1d45afa3ea"],
 
 Cell["\<\
 Note the use of an explicit symbolic version of fromSphericalCoordinates. \
@@ -1880,8 +1911,8 @@ distribution \>\"", ",", "\[IndentingNewLine]",
   "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{"End", "[", "]"}], ";"}]}], "Input",
- InitializationCell->
-  True,ExpressionUUID->"55e7d8b2-c179-854e-ba3b-36a71b98c756"],
+ InitializationCell->True,
+ CellLabel->"In[54]:=",ExpressionUUID->"55e7d8b2-c179-854e-ba3b-36a71b98c756"],
 
 Cell[BoxData[{
  RowBox[{
@@ -2319,8 +2350,9 @@ Cell[BoxData[{
   "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{"End", "[", "]"}], ";"}], "\[IndentingNewLine]"}], "Input",
- InitializationCell->
-  True,ExpressionUUID->"380663b1-5377-1a43-88c4-066723103036"]
+ InitializationCell->True,
+ CellLabel->
+  "In[59]:=",ExpressionUUID->"380663b1-5377-1a43-88c4-066723103036"]
 }, Closed]],
 
 Cell[CellGroupData[{
@@ -2388,8 +2420,8 @@ Cell[BoxData[{
   "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{"End", "[", "]"}], ";"}]}], "Input",
- InitializationCell->
-  True,ExpressionUUID->"fe82c48e-aa9c-6945-8cc2-c33a309966a9"],
+ InitializationCell->True,
+ CellLabel->"In[63]:=",ExpressionUUID->"fe82c48e-aa9c-6945-8cc2-c33a309966a9"],
 
 Cell["\<\
 This form for the input is to allow a natural calculation for the \[Rho] \
@@ -2592,8 +2624,8 @@ pdf `1` and {pmin,pmax}= `2`.\>\""}], ";"}],
      "]"}]}]}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{"End", "[", "]"}], ";"}]}], "Input",
- InitializationCell->
-  True,ExpressionUUID->"2cb180d1-3ed0-d141-9d3b-8dd38594118d"],
+ InitializationCell->True,
+ CellLabel->"In[67]:=",ExpressionUUID->"2cb180d1-3ed0-d141-9d3b-8dd38594118d"],
 
 Cell[CellGroupData[{
 
@@ -2635,6 +2667,8 @@ Cell["COM exact, cartesian", "Subsubsection",
   3.900686848432473*^9, 3.900686850237371*^9}, {3.900735263307582*^9, 
   3.900735265072075*^9}},ExpressionUUID->"53401f0b-9539-9e4c-baf3-\
 25bd892b3a78"],
+
+Cell[CellGroupData[{
 
 Cell[BoxData[{
  RowBox[{
@@ -2776,8 +2810,25 @@ COMfromPDFcartesian[`1`,`2`]\>\""}], ";"}], "\[IndentingNewLine]",
      "]"}]}]}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{"End", "[", "]"}], ";"}]}], "Input",
- InitializationCell->
-  True,ExpressionUUID->"fcd987a7-def4-964b-b2e5-6b2102ec0634"],
+ InitializationCell->True,
+ CellLabel->"In[75]:=",ExpressionUUID->"fcd987a7-def4-964b-b2e5-6b2102ec0634"],
+
+Cell[BoxData[
+ TemplateBox[{
+  "COMfromPDFcartesian", "shdw", 
+   "\"Symbol \
+\\!\\(\\*RowBox[{\\\"\\\\\\\"COMfromPDFcartesian\\\\\\\"\\\"}]\\) appears in \
+multiple contexts \\!\\(\\*RowBox[{\\\"{\\\", \
+RowBox[{\\\"\\\\\\\"Chimera`\\\\\\\"\\\", \\\",\\\", \
+\\\"\\\\\\\"Global`\\\\\\\"\\\"}], \\\"}\\\"}]\\); definitions in context \\!\
+\\(\\*RowBox[{\\\"\\\\\\\"Chimera`\\\\\\\"\\\"}]\\) may shadow or be shadowed \
+by other definitions.\"", 2, 75, 1, 21388978560311290465, "Local", 
+   "Chimera`COMfromPDFcartesian"},
+  "MessageTemplate2"]], "Message", "MSG",
+ CellLabel->
+  "During evaluation of \
+In[75]:=",ExpressionUUID->"48e036e0-6e59-46c2-86bb-6c72e90b4e7e"]
+}, Open  ]],
 
 Cell[BoxData[
  RowBox[{"Off", "[", 
@@ -3012,8 +3063,9 @@ between momenta p1, p2, p3 and p1+\[CapitalDelta]p, p2+\[CapitalDelta]p, p3+\
    "\[IndentingNewLine]", "]"}]}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{"End", "[", "]"}], ";"}]}], "Input",
- InitializationCell->
-  True,ExpressionUUID->"0c0495dd-cfd6-b448-a5dc-15829137bf9b"]
+ InitializationCell->True,
+ CellLabel->
+  "In[84]:=",ExpressionUUID->"0c0495dd-cfd6-b448-a5dc-15829137bf9b"]
 }, Closed]],
 
 Cell[CellGroupData[{
@@ -3135,8 +3187,9 @@ the spherical chirality measure formed from the spherical decomposition \>\"",
   "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{"End", "[", "]"}], ";"}]}], "Input",
- InitializationCell->
-  True,ExpressionUUID->"593b4912-8d91-df48-933f-4fae62929f8e"]
+ InitializationCell->True,
+ CellLabel->
+  "In[88]:=",ExpressionUUID->"593b4912-8d91-df48-933f-4fae62929f8e"]
 }, Closed]]
 }, Open  ]],
 
@@ -3224,8 +3277,9 @@ Cell[BoxData[{
   "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{"End", "[", "]"}], ";"}]}], "Input",
- InitializationCell->
-  True,ExpressionUUID->"b88381d6-44f1-da47-bddb-d8026398d64b"]
+ InitializationCell->True,
+ CellLabel->
+  "In[92]:=",ExpressionUUID->"b88381d6-44f1-da47-bddb-d8026398d64b"]
 }, Closed]],
 
 Cell[CellGroupData[{
@@ -3273,8 +3327,8 @@ Cell[BoxData[{
    "]"}]}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{"End", "[", "]"}], ";"}]}], "Input",
- InitializationCell->
-  True,ExpressionUUID->"b3ad833a-27c6-4342-870d-5cf843bf8356"],
+ InitializationCell->True,
+ CellLabel->"In[96]:=",ExpressionUUID->"b3ad833a-27c6-4342-870d-5cf843bf8356"],
 
 Cell["\<\
 This uses a combination of Tube[] and Cone[] instead of a simpler \
@@ -3690,8 +3744,9 @@ Cell[BoxData[{
     "]"}]}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{"End", "[", "]"}], ";"}]}], "Input",
- InitializationCell->
-  True,ExpressionUUID->"3ff43c8d-50f6-8c45-b01a-ecf53b1b9e11"]
+ InitializationCell->True,
+ CellLabel->
+  "In[99]:=",ExpressionUUID->"3ff43c8d-50f6-8c45-b01a-ecf53b1b9e11"]
 }, Closed]],
 
 Cell[CellGroupData[{
@@ -3830,8 +3885,9 @@ Cell[BoxData[{
   "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{"End", "[", "]"}], ";"}]}], "Input",
- InitializationCell->
-  True,ExpressionUUID->"24d417a1-b7dd-664a-865e-99a9252be52e"],
+ InitializationCell->True,
+ CellLabel->
+  "In[102]:=",ExpressionUUID->"24d417a1-b7dd-664a-865e-99a9252be52e"],
 
 Cell[BoxData[
  RowBox[{"plotDistributionOnSphere", "[", 
@@ -3943,8 +3999,9 @@ Cell[BoxData[{
   "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{"End", "[", "]"}], ";"}]}], "Input",
- InitializationCell->
-  True,ExpressionUUID->"429818ac-e372-c744-a3f5-71346017e5c4"],
+ InitializationCell->True,
+ CellLabel->
+  "In[105]:=",ExpressionUUID->"429818ac-e372-c744-a3f5-71346017e5c4"],
 
 Cell[CellGroupData[{
 
@@ -13399,8 +13456,8 @@ Cell[BoxData[{
   "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{"End", "[", "]"}], ";"}]}], "Input",
- InitializationCell->
-  True,ExpressionUUID->"202134b5-5067-a44e-9d04-0c2b5f0a0e0e"]
+ InitializationCell->True,
+ CellLabel->"In[108]:=",ExpressionUUID->"202134b5-5067-a44e-9d04-0c2b5f0a0e0e"]
 }, Closed]],
 
 Cell[CellGroupData[{
@@ -13458,8 +13515,8 @@ Cell[BoxData[{
       "]"}], "]"}], "]"}]}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{"End", "[", "]"}], ";"}]}], "Input",
- InitializationCell->
-  True,ExpressionUUID->"2f88db80-3140-a944-ace3-5393379078a0"]
+ InitializationCell->True,
+ CellLabel->"In[111]:=",ExpressionUUID->"2f88db80-3140-a944-ace3-5393379078a0"]
 }, Closed]],
 
 Cell[CellGroupData[{
@@ -13481,7 +13538,8 @@ Cell[BoxData[
       SuperscriptBox["10.", 
        RowBox[{"-", "5"}]]}]}], "}"}]}], ";"}]], "Input",
  InitializationCell->True,
- CellLabel->"In[64]:=",ExpressionUUID->"7bcd68b1-1bb5-0f40-b9db-19351ad5677c"],
+ CellLabel->
+  "In[115]:=",ExpressionUUID->"7bcd68b1-1bb5-0f40-b9db-19351ad5677c"],
 
 Cell[BoxData[
  RowBox[{
@@ -13494,13 +13552,15 @@ sphericalDecompositionPlot[\[Rho]Symbol,\[ScriptL]max,{\[ScriptL]1,\[ScriptL]\
  InitializationCell->True,
  CellChangeTimes->{{3.904655897836522*^9, 3.904655930720151*^9}, {
   3.904656055986337*^9, 3.904656070723184*^9}},
- CellLabel->"In[65]:=",ExpressionUUID->"ed878963-eb64-4045-9595-1356c5f99bb1"],
+ CellLabel->
+  "In[116]:=",ExpressionUUID->"ed878963-eb64-4045-9595-1356c5f99bb1"],
 
 Cell[BoxData[
  RowBox[{
   RowBox[{"Begin", "[", "\"\<`Private`\>\"", "]"}], ";"}]], "Input",
- InitializationCell->
-  True,ExpressionUUID->"e6df0454-9232-43e8-bd98-fcfba6585355"],
+ InitializationCell->True,
+ CellLabel->
+  "In[117]:=",ExpressionUUID->"e6df0454-9232-43e8-bd98-fcfba6585355"],
 
 Cell[BoxData[{
  RowBox[{
@@ -13613,7 +13673,8 @@ m\)]\)\!\(\*SuperscriptBox[\(|\), \(1/max \((\[ScriptL], 1)\)\)]\)\>\""}]}],
       "\[IndentingNewLine]", "]"}]}]}], "\[IndentingNewLine]", 
    "]"}]}]}], "Input",
  InitializationCell->True,
- CellLabel->"In[66]:=",ExpressionUUID->"ccf4bbc0-53dd-9f41-9ed0-3c547bfe011b"],
+ CellLabel->
+  "In[118]:=",ExpressionUUID->"ccf4bbc0-53dd-9f41-9ed0-3c547bfe011b"],
 
 Cell[BoxData[{
  RowBox[{
@@ -13849,13 +13910,14 @@ Cell[BoxData[{
    3.9025728643080177`*^9}, {3.902572959296229*^9, 3.902573471222639*^9}, 
    3.90257354400707*^9, {3.902573641198013*^9, 3.9025736653181143`*^9}, {
    3.90465638873663*^9, 3.9046564325871744`*^9}, 3.904656587851487*^9},
- CellLabel->"In[68]:=",ExpressionUUID->"2b23d589-507b-1d4d-a856-b6db4aa784cd"],
+ CellLabel->
+  "In[120]:=",ExpressionUUID->"2b23d589-507b-1d4d-a856-b6db4aa784cd"],
 
 Cell[BoxData[
  RowBox[{
   RowBox[{"End", "[", "]"}], ";"}]], "Input",
- InitializationCell->
-  True,ExpressionUUID->"07742da7-0d11-4e32-bdc5-cf3931a3eb0b"]
+ InitializationCell->True,
+ CellLabel->"In[122]:=",ExpressionUUID->"07742da7-0d11-4e32-bdc5-cf3931a3eb0b"]
 }, Closed]],
 
 Cell[CellGroupData[{
@@ -13870,8 +13932,9 @@ Cell[BoxData[
   RowBox[{
    RowBox[{"RasterPlot3D", "::", "usage"}], "=", 
    "\"\<RasterPlot3D[data]\>\""}], ";"}]], "Input",
- InitializationCell->
-  True,ExpressionUUID->"a04fe615-5fd5-4222-a2fa-2819bb45e500"],
+ InitializationCell->True,
+ CellLabel->
+  "In[123]:=",ExpressionUUID->"a04fe615-5fd5-4222-a2fa-2819bb45e500"],
 
 Cell[BoxData[{
  RowBox[{
@@ -13975,8 +14038,8 @@ Cell[BoxData[{
   "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{"End", "[", "]"}], ";"}]}], "Input",
- InitializationCell->
-  True,ExpressionUUID->"68982207-10ff-854b-af0c-264f81be7ba7"]
+ InitializationCell->True,
+ CellLabel->"In[124]:=",ExpressionUUID->"68982207-10ff-854b-af0c-264f81be7ba7"]
 }, Closed]]
 }, Open  ]]
 }, Open  ]],
@@ -14000,8 +14063,7 @@ Cell[BoxData[
  RowBox[{
   RowBox[{"EndPackage", "[", "]"}], ";"}]], "Input",
  InitializationCell->True,
- CellLabel->
-  "In[75]:=",ExpressionUUID->"41e28dd9-26c5-47b9-8875-713ef3971763"]
+ CellLabel->"In[127]:=",ExpressionUUID->"41e28dd9-26c5-47b9-8875-713ef3971763"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -14014,8 +14076,7 @@ Cell[BoxData[
   RowBox[{"DistributeDefinitions", "[", "\"\<Chimera`\>\"", "]"}], 
   ";"}]], "Input",
  InitializationCell->True,
- CellLabel->
-  "In[76]:=",ExpressionUUID->"80571e19-793e-4d30-a315-1c3eda65d555"]
+ CellLabel->"In[128]:=",ExpressionUUID->"80571e19-793e-4d30-a315-1c3eda65d555"]
 }, Closed]]
 }, Open  ]]
 }, Open  ]]
