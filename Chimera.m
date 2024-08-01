@@ -67,7 +67,7 @@ End[];
 
 
 (* ::Input::Initialization:: *)
-Begin["`Private`"];$ChimeraTimestamp="Wed 31 Jul 2024 19:09:06";End[];
+Begin["`Private`"];$ChimeraTimestamp="Wed 31 Jul 2024 19:09:36";End[];
 
 
 (* ::Input::Initialization:: *)
@@ -147,16 +147,6 @@ End[];
 
 
 (* ::Input::Initialization:: *)
-photoElectronSpectrumList::usage="photoElectronSpectrumList[data,range,\[CapitalDelta]p] returns a histogram photoelectron spectrum for the data sets data[h], where h covers the given range, using bin width \[CapitalDelta]p.";
-
-Begin["`Private`"];
-
-photoElectronSpectrumList[dataSet_,range_,pBin_,options___]:=Map[photoElectronSpectrum[dataSet[#],pBin,options,PlotLabel->#]&,range]
-
-End[];
-
-
-(* ::Input::Initialization:: *)
 photoElectronSpectrum::usage="photoElectronSpectrum[data,\[CapitalDelta]p] returns a histogram photoelectron spectrum for the given data set, which must be in the standard format, using bin width \[CapitalDelta]p.";
 
 Begin["`Private`"];
@@ -188,6 +178,18 @@ histogramAssoc
 ,PlotRangePadding->{{None,None},{None,Scaled[0.07]}}
 ]
 ]
+
+End[];
+
+
+(* ::Input::Initialization:: *)
+photoElectronSpectrumList::usage="photoElectronSpectrumList[data,range,\[CapitalDelta]p] returns a histogram photoelectron spectrum for the data sets data[h], where h covers the given range, using bin width \[CapitalDelta]p.";
+
+Begin["`Private`"];
+
+photoElectronSpectrumList[dataSet_,range_,pBin_,options___]:=Map[
+photoElectronSpectrum[dataSet[#],pBin,options,PlotLabel->#]&,
+range]
 
 End[];
 
