@@ -360,11 +360,12 @@ Cell["Timestamp", \
 Cell[BoxData[
  RowBox[{
   RowBox[{"Begin", "[", "\"\<`Private`\>\"", "]"}], ";", 
-  RowBox[{"$ChimeraTimestamp", "=", "\"\<Wed 31 Jul 2024 19:09:36\>\""}], ";", 
+  RowBox[{"$ChimeraTimestamp", "=", "\"\<Thu 1 Aug 2024 16:32:52\>\""}], ";", 
+  
   RowBox[{"End", "[", "]"}], ";"}]], "Input",
  InitializationCell->True,
  CellTags->
-  "version-timestamp",ExpressionUUID->"af3e1967-d002-41ea-adaf-8012665fd984"]
+  "version-timestamp",ExpressionUUID->"fc2b2a53-00c5-4c5a-8daf-fb43e43fed23"]
 }, Open  ]]
 }, Open  ]],
 
@@ -1123,7 +1124,7 @@ format, using bin width \[CapitalDelta]p.\>\""}], ";"}],
  InitializationCell->True,
  CellLabel->
   "In[41]:=",ExpressionUUID->"27d562e3-c452-af46-bdd6-1a0189009280"]
-}, Open  ]],
+}, Closed]],
 
 Cell[CellGroupData[{
 
@@ -1164,7 +1165,7 @@ the given range, using bin width \[CapitalDelta]p.\>\""}], ";"}],
   RowBox[{"End", "[", "]"}], ";"}]}], "Input",
  InitializationCell->
   True,ExpressionUUID->"528a5102-5294-df4c-9dc9-e2b1be1eefd4"]
-}, Open  ]]
+}, Closed]]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -13201,13 +13202,14 @@ Cell[BoxData[{
            RowBox[{"-", "\[ScriptL]"}], ",", "\[ScriptL]"}], "}"}]}], "]"}], 
        ",", 
        RowBox[{"{", 
-        RowBox[{"\[ScriptL]", ",", "0", ",", "\[ScriptL]max"}], "}"}]}], 
-      "]"}], "]"}], "]"}]}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+        RowBox[{"\[ScriptL]", ",", "\[ScriptL]min", ",", "\[ScriptL]max"}], 
+        "}"}]}], "]"}], "]"}], "]"}]}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{"End", "[", "]"}], ";"}]}], "Input",
- InitializationCell->True,
- CellLabel->"In[111]:=",ExpressionUUID->"2f88db80-3140-a944-ace3-5393379078a0"]
-}, Closed]],
+ InitializationCell->
+  True,ExpressionUUID->"2f88db80-3140-a944-ace3-5393379078a0"]
+}, Open  ]],
 
 Cell[CellGroupData[{
 
@@ -13598,7 +13600,7 @@ Cell[BoxData[
   RowBox[{"End", "[", "]"}], ";"}]], "Input",
  InitializationCell->True,
  CellLabel->"In[122]:=",ExpressionUUID->"07742da7-0d11-4e32-bdc5-cf3931a3eb0b"]
-}, Closed]],
+}, Open  ]],
 
 Cell[CellGroupData[{
 

@@ -67,7 +67,7 @@ End[];
 
 
 (* ::Input::Initialization:: *)
-Begin["`Private`"];$ChimeraTimestamp="Wed 31 Jul 2024 19:09:36";End[];
+Begin["`Private`"];$ChimeraTimestamp="Thu 1 Aug 2024 16:32:52";End[];
 
 
 (* ::Input::Initialization:: *)
@@ -620,7 +620,7 @@ calculate\[Rho]ScaledMax[\[Rho]Symbol_,\[ScriptL]max_?IntegerQ]:=calculate\[Rho]
 
 calculate\[Rho]ScaledMax[\[Rho]Symbol_,{\[ScriptL]min_,\[ScriptL]max_}]:=Max[Flatten[Table[Table[
 (*{\[ScriptL],m}->*)Abs[\[Rho]Symbol[\[ScriptL],m]]^(1/Max[\[ScriptL],1])
-,{m,-\[ScriptL],\[ScriptL]}],{\[ScriptL],0,\[ScriptL]max}]]]
+,{m,-\[ScriptL],\[ScriptL]}],{\[ScriptL],\[ScriptL]min,\[ScriptL]max}]]]
 
 End[];
 
