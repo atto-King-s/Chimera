@@ -67,7 +67,7 @@ End[];
 
 
 (* ::Input::Initialization:: *)
-Begin["`Private`"];$ChimeraTimestamp="Thu 1 Aug 2024 18:40:42";End[];
+Begin["`Private`"];$ChimeraTimestamp="Mon 10 Feb 2025 18:39:48";End[];
 
 
 (* ::Input::Initialization:: *)
@@ -749,6 +749,180 @@ MinMax[data[[All,4]]]
 ,ImageSize->700
 ]
 ]
+
+End[];
+
+
+(* ::Input::Initialization:: *)
+TensorMultipole::usage="TensorMultipole[T,\[ScriptL]] returns the \[ScriptL]-polar component of the tensor T.
+TensorMultipole[\[ScriptL]] gives the functionalized form of the projector onto \[ScriptL]-polar tensors.";
+
+Begin["`Private`"];
+
+
+(* ::Input::Initialization:: *)
+TensorMultipole[\[ScriptL]_][tensor_]:=TensorMultipole[tensor,\[ScriptL]]
+
+
+(* ::Input::Initialization:: *)
+TensorMultipole[tensor_/;(ArrayDepth[tensor]==2),0]:=1/3 Tr[tensor]IdentityMatrix[3]
+TensorMultipole[tensor_/;(ArrayDepth[tensor]==2),2]:=tensor-TensorMultipole[tensor,0]
+
+
+(* ::Input::Initialization:: *)
+TensorMultipole[tensor_/;(ArrayDepth[tensor]==3),1]:=Normal[Symmetrize[
+3/5 TensorProduct[
+TensorContract[tensor,{{2,3}}],
+IdentityMatrix[3]
+]
+]]
+TensorMultipole[tensor_/;(ArrayDepth[tensor]==3),3]:=tensor-TensorMultipole[tensor,1]
+
+
+(* ::Input::Initialization:: *)
+TensorMultipole[tensor_/;(ArrayDepth[tensor]==4),0]:=1/5 TensorContract[tensor,{{1,2},{3,4}}]Normal[Symmetrize[TensorProduct[
+IdentityMatrix[3],
+IdentityMatrix[3]
+]]]
+TensorMultipole[tensor_/;(ArrayDepth[tensor]==4),2]:=Normal[Symmetrize[
+6/7 TensorProduct[
+TensorContract[
+tensor-TensorMultipole[tensor,0]
+,{{3,4}}],
+IdentityMatrix[3]
+]
+]]
+TensorMultipole[tensor_/;(ArrayDepth[tensor]==4),4]:=tensor-TensorMultipole[tensor,2]-TensorMultipole[tensor,0]
+
+
+(* ::Input::Initialization:: *)
+TensorMultipole[tensor_/;(ArrayDepth[tensor]==5),1]:=Normal[Symmetrize[
+3/7 TensorProduct[
+TensorContract[tensor,{{2,3},{4,5}}],
+IdentityMatrix[3],
+IdentityMatrix[3]
+]
+]]
+TensorMultipole[tensor_/;(ArrayDepth[tensor]==5),3]:=Normal[Symmetrize[
+10/9 TensorProduct[
+TensorContract[tensor-TensorMultipole[tensor,1],{{4,5}}],
+IdentityMatrix[3]
+]
+]]
+TensorMultipole[tensor_/;(ArrayDepth[tensor]==5),5]:=tensor-TensorMultipole[tensor,3]-TensorMultipole[tensor,1]
+
+
+(* ::Input::Initialization:: *)
+TensorMultipole[tensor_/;(ArrayDepth[tensor]==6),0]:=1/7 TensorContract[tensor,{{1,2},{3,4},{5,6}}]Normal[Symmetrize[TensorProduct[
+IdentityMatrix[3],
+IdentityMatrix[3],
+IdentityMatrix[3]
+]]]
+TensorMultipole[tensor_/;(ArrayDepth[tensor]==6),2]:=Normal[Symmetrize[
+5/7 TensorProduct[
+TensorContract[
+tensor-TensorMultipole[tensor,0]
+,{{3,4},{5,6}}],
+IdentityMatrix[3],
+IdentityMatrix[3]
+]
+]]
+TensorMultipole[tensor_/;(ArrayDepth[tensor]==6),4]:=Normal[Symmetrize[
+15/11 TensorProduct[
+TensorContract[
+tensor-TensorMultipole[tensor,2]-TensorMultipole[tensor,0]
+,{{5,6}}],
+IdentityMatrix[3]
+]
+]]
+TensorMultipole[tensor_/;(ArrayDepth[tensor]==6),6]:=tensor-TensorMultipole[tensor,4]-TensorMultipole[tensor,2]-TensorMultipole[tensor,0]
+
+
+(* ::Input::Initialization:: *)
+TensorMultipole[tensor_/;(ArrayDepth[tensor]==7),1]:=Normal[Symmetrize[
+1/3 TensorProduct[
+TensorContract[tensor,{{2,3},{4,5},{6,7}}],
+IdentityMatrix[3],
+IdentityMatrix[3],
+IdentityMatrix[3]
+]
+]]
+TensorMultipole[tensor_/;(ArrayDepth[tensor]==7),3]:=Normal[Symmetrize[
+35/33 TensorProduct[
+TensorContract[tensor-TensorMultipole[tensor,1],{{4,5},{6,7}}],
+IdentityMatrix[3],
+IdentityMatrix[3]
+]
+]]
+TensorMultipole[tensor_/;(ArrayDepth[tensor]==7),5]:=Normal[Symmetrize[
+21/13 TensorProduct[
+TensorContract[tensor-TensorMultipole[tensor,3]-TensorMultipole[tensor,1],{{6,7}}],
+IdentityMatrix[3]
+]
+]]
+TensorMultipole[tensor_/;(ArrayDepth[tensor]==7),7]:=tensor-TensorMultipole[tensor,5]-TensorMultipole[tensor,3]-TensorMultipole[tensor,1]
+
+
+(* ::Input::Initialization:: *)
+End[];
+
+
+(* ::Input::Initialization:: *)
+TensorCross::usage="TensorCross[A,B,k] returns the tensor cross product (A\[Times]B\!\(\*SubscriptBox[\()\), \(k\)]\) of the two tensors A and B with output rank k.";
+
+Begin["`Private`"];
+TensorCross[tensor1_,tensor2_,outputRank_]:=Normal[Symmetrize[
+TensorContract[
+TensorContract[
+TensorProduct[LeviCivitaTensor[3],tensor1,tensor2],
+{{2,4},{3,ArrayDepth[tensor1]+4}}
+],
+Table[{1+contractionIndex,ArrayDepth[tensor1]+contractionIndex},{contractionIndex,1,((ArrayDepth[tensor1]+ArrayDepth[tensor2]-1)-outputRank)/2}]
+]
+]]
+
+End[];
+
+
+(* ::Input::Initialization:: *)
+TensorDot::usage="TensorDot[A,B] returns the full contraction of the two tensors A and B.";
+
+Begin["`Private`"];
+
+TensorDot[tensor1_,tensor2_]:=TensorContract[
+TensorProduct[tensor1,tensor2],
+Table[{index,ArrayDepth[tensor1]+index},{index,1,ArrayDepth[tensor1]}]
+]
+
+End[];
+
+
+(* ::Input::Initialization:: *)
+TensorPower::usage="TensorPower[T,n] returns the tensor power \!\(\*SuperscriptBox[\(T\), \(\[CircleTimes]n\)]\).";
+
+Begin["`Private`"];
+
+TensorPower[tensor_,n_]:=TensorProduct@@Table[tensor,{n}]
+
+End[];
+
+
+(* ::Input::Initialization:: *)
+MultipolePower::usage="MultipolePower[v,\[ScriptL]] returns the \[ScriptL]-polar component of \!\(\*SuperscriptBox[\(v\), \(\[CircleTimes]\[ScriptL]\)]\), for a vector v.";
+
+Begin["`Private`"];
+
+MultipolePower[v_,\[ScriptL]_]:=TensorMultipole[TensorPower[v,\[ScriptL]],\[ScriptL]]
+
+End[];
+
+
+(* ::Input::Initialization:: *)
+TensorPolynomial::usage="TensorPolynomial[T,v] returns the polynomial T\[CenterDot]\!\(\*SuperscriptBox[\(v\), \(\[CircleTimes]k\)]\)=\!\(\*SubscriptBox[\(T\), \(\*SubscriptBox[\(i\), \(1\)] \*SubscriptBox[\(\[CenterEllipsis]i\), \(k\)]\)]\).";
+
+Begin["`Private`"];
+
+TensorPolynomial[tensor_,vector_]:=TensorDot[tensor,TensorPower[vector,ArrayDepth[tensor]]]
 
 End[];
 
