@@ -142,21 +142,19 @@ currently loaded, and its timestamp\
 Cell[BoxData[{
  RowBox[{
   RowBox[{
-   RowBox[{"$ChimeraVersion", "::", "usage"}], "=", 
-   "\"\<$ChimeraVersion prints the current version of the Chimera package in \
-use and its timestamp.\>\""}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{"$ChimeraVersion", "::", "usage"}], 
+   "=", "\"\<$ChimeraVersion prints the current version of the Chimera \
+package in use and its timestamp.\>\""}], ";"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{
-   RowBox[{"$ChimeraTimestamp", "::", "usage"}], "=", 
-   "\"\<$ChimeraTimestamp prints the timestamp of the current version of the \
-Chimera package.\>\""}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{"$ChimeraTimestamp", "::", "usage"}], 
+   "=", "\"\<$ChimeraTimestamp prints the timestamp of the current version of \
+the Chimera package.\>\""}], ";"}], "\[IndentingNewLine]", 
  RowBox[{
-  RowBox[{"Begin", "[", "\"\<`Private`\>\"", "]"}], 
-  ";"}], "\[IndentingNewLine]", 
+  RowBox[{"Begin", "[", "\"\<`Private`\>\"", "]"}], ";"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{"$ChimeraVersion", ":=", 
-   RowBox[{"\"\<Chimera v0.2, \>\"", "<>", "$ChimeraTimestamp"}]}], 
-  ";"}], "\[IndentingNewLine]", 
+   RowBox[{"\"\<Chimera v0.2, \>\"", "<>", "$ChimeraTimestamp"}]}], ";"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{"End", "[", "]"}], ";"}]}], "Input",
  InitializationCell->
@@ -182,8 +180,7 @@ Cell[BoxData[
       RowBox[{
        RowBox[{
         RowBox[{"{", 
-         RowBox[{"\"\<MenuCommand\>\"", ",", "\"\<Save\>\""}], "}"}], 
-        "\[RuleDelayed]", 
+         RowBox[{"\"\<MenuCommand\>\"", ",", "\"\<Save\>\""}], "}"}], "\[RuleDelayed]", 
         RowBox[{"(", "\[IndentingNewLine]", 
          RowBox[{
           RowBox[{"NotebookWrite", "[", "\[IndentingNewLine]", 
@@ -191,17 +188,18 @@ Cell[BoxData[
             RowBox[{
              RowBox[{"Cells", "[", 
               RowBox[{"CellTags", "\[Rule]", "\"\<version-timestamp\>\""}], 
-              "]"}], "\[LeftDoubleBracket]", "1", "\[RightDoubleBracket]"}], 
-            ",", "\[IndentingNewLine]", 
+              "]"}], "\[LeftDoubleBracket]", "1", "\[RightDoubleBracket]"}], ",",
+             "\[IndentingNewLine]", 
             RowBox[{"Cell", "[", "\[IndentingNewLine]", 
              RowBox[{
               RowBox[{"BoxData", "[", 
                RowBox[{"RowBox", "[", 
                 RowBox[{"{", 
-                 RowBox[{
-                 "\"\<Begin[\\\"`Private`\\\"];$ChimeraTimestamp=\\\"\>\"", "<>", 
-                  RowBox[{"DateString", "[", "]"}], "<>", 
-                  "\"\<\\\";End[];\>\""}], "}"}], "]"}], "]"}], 
+                 
+                 RowBox[{"\"\<Begin[\\\"`Private`\\\"];$ChimeraTimestamp=\\\"\
+\>\"", "<>", 
+                  RowBox[{"DateString", "[", "]"}], 
+                  "<>", "\"\<\\\";End[];\>\""}], "}"}], "]"}], "]"}], 
               "\[IndentingNewLine]", ",", "\"\<Input\>\"", ",", 
               RowBox[{"InitializationCell", "\[Rule]", "True"}], ",", 
               RowBox[{"CellTags", "\[Rule]", "\"\<version-timestamp\>\""}]}], 
@@ -212,7 +210,7 @@ Cell[BoxData[
          ")"}]}], ",", 
        RowBox[{"PassEventsDown", "\[Rule]", "True"}]}], "}"}]}]}], 
    "\[IndentingNewLine]", "]"}], ";"}]], "Input",
- CellLabel->"In[77]:=",ExpressionUUID->"9ab8bc8d-e5f1-4dac-984a-ed686444e4a4"],
+ CellLabel->"In[5]:=",ExpressionUUID->"9ab8bc8d-e5f1-4dac-984a-ed686444e4a4"],
 
 Cell["To reset this behaviour to normal, evaluate the cell below", \
 "Text",ExpressionUUID->"79a09c0b-5ada-4820-b171-adf7087428dd"],
@@ -226,8 +224,7 @@ Cell[BoxData[
      RowBox[{
       RowBox[{
        RowBox[{"{", 
-        RowBox[{"\"\<MenuCommand\>\"", ",", "\"\<Save\>\""}], "}"}], 
-       "\[RuleDelayed]", 
+        RowBox[{"\"\<MenuCommand\>\"", ",", "\"\<Save\>\""}], "}"}], "\[RuleDelayed]", 
        RowBox[{"(", 
         RowBox[{"NotebookSave", "[", "]"}], ")"}]}], ",", 
       RowBox[{"PassEventsDown", "\[Rule]", "True"}]}], "}"}]}]}], 
@@ -242,16 +239,15 @@ Cell["Directory", \
 Cell[BoxData[
  RowBox[{
   RowBox[{
-   RowBox[{"$ChimeraDirectory", "::", "usage"}], "=", 
-   "\"\<$ChimeraDirectory is the directory where the current Chimera package \
-instance is located.\>\""}], ";"}]], "Input",
+   RowBox[{"$ChimeraDirectory", "::", "usage"}], 
+   "=", "\"\<$ChimeraDirectory is the directory where the current Chimera \
+package instance is located.\>\""}], ";"}]], "Input",
  InitializationCell->True,
  CellLabel->"In[8]:=",ExpressionUUID->"7118bda8-aff5-475a-947f-062f4095057b"],
 
 Cell[BoxData[{
  RowBox[{
-  RowBox[{"Begin", "[", "\"\<`Private`\>\"", "]"}], 
-  ";"}], "\[IndentingNewLine]", 
+  RowBox[{"Begin", "[", "\"\<`Private`\>\"", "]"}], ";"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{"With", "[", 
    RowBox[{
@@ -275,9 +271,9 @@ Cell[BoxData[{
        RowBox[{"Length", "[", "softLinkTestString", "]"}], ">", "1"}], ",", 
       RowBox[{"(*", 
        RowBox[{
-       "Testing", " ", "in", " ", "case", " ", "$InputFileName", " ", "is", 
-        " ", "a", " ", "soft", " ", "link", " ", "to", " ", "the", " ", 
-        "actual", " ", 
+       "Testing", " ", "in", " ", "case", " ", "$InputFileName", " ", "is", " ",
+         "a", " ", "soft", " ", "link", " ", "to", " ", "the", " ", "actual", 
+        " ", 
         RowBox[{"directory", "."}]}], "*)"}], "\[IndentingNewLine]", 
       RowBox[{"$ChimeraDirectory", "=", 
        RowBox[{"StringReplace", "[", 
@@ -296,8 +292,7 @@ Cell[BoxData[{
           RowBox[{"DirectoryName", "[", "$InputFileName", "]"}], ",", 
           RowBox[{"{", 
            RowBox[{"\"\< \>\"", "\[Rule]", "\"\<\\\\ \>\""}], "}"}]}], 
-         "]"}]}], ";"}]}], "\[IndentingNewLine]", "]"}]}], "]"}], 
-  ";"}], "\[IndentingNewLine]", 
+         "]"}]}], ";"}]}], "\[IndentingNewLine]", "]"}]}], "]"}], ";"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{"End", "[", "]"}], ";"}]}], "Input",
  InitializationCell->True,
@@ -312,20 +307,20 @@ Cell["Git commit hash and message", \
 Cell[BoxData[{
  RowBox[{
   RowBox[{
-   RowBox[{"$ChimeraCommit", "::", "usage"}], "=", 
-   "\"\<$ChimeraCommit returns the git commit log at the location of the \
+   RowBox[{"$ChimeraCommit", "::", "usage"}], 
+   "=", "\"\<$ChimeraCommit returns the git commit log at the location of the \
 Chimera package if there is one.\>\""}], ";"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{
-   RowBox[{"$ChimeraCommit", "::", "OS"}], "=", 
-   "\"\<$ChimeraCommit has only been tested on Linux.\>\""}], ";"}]}], "Input",
+   RowBox[{"$ChimeraCommit", "::", "OS"}], 
+   "=", "\"\<$ChimeraCommit has only been tested on Linux.\>\""}], 
+  ";"}]}], "Input",
  InitializationCell->True,
  CellLabel->"In[12]:=",ExpressionUUID->"f3d4f095-f46c-475e-8c2f-250286e5d436"],
 
 Cell[BoxData[{
  RowBox[{
-  RowBox[{"Begin", "[", "\"\<`Private`\>\"", "]"}], 
-  ";"}], "\[IndentingNewLine]", 
+  RowBox[{"Begin", "[", "\"\<`Private`\>\"", "]"}], ";"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{"$ChimeraCommit", ":=", 
    RowBox[{"(", 
@@ -341,18 +336,16 @@ Cell[BoxData[{
        RowBox[{
         RowBox[{"ReadList", "[", 
          RowBox[{
-          RowBox[{
-          "\"\<!cd \>\"", "<>", "$ChimeraDirectory", "<>", 
-           "\"\< && git log -1\>\""}], ",", "String"}], "]"}], ",", 
-        RowBox[{"{", "\"\<\\n\>\"", "}"}]}], "]"}], "]"}]}], ")"}]}], 
-  ";"}], "\[IndentingNewLine]", 
+          RowBox[{"\"\<!cd \>\"", "<>", "$ChimeraDirectory", 
+           "<>", "\"\< && git log -1\>\""}], ",", "String"}], "]"}], ",", 
+        RowBox[{"{", "\"\<\\n\>\"", "}"}]}], "]"}], "]"}]}], ")"}]}], ";"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{"End", "[", "]"}], ";"}]}], "Input",
  InitializationCell->True,
  CellLabel->
   "In[14]:=",ExpressionUUID->"a8480c42-c519-423d-a120-4aa44435c59d"]
 }, Closed]]
-}, Closed]],
+}, Open  ]],
 
 Cell[CellGroupData[{
 
@@ -367,11 +360,12 @@ Cell["Timestamp", \
 Cell[BoxData[
  RowBox[{
   RowBox[{"Begin", "[", "\"\<`Private`\>\"", "]"}], ";", 
-  RowBox[{"$ChimeraTimestamp", "=", "\"\<Mon 10 Feb 2025 18:39:48\>\""}], ";", 
+  RowBox[{"$ChimeraTimestamp", "=", "\"\<Sat 7 Jun 2025 10:23:58\>\""}], ";", 
+  
   RowBox[{"End", "[", "]"}], ";"}]], "Input",
  InitializationCell->True,
  CellTags->
-  "version-timestamp",ExpressionUUID->"ed711c6a-e08b-4675-8959-1c6685ed93d0"]
+  "version-timestamp",ExpressionUUID->"bf4dff68-fea3-cd4d-a8be-2a55b7292b17"]
 }, Open  ]]
 }, Open  ]],
 
@@ -439,8 +433,7 @@ Cell[BoxData[{
  RowBox[{
   RowBox[{"LR", "=", 
    RowBox[{"{", 
-    RowBox[{"\"\<L\>\"", ",", "\"\<R\>\""}], "}"}]}], 
-  ";"}], "\[IndentingNewLine]", 
+    RowBox[{"\"\<L\>\"", ",", "\"\<R\>\""}], "}"}]}], ";"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{"LRA", "=", 
    RowBox[{"{", 
@@ -481,16 +474,14 @@ Cell[BoxData[{
   RowBox[{"Unprotect", "[", "Sign", "]"}], ";"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{
-   RowBox[{"Sign", "[", "\"\<L\>\"", "]"}], "=", "1"}], 
-  ";"}], "\[IndentingNewLine]", 
+   RowBox[{"Sign", "[", "\"\<L\>\"", "]"}], "=", "1"}], ";"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{
    RowBox[{"Sign", "[", "\"\<R\>\"", "]"}], "=", 
    RowBox[{"-", "1"}]}], ";"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{
-   RowBox[{"Sign", "[", "\"\<A\>\"", "]"}], "=", "0"}], 
-  ";"}], "\[IndentingNewLine]", 
+   RowBox[{"Sign", "[", "\"\<A\>\"", "]"}], "=", "0"}], ";"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{"Protect", "[", "Sign", "]"}], ";"}]}], "Input",
  InitializationCell->True,
@@ -558,8 +549,7 @@ Cell["The standard format for data is as follows:", "Text",
 
 Cell[BoxData[{
  RowBox[{"{", 
-  RowBox[{"px", ",", "py", ",", "pz", ",", "weight"}], 
-  "}"}], "\[IndentingNewLine]", 
+  RowBox[{"px", ",", "py", ",", "pz", ",", "weight"}], "}"}], "\[IndentingNewLine]", 
  RowBox[{"{", 
   RowBox[{"px", ",", "py", ",", "pz", ",", "weight", ",", "p"}], 
   "}"}]}], "Input",
@@ -676,14 +666,13 @@ definition in the spirit of backwards compatibility ."
 Cell[BoxData[{
  RowBox[{
   RowBox[{
-   RowBox[{"SolidHarmonicS", "::", "usage"}], "=", 
-   "\"\<SolidHarmonicS[l,m,x,y,z] calculates the solid harmonic \
+   RowBox[{"SolidHarmonicS", "::", "usage"}], 
+   "=", "\"\<SolidHarmonicS[l,m,x,y,z] calculates the solid harmonic \
 \!\(\*SubscriptBox[\(S\), \(lm\)]\)(x,y,z)=\!\(\*SuperscriptBox[\(r\), \(l\)]\
 \)\!\(\*SubscriptBox[\(Y\), \(lm\)]\)(x,y,z).\n\nSolidHarmonicS[l,m,{x,y,z}] \
 does the same.\>\""}], ";"}], "\[IndentingNewLine]", 
  RowBox[{
-  RowBox[{"Begin", "[", "\"\<`Private`\>\"", "]"}], 
-  ";"}], "\[IndentingNewLine]", 
+  RowBox[{"Begin", "[", "\"\<`Private`\>\"", "]"}], ";"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{
    RowBox[{"SolidHarmonicS", "[", 
@@ -780,8 +769,7 @@ does the same.\>\""}], ";"}], "\[IndentingNewLine]",
             RowBox[{"Rationalize", "[", 
              RowBox[{"\[Lambda]", "-", 
               RowBox[{"Abs", "[", "\[Mu]", "]"}], "-", 
-              RowBox[{"2", " ", "k"}]}], "]"}], "\[Equal]", "0"}], ",", "1", 
-           ",", 
+              RowBox[{"2", " ", "k"}]}], "]"}], "\[Equal]", "0"}], ",", "1", ",", 
            SuperscriptBox["z", 
             RowBox[{"\[Lambda]", "-", 
              RowBox[{"Abs", "[", "\[Mu]", "]"}], "-", 
@@ -790,8 +778,7 @@ does the same.\>\""}], ";"}], "\[IndentingNewLine]",
      RowBox[{"{", 
       RowBox[{"k", ",", "0", ",", 
        RowBox[{"Quotient", "[", 
-        RowBox[{"\[Lambda]", ",", "2"}], "]"}]}], "}"}]}], 
-    "]"}]}]}], "\[IndentingNewLine]", 
+        RowBox[{"\[Lambda]", ",", "2"}], "]"}]}], "}"}]}], "]"}]}]}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{
    RowBox[{"SolidHarmonicS", "[", 
@@ -873,17 +860,16 @@ license.\
 Cell[BoxData[
  RowBox[{
   RowBox[{
-   RowBox[{"cleanContourPlot", "::", "usage"}], "=", 
-   "\"\<cleanContourPlot[plot] Cleans up a contour plot by coalescing complex \
-polygons into single FilledCurve instances. See MM.SE/a/3279 for source and \
-documentation.\>\""}], ";"}]], "Input",
+   RowBox[{"cleanContourPlot", "::", "usage"}], 
+   "=", "\"\<cleanContourPlot[plot] Cleans up a contour plot by coalescing \
+complex polygons into single FilledCurve instances. See MM.SE/a/3279 for \
+source and documentation.\>\""}], ";"}]], "Input",
  InitializationCell->True,
  CellLabel->"In[33]:=",ExpressionUUID->"6f0a50fd-e1c5-9347-92c0-452ec94e444c"],
 
 Cell[BoxData[{
  RowBox[{
-  RowBox[{"Begin", "[", "\"\<`Private`\>\"", "]"}], 
-  ";"}], "\[IndentingNewLine]", 
+  RowBox[{"Begin", "[", "\"\<`Private`\>\"", "]"}], ";"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{"cleanContourPlot", "[", "cp_", "]"}], " ", ":=", "\n", " ", 
   RowBox[{"Module", "[", 
@@ -919,8 +905,8 @@ Cell[BoxData[{
          RowBox[{
           RowBox[{"{", 
            RowBox[{
-           "group", ",", " ", "style", ",", " ", "polys", ",", " ", "edges", 
-            ",", " ", "cover", ",", " ", "graph"}], "}"}], ",", "\n", "     ", 
+           "group", ",", " ", "style", ",", " ", "polys", ",", " ", "edges", ",",
+             " ", "cover", ",", " ", "graph"}], "}"}], ",", "\n", "     ", 
           RowBox[{
            RowBox[{
             RowBox[{"{", 
@@ -954,8 +940,8 @@ Cell[BoxData[{
               "]"}]}], ";", "\n", "     ", 
            RowBox[{"graph", " ", "=", " ", 
             RowBox[{"Graph", "[", 
-             RowBox[{"UndirectedEdge", " ", "@@@", " ", "cover"}], "]"}]}], 
-           ";", "\n", "     ", 
+             RowBox[{"UndirectedEdge", " ", "@@@", " ", "cover"}], "]"}]}], ";",
+            "\n", "     ", 
            RowBox[{"{", 
             RowBox[{
              RowBox[{"Sequence", " ", "@@", " ", "style"}], ",", " ", "\n", 
@@ -973,16 +959,16 @@ Cell[BoxData[{
                     RowBox[{"Subgraph", "[", 
                     RowBox[{"graph", ",", " ", "#"}], "]"}], " ", "&"}], 
                     ")"}], " ", "/@", " ", "\n", "             ", 
-                    RowBox[{"ConnectedComponents", "[", "graph", "]"}]}]}], 
-                   ",", " ", 
+                    RowBox[{"ConnectedComponents", "[", "graph", "]"}]}]}], ",",
+                    " ", 
                    RowBox[{"{", "3", "}"}]}], "]"}]}]}]}], "]"}]}], "}"}]}]}],
           "\n", "     ", "]"}], ",", "\n", "    ", 
         RowBox[{"{", 
          RowBox[{"g", ",", " ", "groups"}], "}"}]}], "]"}]}], ";", "\n", "  ", 
      RowBox[{"lines", " ", "=", " ", 
       RowBox[{"Cases", "[", 
-       RowBox[{"cp", ",", " ", "_Tooltip", ",", " ", "Infinity"}], "]"}]}], 
-     ";", "\n", "  ", 
+       RowBox[{"cp", ",", " ", "_Tooltip", ",", " ", "Infinity"}], "]"}]}], ";",
+      "\n", "  ", 
      RowBox[{"Graphics", "[", 
       RowBox[{
        RowBox[{"GraphicsComplex", "[", 
@@ -1019,10 +1005,10 @@ Cell[BoxData[{
  RowBox[{
   RowBox[{
    RowBox[{
-    RowBox[{"photoElectronSpectrum", "::", "usage"}], "=", 
-    "\"\<photoElectronSpectrum[data,\[CapitalDelta]p] returns a histogram \
-photoelectron spectrum for the given data set, which must be in the standard \
-format, using bin width \[CapitalDelta]p.\>\""}], ";"}], 
+    RowBox[{"photoElectronSpectrum", "::", "usage"}], 
+    "=", "\"\<photoElectronSpectrum[data,\[CapitalDelta]p] returns a \
+histogram photoelectron spectrum for the given data set, which must be in the \
+standard format, using bin width \[CapitalDelta]p.\>\""}], ";"}], 
   "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{
@@ -1143,9 +1129,9 @@ Cell[BoxData[{
  RowBox[{
   RowBox[{
    RowBox[{
-    RowBox[{"photoElectronSpectrumList", "::", "usage"}], "=", 
-    "\"\<photoElectronSpectrumList[data,range,\[CapitalDelta]p] returns a \
-histogram photoelectron spectrum for the data sets data[h], where h covers \
+    RowBox[{"photoElectronSpectrumList", "::", "usage"}], 
+    "=", "\"\<photoElectronSpectrumList[data,range,\[CapitalDelta]p] returns \
+a histogram photoelectron spectrum for the data sets data[h], where h covers \
 the given range, using bin width \[CapitalDelta]p.\>\""}], ";"}], 
   "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
  RowBox[{
@@ -1165,8 +1151,7 @@ the given range, using bin width \[CapitalDelta]p.\>\""}], ";"}],
         RowBox[{"dataSet", "[", "#", "]"}], ",", "pBin", ",", "options", ",", 
         
         RowBox[{"PlotLabel", "->", "#"}]}], "]"}], "&"}], ",", 
-     "\[IndentingNewLine]", "range"}], "]"}]}], 
-  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+     "\[IndentingNewLine]", "range"}], "]"}]}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{"End", "[", "]"}], ";"}]}], "Input",
  InitializationCell->
@@ -1230,9 +1215,9 @@ Cell[TextData[{
   ExpressionUUID->"8387f16f-e78f-6d44-b3d3-9ff7b6690104"],
  " is the associated Legendre function. \[OpenCurlyDoubleQuote]"
 }], "Text",
- CellChangeTimes->{{3.9005007828203397`*^9, 3.900500789298094*^9}, {
+ CellChangeTimes->{{3.900500782820341*^9, 3.900500789298094*^9}, {
   3.900501547894277*^9, 
-  3.9005015482264504`*^9}},ExpressionUUID->"bb91456c-73d0-f147-a6c8-\
+  3.900501548226454*^9}},ExpressionUUID->"bb91456c-73d0-f147-a6c8-\
 3ee0f8b798a9"],
 
 Cell["\<\
@@ -1283,12 +1268,12 @@ Cell[BoxData[
     "}"}], ",", 
    RowBox[{"{", 
     RowBox[{
-    "True", ",", "True", ",", "True", ",", "True", ",", "True", ",", "True", 
-     ",", "True"}], "}"}], ",", 
+    "True", ",", "True", ",", "True", ",", "True", ",", "True", ",", "True", ",",
+      "True"}], "}"}], ",", 
    RowBox[{"{", 
     RowBox[{
-    "True", ",", "True", ",", "True", ",", "True", ",", "True", ",", "True", 
-     ",", "True", ",", "True", ",", "True"}], "}"}]}], "}"}]], "Output",
+    "True", ",", "True", ",", "True", ",", "True", ",", "True", ",", "True", ",",
+      "True", ",", "True", ",", "True"}], "}"}]}], "}"}]], "Output",
  CellChangeTimes->{{3.900500758874941*^9, 3.900500764915608*^9}},
  CellLabel->"Out[269]=",ExpressionUUID->"8608cd8c-bd63-be40-9d5c-db2ecdb9e037"]
 }, Open  ]],
@@ -1457,11 +1442,11 @@ Cell[BoxData[{
  RowBox[{
   RowBox[{
    RowBox[{
-    RowBox[{"SetSphericalDecomposition", "::", "usage"}], "=", 
-    "\"\<SetSphericalDecomposition[\[Rho]Symbol,dataSet] creates memoizable \
-definitions for \[Rho]Symbol[h,\[ScriptL],m,{pmin,pmax}] to be the spherical \
-decomposition with angular-momentum numbers \[ScriptL],m over momentum bin \
-{pmin,pmax} for the dataset dataSet[h].\>\""}], ";"}], 
+    RowBox[{"SetSphericalDecomposition", "::", "usage"}], 
+    "=", "\"\<SetSphericalDecomposition[\[Rho]Symbol,dataSet] creates \
+memoizable definitions for \[Rho]Symbol[h,\[ScriptL],m,{pmin,pmax}] to be the \
+spherical decomposition with angular-momentum numbers \[ScriptL],m over \
+momentum bin {pmin,pmax} for the dataset dataSet[h].\>\""}], ";"}], 
   "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{
@@ -1480,10 +1465,10 @@ decomposition with angular-momentum numbers \[ScriptL],m over momentum bin \
        RowBox[{"StringJoin", "[", "\[IndentingNewLine]", 
         RowBox[{
          RowBox[{"ToString", "[", "\[Rho]Symbol", "]"}], ",", 
+         "\[IndentingNewLine]", "\"\<[h,\[ScriptL],m,{pmin,pmax}] memoizes \
+and returns the spherical decomposition with angular-momentum numbers \
+\[ScriptL],m over momentum bin {pmin,pmax} for the dataset \>\"", ",", 
          "\[IndentingNewLine]", 
-         "\"\<[h,\[ScriptL],m,{pmin,pmax}] memoizes and returns the spherical \
-decomposition with angular-momentum numbers \[ScriptL],m over momentum bin \
-{pmin,pmax} for the dataset \>\"", ",", "\[IndentingNewLine]", 
          RowBox[{"ToString", "[", "dataSet", "]"}], ",", 
          "\[IndentingNewLine]", "\"\<[h].\>\""}], "\[IndentingNewLine]", 
         "]"}]}], ";", "\[IndentingNewLine]", 
@@ -1555,8 +1540,7 @@ decomposition with angular-momentum numbers \[ScriptL],m over momentum bin \
            RowBox[{"-", "m"}], ",", 
            RowBox[{"{", 
             RowBox[{"pmin", ",", "pmax"}], "}"}]}], "]"}], "]"}]}]}]}]}], 
-    "\[IndentingNewLine]", "]"}]}], 
-  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+    "\[IndentingNewLine]", "]"}]}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{"End", "[", "]"}], ";"}]}], "Input",
  InitializationCell->True,
@@ -1589,12 +1573,12 @@ Cell[BoxData[{
  RowBox[{
   RowBox[{
    RowBox[{
-    RowBox[{"SetExactSphericalDecomposition", "::", "usage"}], "=", 
-    "\"\<SetExactSphericalDecomposition[\[Rho]Symbol,PDF] creates memoizable \
-definitions for \[Rho]Symbol[h,\[ScriptL],m,{pmin,pmax}] to be the spherical \
-decomposition with angular-momentum numbers \[ScriptL],m over momentum bin \
-{pmin,pmax} for the symbolic probability density function PDF[h].\>\""}], 
-   ";"}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+    RowBox[{"SetExactSphericalDecomposition", "::", "usage"}], 
+    "=", "\"\<SetExactSphericalDecomposition[\[Rho]Symbol,PDF] creates \
+memoizable definitions for \[Rho]Symbol[h,\[ScriptL],m,{pmin,pmax}] to be the \
+spherical decomposition with angular-momentum numbers \[ScriptL],m over \
+momentum bin {pmin,pmax} for the symbolic probability density function \
+PDF[h].\>\""}], ";"}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{
    RowBox[{"Begin", "[", "\"\<`Private`\>\"", "]"}], ";"}], 
@@ -1614,27 +1598,25 @@ decomposition with angular-momentum numbers \[ScriptL],m over momentum bin \
        RowBox[{"StringJoin", "[", "\[IndentingNewLine]", 
         RowBox[{
          RowBox[{"ToString", "[", "\[Rho]Symbol", "]"}], ",", 
-         "\[IndentingNewLine]", 
-         "\"\<[h,\[ScriptL],m,{pmin,pmax}] memoizes and returns the spherical \
-decomposition with angular-momentum numbers \[ScriptL],m over momentum bin \
-{pmin,pmax}, numerically integrated for the PDF \>\"", ",", 
-         "\[IndentingNewLine]", 
-         RowBox[{"ToString", "[", "PDF", "]"}], ",", "\[IndentingNewLine]", 
-         "\"\<[h].\>\""}], "\[IndentingNewLine]", "]"}]}], ";", 
-      "\[IndentingNewLine]", 
+         "\[IndentingNewLine]", "\"\<[h,\[ScriptL],m,{pmin,pmax}] memoizes \
+and returns the spherical decomposition with angular-momentum numbers \
+\[ScriptL],m over momentum bin {pmin,pmax}, numerically integrated for the \
+PDF \>\"", ",", "\[IndentingNewLine]", 
+         RowBox[{"ToString", "[", "PDF", "]"}], ",", 
+         "\[IndentingNewLine]", "\"\<[h].\>\""}], "\[IndentingNewLine]", 
+        "]"}]}], ";", "\[IndentingNewLine]", 
       RowBox[{
        RowBox[{"\[Rho]Symbol", "::", "integrationError"}], "=", 
-       RowBox[{
-       "\"\<Encountered integration errors in the calculation of \>\"", "<>", 
-        
-        RowBox[{"ToString", "[", "\[Rho]Symbol", "]"}], "<>", 
-        "\"\< with parameters {h,\[ScriptL],m,{pmin,pmax}}= `1`.\>\""}]}], 
-      ";", "\[IndentingNewLine]", 
+       RowBox[{"\"\<Encountered integration errors in the calculation of \>\"",
+         "<>", 
+        RowBox[{"ToString", "[", "\[Rho]Symbol", "]"}], 
+        "<>", "\"\< with parameters {h,\[ScriptL],m,{pmin,pmax}}= \
+`1`.\>\""}]}], ";", "\[IndentingNewLine]", 
       RowBox[{
        RowBox[{"\[Rho]Symbol", "::", "integrating"}], "=", 
        RowBox[{"\"\<Beginning numerical integration for \>\"", "<>", 
-        RowBox[{"ToString", "[", "\[Rho]Symbol", "]"}], "<>", 
-        "\"\<[`1`,`2`,`3`,`4`]\>\""}]}], ";", "\[IndentingNewLine]", 
+        RowBox[{"ToString", "[", "\[Rho]Symbol", "]"}], 
+        "<>", "\"\<[`1`,`2`,`3`,`4`]\>\""}]}], ";", "\[IndentingNewLine]", 
       RowBox[{"Off", "[", 
        RowBox[{"\[Rho]Symbol", "::", "integrating"}], "]"}], ";", 
       "\[IndentingNewLine]", 
@@ -1732,10 +1714,10 @@ decomposition with angular-momentum numbers \[ScriptL],m over momentum bin \
                  RowBox[{"{", 
                   RowBox[{"h", ",", "\[ScriptL]", ",", "m", ",", 
                    RowBox[{"{", 
-                    RowBox[{"pmin", ",", "pmax"}], "}"}]}], "}"}]}], "]"}], 
-               ";", "\[IndentingNewLine]", "integral"}]}], 
-             "\[IndentingNewLine]", "]"}]}]}], "\[IndentingNewLine]", "]"}]}],
-         "\[IndentingNewLine]", "]"}]}], ";", "\[IndentingNewLine]", 
+                    RowBox[{"pmin", ",", "pmax"}], "}"}]}], "}"}]}], "]"}], ";",
+                "\[IndentingNewLine]", "integral"}]}], "\[IndentingNewLine]", 
+             "]"}]}]}], "\[IndentingNewLine]", "]"}]}], "\[IndentingNewLine]",
+         "]"}]}], ";", "\[IndentingNewLine]", 
       RowBox[{
        RowBox[{"\[Rho]Symbol", "[", 
         RowBox[{"h_", ",", "\[ScriptL]_", ",", 
@@ -1754,8 +1736,7 @@ decomposition with angular-momentum numbers \[ScriptL],m over momentum bin \
            RowBox[{"-", "m"}], ",", 
            RowBox[{"{", 
             RowBox[{"pmin", ",", "pmax"}], "}"}]}], "]"}], "]"}]}]}]}]}], 
-    "\[IndentingNewLine]", "]"}]}], 
-  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+    "\[IndentingNewLine]", "]"}]}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{"End", "[", "]"}], ";"}]}], "Input",
  InitializationCell->True,
@@ -1802,11 +1783,11 @@ Cell[BoxData[{
  RowBox[{
   RowBox[{
    RowBox[{
-    RowBox[{"SetSymbolicSphericalDecomposition", "::", "usage"}], "=", 
-    "\"\<SetSymbolicSphericalDecomposition[\[Rho]Symbol,distribution] creates \
-memoizable definitions for \[Rho]Symbol[\[ScriptL],m] to be the spherical \
-decomposition with angular-momentum numbers \[ScriptL],m over momentum space \
-for the given symbolic distribution.\>\""}], ";"}], 
+    RowBox[{"SetSymbolicSphericalDecomposition", "::", "usage"}], 
+    "=", "\"\<SetSymbolicSphericalDecomposition[\[Rho]Symbol,distribution] \
+creates memoizable definitions for \[Rho]Symbol[\[ScriptL],m] to be the \
+spherical decomposition with angular-momentum numbers \[ScriptL],m over \
+momentum space for the given symbolic distribution.\>\""}], ";"}], 
   "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{
@@ -1827,10 +1808,10 @@ for the given symbolic distribution.\>\""}], ";"}],
        RowBox[{"StringJoin", "[", "\[IndentingNewLine]", 
         RowBox[{
          RowBox[{"ToString", "[", "\[Rho]Symbol", "]"}], ",", 
+         "\[IndentingNewLine]", "\"\<[\[ScriptL],m] memoizes and returns the \
+spherical decomposition with angular-momentum numbers \[ScriptL],m, \
+symbollically calculated for the distribution \>\"", ",", 
          "\[IndentingNewLine]", 
-         "\"\<[\[ScriptL],m] memoizes and returns the spherical decomposition \
-with angular-momentum numbers \[ScriptL],m, symbollically calculated for the \
-distribution \>\"", ",", "\[IndentingNewLine]", 
          RowBox[{"ToString", "[", "distribution", "]"}], ",", 
          "\[IndentingNewLine]", "\"\<.\>\""}], "\[IndentingNewLine]", "]"}]}],
        ";", "\[IndentingNewLine]", 
@@ -1838,16 +1819,16 @@ distribution \>\"", ",", "\[IndentingNewLine]",
        RowBox[{
         RowBox[{
          RowBox[{"\[Rho]Symbol", "::", "integrationError"}], "=", 
-         RowBox[{
-         "\"\<Encountered integration errors in the calculation of \>\"", "<>", 
-          RowBox[{"ToString", "[", "\[Rho]Symbol", "]"}], "<>", 
-          "\"\< with parameters {h,\[ScriptL],m}= `1`.\>\""}]}], ";"}], 
+         RowBox[{"\"\<Encountered integration errors in the calculation of \>\
+\"", "<>", 
+          RowBox[{"ToString", "[", "\[Rho]Symbol", "]"}], 
+          "<>", "\"\< with parameters {h,\[ScriptL],m}= `1`.\>\""}]}], ";"}], 
        "*)"}], "\[IndentingNewLine]", 
       RowBox[{
        RowBox[{"\[Rho]Symbol", "::", "integrating"}], "=", 
        RowBox[{"\"\<Beginning symbolic integration for \>\"", "<>", 
-        RowBox[{"ToString", "[", "\[Rho]Symbol", "]"}], "<>", 
-        "\"\<[`1`,`2`]\>\""}]}], ";", "\[IndentingNewLine]", 
+        RowBox[{"ToString", "[", "\[Rho]Symbol", "]"}], 
+        "<>", "\"\<[`1`,`2`]\>\""}]}], ";", "\[IndentingNewLine]", 
       RowBox[{"Off", "[", 
        RowBox[{"\[Rho]Symbol", "::", "integrating"}], "]"}], ";", 
       "\[IndentingNewLine]", 
@@ -1918,8 +1899,7 @@ distribution \>\"", ",", "\[IndentingNewLine]",
 
 Cell[BoxData[{
  RowBox[{
-  RowBox[{"ClearAll", "[", "\[Rho]SyntheticSymbolicL", "]"}], 
-  ";"}], "\[IndentingNewLine]", 
+  RowBox[{"ClearAll", "[", "\[Rho]SyntheticSymbolicL", "]"}], ";"}], "\[IndentingNewLine]", 
  RowBox[{"SetSymbolicSphericalDecomposition", "[", 
   RowBox[{"\[Rho]SyntheticSymbolicL", ",", 
    RowBox[{"syntheticDataDistribution", "[", "\"\<L\>\"", "]"}]}], 
@@ -1979,8 +1959,7 @@ Cell[BoxData[
 
 Cell[BoxData[{
  RowBox[{
-  RowBox[{"ClearAll", "[", "\[Rho]HelixSymbolic2", "]"}], 
-  ";"}], "\[IndentingNewLine]", 
+  RowBox[{"ClearAll", "[", "\[Rho]HelixSymbolic2", "]"}], ";"}], "\[IndentingNewLine]", 
  RowBox[{"SetSymbolicSphericalDecomposition", "[", 
   RowBox[{"\[Rho]HelixSymbolic2", ",", 
    RowBox[{"helixDataDistribution", "[", 
@@ -2322,9 +2301,9 @@ Cell[BoxData[{
  RowBox[{
   RowBox[{
    RowBox[{
-    RowBox[{"\[Rho]1mToCartesian", "::", "usage"}], "=", 
-    "\"\<\[Rho]1mToCartesian[{\[Rho]1m1,\[Rho]10,\[Rho]11}]\>\""}], ";"}], 
-  "\n"}], "\n", 
+    RowBox[{"\[Rho]1mToCartesian", "::", "usage"}], 
+    "=", "\"\<\[Rho]1mToCartesian[{\[Rho]1m1,\[Rho]10,\[Rho]11}]\>\""}], 
+   ";"}], "\n"}], "\n", 
  RowBox[{
   RowBox[{
    RowBox[{"Begin", "[", "\"\<`Private`\>\"", "]"}], ";"}], 
@@ -2386,9 +2365,9 @@ Cell[BoxData[{
  RowBox[{
   RowBox[{
    RowBox[{
-    RowBox[{"\[Rho]ToCenterOfMass", "::", "usage"}], "=", 
-    "\"\<\[Rho]ToCenterOfMass[{{\[Rho]00},{\[Rho]1m1,\[Rho]10,\[Rho]11}}]\>\"\
-"}], ";"}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+    RowBox[{"\[Rho]ToCenterOfMass", "::", "usage"}], 
+    "=", "\"\<\[Rho]ToCenterOfMass[{{\[Rho]00},{\[Rho]1m1,\[Rho]10,\[Rho]11}}]\
+\>\""}], ";"}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{
    RowBox[{"Begin", "[", "\"\<`Private`\>\"", "]"}], ";"}], 
@@ -2418,8 +2397,7 @@ Cell[BoxData[{
         RowBox[{
          SqrtBox["2"], "\[Rho]10"}]}], "}"}]}], 
      RowBox[{"2", 
-      SqrtBox["\[Pi]"], "\[Rho]00"}]], "]"}]}], 
-  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+      SqrtBox["\[Pi]"], "\[Rho]00"}]], "]"}]}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{"End", "[", "]"}], ";"}]}], "Input",
  InitializationCell->True,
@@ -2495,8 +2473,8 @@ Cell[BoxData[{
  RowBox[{
   RowBox[{
    RowBox[{
-    RowBox[{"COMfromPDF", "::", "usage"}], "=", 
-    "\"\<COMfromPDF[PDF,{pmin,pmax},]\>\""}], ";"}], 
+    RowBox[{"COMfromPDF", "::", "usage"}], 
+    "=", "\"\<COMfromPDF[PDF,{pmin,pmax},]\>\""}], ";"}], 
   "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{
@@ -2519,10 +2497,9 @@ Cell[BoxData[{
  RowBox[{
   RowBox[{
    RowBox[{
-    RowBox[{"COMfromPDF", "::", "integrationError"}], "=", 
-    "\"\<Encountered integration errors in the calculation of COMfromPDF with \
-pdf `1` and {pmin,pmax}= `2`.\>\""}], ";"}], 
-  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+    RowBox[{"COMfromPDF", "::", "integrationError"}], 
+    "=", "\"\<Encountered integration errors in the calculation of COMfromPDF \
+with pdf `1` and {pmin,pmax}= `2`.\>\""}], ";"}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{
    RowBox[{"SetSharedFunction", "[", "COMfromPDF", "]"}], ";"}], 
@@ -2561,12 +2538,11 @@ pdf `1` and {pmin,pmax}= `2`.\>\""}], ";"}],
         RowBox[{
          RowBox[{"fromSphericalCoordinates", "[", 
           RowBox[{"{", 
-           RowBox[{"pp_", ",", "\[Theta]_", ",", "\[Phi]_"}], "}"}], "]"}], 
-         "=", 
+           RowBox[{"pp_", ",", "\[Theta]_", ",", "\[Phi]_"}], "}"}], "]"}], "=", 
          RowBox[{"FromSphericalCoordinates", "[", 
           RowBox[{"{", 
-           RowBox[{"pp", ",", "\[Theta]", ",", "\[Phi]"}], "}"}], "]"}]}], 
-        ";", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+           RowBox[{"pp", ",", "\[Theta]", ",", "\[Phi]"}], "}"}], "]"}]}], ";",
+         "\[IndentingNewLine]", "\[IndentingNewLine]", 
         RowBox[{"Check", "[", "\[IndentingNewLine]", 
          RowBox[{
           RowBox[{
@@ -2610,8 +2586,7 @@ pdf `1` and {pmin,pmax}= `2`.\>\""}], ";"}],
           RowBox[{
            RowBox[{"Message", "[", 
             RowBox[{
-             RowBox[{"COMfromPDF", "::", "integrationError"}], ",", "PDF", 
-             ",", 
+             RowBox[{"COMfromPDF", "::", "integrationError"}], ",", "PDF", ",", 
              RowBox[{"{", 
               RowBox[{"pmin", ",", "pmax"}], "}"}]}], "]"}], ";"}]}], 
          "\[IndentingNewLine]", "]"}], ";"}], "\[IndentingNewLine]", 
@@ -2680,8 +2655,8 @@ Cell[BoxData[{
  RowBox[{
   RowBox[{
    RowBox[{
-    RowBox[{"COMfromPDFcartesian", "::", "usage"}], "=", 
-    "\"\<COMfromPDFcartesian[PDF,{pmin,pmax}]\>\""}], ";"}], 
+    RowBox[{"COMfromPDFcartesian", "::", "usage"}], 
+    "=", "\"\<COMfromPDFcartesian[PDF,{pmin,pmax}]\>\""}], ";"}], 
   "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{
@@ -2704,15 +2679,15 @@ Cell[BoxData[{
  RowBox[{
   RowBox[{
    RowBox[{
-    RowBox[{"COMfromPDFcartesian", "::", "integrationError"}], "=", 
-    "\"\<Encountered integration errors in the calculation of \
+    RowBox[{"COMfromPDFcartesian", "::", "integrationError"}], 
+    "=", "\"\<Encountered integration errors in the calculation of \
 COMfromPDFcartesian with pdf `1` and {pmin,pmax}= `2`.\>\""}], ";"}], 
   "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{
    RowBox[{
-    RowBox[{"COMfromPDFcartesian", "::", "integrating"}], "=", 
-    "\"\<Beginning numerical integration for \
+    RowBox[{"COMfromPDFcartesian", "::", "integrating"}], 
+    "=", "\"\<Beginning numerical integration for \
 COMfromPDFcartesian[`1`,`2`]\>\""}], ";"}], "\[IndentingNewLine]", 
   RowBox[{"(*", 
    RowBox[{
@@ -2747,8 +2722,7 @@ COMfromPDFcartesian[`1`,`2`]\>\""}], ";"}], "\[IndentingNewLine]",
        RowBox[{
         RowBox[{"Message", "[", 
          RowBox[{
-          RowBox[{"COMfromPDFcartesian", "::", "integrating"}], ",", "PDF", 
-          ",", 
+          RowBox[{"COMfromPDFcartesian", "::", "integrating"}], ",", "PDF", ",", 
           RowBox[{"{", 
            RowBox[{"pmin", ",", "pmax"}], "}"}]}], "]"}], ";", 
         "\[IndentingNewLine]", "\[IndentingNewLine]", 
@@ -2915,7 +2889,21 @@ Cell[BoxData[
    "4.045814029413884`*^-6"}], "}"}]], "Output",
  CellChangeTimes->{3.900736067681742*^9, 3.900736115127301*^9, 
   3.900736180365569*^9, 3.9007362252585545`*^9},
- CellLabel->"Out[166]=",ExpressionUUID->"832e9789-fd88-264a-914c-ca673d472d4a"]
+ CellLabel->
+  "Out[166]=",ExpressionUUID->"832e9789-fd88-264a-914c-ca673d472d4a"],
+
+Cell[BoxData[
+ TemplateBox[{
+  "Global`COMfromPDFcartesian", "shdw", 
+   "\"Symbol \
+\\!\\(\\*RowBox[{\\\"\\\\\\\"COMfromPDFcartesian\\\\\\\"\\\"}]\\) appears in \
+multiple contexts \\!\\(\\*RowBox[{\\\"{\\\", RowBox[{\\\"\\\\\\\"Global`\\\\\
+\\\"\\\", \\\",\\\", \\\"\\\\\\\"Chimera`\\\\\\\"\\\"}], \\\"}\\\"}]\\); \
+definitions in context \\!\\(\\*RowBox[{\\\"\\\\\\\"Global`\\\\\\\"\\\"}]\\) \
+may shadow or be shadowed by other definitions.\"", 2, 6, 1, 
+   21514973667542646334, "Local", "Global`COMfromPDFcartesian"},
+  "MessageTemplate2"]], "Message", "MSG",
+ CellLabel->"",ExpressionUUID->"31a41aa9-7158-5344-88bb-be362b41b114"]
 }, Open  ]],
 
 Cell[".... this seems to be too slow to be worth using...", "Text",
@@ -2949,9 +2937,9 @@ Cell[BoxData[{
  RowBox[{
   RowBox[{
    RowBox[{
-    RowBox[{"SetChiralityMeasure", "::", "usage"}], "=", 
-    "\"\<SetChiralityMeasure[\[Chi]Symbol,\[Rho]Symbol] creates memoizable \
-definitions for \
+    RowBox[{"SetChiralityMeasure", "::", "usage"}], 
+    "=", "\"\<SetChiralityMeasure[\[Chi]Symbol,\[Rho]Symbol] creates \
+memoizable definitions for \
 \[Chi]Symbol[h,{\[ScriptL]1,\[ScriptL]2,\[ScriptL]3},{p1,p2,p3},\
 \[CapitalDelta]p], which return the spherical chirality measure formed from \
 the spherical decomposition \[Rho]Symbol with  helicity h, angular-momentum \
@@ -2975,16 +2963,17 @@ respectively.\>\""}], ";"}], "\[IndentingNewLine]"}], "\[IndentingNewLine]",
       RowBox[{"StringJoin", "[", "\[IndentingNewLine]", 
        RowBox[{
         RowBox[{"ToString", "[", "measureSymbol", "]"}], ",", 
-        "\[IndentingNewLine]", 
-        "\"\<[h,{\[ScriptL]1,\[ScriptL]2,\[ScriptL]3},{p1,p2,p3},\
-\[CapitalDelta]p] memoizes and returns the spherical chirality measure formed \
-from the spherical decomposition \>\"", ",", "\[IndentingNewLine]", 
-        RowBox[{"ToString", "[", "\[Rho]Symbol", "]"}], ",", 
-        "\"\< with the angular-momentum combination {\[ScriptL]1,\[ScriptL]2,\
-\[ScriptL]3}, and with the corresponding spherical decompositions integrated \
-between momenta p1, p2, p3 and p1+\[CapitalDelta]p, p2+\[CapitalDelta]p, p3+\
-\[CapitalDelta]p, respectively.\>\""}], "\[IndentingNewLine]", "]"}]}], ";", 
-     "\[IndentingNewLine]", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+        "\[IndentingNewLine]", \
+"\"\<[h,{\[ScriptL]1,\[ScriptL]2,\[ScriptL]3},{p1,p2,p3},\[CapitalDelta]p] \
+memoizes and returns the spherical chirality measure formed from the \
+spherical decomposition \>\"", ",", "\[IndentingNewLine]", 
+        RowBox[{"ToString", "[", "\[Rho]Symbol", "]"}], 
+        ",", "\"\< with the angular-momentum combination {\[ScriptL]1,\
+\[ScriptL]2,\[ScriptL]3}, and with the corresponding spherical decompositions \
+integrated between momenta p1, p2, p3 and p1+\[CapitalDelta]p, p2+\
+\[CapitalDelta]p, p3+\[CapitalDelta]p, respectively.\>\""}], 
+       "\[IndentingNewLine]", "]"}]}], ";", "\[IndentingNewLine]", 
+     "\[IndentingNewLine]", "\[IndentingNewLine]", 
      RowBox[{
       RowBox[{"measureSymbol", "[", 
        RowBox[{"h_", ",", 
@@ -3000,9 +2989,9 @@ between momenta p1, p2, p3 and p1+\[CapitalDelta]p, p2+\[CapitalDelta]p, p3+\
         RowBox[{"(*", 
          RowBox[{
           RowBox[{"Print", "[", 
-           RowBox[{
-           "\"\<Beginning calculation of chirality measure \>\"", ",", 
-            "measureSymbol", ",", "\"\< at parameters \>\"", ",", 
+           
+           RowBox[{"\"\<Beginning calculation of chirality measure \>\"", ",",
+             "measureSymbol", ",", "\"\< at parameters \>\"", ",", 
             RowBox[{"{", 
              RowBox[{"h", ",", 
               RowBox[{"{", 
@@ -3039,14 +3028,14 @@ between momenta p1, p2, p3 and p1+\[CapitalDelta]p, p2+\[CapitalDelta]p, p3+\
                RowBox[{"h", ",", "\[ScriptL]1", ",", "m1", ",", 
                 RowBox[{"{", 
                  RowBox[{"p1", ",", 
-                  RowBox[{"p1", "+", "\[CapitalDelta]p"}]}], "}"}]}], "]"}], 
-              ",", "\[IndentingNewLine]", 
+                  RowBox[{"p1", "+", "\[CapitalDelta]p"}]}], "}"}]}], "]"}], ",",
+               "\[IndentingNewLine]", 
               RowBox[{"\[Rho]Symbol", "[", 
                RowBox[{"h", ",", "\[ScriptL]2", ",", "m2", ",", 
                 RowBox[{"{", 
                  RowBox[{"p2", ",", 
-                  RowBox[{"p2", "+", "\[CapitalDelta]p"}]}], "}"}]}], "]"}], 
-              ",", "\[IndentingNewLine]", 
+                  RowBox[{"p2", "+", "\[CapitalDelta]p"}]}], "}"}]}], "]"}], ",",
+               "\[IndentingNewLine]", 
               RowBox[{"\[Rho]Symbol", "[", 
                RowBox[{"h", ",", "\[ScriptL]3", ",", "m3", ",", 
                 RowBox[{"{", 
@@ -3089,8 +3078,8 @@ Cell[BoxData[{
  RowBox[{
   RowBox[{
    RowBox[{
-    RowBox[{"SetSymbolicChiralityMeasure", "::", "usage"}], "=", 
-    "\"\<SetSymbolicChiralityMeasure[\[Chi]Symbol,\[Rho]Symbol] creates \
+    RowBox[{"SetSymbolicChiralityMeasure", "::", "usage"}], 
+    "=", "\"\<SetSymbolicChiralityMeasure[\[Chi]Symbol,\[Rho]Symbol] creates \
 memoizable definitions for \
 \[Chi]Symbol[{\[ScriptL]1,\[ScriptL]2,\[ScriptL]3}], which return the \
 spherical chirality measure formed from the spherical decomposition \
@@ -3113,15 +3102,13 @@ spherical chirality measure formed from the spherical decomposition \
        RowBox[{"StringJoin", "[", "\[IndentingNewLine]", 
         RowBox[{
          RowBox[{"ToString", "[", "measureSymbol", "]"}], ",", 
-         "\[IndentingNewLine]", 
-         "\"\<[{\[ScriptL]1,\[ScriptL]2,\[ScriptL]3}] memoizes and returns \
-the spherical chirality measure formed from the spherical decomposition \>\"",
-          ",", "\[IndentingNewLine]", 
-         RowBox[{"ToString", "[", "\[Rho]Symbol", "]"}], ",", 
-         "\"\< with the angular-momentum combination \
-{\[ScriptL]1,\[ScriptL]2,\[ScriptL]3}.\>\""}], "\[IndentingNewLine]", "]"}]}],
-       ";", "\[IndentingNewLine]", "\[IndentingNewLine]", 
-      "\[IndentingNewLine]", 
+         "\[IndentingNewLine]", "\"\<[{\[ScriptL]1,\[ScriptL]2,\[ScriptL]3}] \
+memoizes and returns the spherical chirality measure formed from the \
+spherical decomposition \>\"", ",", "\[IndentingNewLine]", 
+         RowBox[{"ToString", "[", "\[Rho]Symbol", "]"}], 
+         ",", "\"\< with the angular-momentum combination {\[ScriptL]1,\
+\[ScriptL]2,\[ScriptL]3}.\>\""}], "\[IndentingNewLine]", "]"}]}], ";", 
+      "\[IndentingNewLine]", "\[IndentingNewLine]", "\[IndentingNewLine]", 
       RowBox[{
        RowBox[{"measureSymbol", "[", 
         RowBox[{"{", 
@@ -3134,9 +3121,9 @@ the spherical chirality measure formed from the spherical decomposition \>\"",
          RowBox[{"(*", 
           RowBox[{
            RowBox[{"Print", "[", 
-            RowBox[{
-            "\"\<Beginning calculation of chirality measure \>\"", ",", 
-             "measureSymbol", ",", "\"\< at parameters \>\"", ",", 
+            
+            RowBox[{"\"\<Beginning calculation of chirality measure \>\"", ",",
+              "measureSymbol", ",", "\"\< at parameters \>\"", ",", 
              RowBox[{"{", 
               RowBox[{"h", ",", 
                RowBox[{"{", 
@@ -3189,8 +3176,7 @@ the spherical chirality measure formed from the spherical decomposition \>\"",
             RowBox[{"m3", ",", 
              RowBox[{"-", "\[ScriptL]3"}], ",", "\[ScriptL]3"}], "}"}]}], 
           "\[IndentingNewLine]", "]"}]}], "\[IndentingNewLine]", "]"}]}]}]}], 
-    "\[IndentingNewLine]", "]"}]}], 
-  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+    "\[IndentingNewLine]", "]"}]}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{"End", "[", "]"}], ";"}]}], "Input",
  InitializationCell->
@@ -3219,8 +3205,7 @@ Cell[BoxData[{
     RowBox[{"scaleBar", "::", "usage"}], "=", "\"\<scaleBar[\[Chi]Max]\>\""}],
     ";"}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
  RowBox[{
-  RowBox[{"Begin", "[", "\"\<`Private`\>\"", "]"}], 
-  ";"}], "\[IndentingNewLine]", 
+  RowBox[{"Begin", "[", "\"\<`Private`\>\"", "]"}], ";"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{
    RowBox[{"scaleBar", "[", "\[Chi]Max_", "]"}], ":=", 
@@ -3237,8 +3222,7 @@ Cell[BoxData[{
        RowBox[{
         RowBox[{"{", "350", "}"}], ",", 
         RowBox[{"{", "350", "}"}]}], "}"}]}], "\[IndentingNewLine]", ",", 
-     RowBox[{"PlotRangePadding", "\[Rule]", "None"}], "\[IndentingNewLine]", 
-     ",", 
+     RowBox[{"PlotRangePadding", "\[Rule]", "None"}], "\[IndentingNewLine]", ",", 
      RowBox[{"Contours", "->", 
       RowBox[{"\[Chi]Max", "\[Times]", 
        RowBox[{"Subdivide", "[", 
@@ -3278,8 +3262,7 @@ Cell[BoxData[{
              RowBox[{"1", ";;", ";;", "2"}], "]"}], "]"}]}]}], "}"}], ",", 
         RowBox[{"{", 
          RowBox[{"None", ",", "None"}], "}"}]}], "}"}]}]}], 
-    "\[IndentingNewLine]", "]"}]}], 
-  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+    "\[IndentingNewLine]", "]"}]}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{"End", "[", "]"}], ";"}]}], "Input",
  InitializationCell->True,
@@ -3297,8 +3280,7 @@ Cell["plotCOMvectorDirect", "Subsubsection",
 
 Cell[BoxData[{
  RowBox[{
-  RowBox[{"Begin", "[", "\"\<`Private`\>\"", "]"}], 
-  ";"}], "\[IndentingNewLine]", 
+  RowBox[{"Begin", "[", "\"\<`Private`\>\"", "]"}], ";"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{"plotCOMvectorDirect", "[", 
    RowBox[{"COMvector_", ",", 
@@ -3328,8 +3310,7 @@ Cell[BoxData[{
            RowBox[{"0.85", "COM"}], ",", "COM"}], "}"}], ",", 
          RowBox[{"0.05", 
           RowBox[{"Norm", "[", "COM", "]"}]}]}], "]"}]}], 
-      "\[IndentingNewLine]", "}"}], "]"}]}], "\[IndentingNewLine]", 
-   "]"}]}], "\[IndentingNewLine]", 
+      "\[IndentingNewLine]", "}"}], "]"}]}], "\[IndentingNewLine]", "]"}]}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{"End", "[", "]"}], ";"}]}], "Input",
  InitializationCell->True,
@@ -3488,8 +3469,7 @@ Cell[BoxData[{
             RowBox[{"FromSphericalCoordinates", "[", 
              RowBox[{"{", 
               RowBox[{"p", ",", "\[Theta]", ",", "\[Phi]"}], "}"}], "]"}]}], 
-           RowBox[{"Sin", "[", "\[Theta]", "]"}]}], "\[IndentingNewLine]", 
-          ",", 
+           RowBox[{"Sin", "[", "\[Theta]", "]"}]}], "\[IndentingNewLine]", ",", 
           RowBox[{"{", 
            RowBox[{"\[Theta]", ",", "\[Phi]"}], "}"}]}], "]"}], "[", 
         RowBox[{"[", "1", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
@@ -3569,10 +3549,10 @@ Cell[BoxData[{
         "\[IndentingNewLine]", ",", 
         RowBox[{"AxesLabel", "\[Rule]", 
          RowBox[{"{", 
-          RowBox[{
-          "\"\<\!\(\*SubscriptBox[\(p\), \(x\)]\)\>\"", ",", 
-           "\"\<\!\(\*SubscriptBox[\(p\), \(y\)]\)\>\"", ",", 
-           "\"\<\!\(\*SubscriptBox[\(p\), \(z\)]\)\>\""}], "}"}]}], 
+          
+          RowBox[{"\"\<\!\(\*SubscriptBox[\(p\), \(x\)]\)\>\"", 
+           ",", "\"\<\!\(\*SubscriptBox[\(p\), \(y\)]\)\>\"", 
+           ",", "\"\<\!\(\*SubscriptBox[\(p\), \(z\)]\)\>\""}], "}"}]}], 
         "\[IndentingNewLine]", ",", 
         RowBox[{"SphericalRegion", "\[Rule]", "True"}], "\[IndentingNewLine]",
          ",", 
@@ -3648,8 +3628,7 @@ Cell[BoxData[{
             RowBox[{"FromSphericalCoordinates", "[", 
              RowBox[{"{", 
               RowBox[{"p", ",", "\[Theta]", ",", "\[Phi]"}], "}"}], "]"}]}], 
-           RowBox[{"Sin", "[", "\[Theta]", "]"}]}], "\[IndentingNewLine]", 
-          ",", 
+           RowBox[{"Sin", "[", "\[Theta]", "]"}]}], "\[IndentingNewLine]", ",", 
           RowBox[{"{", 
            RowBox[{"\[Theta]", ",", "\[Phi]"}], "}"}]}], "]"}], "[", 
         RowBox[{"[", "1", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
@@ -3670,8 +3649,7 @@ Cell[BoxData[{
          RowBox[{"{", 
           RowBox[{"\[Theta]", ",", "0", ",", "\[Pi]"}], "}"}], 
          "\[IndentingNewLine]", ",", "options", "\[IndentingNewLine]", ",", 
-         RowBox[{"PlotRangePadding", "->", "None"}], "\[IndentingNewLine]", 
-         ",", 
+         RowBox[{"PlotRangePadding", "->", "None"}], "\[IndentingNewLine]", ",", 
          RowBox[{"AspectRatio", "\[Rule]", "Automatic"}], 
          "\[IndentingNewLine]", ",", 
          RowBox[{"ImageSize", "->", "500"}], "\[IndentingNewLine]", ",", 
@@ -3692,8 +3670,7 @@ Cell[BoxData[{
               RowBox[{
                FractionBox["1", "max"], "dist"}]}], "]"}]}], "]"}]}]}], 
         "\[IndentingNewLine]", "]"}], "\[IndentingNewLine]", "]"}]}]}], 
-    "\[IndentingNewLine]", "]"}]}], 
-  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+    "\[IndentingNewLine]", "]"}]}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{"End", "[", "]"}], ";"}]}], "Input",
  InitializationCell->True,
@@ -13149,8 +13126,7 @@ Cell[BoxData[{
         RowBox[{"ImageSize", "->", "450"}], "\[IndentingNewLine]", ",", 
         RowBox[{"PlotLabel", "->", 
          RowBox[{"Det", "[", "COMs", "]"}]}]}], "\[IndentingNewLine]", 
-       "]"}]}]}], "\[IndentingNewLine]", "]"}]}], 
-  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+       "]"}]}]}], "\[IndentingNewLine]", "]"}]}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{"End", "[", "]"}], ";"}]}], "Input",
  InitializationCell->True,
@@ -13205,12 +13181,10 @@ Cell[BoxData[{
          ",", 
          RowBox[{"{", 
           RowBox[{"m", ",", 
-           RowBox[{"-", "\[ScriptL]"}], ",", "\[ScriptL]"}], "}"}]}], "]"}], 
-       ",", 
+           RowBox[{"-", "\[ScriptL]"}], ",", "\[ScriptL]"}], "}"}]}], "]"}], ",", 
        RowBox[{"{", 
         RowBox[{"\[ScriptL]", ",", "\[ScriptL]min", ",", "\[ScriptL]max"}], 
-        "}"}]}], "]"}], "]"}], "]"}]}], 
-  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+        "}"}]}], "]"}], "]"}], "]"}]}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{"End", "[", "]"}], ";"}]}], "Input",
  InitializationCell->
@@ -13264,8 +13238,8 @@ specify which ",
 Cell[BoxData[
  RowBox[{
   RowBox[{
-   RowBox[{"sphericalDecompositionPlot", "::", "usage"}], "=", 
-   "\"\<sphericalDecompositionPlot[\[Rho]Symbol,\[ScriptL]max] plots the \
+   RowBox[{"sphericalDecompositionPlot", "::", "usage"}], 
+   "=", "\"\<sphericalDecompositionPlot[\[Rho]Symbol,\[ScriptL]max] plots the \
 spherical decomposition \[Rho]Symbol[\[ScriptL],m].\n\
 sphericalDecompositionPlot[\[Rho]Symbol,\[ScriptL]max,{\[ScriptL]1,\[ScriptL]\
 2,\[ScriptL]3}]\>\""}], ";"}]], "Input",
@@ -13292,8 +13266,7 @@ Cell[BoxData[{
   RowBox[{"sphericalDecompositionPlot", "[", 
    RowBox[{"\[Rho]Symbol", ",", 
     RowBox[{"{", 
-     RowBox[{"0", ",", "\[ScriptL]max"}], "}"}], ",", "options"}], 
-   "]"}]}], "\[IndentingNewLine]", 
+     RowBox[{"0", ",", "\[ScriptL]max"}], "}"}], ",", "options"}], "]"}]}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{"sphericalDecompositionPlot", "[", 
    RowBox[{"\[Rho]Symbol_", ",", 
@@ -13308,8 +13281,8 @@ Cell[BoxData[{
       RowBox[{"calculate\[Rho]ScaledMax", "[", 
        RowBox[{"\[Rho]Symbol", ",", 
         RowBox[{"{", 
-         RowBox[{"\[ScriptL]min", ",", "\[ScriptL]max"}], "}"}]}], "]"}]}], 
-     ";", "\[IndentingNewLine]", 
+         RowBox[{"\[ScriptL]min", ",", "\[ScriptL]max"}], "}"}]}], "]"}]}], ";",
+      "\[IndentingNewLine]", 
      RowBox[{"Show", "[", 
       RowBox[{
        RowBox[{"{", "\[IndentingNewLine]", 
@@ -13354,10 +13327,10 @@ Cell[BoxData[{
                  "\[IndentingNewLine]", ",", 
                  RowBox[{"Row", "[", 
                   RowBox[{"{", 
-                   RowBox[{
-                   "\"\<\[ScriptL]=\>\"", ",", "\[ScriptL]", ",", 
-                    "\"\<, m=\>\"", ",", "m", ",", 
-                    "\"\<, |\!\(\*SubscriptBox[OverscriptBox[\(\[Rho]\), \
+                   
+                   RowBox[{"\"\<\[ScriptL]=\>\"", ",", "\[ScriptL]", 
+                    ",", "\"\<, m=\>\"", ",", "m", 
+                    ",", "\"\<, |\!\(\*SubscriptBox[OverscriptBox[\(\[Rho]\), \
 \(~\)], \(\[ScriptL], m\)]\)\!\(\*SuperscriptBox[\(|\), \
 \(1/\[ScriptL]\)]\)=\>\"", ",", 
                     RowBox[{
@@ -13387,8 +13360,8 @@ Cell[BoxData[{
          RowBox[{"\"\<m\>\"", ",", "\"\<\[ScriptL]\>\""}], "}"}]}], 
        "\[IndentingNewLine]", ",", 
        RowBox[{
-       "PlotLabel", "->", 
-        "\"\<|\!\(\*SubscriptBox[\(\[Rho]\), \(\[ScriptL], \
+       "PlotLabel", 
+        "->", "\"\<|\!\(\*SubscriptBox[\(\[Rho]\), \(\[ScriptL], \
 m\)]\)\!\(\*SuperscriptBox[\(|\), \(1/max \((\[ScriptL], 1)\)\)]\)\>\""}]}], 
       "\[IndentingNewLine]", "]"}]}]}], "\[IndentingNewLine]", 
    "]"}]}]}], "Input",
@@ -13412,8 +13385,7 @@ Cell[BoxData[{
       RowBox[{"0", ",", "\[ScriptL]max"}], "}"}], ",", 
      RowBox[{"{", 
       RowBox[{"\[ScriptL]1", ",", "\[ScriptL]2", ",", "\[ScriptL]3"}], "}"}], 
-     ",", "options"}], "]"}]}], 
-  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+     ",", "options"}], "]"}]}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{"sphericalDecompositionPlot", "[", 
    RowBox[{"\[Rho]Symbol_", ",", 
@@ -13437,8 +13409,8 @@ Cell[BoxData[{
       RowBox[{"calculate\[Rho]ScaledMax", "[", 
        RowBox[{"\[Rho]Symbol", ",", 
         RowBox[{"{", 
-         RowBox[{"\[ScriptL]min", ",", "\[ScriptL]max"}], "}"}]}], "]"}]}], 
-     ";", "\[IndentingNewLine]", 
+         RowBox[{"\[ScriptL]min", ",", "\[ScriptL]max"}], "}"}]}], "]"}]}], ";",
+      "\[IndentingNewLine]", 
      RowBox[{"W3j\[Rho]ProductMax", "=", 
       RowBox[{"Max", "[", 
        RowBox[{"Abs", "/@", 
@@ -13449,8 +13421,7 @@ Cell[BoxData[{
             RowBox[{"W3j\[Rho]Product", "[", 
              RowBox[{"m1", ",", "m2", ",", "m3"}], "]"}], "=", 
             RowBox[{
-             RowBox[{"OptionValue", "[", "\"\<OrderingFunction\>\"", "]"}], 
-             "[", 
+             RowBox[{"OptionValue", "[", "\"\<OrderingFunction\>\"", "]"}], "[", 
              RowBox[{"Times", "[", "\[IndentingNewLine]", 
               RowBox[{
                RowBox[{"Quiet", "[", 
@@ -13473,8 +13444,7 @@ Cell[BoxData[{
                "\[IndentingNewLine]", 
                RowBox[{"\[Rho]Symbol", "[", 
                 RowBox[{"\[ScriptL]3", ",", "m3"}], "]"}]}], 
-              "\[IndentingNewLine]", "]"}], "]"}]}], "\[IndentingNewLine]", 
-           ",", 
+              "\[IndentingNewLine]", "]"}], "]"}]}], "\[IndentingNewLine]", ",", 
            RowBox[{"{", 
             RowBox[{"m1", ",", 
              RowBox[{"-", "\[ScriptL]1"}], ",", "\[ScriptL]1"}], "}"}], ",", 
@@ -13555,8 +13525,8 @@ Cell[BoxData[{
                      "m1"}], "]"}]}], "}"}], ",", 
                     RowBox[{"{", 
                     RowBox[{"\[ScriptL]2", ",", 
-                    RowBox[{"Darker", "[", "Green", "]"}]}], "}"}]}], "}"}], 
-                    ",", "m2"}], "]"}], ",", "\[IndentingNewLine]", 
+                    RowBox[{"Darker", "[", "Green", "]"}]}], "}"}]}], "}"}], ",",
+                     "m2"}], "]"}], ",", "\[IndentingNewLine]", 
                     RowBox[{"EdgeForm", "[", 
                     RowBox[{"{", 
                     RowBox[{
@@ -13609,8 +13579,8 @@ Cell[BoxData[{
                     RowBox[{"{", 
                     RowBox[{
                     RowBox[{"{", 
-                    RowBox[{"m1", ",", "m2", ",", "m3"}], "}"}], ",", 
-                    "\"\<\[Rule]\>\"", ",", 
+                    RowBox[{"m1", ",", "m2", ",", "m3"}], "}"}], 
+                    ",", "\"\<\[Rule]\>\"", ",", 
                     RowBox[{"Round", "[", 
                     RowBox[{
                     RowBox[{
@@ -13622,12 +13592,10 @@ Cell[BoxData[{
                 "\[IndentingNewLine]", ",", 
                 RowBox[{"{", 
                  RowBox[{"m1", ",", 
-                  RowBox[{"-", "\[ScriptL]1"}], ",", "\[ScriptL]1"}], "}"}], 
-                ",", 
+                  RowBox[{"-", "\[ScriptL]1"}], ",", "\[ScriptL]1"}], "}"}], ",", 
                 RowBox[{"{", 
                  RowBox[{"m2", ",", 
-                  RowBox[{"-", "\[ScriptL]2"}], ",", "\[ScriptL]2"}], "}"}], 
-                ",", 
+                  RowBox[{"-", "\[ScriptL]2"}], ",", "\[ScriptL]2"}], "}"}], ",", 
                 RowBox[{"{", 
                  RowBox[{"m3", ",", 
                   RowBox[{"-", "\[ScriptL]3"}], ",", "\[ScriptL]3"}], "}"}]}],
@@ -13654,8 +13622,8 @@ cad3bbd3e67c"],
 Cell[BoxData[
  RowBox[{
   RowBox[{
-   RowBox[{"RasterPlot3D", "::", "usage"}], "=", 
-   "\"\<RasterPlot3D[data]\>\""}], ";"}]], "Input",
+   RowBox[{"RasterPlot3D", "::", "usage"}], 
+   "=", "\"\<RasterPlot3D[data]\>\""}], ";"}]], "Input",
  InitializationCell->True,
  CellLabel->
   "In[123]:=",ExpressionUUID->"a04fe615-5fd5-4222-a2fa-2819bb45e500"],
@@ -13737,8 +13705,7 @@ Cell[BoxData[{
                 RowBox[{
                  RowBox[{"0.15", "#"}], ",", "Black"}], "]"}], "]"}], 
               "]"}]}]}], "\[IndentingNewLine]", "]"}], "\[IndentingNewLine]", 
-          "}"}], "]"}], "\[IndentingNewLine]", "}"}], "\[IndentingNewLine]", 
-       ",", 
+          "}"}], "]"}], "\[IndentingNewLine]", "}"}], "\[IndentingNewLine]", ",", 
        RowBox[{"Evaluate", "[", 
         RowBox[{"Sequence", "@@", 
          RowBox[{"FilterRules", "[", 
@@ -13749,17 +13716,15 @@ Cell[BoxData[{
        RowBox[{"Axes", "->", "True"}], "\[IndentingNewLine]", ",", 
        RowBox[{"AxesLabel", "->", 
         RowBox[{"{", 
-         RowBox[{
-         "\"\<\!\(\*SubscriptBox[\(p\), \(x\)]\)\>\"", ",", 
-          "\"\<\!\(\*SubscriptBox[\(p\), \(y\)]\)\>\"", ",", 
-          "\"\<\!\(\*SubscriptBox[\(p\), \(z\)]\)\>\""}], "}"}]}], 
+         RowBox[{"\"\<\!\(\*SubscriptBox[\(p\), \(x\)]\)\>\"", 
+          ",", "\"\<\!\(\*SubscriptBox[\(p\), \(y\)]\)\>\"", 
+          ",", "\"\<\!\(\*SubscriptBox[\(p\), \(z\)]\)\>\""}], "}"}]}], 
        "\[IndentingNewLine]", ",", 
        RowBox[{"BoxRatios", "->", "Automatic"}], "\[IndentingNewLine]", ",", 
        RowBox[{"SphericalRegion", "->", "True"}], "\[IndentingNewLine]", ",", 
        
        RowBox[{"ImageSize", "->", "700"}]}], "\[IndentingNewLine]", "]"}]}], 
-    "\[IndentingNewLine]", "]"}]}], 
-  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+    "\[IndentingNewLine]", "]"}]}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{"End", "[", "]"}], ";"}]}], "Input",
  InitializationCell->True,
@@ -13771,7 +13736,7 @@ Cell[CellGroupData[{
 
 Cell["Tensor multipoles", "Subsection",
  CellChangeTimes->{{3.947138464263487*^9, 
-  3.9471384680879574`*^9}},ExpressionUUID->"d5dc46fe-ea56-4827-b558-\
+  3.9471384680879602`*^9}},ExpressionUUID->"d5dc46fe-ea56-4827-b558-\
 87d6fd092f23"],
 
 Cell[CellGroupData[{
@@ -13785,11 +13750,11 @@ Cell[BoxData[{
  RowBox[{
   RowBox[{
    RowBox[{
-    RowBox[{"TensorMultipole", "::", "usage"}], "=", 
-    "\"\<TensorMultipole[T,\[ScriptL]] returns the \[ScriptL]-polar component \
-of the tensor T.\nTensorMultipole[\[ScriptL]] gives the functionalized form \
-of the projector onto \[ScriptL]-polar tensors.\>\""}], ";"}], 
-  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+    RowBox[{"TensorMultipole", "::", "usage"}], 
+    "=", "\"\<TensorMultipole[T,\[ScriptL]] returns the \[ScriptL]-polar \
+component of the tensor T.\nTensorMultipole[\[ScriptL]] gives the \
+functionalized form of the projector onto \[ScriptL]-polar tensors.\>\""}], 
+   ";"}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{"Begin", "[", "\"\<`Private`\>\"", "]"}], ";"}]}], "Input",
  InitializationCell->
@@ -13995,7 +13960,7 @@ Cell[BoxData[
 
 Cell[BoxData["True"], "Output",
  CellChangeTimes->{
-  3.9471375989309235`*^9, {3.9471379210469856`*^9, 3.947137954799999*^9}},
+  3.9471375989309263`*^9, {3.947137921046986*^9, 3.947137954799999*^9}},
  CellLabel->"Out[128]=",ExpressionUUID->"0ef47d14-a233-4e88-b262-adb40e825da6"]
 }, Open  ]],
 
@@ -14025,12 +13990,12 @@ Cell[BoxData[
         RowBox[{"{", 
          RowBox[{"a", ",", "b", ",", "c"}], "}"}]}], "]"}]}]}]}], 
    "\[IndentingNewLine]", "]"}], "]"}]], "Input",
- CellChangeTimes->{{3.9471375490593452`*^9, 3.9471375682445107`*^9}},
+ CellChangeTimes->{{3.947137549059348*^9, 3.947137568244512*^9}},
  CellLabel->
   "In[129]:=",ExpressionUUID->"79c0e6a9-3127-41b7-ab84-011af76eb495"],
 
 Cell[BoxData["True"], "Output",
- CellChangeTimes->{{3.9471375534823685`*^9, 3.9471375689148483`*^9}, 
+ CellChangeTimes->{{3.947137553482372*^9, 3.94713756891485*^9}, 
    3.947137955425848*^9},
  CellLabel->"Out[129]=",ExpressionUUID->"b54eab97-bd88-4cda-8332-836f719cd7d5"]
 }, Open  ]]
@@ -14098,8 +14063,7 @@ Cell[BoxData[{
       RowBox[{"a", ",", "b", ",", "c"}], "}"}], ",", 
      RowBox[{"{", 
       RowBox[{"a", ",", "b", ",", "c"}], "}"}]}], "]"}], ",", 
-   "\[IndentingNewLine]", "1"}], "\[IndentingNewLine]", 
-  "]"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", "1"}], "\[IndentingNewLine]", "]"}], "\[IndentingNewLine]", 
  RowBox[{"FullSimplify", "[", 
   RowBox[{"Equal", "[", "\[IndentingNewLine]", 
    RowBox[{
@@ -14373,8 +14337,7 @@ Cell[BoxData[{
       RowBox[{"a", ",", "b", ",", "c"}], "}"}], ",", 
      RowBox[{"{", 
       RowBox[{"a", ",", "b", ",", "c"}], "}"}]}], "]"}], ",", 
-   "\[IndentingNewLine]", "3"}], "\[IndentingNewLine]", 
-  "]"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", "3"}], "\[IndentingNewLine]", "]"}], "\[IndentingNewLine]", 
  RowBox[{"FullSimplify", "[", 
   RowBox[{"Equal", "[", "\[IndentingNewLine]", 
    RowBox[{
@@ -14863,8 +14826,7 @@ Cell[BoxData[{
       RowBox[{"a", ",", "b", ",", "c"}], "}"}], ",", 
      RowBox[{"{", 
       RowBox[{"a", ",", "b", ",", "c"}], "}"}]}], "]"}], ",", 
-   "\[IndentingNewLine]", "0"}], "\[IndentingNewLine]", 
-  "]"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", "0"}], "\[IndentingNewLine]", "]"}], "\[IndentingNewLine]", 
  RowBox[{"FullSimplify", "[", 
   RowBox[{"Equal", "[", "\[IndentingNewLine]", 
    RowBox[{
@@ -14897,7 +14859,7 @@ Cell[BoxData[{
          RowBox[{"a", ",", "b", ",", "c"}], "}"}]}], "]"}]}]}]}], 
    "\[IndentingNewLine]", "]"}], "]"}]}], "Input",
  CellChangeTimes->{{3.947137719704523*^9, 3.947137773663389*^9}, 
-   3.947137810098675*^9, {3.9471380670675936`*^9, 3.947138137136902*^9}, {
+   3.947137810098675*^9, {3.947138067067596*^9, 3.947138137136902*^9}, {
    3.947138218336981*^9, 3.947138225725748*^9}, {3.947138327544916*^9, 
    3.9471383293786736`*^9}},
  CellLabel->"In[75]:=",ExpressionUUID->"4c11f29c-c5aa-46b5-ab36-92617130b5dd"],
@@ -15269,8 +15231,7 @@ Cell[BoxData[
             RowBox[{"2", " ", 
              SuperscriptBox["b", "2"], " ", 
              SuperscriptBox["c", "2"]}], "+", 
-            SuperscriptBox["c", "4"]}], ")"}]}], ",", "0"}], "}"}]}], "}"}], 
-     ",", 
+            SuperscriptBox["c", "4"]}], ")"}]}], ",", "0"}], "}"}]}], "}"}], ",", 
      RowBox[{"{", 
       RowBox[{
        RowBox[{"{", 
@@ -15355,8 +15316,7 @@ Cell[BoxData[{
       RowBox[{"a", ",", "b", ",", "c"}], "}"}], ",", 
      RowBox[{"{", 
       RowBox[{"a", ",", "b", ",", "c"}], "}"}]}], "]"}], ",", 
-   "\[IndentingNewLine]", "2"}], "\[IndentingNewLine]", 
-  "]"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", "2"}], "\[IndentingNewLine]", "]"}], "\[IndentingNewLine]", 
  RowBox[{"FullSimplify", "[", 
   RowBox[{"Equal", "[", "\[IndentingNewLine]", 
    RowBox[{
@@ -15389,7 +15349,7 @@ Cell[BoxData[{
          RowBox[{"a", ",", "b", ",", "c"}], "}"}]}], "]"}]}]}]}], 
    "\[IndentingNewLine]", "]"}], "]"}]}], "Input",
  CellChangeTimes->{{3.947137719704523*^9, 3.947137773663389*^9}, 
-   3.947137810098675*^9, {3.9471380670675936`*^9, 3.947138137136902*^9}, {
+   3.947137810098675*^9, {3.947138067067596*^9, 3.947138137136902*^9}, {
    3.947138312040983*^9, 3.947138316462057*^9}},
  CellLabel->"In[77]:=",ExpressionUUID->"66205906-5fb4-482c-84a3-dcb4cad59e5d"],
 
@@ -15521,8 +15481,7 @@ Cell[BoxData[
                   RowBox[{"2", " ", 
                    SuperscriptBox["b", "2"], " ", 
                    SuperscriptBox["c", "2"]}], "-", 
-                  SuperscriptBox["c", "4"]}], ")"}]}]}], ")"}]}]}], ")"}]}], 
-         ",", 
+                  SuperscriptBox["c", "4"]}], ")"}]}]}], ")"}]}]}], ")"}]}], ",", 
          RowBox[{
           FractionBox["1", "7"], " ", 
           RowBox[{"(", 
@@ -15689,8 +15648,7 @@ Cell[BoxData[
                   RowBox[{"2", " ", 
                    SuperscriptBox["b", "2"], " ", 
                    SuperscriptBox["c", "2"]}], "-", 
-                  SuperscriptBox["c", "4"]}], ")"}]}]}], ")"}]}]}], ")"}]}], 
-         ",", 
+                  SuperscriptBox["c", "4"]}], ")"}]}]}], ")"}]}]}], ")"}]}], ",", 
          RowBox[{
           FractionBox["1", "7"], " ", 
           RowBox[{"(", 
@@ -15762,8 +15720,7 @@ Cell[BoxData[
                   RowBox[{"2", " ", 
                    SuperscriptBox["b", "2"], " ", 
                    SuperscriptBox["c", "2"]}], "-", 
-                  SuperscriptBox["c", "4"]}], ")"}]}]}], ")"}]}]}], ")"}]}], 
-         ",", 
+                  SuperscriptBox["c", "4"]}], ")"}]}]}], ")"}]}]}], ")"}]}], ",", 
          RowBox[{
           FractionBox["3", "7"], " ", 
           RowBox[{"(", 
@@ -15994,8 +15951,7 @@ Cell[BoxData[
                   RowBox[{"2", " ", 
                    SuperscriptBox["b", "2"], " ", 
                    SuperscriptBox["c", "2"]}], "-", 
-                  SuperscriptBox["c", "4"]}], ")"}]}]}], ")"}]}]}], ")"}]}], 
-         ",", 
+                  SuperscriptBox["c", "4"]}], ")"}]}]}], ")"}]}]}], ")"}]}], ",", 
          RowBox[{
           FractionBox["1", "7"], " ", 
           RowBox[{"(", 
@@ -16092,8 +16048,7 @@ Cell[BoxData[
                   RowBox[{"2", " ", 
                    SuperscriptBox["b", "2"], " ", 
                    SuperscriptBox["c", "2"]}], "-", 
-                  SuperscriptBox["c", "4"]}], ")"}]}]}], ")"}]}]}], ")"}]}], 
-         ",", 
+                  SuperscriptBox["c", "4"]}], ")"}]}]}], ")"}]}]}], ")"}]}], ",", 
          RowBox[{
           FractionBox["1", "7"], " ", 
           RowBox[{"(", 
@@ -16165,8 +16120,7 @@ Cell[BoxData[
                   RowBox[{"2", " ", 
                    SuperscriptBox["b", "2"], " ", 
                    SuperscriptBox["c", "2"]}], "-", 
-                  SuperscriptBox["c", "4"]}], ")"}]}]}], ")"}]}]}], ")"}]}], 
-         ",", 
+                  SuperscriptBox["c", "4"]}], ")"}]}]}], ")"}]}]}], ")"}]}], ",", 
          RowBox[{
           FractionBox["3", "7"], " ", 
           RowBox[{"(", 
@@ -16282,8 +16236,7 @@ Cell[BoxData[
                   RowBox[{"2", " ", 
                    SuperscriptBox["b", "2"], " ", 
                    SuperscriptBox["c", "2"]}], "-", 
-                  SuperscriptBox["c", "4"]}], ")"}]}]}], ")"}]}]}], ")"}]}], 
-         ",", 
+                  SuperscriptBox["c", "4"]}], ")"}]}]}], ")"}]}]}], ")"}]}], ",", 
          RowBox[{
           FractionBox["3", "7"], " ", 
           RowBox[{"(", 
@@ -16625,8 +16578,7 @@ Cell[BoxData[
                   RowBox[{"2", " ", 
                    SuperscriptBox["b", "2"], " ", 
                    SuperscriptBox["c", "2"]}], "-", 
-                  SuperscriptBox["c", "4"]}], ")"}]}]}], ")"}]}]}], ")"}]}], 
-         ",", 
+                  SuperscriptBox["c", "4"]}], ")"}]}]}], ")"}]}]}], ")"}]}], ",", 
          RowBox[{
           FractionBox["3", "7"], " ", 
           RowBox[{"(", 
@@ -16818,8 +16770,7 @@ Cell[BoxData[
                   RowBox[{"2", " ", 
                    SuperscriptBox["b", "2"], " ", 
                    SuperscriptBox["c", "2"]}], "-", 
-                  SuperscriptBox["c", "4"]}], ")"}]}]}], ")"}]}]}], ")"}]}], 
-         ",", 
+                  SuperscriptBox["c", "4"]}], ")"}]}]}], ")"}]}]}], ")"}]}], ",", 
          RowBox[{
           FractionBox["1", "7"], " ", 
           RowBox[{"(", 
@@ -17028,8 +16979,7 @@ Cell[BoxData[
                   RowBox[{"2", " ", 
                    SuperscriptBox["b", "2"], " ", 
                    SuperscriptBox["c", "2"]}], "-", 
-                  SuperscriptBox["c", "4"]}], ")"}]}]}], ")"}]}]}], ")"}]}], 
-         ",", 
+                  SuperscriptBox["c", "4"]}], ")"}]}]}], ")"}]}]}], ")"}]}], ",", 
          RowBox[{
           FractionBox["3", "7"], " ", 
           RowBox[{"(", 
@@ -17103,8 +17053,7 @@ Cell[BoxData[
                   RowBox[{"2", " ", 
                    SuperscriptBox["b", "2"], " ", 
                    SuperscriptBox["c", "2"]}], "-", 
-                  SuperscriptBox["c", "4"]}], ")"}]}]}], ")"}]}]}], ")"}]}], 
-         ",", 
+                  SuperscriptBox["c", "4"]}], ")"}]}]}], ")"}]}]}], ")"}]}], ",", 
          RowBox[{
           FractionBox["1", "7"], " ", 
           RowBox[{"(", 
@@ -17196,8 +17145,7 @@ Cell[BoxData[
                   RowBox[{"2", " ", 
                    SuperscriptBox["b", "2"], " ", 
                    SuperscriptBox["c", "2"]}], "-", 
-                  SuperscriptBox["c", "4"]}], ")"}]}]}], ")"}]}]}], ")"}]}], 
-         ",", 
+                  SuperscriptBox["c", "4"]}], ")"}]}]}], ")"}]}]}], ")"}]}], ",", 
          RowBox[{
           FractionBox["3", "7"], " ", 
           RowBox[{"(", 
@@ -17287,8 +17235,7 @@ Cell[BoxData[{
      RowBox[{"{", 
       RowBox[{"a", ",", "b", ",", "c"}], "}"}], ",", 
      RowBox[{"{", 
-      RowBox[{"a", ",", "b", ",", "c"}], "}"}]}], 
-    "]"}]}]}], "\[IndentingNewLine]", 
+      RowBox[{"a", ",", "b", ",", "c"}], "}"}]}], "]"}]}]}], "\[IndentingNewLine]", 
  RowBox[{"FullSimplify", "[", 
   RowBox[{"Equal", "[", "\[IndentingNewLine]", 
    RowBox[{
@@ -17618,8 +17565,7 @@ Cell[BoxData[
               RowBox[{
                SuperscriptBox["b", "2"], "-", 
                RowBox[{"9", " ", 
-                SuperscriptBox["c", "2"]}]}], ")"}]}]}], ")"}]}]}], "}"}], 
-       ",", 
+                SuperscriptBox["c", "2"]}]}], ")"}]}]}], ")"}]}]}], "}"}], ",", 
        RowBox[{"{", 
         RowBox[{
          RowBox[{
@@ -18100,8 +18046,7 @@ Cell[BoxData[
               RowBox[{
                SuperscriptBox["b", "2"], "-", 
                RowBox[{"9", " ", 
-                SuperscriptBox["c", "2"]}]}], ")"}]}]}], ")"}]}]}], "}"}], 
-       ",", 
+                SuperscriptBox["c", "2"]}]}], ")"}]}]}], ")"}]}]}], "}"}], ",", 
        RowBox[{"{", 
         RowBox[{
          RowBox[{
@@ -18782,8 +18727,7 @@ Cell[BoxData[{
      RowBox[{
       RowBox[{"{", 
        RowBox[{"a", ",", "b", ",", "c"}], "}"}], ",", "6"}], "]"}], ",", 
-    "\[IndentingNewLine]", "0"}], "\[IndentingNewLine]", "]"}], 
-  ";"}], "\[IndentingNewLine]", 
+    "\[IndentingNewLine]", "0"}], "\[IndentingNewLine]", "]"}], ";"}], "\[IndentingNewLine]", 
  RowBox[{"FullSimplify", "[", "\[IndentingNewLine]", 
   RowBox[{"Equal", "[", "\[IndentingNewLine]", 
    RowBox[{
@@ -18804,10 +18748,10 @@ Cell[BoxData[{
         RowBox[{"a", ",", "b", ",", "c"}], "}"}], ",", "6"}], "]"}]}]}], 
    "\[IndentingNewLine]", "]"}], "\[IndentingNewLine]", "]"}]}], "Input",
  CellChangeTimes->{{3.947137719704523*^9, 3.947137773663389*^9}, 
-   3.947137810098675*^9, {3.9471380670675945`*^9, 3.947138137136902*^9}, {
+   3.947137810098675*^9, {3.947138067067596*^9, 3.947138137136902*^9}, {
    3.947138218336981*^9, 3.947138225725748*^9}, {3.947138327544916*^9, 
    3.9471383293786736`*^9}, {3.947573171917876*^9, 3.947573236817474*^9}, {
-   3.947573286651498*^9, 3.9475732913459187`*^9}, 3.947573335740965*^9, {
+   3.947573286651498*^9, 3.94757329134592*^9}, 3.947573335740965*^9, {
    3.9475733744934683`*^9, 3.947573383282345*^9}, {3.947573472778*^9, 
    3.947573497403661*^9}},
  CellLabel->
@@ -18828,8 +18772,7 @@ Cell[BoxData[{
      RowBox[{
       RowBox[{"{", 
        RowBox[{"a", ",", "b", ",", "c"}], "}"}], ",", "6"}], "]"}], ",", 
-    "\[IndentingNewLine]", "2"}], "\[IndentingNewLine]", "]"}], 
-  ";"}], "\[IndentingNewLine]", 
+    "\[IndentingNewLine]", "2"}], "\[IndentingNewLine]", "]"}], ";"}], "\[IndentingNewLine]", 
  RowBox[{"FullSimplify", "[", "\[IndentingNewLine]", 
   RowBox[{"Equal", "[", "\[IndentingNewLine]", 
    RowBox[{
@@ -18868,8 +18811,7 @@ Cell[BoxData[{
      RowBox[{
       RowBox[{"{", 
        RowBox[{"a", ",", "b", ",", "c"}], "}"}], ",", "6"}], "]"}], ",", 
-    "\[IndentingNewLine]", "4"}], "\[IndentingNewLine]", "]"}], 
-  ";"}], "\[IndentingNewLine]", 
+    "\[IndentingNewLine]", "4"}], "\[IndentingNewLine]", "]"}], ";"}], "\[IndentingNewLine]", 
  RowBox[{"Simplify", "[", "\[IndentingNewLine]", 
   RowBox[{"Equal", "[", "\[IndentingNewLine]", 
    RowBox[{
@@ -18890,10 +18832,10 @@ Cell[BoxData[{
         RowBox[{"a", ",", "b", ",", "c"}], "}"}], ",", "6"}], "]"}]}]}], 
    "\[IndentingNewLine]", "]"}], "\[IndentingNewLine]", "]"}]}], "Input",
  CellChangeTimes->{{3.947137719704523*^9, 3.947137773663389*^9}, 
-   3.947137810098675*^9, {3.9471380670675945`*^9, 3.947138137136902*^9}, {
+   3.947137810098675*^9, {3.947138067067596*^9, 3.947138137136902*^9}, {
    3.947138218336981*^9, 3.947138225725748*^9}, {3.947138327544916*^9, 
    3.9471383293786736`*^9}, {3.947573171917876*^9, 3.947573236817474*^9}, {
-   3.947573286651498*^9, 3.9475732913459187`*^9}, 3.947573335740965*^9, {
+   3.947573286651498*^9, 3.94757329134592*^9}, 3.947573335740965*^9, {
    3.9475733744934683`*^9, 3.947573383282345*^9}, {3.947573417428174*^9, 
    3.947573435058483*^9}, {3.947573466334094*^9, 3.9475734714002247`*^9}, {
    3.947573540864468*^9, 3.947573552793704*^9}, {3.947573592676023*^9, 
@@ -18921,8 +18863,7 @@ Cell[BoxData[{
      RowBox[{
       RowBox[{"{", 
        RowBox[{"a", ",", "b", ",", "c"}], "}"}], ",", "6"}], "]"}], ",", 
-    "\[IndentingNewLine]", "6"}], "\[IndentingNewLine]", "]"}], 
-  ";"}], "\[IndentingNewLine]", 
+    "\[IndentingNewLine]", "6"}], "\[IndentingNewLine]", "]"}], ";"}], "\[IndentingNewLine]", 
  RowBox[{"Simplify", "[", "\[IndentingNewLine]", 
   RowBox[{"Equal", "[", "\[IndentingNewLine]", 
    RowBox[{
@@ -18943,10 +18884,10 @@ Cell[BoxData[{
         RowBox[{"a", ",", "b", ",", "c"}], "}"}], ",", "6"}], "]"}]}]}], 
    "\[IndentingNewLine]", "]"}], "\[IndentingNewLine]", "]"}]}], "Input",
  CellChangeTimes->{{3.947137719704523*^9, 3.947137773663389*^9}, 
-   3.947137810098675*^9, {3.9471380670675945`*^9, 3.947138137136902*^9}, {
+   3.947137810098675*^9, {3.947138067067596*^9, 3.947138137136902*^9}, {
    3.947138218336981*^9, 3.947138225725748*^9}, {3.947138327544916*^9, 
    3.9471383293786736`*^9}, {3.947573171917876*^9, 3.947573236817474*^9}, {
-   3.947573286651498*^9, 3.9475732913459187`*^9}, 3.947573335740965*^9, {
+   3.947573286651498*^9, 3.94757329134592*^9}, 3.947573335740965*^9, {
    3.9475733744934683`*^9, 3.947573383282345*^9}, {3.947573417428174*^9, 
    3.947573435058483*^9}, {3.947573466334094*^9, 3.9475734714002247`*^9}, {
    3.947573540864468*^9, 3.947573552793704*^9}, {3.947573592676023*^9, 
@@ -19118,14 +19059,14 @@ Cell[BoxData[{
    "\[IndentingNewLine]", "]"}], "]"}]}], "Input",
  CellChangeTimes->{{3.947137719704523*^9, 3.947137773663389*^9}, 
    3.947137810098675*^9, {3.947574029070946*^9, 3.947574064521002*^9}, {
-   3.94757409700307*^9, 3.94757415481775*^9}, {3.9475747094360046`*^9, 
+   3.94757409700307*^9, 3.94757415481775*^9}, {3.947574709436005*^9, 
    3.947574727338268*^9}},
  CellLabel->
   "In[264]:=",ExpressionUUID->"0803a63c-6d6b-4707-8a72-c86f641d6f5b"],
 
 Cell[BoxData["True"], "Output",
  CellChangeTimes->{{3.947574718948476*^9, 3.947574728193514*^9}, 
-   3.9475748848965206`*^9, 3.947575059499745*^9, 3.947575113900972*^9},
+   3.947574884896521*^9, 3.947575059499745*^9, 3.947575113900972*^9},
  CellLabel->"Out[265]=",ExpressionUUID->"eee3dee0-834e-4dbd-99c6-01605036cbc1"]
 }, Open  ]],
 
@@ -19278,14 +19219,12 @@ Cell[BoxData[{
  RowBox[{
   RowBox[{
    RowBox[{
-    RowBox[{"TensorCross", "::", "usage"}], "=", 
-    "\"\<TensorCross[A,B,k] returns the tensor cross product \
-(A\[Times]B\!\(\*SubscriptBox[\()\), \(k\)]\) of the two tensors A and B with \
-output rank k.\>\""}], ";"}], 
-  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+    RowBox[{"TensorCross", "::", "usage"}], 
+    "=", "\"\<TensorCross[A,B,k] returns the tensor cross product (A\[Times]B\
+\!\(\*SubscriptBox[\()\), \(k\)]\) of the two tensors A and B with output \
+rank k.\>\""}], ";"}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
  RowBox[{
-  RowBox[{"Begin", "[", "\"\<`Private`\>\"", "]"}], 
-  ";"}], "\[IndentingNewLine]", 
+  RowBox[{"Begin", "[", "\"\<`Private`\>\"", "]"}], ";"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{
    RowBox[{"TensorCross", "[", 
@@ -19333,7 +19272,7 @@ output rank k.\>\""}], ";"}],
   RowBox[{"End", "[", "]"}], ";"}]}], "Input",
  InitializationCell->
   True,ExpressionUUID->"d0a18a26-560f-4757-9498-9a814e6f5cf6"]
-}, Closed]],
+}, Open  ]],
 
 Cell[CellGroupData[{
 
@@ -19344,9 +19283,9 @@ Cell[BoxData[{
  RowBox[{
   RowBox[{
    RowBox[{
-    RowBox[{"TensorDot", "::", "usage"}], "=", 
-    "\"\<TensorDot[A,B] returns the full contraction of the two tensors A and \
-B.\>\""}], ";"}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+    RowBox[{"TensorDot", "::", "usage"}], 
+    "=", "\"\<TensorDot[A,B] returns the full contraction of the two tensors \
+A and B.\>\""}], ";"}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{
    RowBox[{"Begin", "[", "\"\<`Private`\>\"", "]"}], ";"}], 
@@ -19370,8 +19309,7 @@ B.\>\""}], ";"}], "\[IndentingNewLine]"}], "\[IndentingNewLine]",
        RowBox[{"{", 
         RowBox[{"index", ",", "1", ",", 
          RowBox[{"ArrayDepth", "[", "tensor1", "]"}]}], "}"}]}], "]"}]}], 
-    "\[IndentingNewLine]", "]"}]}], 
-  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+    "\[IndentingNewLine]", "]"}]}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{"End", "[", "]"}], ";"}]}], "Input",
  InitializationCell->
@@ -19389,10 +19327,9 @@ Cell[BoxData[{
  RowBox[{
   RowBox[{
    RowBox[{
-    RowBox[{"TensorPower", "::", "usage"}], "=", 
-    "\"\<TensorPower[T,n] returns the tensor power \
-\!\(\*SuperscriptBox[\(T\), \(\[CircleTimes]n\)]\).\>\""}], ";"}], 
-  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+    RowBox[{"TensorPower", "::", "usage"}], 
+    "=", "\"\<TensorPower[T,n] returns the tensor power \!\(\*SuperscriptBox[\
+\(T\), \(\[CircleTimes]n\)]\).\>\""}], ";"}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{
    RowBox[{"Begin", "[", "\"\<`Private`\>\"", "]"}], ";"}], 
@@ -19404,8 +19341,7 @@ Cell[BoxData[{
    RowBox[{"TensorProduct", "@@", 
     RowBox[{"Table", "[", 
      RowBox[{"tensor", ",", 
-      RowBox[{"{", "n", "}"}]}], "]"}]}]}], 
-  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+      RowBox[{"{", "n", "}"}]}], "]"}]}]}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{"End", "[", "]"}], ";"}]}], "Input",
  InitializationCell->
@@ -19423,10 +19359,10 @@ Cell[BoxData[{
  RowBox[{
   RowBox[{
    RowBox[{
-    RowBox[{"MultipolePower", "::", "usage"}], "=", 
-    "\"\<MultipolePower[v,\[ScriptL]] returns the \[ScriptL]-polar component \
-of \!\(\*SuperscriptBox[\(v\), \(\[CircleTimes]\[ScriptL]\)]\), for a vector \
-v.\>\""}], ";"}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+    RowBox[{"MultipolePower", "::", "usage"}], 
+    "=", "\"\<MultipolePower[v,\[ScriptL]] returns the \[ScriptL]-polar \
+component of \!\(\*SuperscriptBox[\(v\), \(\[CircleTimes]\[ScriptL]\)]\), for \
+a vector v.\>\""}], ";"}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{
    RowBox[{"Begin", "[", "\"\<`Private`\>\"", "]"}], ";"}], 
@@ -19457,12 +19393,14 @@ Cell[BoxData[{
  RowBox[{
   RowBox[{
    RowBox[{
-    RowBox[{"TensorPolynomial", "::", "usage"}], "=", 
-    "\"\<TensorPolynomial[T,v] returns the polynomial \
+    RowBox[{"TensorPolynomial", "::", "usage"}], 
+    "=", "\"\<TensorPolynomial[T,v] returns the polynomial \
 T\[CenterDot]\!\(\*SuperscriptBox[\(v\), \
 \(\[CircleTimes]k\)]\)=\!\(\*SubscriptBox[\(T\), \(\*SubscriptBox[\(i\), \
-\(1\)] \*SubscriptBox[\(\[CenterEllipsis]i\), \(k\)]\)]\).\>\""}], ";"}], 
-  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+\(1\)] \*SubscriptBox[\(\[CenterEllipsis]i\), \
+\(k\)]\)]\)\!\(\*SubscriptBox[\(v\), SubscriptBox[\(i\), \
+\(1\)]]\)\!\(\*SubscriptBox[\(\[CenterEllipsis]v\), SubscriptBox[\(i\), \
+\(k\)]]\).\>\""}], ";"}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{
    RowBox[{"Begin", "[", "\"\<`Private`\>\"", "]"}], ";"}], 
@@ -19481,7 +19419,162 @@ T\[CenterDot]\!\(\*SuperscriptBox[\(v\), \
   RowBox[{"End", "[", "]"}], ";"}]}], "Input",
  InitializationCell->
   True,ExpressionUUID->"9272a2db-f6c9-4abb-b3cf-f1c40cf98273"]
-}, Closed]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["MultipolarBasisTensorT", \
+"Subsubsection",ExpressionUUID->"b4d1b52c-25e3-ad44-91b1-80c2d52f4015"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"MultipolarBasisTensorT", "::", "usage"}], 
+    "=", "\"\<MultipolarBasisTensorT[\[ScriptL],m] returns the multipolar \
+basis tensor \!\(\*SubsuperscriptBox[OverscriptBox[\(t\), \(^\)], \(m\), \((\
+\[ScriptL])\)]\).\>\""}], ";"}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"Begin", "[", "\"\<`Private`\>\"", "]"}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"MultipolarBasisTensorT", "[", 
+     RowBox[{"\[Lambda]_Integer", ",", "\[Mu]_Integer"}], "]"}], "/;", 
+    RowBox[{"\[Lambda]", "\[GreaterEqual]", 
+     RowBox[{"Abs", "[", "\[Mu]", "]"}]}]}], ":=", 
+   RowBox[{"(*", 
+    RowBox[{"Sqrt", "[", 
+     FractionBox[
+      RowBox[{
+       RowBox[{"2", " ", "\[Lambda]"}], "+", "1"}], 
+      RowBox[{"4", " ", "\[Pi]"}]], "]"}], " ", "*)"}], 
+   RowBox[{
+    RowBox[{"Sqrt", "[", 
+     FractionBox[
+      RowBox[{"Gamma", "[", 
+       RowBox[{"\[Lambda]", "-", 
+        RowBox[{"Abs", "[", "\[Mu]", "]"}], "+", "1"}], "]"}], 
+      RowBox[{"Gamma", "[", 
+       RowBox[{"\[Lambda]", "+", 
+        RowBox[{"Abs", "[", "\[Mu]", "]"}], "+", "1"}], "]"}]], "]"}], " ", 
+    SuperscriptBox["2", 
+     RowBox[{"-", "\[Lambda]"}]], " ", 
+    SuperscriptBox[
+     RowBox[{"(", 
+      RowBox[{"-", "1"}], ")"}], 
+     RowBox[{
+      RowBox[{"(", 
+       RowBox[{"\[Mu]", "-", 
+        RowBox[{"Abs", "[", "\[Mu]", "]"}]}], ")"}], "/", "2"}]], "\[Times]", 
+    "\[IndentingNewLine]", 
+    RowBox[{"Normal", "@", 
+     RowBox[{"Symmetrize", "@", 
+      RowBox[{"TensorProduct", "[", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"If", "[", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"Rationalize", "[", "\[Mu]", "]"}], "\[Equal]", "0"}], ",",
+           "1", ",", 
+          RowBox[{"TensorPower", "[", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"{", 
+              RowBox[{"1", ",", "0", ",", "0"}], "}"}], "+", 
+             RowBox[{
+              RowBox[{"Sign", "[", "\[Mu]", "]"}], "\[ImaginaryI]", " ", 
+              RowBox[{"{", 
+               RowBox[{"0", ",", "1", ",", "0"}], "}"}]}]}], ",", 
+            RowBox[{"Abs", "[", "\[Mu]", "]"}]}], "]"}]}], "]"}], ",", 
+        "\[IndentingNewLine]", 
+        RowBox[{"Sum", "[", "\[IndentingNewLine]", 
+         RowBox[{
+          RowBox[{
+           SuperscriptBox[
+            RowBox[{"(", 
+             RowBox[{"-", "1"}], ")"}], 
+            RowBox[{"\[Mu]", "+", "k"}]], " ", 
+           RowBox[{"Binomial", "[", 
+            RowBox[{"\[Lambda]", ",", "k"}], "]"}], " ", 
+           RowBox[{"Binomial", "[", 
+            RowBox[{
+             RowBox[{
+              RowBox[{"2", " ", "\[Lambda]"}], "-", 
+              RowBox[{"2", " ", "k"}]}], ",", "\[Lambda]"}], "]"}], " ", 
+           RowBox[{"Pochhammer", "[", 
+            RowBox[{
+             RowBox[{"\[Lambda]", "-", 
+              RowBox[{"Abs", "[", "\[Mu]", "]"}], "-", 
+              RowBox[{"2", " ", "k"}], "+", "1"}], ",", 
+             RowBox[{"Abs", "[", "\[Mu]", "]"}]}], "]"}], " ", "\[Times]", 
+           "\[IndentingNewLine]", 
+           RowBox[{"If", "[", 
+            RowBox[{
+             RowBox[{"TrueQ", "[", 
+              RowBox[{
+               RowBox[{"Pochhammer", "[", 
+                RowBox[{
+                 RowBox[{"\[Lambda]", "-", 
+                  RowBox[{"Abs", "[", "\[Mu]", "]"}], "-", 
+                  RowBox[{"2", " ", "k"}], "+", "1"}], ",", 
+                 RowBox[{"Abs", "[", "\[Mu]", "]"}]}], "]"}], "\[Equal]", 
+               "0"}], "]"}], ",", "1", ",", "\[IndentingNewLine]", 
+             RowBox[{"TensorProduct", "[", "\[IndentingNewLine]", 
+              RowBox[{
+               RowBox[{"If", "[", 
+                RowBox[{
+                 RowBox[{
+                  RowBox[{"Rationalize", "[", "k", "]"}], "\[Equal]", "0"}], ",",
+                  "1", ",", 
+                 RowBox[{"TensorPower", "[", 
+                  RowBox[{
+                   RowBox[{"IdentityMatrix", "[", "3", "]"}], ",", "k"}], 
+                  "]"}]}], "]"}], ",", "\[IndentingNewLine]", 
+               RowBox[{"If", "[", 
+                RowBox[{
+                 RowBox[{
+                  RowBox[{"Rationalize", "[", 
+                   RowBox[{"\[Lambda]", "-", 
+                    RowBox[{"Abs", "[", "\[Mu]", "]"}], "-", 
+                    RowBox[{"2", " ", "k"}]}], "]"}], "\[Equal]", "0"}], ",", 
+                 "1", ",", 
+                 RowBox[{"TensorPower", "[", 
+                  RowBox[{
+                   RowBox[{"{", 
+                    RowBox[{"0", ",", "0", ",", "1"}], "}"}], ",", 
+                   RowBox[{"\[Lambda]", "-", 
+                    RowBox[{"Abs", "[", "\[Mu]", "]"}], "-", 
+                    RowBox[{"2", " ", "k"}]}]}], "]"}]}], "]"}]}], 
+              "\[IndentingNewLine]", "]"}]}], "\[IndentingNewLine]", "]"}]}], 
+          "\[IndentingNewLine]", ",", 
+          RowBox[{"{", 
+           RowBox[{"k", ",", "0", ",", 
+            RowBox[{"Quotient", "[", 
+             RowBox[{"\[Lambda]", ",", "2"}], "]"}]}], "}"}]}], "]"}]}], 
+       "\[IndentingNewLine]", "]"}]}]}]}]}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"End", "[", "]"}], ";"}]}], "Input",
+ InitializationCell->
+  True,ExpressionUUID->"d0d62745-a3b2-1a4e-99c3-5ca91acb0506"],
+
+Cell[TextData[{
+ "Things to consider here:\n- re-normalizing. The current norm for this is ",
+ Cell[BoxData[
+  FormBox[
+   FractionBox[
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"2", "\[ScriptL]"}], "-", "1"}], ")"}], "!!"}], 
+    RowBox[{"\[ScriptL]", "!"}]], TraditionalForm]],ExpressionUUID->
+  "e2a0b8e3-3a5a-0d40-8154-b4b3b8c437cd"],
+ ", and it should really be unit-normalized.\n- potentially taking the \
+complex conjugate of this."
+}], "Text",ExpressionUUID->"c991da37-0bdb-024d-a697-29a9c045390b"]
+}, Open  ]]
 }, Open  ]]
 }, Open  ]],
 
@@ -19534,8 +19627,8 @@ NotebookEventActions->{{"MenuCommand", "Save"} :> (NotebookWrite[
          "\";End[];"}]], "Input", InitializationCell -> True, CellTags -> 
       "version-timestamp"], None, AutoScroll -> False]; NotebookSave[]), 
   PassEventsDown -> True},
-WindowSize->{1068, 830.25},
-WindowMargins->{{360, Automatic}, {43.5, Automatic}},
+WindowSize->{1495.5, 874.5},
+WindowMargins->{{324.75, Automatic}, {Automatic, 54}},
 PrintingCopies->1,
 PrintingStartingPageNumber->1,
 PrintingPageRange->{Automatic, Automatic},
@@ -19572,7 +19665,7 @@ TrackCellChangeTimes->False,
 SpellingDictionaries->{"CorrectWords"->{
  "subpackage", "Pisanty", "subpackages"}},
 Background->None,
-FrontEndVersion->"14.0 for Linux x86 (64-bit) (December 12, 2023)",
+FrontEndVersion->"14.2 for Linux x86 (64-bit) (December 26, 2024)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[StyleDefinitions -> "Default.nb"]], 
@@ -19582,7 +19675,7 @@ StyleDefinitions->Notebook[{
     FontVariations -> {
      "Outline" -> False, "Shadow" -> False, "StrikeThrough" -> False, 
       "Underline" -> False}]}, Visible -> False, FrontEndVersion -> 
-  "14.0 for Linux x86 (64-bit) (December 12, 2023)", StyleDefinitions -> 
+  "14.2 for Linux x86 (64-bit) (December 26, 2024)", StyleDefinitions -> 
   "PrivateStylesheetFormatting.nb"],
 ExpressionUUID->"d1cc7f40-ea02-494c-9758-0c8d4ee5ba2e"
 ]
