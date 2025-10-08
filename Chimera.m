@@ -19,7 +19,7 @@ BeginPackage["Chimera`"];
 $ChimeraVersion::usage="$ChimeraVersion prints the current version of the Chimera package in use and its timestamp.";
 $ChimeraTimestamp::usage="$ChimeraTimestamp prints the timestamp of the current version of the Chimera package.";
 Begin["`Private`"];
-$ChimeraVersion:="Chimera v0.2, "<>$ChimeraTimestamp;
+$ChimeraVersion:="Chimera v0.3, "<>$ChimeraTimestamp;
 End[];
 
 
@@ -50,7 +50,7 @@ End[];
 
 
 (* ::Input::Initialization:: *)
-Begin["`Private`"];$ChimeraTimestamp="Tue 5 Aug 2025 13:05:36";End[];
+Begin["`Private`"];$ChimeraTimestamp="Wed 8 Oct 2025 17:11:59";End[];
 
 
 (* ::Input::Initialization:: *)
@@ -737,92 +737,92 @@ End[];
 
 
 (* ::Input::Initialization:: *)
-TensorMultipole::usage="TensorMultipole[T,\[ScriptL]] returns the \[ScriptL]-polar component of the tensor T.
+TensorMultipoleOld::usage="TensorMultipoleOld[T,\[ScriptL]] returns the \[ScriptL]-polar component of the tensor T.
 TensorMultipole[\[ScriptL]] gives the functionalized form of the projector onto \[ScriptL]-polar tensors.";
 
 Begin["`Private`"];
 
 
 (* ::Input::Initialization:: *)
-TensorMultipole[\[ScriptL]_][tensor_]:=TensorMultipole[tensor,\[ScriptL]]
+TensorMultipoleOld[\[ScriptL]_][tensor_]:=TensorMultipoleOld[tensor,\[ScriptL]]
 
 
 (* ::Input::Initialization:: *)
-TensorMultipole[tensor_/;(ArrayDepth[tensor]==2),0]:=1/3 Tr[tensor]IdentityMatrix[3]
-TensorMultipole[tensor_/;(ArrayDepth[tensor]==2),2]:=tensor-TensorMultipole[tensor,0]
+TensorMultipoleOld[tensor_/;(ArrayDepth[tensor]==2),0]:=1/3 Tr[tensor]IdentityMatrix[3]
+TensorMultipoleOld[tensor_/;(ArrayDepth[tensor]==2),2]:=tensor-TensorMultipoleOld[tensor,0]
 
 
 (* ::Input::Initialization:: *)
-TensorMultipole[tensor_/;(ArrayDepth[tensor]==3),1]:=Normal[Symmetrize[
+TensorMultipoleOld[tensor_/;(ArrayDepth[tensor]==3),1]:=Normal[Symmetrize[
 3/5 TensorProduct[
 TensorContract[tensor,{{2,3}}],
 IdentityMatrix[3]
 ]
 ]]
-TensorMultipole[tensor_/;(ArrayDepth[tensor]==3),3]:=tensor-TensorMultipole[tensor,1]
+TensorMultipoleOld[tensor_/;(ArrayDepth[tensor]==3),3]:=tensor-TensorMultipoleOld[tensor,1]
 
 
 (* ::Input::Initialization:: *)
-TensorMultipole[tensor_/;(ArrayDepth[tensor]==4),0]:=1/5 TensorContract[tensor,{{1,2},{3,4}}]Normal[Symmetrize[TensorProduct[
+TensorMultipoleOld[tensor_/;(ArrayDepth[tensor]==4),0]:=1/5 TensorContract[tensor,{{1,2},{3,4}}]Normal[Symmetrize[TensorProduct[
 IdentityMatrix[3],
 IdentityMatrix[3]
 ]]]
-TensorMultipole[tensor_/;(ArrayDepth[tensor]==4),2]:=Normal[Symmetrize[
+TensorMultipoleOld[tensor_/;(ArrayDepth[tensor]==4),2]:=Normal[Symmetrize[
 6/7 TensorProduct[
 TensorContract[
-tensor-TensorMultipole[tensor,0]
+tensor-TensorMultipoleOld[tensor,0]
 ,{{3,4}}],
 IdentityMatrix[3]
 ]
 ]]
-TensorMultipole[tensor_/;(ArrayDepth[tensor]==4),4]:=tensor-TensorMultipole[tensor,2]-TensorMultipole[tensor,0]
+TensorMultipoleOld[tensor_/;(ArrayDepth[tensor]==4),4]:=tensor-TensorMultipoleOld[tensor,2]-TensorMultipoleOld[tensor,0]
 
 
 (* ::Input::Initialization:: *)
-TensorMultipole[tensor_/;(ArrayDepth[tensor]==5),1]:=Normal[Symmetrize[
+TensorMultipoleOld[tensor_/;(ArrayDepth[tensor]==5),1]:=Normal[Symmetrize[
 3/7 TensorProduct[
 TensorContract[tensor,{{2,3},{4,5}}],
 IdentityMatrix[3],
 IdentityMatrix[3]
 ]
 ]]
-TensorMultipole[tensor_/;(ArrayDepth[tensor]==5),3]:=Normal[Symmetrize[
+TensorMultipoleOld[tensor_/;(ArrayDepth[tensor]==5),3]:=Normal[Symmetrize[
 10/9 TensorProduct[
-TensorContract[tensor-TensorMultipole[tensor,1],{{4,5}}],
+TensorContract[tensor-TensorMultipoleOld[tensor,1],{{4,5}}],
 IdentityMatrix[3]
 ]
 ]]
-TensorMultipole[tensor_/;(ArrayDepth[tensor]==5),5]:=tensor-TensorMultipole[tensor,3]-TensorMultipole[tensor,1]
+TensorMultipoleOld[tensor_/;(ArrayDepth[tensor]==5),5]:=tensor-TensorMultipoleOld[tensor,3]-TensorMultipoleOld[tensor,1]
 
 
 (* ::Input::Initialization:: *)
-TensorMultipole[tensor_/;(ArrayDepth[tensor]==6),0]:=1/7 TensorContract[tensor,{{1,2},{3,4},{5,6}}]Normal[Symmetrize[TensorProduct[
+TensorMultipoleOld[tensor_/;(ArrayDepth[tensor]==6),0]:=1/7 TensorContract[tensor,{{1,2},{3,4},{5,6}}]Normal[Symmetrize[TensorProduct[
 IdentityMatrix[3],
 IdentityMatrix[3],
 IdentityMatrix[3]
 ]]]
-TensorMultipole[tensor_/;(ArrayDepth[tensor]==6),2]:=Normal[Symmetrize[
+TensorMultipoleOld[tensor_/;(ArrayDepth[tensor]==6),2]:=Normal[Symmetrize[
 5/7 TensorProduct[
 TensorContract[
-tensor-TensorMultipole[tensor,0]
+tensor-TensorMultipoleOld[tensor,0]
 ,{{3,4},{5,6}}],
 IdentityMatrix[3],
 IdentityMatrix[3]
 ]
 ]]
-TensorMultipole[tensor_/;(ArrayDepth[tensor]==6),4]:=Normal[Symmetrize[
+TensorMultipoleOld[tensor_/;(ArrayDepth[tensor]==6),4]:=Normal[Symmetrize[
 15/11 TensorProduct[
 TensorContract[
-tensor-TensorMultipole[tensor,2]-TensorMultipole[tensor,0]
+tensor-TensorMultipoleOld[tensor,2]-TensorMultipoleOld[tensor,0]
 ,{{5,6}}],
 IdentityMatrix[3]
 ]
 ]]
-TensorMultipole[tensor_/;(ArrayDepth[tensor]==6),6]:=tensor-TensorMultipole[tensor,4]-TensorMultipole[tensor,2]-TensorMultipole[tensor,0]
+TensorMultipoleOld[tensor_/;(ArrayDepth[tensor]==6),6]:=tensor-TensorMultipoleOld[tensor,4]-TensorMultipoleOld[tensor,2]-TensorMultipoleOld[tensor,0]
 
 
 (* ::Input::Initialization:: *)
-TensorMultipole[tensor_/;(ArrayDepth[tensor]==7),1]:=Normal[Symmetrize[
+TensorMultipoleOld[tensor_/;(ArrayDepth[tensor]==7),1]:=Normal[Symmetrize[
 1/3 TensorProduct[
 TensorContract[tensor,{{2,3},{4,5},{6,7}}],
 IdentityMatrix[3],
@@ -830,20 +830,20 @@ IdentityMatrix[3],
 IdentityMatrix[3]
 ]
 ]]
-TensorMultipole[tensor_/;(ArrayDepth[tensor]==7),3]:=Normal[Symmetrize[
+TensorMultipoleOld[tensor_/;(ArrayDepth[tensor]==7),3]:=Normal[Symmetrize[
 35/33 TensorProduct[
-TensorContract[tensor-TensorMultipole[tensor,1],{{4,5},{6,7}}],
+TensorContract[tensor-TensorMultipoleOld[tensor,1],{{4,5},{6,7}}],
 IdentityMatrix[3],
 IdentityMatrix[3]
 ]
 ]]
-TensorMultipole[tensor_/;(ArrayDepth[tensor]==7),5]:=Normal[Symmetrize[
+TensorMultipoleOld[tensor_/;(ArrayDepth[tensor]==7),5]:=Normal[Symmetrize[
 21/13 TensorProduct[
-TensorContract[tensor-TensorMultipole[tensor,3]-TensorMultipole[tensor,1],{{6,7}}],
+TensorContract[tensor-TensorMultipoleOld[tensor,3]-TensorMultipoleOld[tensor,1],{{6,7}}],
 IdentityMatrix[3]
 ]
 ]]
-TensorMultipole[tensor_/;(ArrayDepth[tensor]==7),7]:=tensor-TensorMultipole[tensor,5]-TensorMultipole[tensor,3]-TensorMultipole[tensor,1]
+TensorMultipoleOld[tensor_/;(ArrayDepth[tensor]==7),7]:=tensor-TensorMultipoleOld[tensor,5]-TensorMultipoleOld[tensor,3]-TensorMultipoleOld[tensor,1]
 
 
 (* ::Input::Initialization:: *)
@@ -930,6 +930,58 @@ If[Rationalize[\[Lambda]-Abs[\[Mu]]-2 k]==0,1,TensorPower[{0,0,1},\[Lambda]-Abs[
 ]
 
 End[];
+
+
+(* ::Input::Initialization:: *)
+TensorLift::usage="TensorLift[A] returns the tensor lift \!\(\*OverscriptBox[\(\[ScriptCapitalL]\), \(^\)]\)(A)=\!\(\*OverscriptBox[\(\[ScriptCapitalS]\), \(^\)]\)(A\[CircleTimes]I) for the given tensor A.";
+
+Begin["`Private`"];
+TensorLift[tensor_List|tensor_SymmetrizedArray]:=Symmetrize[
+TensorProduct[
+tensor,
+IdentityMatrix[3]
+]
+]
+TensorLift[scalar_]:=scalar IdentityMatrix[3]
+
+End[];
+
+
+(* ::Input::Initialization:: *)
+TensorTrace::usage="TensorTrace[A] returns the tensor trace Tr(A), contracted on the first and second indices.";
+
+Begin["`Private`"];
+TensorTrace[tensor_]:=TensorContract[tensor,{{1,2}}]
+
+End[];
+
+
+(* ::Input::Initialization:: *)
+TensorMultipole::usage="TensorMultipole[T,\[ScriptL],n] returns the \[ScriptL]-polar component of a tensor T of rank n.
+TensorMultipole[\[ScriptL],n] gives the functionalized form of the projector onto \[ScriptL]-polar tensors of rank n.
+TensorMultipole[\[ScriptL]] gives the functionalized form of the projector onto \[ScriptL]-polar tensors of rank \[ScriptL].";
+
+Begin["`Private`"];
+
+dim=3;
+b[n_,m_]:=((n+2m)!(2n-2+dim)!!)/(2^m m!n!(2n+2(m-1)+dim)!!)
+c[n_,\[ScriptL]_]:=((n+2)(n+1))/((n+2-\[ScriptL])(n+\[ScriptL]+dim))
+
+TensorMultipole[tensor_,\[ScriptL]_,n_]/;And[EvenQ[n-\[ScriptL]],n>=\[ScriptL]]:=Function[
+projectedTensor,
+b[\[ScriptL],(n-\[ScriptL])/2]Nest[TensorLift,(n-\[ScriptL])/2]@(
+projectedTensor-Sum[
+TensorMultipole[projectedTensor,\[ScriptL]\[ScriptL],\[ScriptL]]
+,{\[ScriptL]\[ScriptL],Mod[\[ScriptL],2],\[ScriptL]-2,2}]
+)
+][
+Nest[TensorTrace,tensor,(n-\[ScriptL])/2]
+]
+
+(TensorMultipole[\[ScriptL]_,n_]/;And[EvenQ[n-\[ScriptL]],n>=\[ScriptL]])[tensor_]:=TensorMultipole[tensor,\[ScriptL],n]
+TensorMultipole[\[ScriptL]_][tensor_]:=TensorMultipole[tensor,\[ScriptL],\[ScriptL]]
+
+End[]
 
 
 (* ::Input::Initialization:: *)
