@@ -50,7 +50,7 @@ End[];
 
 
 (* ::Input::Initialization:: *)
-Begin["`Private`"];$ChimeraTimestamp="Thu 9 Oct 2025 13:19:04";End[];
+Begin["`Private`"];$ChimeraTimestamp="Thu 9 Oct 2025 18:05:47";End[];
 
 
 (* ::Input::Initialization:: *)
@@ -1000,7 +1000,7 @@ Nest[TensorTrace,tensor,(n-\[ScriptL])/2]
 (TensorMultipole[\[ScriptL]_,n_]/;And[EvenQ[n-\[ScriptL]],n>=\[ScriptL]])[tensor_]:=TensorMultipole[tensor,\[ScriptL],n]
 TensorMultipole[\[ScriptL]_][tensor_]:=TensorMultipole[tensor,\[ScriptL],\[ScriptL]]
 
-End[]
+End[];
 
 
 (* ::Input::Initialization:: *)

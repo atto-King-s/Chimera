@@ -87,8 +87,10 @@ helixDataDistribution as well as three-gaussians distributions?\n- In ",
   "c42face1-65d4-45c4-88f6-1f46ab3571eb"],
  ", if the w3jproduct\[CloseCurlyQuote]s are all zero (cf. example in the \
 notebook from 2024-11-27), throw an error and don\[CloseCurlyQuote]t attempt \
-to plot.\n\n- Remove TensorMultipoleOld code, after making sure that the \
-replacement version does work as intended."
+to plot.\n\n- Build tensor visualization tools, both on the sphere and as \
+surface 3D plots of the corresponding potential\n\n- Remove \
+TensorMultipoleOld code, after making sure that the replacement version does \
+work as intended."
 }], "Text",ExpressionUUID->"7760ff8a-a77f-9c49-9cf2-64a8f6fa928a"]
 }, Open  ]],
 
@@ -362,12 +364,12 @@ Cell["Timestamp", \
 Cell[BoxData[
  RowBox[{
   RowBox[{"Begin", "[", "\"\<`Private`\>\"", "]"}], ";", 
-  RowBox[{"$ChimeraTimestamp", "=", "\"\<Thu 9 Oct 2025 13:19:04\>\""}], ";", 
+  RowBox[{"$ChimeraTimestamp", "=", "\"\<Thu 9 Oct 2025 18:05:47\>\""}], ";", 
   
   RowBox[{"End", "[", "]"}], ";"}]], "Input",
  InitializationCell->True,
  CellTags->
-  "version-timestamp",ExpressionUUID->"598361d7-46f8-474d-8594-720ce3417d4c"]
+  "version-timestamp",ExpressionUUID->"8e6a2fd2-2b24-40c3-b418-c365d696c02a"]
 }, Open  ]]
 }, Open  ]],
 
@@ -462,8 +464,8 @@ Cell[BoxData[
   ";"}]], "Input",
  InitializationCell->True,
  CellChangeTimes->{{3.899965709355588*^9, 3.899965719914709*^9}},
- CellLabel->"In[20]:=",ExpressionUUID->"1a2faff1-be08-4968-852a-31a15b74a6c4"]
-
+ CellLabel->
+  "In[20]:=",ExpressionUUID->"1a2faff1-be08-4968-852a-31a15b74a6c4"]
 }, Closed]],
 
 Cell[CellGroupData[{
@@ -20984,6 +20986,9 @@ m\)]\).\>\""}], ";"}], "\[IndentingNewLine]"}], "\[IndentingNewLine]",
  InitializationCell->
   True,ExpressionUUID->"ca68746c-3cb2-42a1-903a-925e5e4b62fb"],
 
+Cell["Benchmarking", \
+"Text",ExpressionUUID->"66d5bc30-fdfd-4e90-b733-0b76105eea82"],
+
 Cell[CellGroupData[{
 
 Cell[BoxData[
@@ -23322,8 +23327,166 @@ Cell[BoxData[
     Function[BoxForm`e$, 
      MatrixForm[BoxForm`e$]]]}], "}"}]], "Output",
  CellLabel->"Out[230]=",ExpressionUUID->"ae253f46-3dc9-4a7f-bf0a-baba897542d2"]
+}, Open  ]],
+
+Cell["Complex-conjugate symmetry:", \
+"Text",ExpressionUUID->"2f5e47e1-56b5-4c13-bef1-6b1af1e440aa"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Table", "[", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"Table", "[", "\[IndentingNewLine]", 
+    RowBox[{"(*", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"l", ",", "m"}], "}"}], "->"}], "*)"}], 
+    RowBox[{
+     RowBox[{"Equal", "[", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"MultipolarBasisTensorT", "[", 
+         RowBox[{"l", ",", "m"}], "]"}], "\[Conjugate]"}], ",", 
+       "\[IndentingNewLine]", 
+       RowBox[{
+        SuperscriptBox[
+         RowBox[{"(", 
+          RowBox[{"-", "1"}], ")"}], "m"], 
+        RowBox[{"MultipolarBasisTensorT", "[", 
+         RowBox[{"l", ",", 
+          RowBox[{"-", "m"}]}], "]"}]}]}], "\[IndentingNewLine]", "]"}], 
+     "\[IndentingNewLine]", ",", 
+     RowBox[{"{", 
+      RowBox[{"m", ",", 
+       RowBox[{"-", "l"}], ",", "l"}], "}"}]}], "]"}], "\[IndentingNewLine]", 
+   ",", 
+   RowBox[{"{", 
+    RowBox[{"l", ",", "0", ",", "5"}], "}"}]}], "]"}]], "Input",
+ CellLabel->
+  "In[267]:=",ExpressionUUID->"1ca68cb2-3c31-4ef7-b9bb-6117ead07127"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", "True", "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"True", ",", "True", ",", "True"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"True", ",", "True", ",", "True", ",", "True", ",", "True"}], 
+    "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+    "True", ",", "True", ",", "True", ",", "True", ",", "True", ",", "True", ",",
+      "True"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+    "True", ",", "True", ",", "True", ",", "True", ",", "True", ",", "True", ",",
+      "True", ",", "True", ",", "True"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+    "True", ",", "True", ",", "True", ",", "True", ",", "True", ",", "True", ",",
+      "True", ",", "True", ",", "True", ",", "True", ",", "True"}], "}"}]}], 
+  "}"}]], "Output",
+ CellLabel->"Out[267]=",ExpressionUUID->"0589933f-bb27-41a7-b88e-80ebb683141a"]
+}, Open  ]],
+
+Cell[TextData[{
+ "Completeness relation \[Dash]  ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{
+     FractionBox[
+      RowBox[{"l", "!"}], 
+      RowBox[{
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{"2", "l"}], "-", "1"}], ")"}], "!!"}]], 
+     RowBox[{
+      UnderscriptBox["\[Sum]", "m"], 
+      RowBox[{
+       SubsuperscriptBox[
+        OverscriptBox[
+         StyleBox["t",
+          FontWeight->"Bold"], "^"], 
+        RowBox[{"l", " ", "m"}], "*"], "(", 
+       RowBox[{
+        SubscriptBox[
+         OverscriptBox[
+          StyleBox["t",
+           FontWeight->"Bold"], "^"], 
+         RowBox[{"l", " ", "m"}]], "\[CenterDot]", 
+        StyleBox["A",
+         FontWeight->"Bold"]}], ")"}]}]}], "=", 
+    RowBox[{
+     SubscriptBox[
+      OverscriptBox["\[CapitalPi]", "^"], "l"], 
+     StyleBox["A",
+      FontWeight->"Bold"]}]}], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "2cbd72fa-2c16-4c40-804a-758cabfba00b"],
+ "."
+}], "Text",ExpressionUUID->"af6b216b-cffc-4f85-a85e-2c5b78d00ea0"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Table", "[", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"Simplify", "[", 
+    RowBox[{"Equal", "[", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"Normal", "@", 
+       RowBox[{"FullSimplify", "[", "\[IndentingNewLine]", 
+        RowBox[{
+         FractionBox[
+          RowBox[{"l", "!"}], 
+          RowBox[{
+           RowBox[{"(", 
+            RowBox[{
+             RowBox[{"2", "l"}], "-", "1"}], ")"}], "!!"}]], 
+         RowBox[{"Sum", "[", "\[IndentingNewLine]", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"TensorDot", "[", 
+             RowBox[{
+              RowBox[{"TensorPower", "[", 
+               RowBox[{
+                RowBox[{"{", 
+                 RowBox[{"x", ",", "y", ",", "z"}], "}"}], ",", "l"}], "]"}], 
+              ",", 
+              RowBox[{"MultipolarBasisTensorT", "[", 
+               RowBox[{"l", ",", "m"}], "]"}]}], "]"}], "\[IndentingNewLine]", 
+            RowBox[{
+             RowBox[{"MultipolarBasisTensorT", "[", 
+              RowBox[{"l", ",", "m"}], "]"}], "\[Conjugate]"}]}], 
+           "\[IndentingNewLine]", ",", 
+           RowBox[{"{", 
+            RowBox[{"m", ",", 
+             RowBox[{"-", "l"}], ",", "l"}], "}"}]}], "\[IndentingNewLine]", 
+          "]"}]}], "\[IndentingNewLine]", "]"}]}], "\[IndentingNewLine]", ",",
+       "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"TensorMultipole", "[", "l", "]"}], "@", 
+       RowBox[{"TensorPower", "[", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"x", ",", "y", ",", "z"}], "}"}], ",", "l"}], "]"}]}]}], 
+     "\[IndentingNewLine]", "]"}], "]"}], "\[IndentingNewLine]", ",", 
+   RowBox[{"{", 
+    RowBox[{"l", ",", "0", ",", "5"}], "}"}]}], "]"}]], "Input",
+ CellLabel->
+  "In[282]:=",ExpressionUUID->"201fef47-2e8d-4e44-8b53-e57068e1350a"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+  "True", ",", "True", ",", "True", ",", "True", ",", "True", ",", "True"}], 
+  "}"}]], "Output",
+ CellLabel->"Out[282]=",ExpressionUUID->"58ad02b8-9501-4104-843a-6a928801493d"]
 }, Open  ]]
-}, Closed]],
+}, Open  ]],
 
 Cell[CellGroupData[{
 
@@ -23405,8 +23568,6 @@ Cell[CellGroupData[{
 
 Cell["TensorMultipole", \
 "Subsubsection",ExpressionUUID->"609903e9-9f4f-491e-843d-e81f81d3d751"],
-
-Cell[CellGroupData[{
 
 Cell[BoxData[{
  RowBox[{
@@ -23530,14 +23691,11 @@ onto \[ScriptL]-polar tensors of rank \[ScriptL].\>\""}], ";"}],
    RowBox[{"TensorMultipole", "[", 
     RowBox[{"tensor", ",", "\[ScriptL]", ",", "\[ScriptL]"}], "]"}]}], 
   "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
- RowBox[{"End", "[", "]"}]}], "Input",
+ RowBox[{
+  RowBox[{"End", "[", "]"}], ";"}]}], "Input",
  InitializationCell->True,
  CellLabel->
-  "In[190]:=",ExpressionUUID->"8e02c9f7-a657-42ec-a63e-ed20cb7eb3ca"],
-
-Cell[BoxData["\<\"Chimera`Private`\"\>"], "Output",
- CellLabel->"Out[198]=",ExpressionUUID->"a0087ab1-8c70-4122-baf7-374891d45859"]
-}, Open  ]],
+  "In[251]:=",ExpressionUUID->"8e02c9f7-a657-42ec-a63e-ed20cb7eb3ca"],
 
 Cell[CellGroupData[{
 
@@ -24609,7 +24767,7 @@ NotebookEventActions->{{"MenuCommand", "Save"} :> (NotebookWrite[
       "version-timestamp"], None, AutoScroll -> False]; NotebookSave[]), 
   PassEventsDown -> True},
 WindowSize->{1356.75, 874.5},
-WindowMargins->{{463.5, Automatic}, {58.5, Automatic}},
+WindowMargins->{{Automatic, 36}, {56.25, Automatic}},
 PrintingCopies->1,
 PrintingStartingPageNumber->1,
 PrintingPageRange->{Automatic, Automatic},
