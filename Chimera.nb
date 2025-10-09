@@ -362,12 +362,12 @@ Cell["Timestamp", \
 Cell[BoxData[
  RowBox[{
   RowBox[{"Begin", "[", "\"\<`Private`\>\"", "]"}], ";", 
-  RowBox[{"$ChimeraTimestamp", "=", "\"\<Thu 9 Oct 2025 13:07:50\>\""}], ";", 
+  RowBox[{"$ChimeraTimestamp", "=", "\"\<Thu 9 Oct 2025 13:19:04\>\""}], ";", 
   
   RowBox[{"End", "[", "]"}], ";"}]], "Input",
  InitializationCell->True,
  CellTags->
-  "version-timestamp",ExpressionUUID->"f04fc0ee-8a39-4c46-a782-b41847b33016"]
+  "version-timestamp",ExpressionUUID->"598361d7-46f8-474d-8594-720ce3417d4c"]
 }, Open  ]]
 }, Open  ]],
 
@@ -1570,8 +1570,711 @@ Cell[BoxData[
     "1", ",", "1", ",", "1", ",", "1", ",", "1", ",", "1", ",", "1", ",", "1",
       ",", "1", ",", "1", ",", "1"}], "}"}]}], "}"}]], "Output",
  CellLabel->"Out[195]=",ExpressionUUID->"a0fbbd3f-0df2-437e-959f-34b93c54af64"]
-}, Open  ]]
 }, Open  ]],
+
+Cell["How many terms actually contribute to the sum?", \
+"Text",ExpressionUUID->"540a32bf-e265-45bf-8ec8-558e0d8ea34f"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Table", "[", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Table", "[", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{
+       RowBox[{
+        RowBox[{"Tooltip", "[", 
+         RowBox[{
+          RowBox[{"Length", "[", "#", "]"}], ",", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"{", 
+             RowBox[{"l", ",", "m"}], "}"}], "->", "#"}], "/.", 
+           RowBox[{"{", 
+            RowBox[{"contr", "->", "List"}], "}"}]}]}], "]"}], "&"}], "@", 
+       RowBox[{"Flatten", "[", 
+        RowBox[{"Table", "[", "\[IndentingNewLine]", 
+         RowBox[{
+          RowBox[{"If", "[", "\[IndentingNewLine]", 
+           RowBox[{
+            RowBox[{"Or", "[", 
+             RowBox[{
+              RowBox[{
+               RowBox[{"p", "+", "q", "+", "r"}], "!=", "l"}], ",", 
+              RowBox[{
+               RowBox[{"p", "-", "q"}], "!=", "m"}]}], "]"}], ",", "Nothing", 
+            ",", 
+            RowBox[{"contr", "[", 
+             RowBox[{"p", ",", "q", ",", "r"}], "]"}]}], 
+           "\[IndentingNewLine]", "]"}], "\[IndentingNewLine]", ",", 
+          RowBox[{"{", 
+           RowBox[{"p", ",", "0", ",", "l"}], "}"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"q", ",", "0", ",", "l"}], "}"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"r", ",", "0", ",", "l"}], "}"}]}], "]"}], "]"}]}], 
+      "\[IndentingNewLine]", ",", 
+      RowBox[{"{", 
+       RowBox[{"m", ",", 
+        RowBox[{"-", "l"}], ",", "l"}], "}"}]}], "]"}], "\[IndentingNewLine]",
+     ",", 
+    RowBox[{"{", 
+     RowBox[{"l", ",", "0", ",", "6"}], "}"}]}], "]"}], "//", 
+  "TableForm"}]], \
+"Input",ExpressionUUID->"70147d1f-9055-4bce-b44b-4bd2289d87e2"],
+
+Cell[BoxData[
+ InterpretationBox[GridBox[{
+    {
+     TagBox[
+      TooltipBox["1",
+       RowBox[{
+         RowBox[{"{", 
+           RowBox[{"0", ",", "0"}], "}"}], "\[Rule]", 
+         RowBox[{"{", 
+           RowBox[{"{", 
+             RowBox[{"0", ",", "0", ",", "0"}], "}"}], "}"}]}]],
+      Annotation[#, {0, 0} -> {{0, 0, 0}}, 
+       "Tooltip"]& ], "\<\"\"\>", "\<\"\"\>", "\<\"\"\>", "\<\"\"\>", "\<\"\"\
+\>", "\<\"\"\>", "\<\"\"\>", "\<\"\"\>", "\<\"\"\>", "\<\"\"\>", "\<\"\"\>", \
+"\<\"\"\>"},
+    {
+     TagBox[
+      TooltipBox["1",
+       RowBox[{
+         RowBox[{"{", 
+           RowBox[{"1", ",", 
+             RowBox[{"-", "1"}]}], "}"}], "\[Rule]", 
+         RowBox[{"{", 
+           RowBox[{"{", 
+             RowBox[{"0", ",", "1", ",", "0"}], "}"}], "}"}]}]],
+      Annotation[#, {1, -1} -> {{0, 1, 0}}, "Tooltip"]& ], 
+     TagBox[
+      TooltipBox["1",
+       RowBox[{
+         RowBox[{"{", 
+           RowBox[{"1", ",", "0"}], "}"}], "\[Rule]", 
+         RowBox[{"{", 
+           RowBox[{"{", 
+             RowBox[{"0", ",", "0", ",", "1"}], "}"}], "}"}]}]],
+      Annotation[#, {1, 0} -> {{0, 0, 1}}, "Tooltip"]& ], 
+     TagBox[
+      TooltipBox["1",
+       RowBox[{
+         RowBox[{"{", 
+           RowBox[{"1", ",", "1"}], "}"}], "\[Rule]", 
+         RowBox[{"{", 
+           RowBox[{"{", 
+             RowBox[{"1", ",", "0", ",", "0"}], "}"}], "}"}]}]],
+      Annotation[#, {1, 1} -> {{1, 0, 0}}, 
+       "Tooltip"]& ], "\<\"\"\>", "\<\"\"\>", "\<\"\"\>", "\<\"\"\>", "\<\"\"\
+\>", "\<\"\"\>", "\<\"\"\>", "\<\"\"\>", "\<\"\"\>", "\<\"\"\>"},
+    {
+     TagBox[
+      TooltipBox["1",
+       RowBox[{
+         RowBox[{"{", 
+           RowBox[{"2", ",", 
+             RowBox[{"-", "2"}]}], "}"}], "\[Rule]", 
+         RowBox[{"{", 
+           RowBox[{"{", 
+             RowBox[{"0", ",", "2", ",", "0"}], "}"}], "}"}]}]],
+      Annotation[#, {2, -2} -> {{0, 2, 0}}, "Tooltip"]& ], 
+     TagBox[
+      TooltipBox["1",
+       RowBox[{
+         RowBox[{"{", 
+           RowBox[{"2", ",", 
+             RowBox[{"-", "1"}]}], "}"}], "\[Rule]", 
+         RowBox[{"{", 
+           RowBox[{"{", 
+             RowBox[{"0", ",", "1", ",", "1"}], "}"}], "}"}]}]],
+      Annotation[#, {2, -1} -> {{0, 1, 1}}, "Tooltip"]& ], 
+     TagBox[
+      TooltipBox["2",
+       RowBox[{
+         RowBox[{"{", 
+           RowBox[{"2", ",", "0"}], "}"}], "\[Rule]", 
+         RowBox[{"{", 
+           RowBox[{
+             RowBox[{"{", 
+               RowBox[{"0", ",", "0", ",", "2"}], "}"}], ",", 
+             RowBox[{"{", 
+               RowBox[{"1", ",", "1", ",", "0"}], "}"}]}], "}"}]}]],
+      Annotation[#, {2, 0} -> {{0, 0, 2}, {1, 1, 0}}, "Tooltip"]& ], 
+     TagBox[
+      TooltipBox["1",
+       RowBox[{
+         RowBox[{"{", 
+           RowBox[{"2", ",", "1"}], "}"}], "\[Rule]", 
+         RowBox[{"{", 
+           RowBox[{"{", 
+             RowBox[{"1", ",", "0", ",", "1"}], "}"}], "}"}]}]],
+      Annotation[#, {2, 1} -> {{1, 0, 1}}, "Tooltip"]& ], 
+     TagBox[
+      TooltipBox["1",
+       RowBox[{
+         RowBox[{"{", 
+           RowBox[{"2", ",", "2"}], "}"}], "\[Rule]", 
+         RowBox[{"{", 
+           RowBox[{"{", 
+             RowBox[{"2", ",", "0", ",", "0"}], "}"}], "}"}]}]],
+      Annotation[#, {2, 2} -> {{2, 0, 0}}, 
+       "Tooltip"]& ], "\<\"\"\>", "\<\"\"\>", "\<\"\"\>", "\<\"\"\>", "\<\"\"\
+\>", "\<\"\"\>", "\<\"\"\>", "\<\"\"\>"},
+    {
+     TagBox[
+      TooltipBox["1",
+       RowBox[{
+         RowBox[{"{", 
+           RowBox[{"3", ",", 
+             RowBox[{"-", "3"}]}], "}"}], "\[Rule]", 
+         RowBox[{"{", 
+           RowBox[{"{", 
+             RowBox[{"0", ",", "3", ",", "0"}], "}"}], "}"}]}]],
+      Annotation[#, {3, -3} -> {{0, 3, 0}}, "Tooltip"]& ], 
+     TagBox[
+      TooltipBox["1",
+       RowBox[{
+         RowBox[{"{", 
+           RowBox[{"3", ",", 
+             RowBox[{"-", "2"}]}], "}"}], "\[Rule]", 
+         RowBox[{"{", 
+           RowBox[{"{", 
+             RowBox[{"0", ",", "2", ",", "1"}], "}"}], "}"}]}]],
+      Annotation[#, {3, -2} -> {{0, 2, 1}}, "Tooltip"]& ], 
+     TagBox[
+      TooltipBox["2",
+       RowBox[{
+         RowBox[{"{", 
+           RowBox[{"3", ",", 
+             RowBox[{"-", "1"}]}], "}"}], "\[Rule]", 
+         RowBox[{"{", 
+           RowBox[{
+             RowBox[{"{", 
+               RowBox[{"0", ",", "1", ",", "2"}], "}"}], ",", 
+             RowBox[{"{", 
+               RowBox[{"1", ",", "2", ",", "0"}], "}"}]}], "}"}]}]],
+      Annotation[#, {3, -1} -> {{0, 1, 2}, {1, 2, 0}}, "Tooltip"]& ], 
+     TagBox[
+      TooltipBox["2",
+       RowBox[{
+         RowBox[{"{", 
+           RowBox[{"3", ",", "0"}], "}"}], "\[Rule]", 
+         RowBox[{"{", 
+           RowBox[{
+             RowBox[{"{", 
+               RowBox[{"0", ",", "0", ",", "3"}], "}"}], ",", 
+             RowBox[{"{", 
+               RowBox[{"1", ",", "1", ",", "1"}], "}"}]}], "}"}]}]],
+      Annotation[#, {3, 0} -> {{0, 0, 3}, {1, 1, 1}}, "Tooltip"]& ], 
+     TagBox[
+      TooltipBox["2",
+       RowBox[{
+         RowBox[{"{", 
+           RowBox[{"3", ",", "1"}], "}"}], "\[Rule]", 
+         RowBox[{"{", 
+           RowBox[{
+             RowBox[{"{", 
+               RowBox[{"1", ",", "0", ",", "2"}], "}"}], ",", 
+             RowBox[{"{", 
+               RowBox[{"2", ",", "1", ",", "0"}], "}"}]}], "}"}]}]],
+      Annotation[#, {3, 1} -> {{1, 0, 2}, {2, 1, 0}}, "Tooltip"]& ], 
+     TagBox[
+      TooltipBox["1",
+       RowBox[{
+         RowBox[{"{", 
+           RowBox[{"3", ",", "2"}], "}"}], "\[Rule]", 
+         RowBox[{"{", 
+           RowBox[{"{", 
+             RowBox[{"2", ",", "0", ",", "1"}], "}"}], "}"}]}]],
+      Annotation[#, {3, 2} -> {{2, 0, 1}}, "Tooltip"]& ], 
+     TagBox[
+      TooltipBox["1",
+       RowBox[{
+         RowBox[{"{", 
+           RowBox[{"3", ",", "3"}], "}"}], "\[Rule]", 
+         RowBox[{"{", 
+           RowBox[{"{", 
+             RowBox[{"3", ",", "0", ",", "0"}], "}"}], "}"}]}]],
+      Annotation[#, {3, 3} -> {{3, 0, 0}}, 
+       "Tooltip"]& ], "\<\"\"\>", "\<\"\"\>", "\<\"\"\>", "\<\"\"\>", "\<\"\"\
+\>", "\<\"\"\>"},
+    {
+     TagBox[
+      TooltipBox["1",
+       RowBox[{
+         RowBox[{"{", 
+           RowBox[{"4", ",", 
+             RowBox[{"-", "4"}]}], "}"}], "\[Rule]", 
+         RowBox[{"{", 
+           RowBox[{"{", 
+             RowBox[{"0", ",", "4", ",", "0"}], "}"}], "}"}]}]],
+      Annotation[#, {4, -4} -> {{0, 4, 0}}, "Tooltip"]& ], 
+     TagBox[
+      TooltipBox["1",
+       RowBox[{
+         RowBox[{"{", 
+           RowBox[{"4", ",", 
+             RowBox[{"-", "3"}]}], "}"}], "\[Rule]", 
+         RowBox[{"{", 
+           RowBox[{"{", 
+             RowBox[{"0", ",", "3", ",", "1"}], "}"}], "}"}]}]],
+      Annotation[#, {4, -3} -> {{0, 3, 1}}, "Tooltip"]& ], 
+     TagBox[
+      TooltipBox["2",
+       RowBox[{
+         RowBox[{"{", 
+           RowBox[{"4", ",", 
+             RowBox[{"-", "2"}]}], "}"}], "\[Rule]", 
+         RowBox[{"{", 
+           RowBox[{
+             RowBox[{"{", 
+               RowBox[{"0", ",", "2", ",", "2"}], "}"}], ",", 
+             RowBox[{"{", 
+               RowBox[{"1", ",", "3", ",", "0"}], "}"}]}], "}"}]}]],
+      Annotation[#, {4, -2} -> {{0, 2, 2}, {1, 3, 0}}, "Tooltip"]& ], 
+     TagBox[
+      TooltipBox["2",
+       RowBox[{
+         RowBox[{"{", 
+           RowBox[{"4", ",", 
+             RowBox[{"-", "1"}]}], "}"}], "\[Rule]", 
+         RowBox[{"{", 
+           RowBox[{
+             RowBox[{"{", 
+               RowBox[{"0", ",", "1", ",", "3"}], "}"}], ",", 
+             RowBox[{"{", 
+               RowBox[{"1", ",", "2", ",", "1"}], "}"}]}], "}"}]}]],
+      Annotation[#, {4, -1} -> {{0, 1, 3}, {1, 2, 1}}, "Tooltip"]& ], 
+     TagBox[
+      TooltipBox["3",
+       RowBox[{
+         RowBox[{"{", 
+           RowBox[{"4", ",", "0"}], "}"}], "\[Rule]", 
+         RowBox[{"{", 
+           RowBox[{
+             RowBox[{"{", 
+               RowBox[{"0", ",", "0", ",", "4"}], "}"}], ",", 
+             RowBox[{"{", 
+               RowBox[{"1", ",", "1", ",", "2"}], "}"}], ",", 
+             RowBox[{"{", 
+               RowBox[{"2", ",", "2", ",", "0"}], "}"}]}], "}"}]}]],
+      Annotation[#, {4, 0} -> {{0, 0, 4}, {1, 1, 2}, {2, 2, 0}}, 
+       "Tooltip"]& ], 
+     TagBox[
+      TooltipBox["2",
+       RowBox[{
+         RowBox[{"{", 
+           RowBox[{"4", ",", "1"}], "}"}], "\[Rule]", 
+         RowBox[{"{", 
+           RowBox[{
+             RowBox[{"{", 
+               RowBox[{"1", ",", "0", ",", "3"}], "}"}], ",", 
+             RowBox[{"{", 
+               RowBox[{"2", ",", "1", ",", "1"}], "}"}]}], "}"}]}]],
+      Annotation[#, {4, 1} -> {{1, 0, 3}, {2, 1, 1}}, "Tooltip"]& ], 
+     TagBox[
+      TooltipBox["2",
+       RowBox[{
+         RowBox[{"{", 
+           RowBox[{"4", ",", "2"}], "}"}], "\[Rule]", 
+         RowBox[{"{", 
+           RowBox[{
+             RowBox[{"{", 
+               RowBox[{"2", ",", "0", ",", "2"}], "}"}], ",", 
+             RowBox[{"{", 
+               RowBox[{"3", ",", "1", ",", "0"}], "}"}]}], "}"}]}]],
+      Annotation[#, {4, 2} -> {{2, 0, 2}, {3, 1, 0}}, "Tooltip"]& ], 
+     TagBox[
+      TooltipBox["1",
+       RowBox[{
+         RowBox[{"{", 
+           RowBox[{"4", ",", "3"}], "}"}], "\[Rule]", 
+         RowBox[{"{", 
+           RowBox[{"{", 
+             RowBox[{"3", ",", "0", ",", "1"}], "}"}], "}"}]}]],
+      Annotation[#, {4, 3} -> {{3, 0, 1}}, "Tooltip"]& ], 
+     TagBox[
+      TooltipBox["1",
+       RowBox[{
+         RowBox[{"{", 
+           RowBox[{"4", ",", "4"}], "}"}], "\[Rule]", 
+         RowBox[{"{", 
+           RowBox[{"{", 
+             RowBox[{"4", ",", "0", ",", "0"}], "}"}], "}"}]}]],
+      Annotation[#, {4, 4} -> {{4, 0, 0}}, 
+       "Tooltip"]& ], "\<\"\"\>", "\<\"\"\>", "\<\"\"\>", "\<\"\"\>"},
+    {
+     TagBox[
+      TooltipBox["1",
+       RowBox[{
+         RowBox[{"{", 
+           RowBox[{"5", ",", 
+             RowBox[{"-", "5"}]}], "}"}], "\[Rule]", 
+         RowBox[{"{", 
+           RowBox[{"{", 
+             RowBox[{"0", ",", "5", ",", "0"}], "}"}], "}"}]}]],
+      Annotation[#, {5, -5} -> {{0, 5, 0}}, "Tooltip"]& ], 
+     TagBox[
+      TooltipBox["1",
+       RowBox[{
+         RowBox[{"{", 
+           RowBox[{"5", ",", 
+             RowBox[{"-", "4"}]}], "}"}], "\[Rule]", 
+         RowBox[{"{", 
+           RowBox[{"{", 
+             RowBox[{"0", ",", "4", ",", "1"}], "}"}], "}"}]}]],
+      Annotation[#, {5, -4} -> {{0, 4, 1}}, "Tooltip"]& ], 
+     TagBox[
+      TooltipBox["2",
+       RowBox[{
+         RowBox[{"{", 
+           RowBox[{"5", ",", 
+             RowBox[{"-", "3"}]}], "}"}], "\[Rule]", 
+         RowBox[{"{", 
+           RowBox[{
+             RowBox[{"{", 
+               RowBox[{"0", ",", "3", ",", "2"}], "}"}], ",", 
+             RowBox[{"{", 
+               RowBox[{"1", ",", "4", ",", "0"}], "}"}]}], "}"}]}]],
+      Annotation[#, {5, -3} -> {{0, 3, 2}, {1, 4, 0}}, "Tooltip"]& ], 
+     TagBox[
+      TooltipBox["2",
+       RowBox[{
+         RowBox[{"{", 
+           RowBox[{"5", ",", 
+             RowBox[{"-", "2"}]}], "}"}], "\[Rule]", 
+         RowBox[{"{", 
+           RowBox[{
+             RowBox[{"{", 
+               RowBox[{"0", ",", "2", ",", "3"}], "}"}], ",", 
+             RowBox[{"{", 
+               RowBox[{"1", ",", "3", ",", "1"}], "}"}]}], "}"}]}]],
+      Annotation[#, {5, -2} -> {{0, 2, 3}, {1, 3, 1}}, "Tooltip"]& ], 
+     TagBox[
+      TooltipBox["3",
+       RowBox[{
+         RowBox[{"{", 
+           RowBox[{"5", ",", 
+             RowBox[{"-", "1"}]}], "}"}], "\[Rule]", 
+         RowBox[{"{", 
+           RowBox[{
+             RowBox[{"{", 
+               RowBox[{"0", ",", "1", ",", "4"}], "}"}], ",", 
+             RowBox[{"{", 
+               RowBox[{"1", ",", "2", ",", "2"}], "}"}], ",", 
+             RowBox[{"{", 
+               RowBox[{"2", ",", "3", ",", "0"}], "}"}]}], "}"}]}]],
+      Annotation[#, {5, -1} -> {{0, 1, 4}, {1, 2, 2}, {2, 3, 0}}, 
+       "Tooltip"]& ], 
+     TagBox[
+      TooltipBox["3",
+       RowBox[{
+         RowBox[{"{", 
+           RowBox[{"5", ",", "0"}], "}"}], "\[Rule]", 
+         RowBox[{"{", 
+           RowBox[{
+             RowBox[{"{", 
+               RowBox[{"0", ",", "0", ",", "5"}], "}"}], ",", 
+             RowBox[{"{", 
+               RowBox[{"1", ",", "1", ",", "3"}], "}"}], ",", 
+             RowBox[{"{", 
+               RowBox[{"2", ",", "2", ",", "1"}], "}"}]}], "}"}]}]],
+      Annotation[#, {5, 0} -> {{0, 0, 5}, {1, 1, 3}, {2, 2, 1}}, 
+       "Tooltip"]& ], 
+     TagBox[
+      TooltipBox["3",
+       RowBox[{
+         RowBox[{"{", 
+           RowBox[{"5", ",", "1"}], "}"}], "\[Rule]", 
+         RowBox[{"{", 
+           RowBox[{
+             RowBox[{"{", 
+               RowBox[{"1", ",", "0", ",", "4"}], "}"}], ",", 
+             RowBox[{"{", 
+               RowBox[{"2", ",", "1", ",", "2"}], "}"}], ",", 
+             RowBox[{"{", 
+               RowBox[{"3", ",", "2", ",", "0"}], "}"}]}], "}"}]}]],
+      Annotation[#, {5, 1} -> {{1, 0, 4}, {2, 1, 2}, {3, 2, 0}}, 
+       "Tooltip"]& ], 
+     TagBox[
+      TooltipBox["2",
+       RowBox[{
+         RowBox[{"{", 
+           RowBox[{"5", ",", "2"}], "}"}], "\[Rule]", 
+         RowBox[{"{", 
+           RowBox[{
+             RowBox[{"{", 
+               RowBox[{"2", ",", "0", ",", "3"}], "}"}], ",", 
+             RowBox[{"{", 
+               RowBox[{"3", ",", "1", ",", "1"}], "}"}]}], "}"}]}]],
+      Annotation[#, {5, 2} -> {{2, 0, 3}, {3, 1, 1}}, "Tooltip"]& ], 
+     TagBox[
+      TooltipBox["2",
+       RowBox[{
+         RowBox[{"{", 
+           RowBox[{"5", ",", "3"}], "}"}], "\[Rule]", 
+         RowBox[{"{", 
+           RowBox[{
+             RowBox[{"{", 
+               RowBox[{"3", ",", "0", ",", "2"}], "}"}], ",", 
+             RowBox[{"{", 
+               RowBox[{"4", ",", "1", ",", "0"}], "}"}]}], "}"}]}]],
+      Annotation[#, {5, 3} -> {{3, 0, 2}, {4, 1, 0}}, "Tooltip"]& ], 
+     TagBox[
+      TooltipBox["1",
+       RowBox[{
+         RowBox[{"{", 
+           RowBox[{"5", ",", "4"}], "}"}], "\[Rule]", 
+         RowBox[{"{", 
+           RowBox[{"{", 
+             RowBox[{"4", ",", "0", ",", "1"}], "}"}], "}"}]}]],
+      Annotation[#, {5, 4} -> {{4, 0, 1}}, "Tooltip"]& ], 
+     TagBox[
+      TooltipBox["1",
+       RowBox[{
+         RowBox[{"{", 
+           RowBox[{"5", ",", "5"}], "}"}], "\[Rule]", 
+         RowBox[{"{", 
+           RowBox[{"{", 
+             RowBox[{"5", ",", "0", ",", "0"}], "}"}], "}"}]}]],
+      Annotation[#, {5, 5} -> {{5, 0, 0}}, 
+       "Tooltip"]& ], "\<\"\"\>", "\<\"\"\>"},
+    {
+     TagBox[
+      TooltipBox["1",
+       RowBox[{
+         RowBox[{"{", 
+           RowBox[{"6", ",", 
+             RowBox[{"-", "6"}]}], "}"}], "\[Rule]", 
+         RowBox[{"{", 
+           RowBox[{"{", 
+             RowBox[{"0", ",", "6", ",", "0"}], "}"}], "}"}]}]],
+      Annotation[#, {6, -6} -> {{0, 6, 0}}, "Tooltip"]& ], 
+     TagBox[
+      TooltipBox["1",
+       RowBox[{
+         RowBox[{"{", 
+           RowBox[{"6", ",", 
+             RowBox[{"-", "5"}]}], "}"}], "\[Rule]", 
+         RowBox[{"{", 
+           RowBox[{"{", 
+             RowBox[{"0", ",", "5", ",", "1"}], "}"}], "}"}]}]],
+      Annotation[#, {6, -5} -> {{0, 5, 1}}, "Tooltip"]& ], 
+     TagBox[
+      TooltipBox["2",
+       RowBox[{
+         RowBox[{"{", 
+           RowBox[{"6", ",", 
+             RowBox[{"-", "4"}]}], "}"}], "\[Rule]", 
+         RowBox[{"{", 
+           RowBox[{
+             RowBox[{"{", 
+               RowBox[{"0", ",", "4", ",", "2"}], "}"}], ",", 
+             RowBox[{"{", 
+               RowBox[{"1", ",", "5", ",", "0"}], "}"}]}], "}"}]}]],
+      Annotation[#, {6, -4} -> {{0, 4, 2}, {1, 5, 0}}, "Tooltip"]& ], 
+     TagBox[
+      TooltipBox["2",
+       RowBox[{
+         RowBox[{"{", 
+           RowBox[{"6", ",", 
+             RowBox[{"-", "3"}]}], "}"}], "\[Rule]", 
+         RowBox[{"{", 
+           RowBox[{
+             RowBox[{"{", 
+               RowBox[{"0", ",", "3", ",", "3"}], "}"}], ",", 
+             RowBox[{"{", 
+               RowBox[{"1", ",", "4", ",", "1"}], "}"}]}], "}"}]}]],
+      Annotation[#, {6, -3} -> {{0, 3, 3}, {1, 4, 1}}, "Tooltip"]& ], 
+     TagBox[
+      TooltipBox["3",
+       RowBox[{
+         RowBox[{"{", 
+           RowBox[{"6", ",", 
+             RowBox[{"-", "2"}]}], "}"}], "\[Rule]", 
+         RowBox[{"{", 
+           RowBox[{
+             RowBox[{"{", 
+               RowBox[{"0", ",", "2", ",", "4"}], "}"}], ",", 
+             RowBox[{"{", 
+               RowBox[{"1", ",", "3", ",", "2"}], "}"}], ",", 
+             RowBox[{"{", 
+               RowBox[{"2", ",", "4", ",", "0"}], "}"}]}], "}"}]}]],
+      Annotation[#, {6, -2} -> {{0, 2, 4}, {1, 3, 2}, {2, 4, 0}}, 
+       "Tooltip"]& ], 
+     TagBox[
+      TooltipBox["3",
+       RowBox[{
+         RowBox[{"{", 
+           RowBox[{"6", ",", 
+             RowBox[{"-", "1"}]}], "}"}], "\[Rule]", 
+         RowBox[{"{", 
+           RowBox[{
+             RowBox[{"{", 
+               RowBox[{"0", ",", "1", ",", "5"}], "}"}], ",", 
+             RowBox[{"{", 
+               RowBox[{"1", ",", "2", ",", "3"}], "}"}], ",", 
+             RowBox[{"{", 
+               RowBox[{"2", ",", "3", ",", "1"}], "}"}]}], "}"}]}]],
+      Annotation[#, {6, -1} -> {{0, 1, 5}, {1, 2, 3}, {2, 3, 1}}, 
+       "Tooltip"]& ], 
+     TagBox[
+      TooltipBox["4",
+       RowBox[{
+         RowBox[{"{", 
+           RowBox[{"6", ",", "0"}], "}"}], "\[Rule]", 
+         RowBox[{"{", 
+           RowBox[{
+             RowBox[{"{", 
+               RowBox[{"0", ",", "0", ",", "6"}], "}"}], ",", 
+             RowBox[{"{", 
+               RowBox[{"1", ",", "1", ",", "4"}], "}"}], ",", 
+             RowBox[{"{", 
+               RowBox[{"2", ",", "2", ",", "2"}], "}"}], ",", 
+             RowBox[{"{", 
+               RowBox[{"3", ",", "3", ",", "0"}], "}"}]}], "}"}]}]],
+      Annotation[#, {6, 0} -> {{0, 0, 6}, {1, 1, 4}, {2, 2, 2}, {3, 3, 0}}, 
+       "Tooltip"]& ], 
+     TagBox[
+      TooltipBox["3",
+       RowBox[{
+         RowBox[{"{", 
+           RowBox[{"6", ",", "1"}], "}"}], "\[Rule]", 
+         RowBox[{"{", 
+           RowBox[{
+             RowBox[{"{", 
+               RowBox[{"1", ",", "0", ",", "5"}], "}"}], ",", 
+             RowBox[{"{", 
+               RowBox[{"2", ",", "1", ",", "3"}], "}"}], ",", 
+             RowBox[{"{", 
+               RowBox[{"3", ",", "2", ",", "1"}], "}"}]}], "}"}]}]],
+      Annotation[#, {6, 1} -> {{1, 0, 5}, {2, 1, 3}, {3, 2, 1}}, 
+       "Tooltip"]& ], 
+     TagBox[
+      TooltipBox["3",
+       RowBox[{
+         RowBox[{"{", 
+           RowBox[{"6", ",", "2"}], "}"}], "\[Rule]", 
+         RowBox[{"{", 
+           RowBox[{
+             RowBox[{"{", 
+               RowBox[{"2", ",", "0", ",", "4"}], "}"}], ",", 
+             RowBox[{"{", 
+               RowBox[{"3", ",", "1", ",", "2"}], "}"}], ",", 
+             RowBox[{"{", 
+               RowBox[{"4", ",", "2", ",", "0"}], "}"}]}], "}"}]}]],
+      Annotation[#, {6, 2} -> {{2, 0, 4}, {3, 1, 2}, {4, 2, 0}}, 
+       "Tooltip"]& ], 
+     TagBox[
+      TooltipBox["2",
+       RowBox[{
+         RowBox[{"{", 
+           RowBox[{"6", ",", "3"}], "}"}], "\[Rule]", 
+         RowBox[{"{", 
+           RowBox[{
+             RowBox[{"{", 
+               RowBox[{"3", ",", "0", ",", "3"}], "}"}], ",", 
+             RowBox[{"{", 
+               RowBox[{"4", ",", "1", ",", "1"}], "}"}]}], "}"}]}]],
+      Annotation[#, {6, 3} -> {{3, 0, 3}, {4, 1, 1}}, "Tooltip"]& ], 
+     TagBox[
+      TooltipBox["2",
+       RowBox[{
+         RowBox[{"{", 
+           RowBox[{"6", ",", "4"}], "}"}], "\[Rule]", 
+         RowBox[{"{", 
+           RowBox[{
+             RowBox[{"{", 
+               RowBox[{"4", ",", "0", ",", "2"}], "}"}], ",", 
+             RowBox[{"{", 
+               RowBox[{"5", ",", "1", ",", "0"}], "}"}]}], "}"}]}]],
+      Annotation[#, {6, 4} -> {{4, 0, 2}, {5, 1, 0}}, "Tooltip"]& ], 
+     TagBox[
+      TooltipBox["1",
+       RowBox[{
+         RowBox[{"{", 
+           RowBox[{"6", ",", "5"}], "}"}], "\[Rule]", 
+         RowBox[{"{", 
+           RowBox[{"{", 
+             RowBox[{"5", ",", "0", ",", "1"}], "}"}], "}"}]}]],
+      Annotation[#, {6, 5} -> {{5, 0, 1}}, "Tooltip"]& ], 
+     TagBox[
+      TooltipBox["1",
+       RowBox[{
+         RowBox[{"{", 
+           RowBox[{"6", ",", "6"}], "}"}], "\[Rule]", 
+         RowBox[{"{", 
+           RowBox[{"{", 
+             RowBox[{"6", ",", "0", ",", "0"}], "}"}], "}"}]}]],
+      Annotation[#, {6, 6} -> {{6, 0, 0}}, "Tooltip"]& ]}
+   },
+   GridBoxAlignment->{"Columns" -> {{Left}}, "Rows" -> {{Baseline}}},
+   GridBoxSpacings->{"Columns" -> {
+       Offset[0.27999999999999997`], {
+        Offset[2.0999999999999996`]}, 
+       Offset[0.27999999999999997`]}, "Rows" -> {
+       Offset[0.2], {
+        Offset[0.4]}, 
+       Offset[0.2]}}],
+  TableForm[{{
+     Tooltip[1, {0, 0} -> {{0, 0, 0}}]}, {
+     Tooltip[1, {1, -1} -> {{0, 1, 0}}], 
+     Tooltip[1, {1, 0} -> {{0, 0, 1}}], 
+     Tooltip[1, {1, 1} -> {{1, 0, 0}}]}, {
+     Tooltip[1, {2, -2} -> {{0, 2, 0}}], 
+     Tooltip[1, {2, -1} -> {{0, 1, 1}}], 
+     Tooltip[2, {2, 0} -> {{0, 0, 2}, {1, 1, 0}}], 
+     Tooltip[1, {2, 1} -> {{1, 0, 1}}], 
+     Tooltip[1, {2, 2} -> {{2, 0, 0}}]}, {
+     Tooltip[1, {3, -3} -> {{0, 3, 0}}], 
+     Tooltip[1, {3, -2} -> {{0, 2, 1}}], 
+     Tooltip[2, {3, -1} -> {{0, 1, 2}, {1, 2, 0}}], 
+     Tooltip[2, {3, 0} -> {{0, 0, 3}, {1, 1, 1}}], 
+     Tooltip[2, {3, 1} -> {{1, 0, 2}, {2, 1, 0}}], 
+     Tooltip[1, {3, 2} -> {{2, 0, 1}}], 
+     Tooltip[1, {3, 3} -> {{3, 0, 0}}]}, {
+     Tooltip[1, {4, -4} -> {{0, 4, 0}}], 
+     Tooltip[1, {4, -3} -> {{0, 3, 1}}], 
+     Tooltip[2, {4, -2} -> {{0, 2, 2}, {1, 3, 0}}], 
+     Tooltip[2, {4, -1} -> {{0, 1, 3}, {1, 2, 1}}], 
+     Tooltip[3, {4, 0} -> {{0, 0, 4}, {1, 1, 2}, {2, 2, 0}}], 
+     Tooltip[2, {4, 1} -> {{1, 0, 3}, {2, 1, 1}}], 
+     Tooltip[2, {4, 2} -> {{2, 0, 2}, {3, 1, 0}}], 
+     Tooltip[1, {4, 3} -> {{3, 0, 1}}], 
+     Tooltip[1, {4, 4} -> {{4, 0, 0}}]}, {
+     Tooltip[1, {5, -5} -> {{0, 5, 0}}], 
+     Tooltip[1, {5, -4} -> {{0, 4, 1}}], 
+     Tooltip[2, {5, -3} -> {{0, 3, 2}, {1, 4, 0}}], 
+     Tooltip[2, {5, -2} -> {{0, 2, 3}, {1, 3, 1}}], 
+     Tooltip[3, {5, -1} -> {{0, 1, 4}, {1, 2, 2}, {2, 3, 0}}], 
+     Tooltip[3, {5, 0} -> {{0, 0, 5}, {1, 1, 3}, {2, 2, 1}}], 
+     Tooltip[3, {5, 1} -> {{1, 0, 4}, {2, 1, 2}, {3, 2, 0}}], 
+     Tooltip[2, {5, 2} -> {{2, 0, 3}, {3, 1, 1}}], 
+     Tooltip[2, {5, 3} -> {{3, 0, 2}, {4, 1, 0}}], 
+     Tooltip[1, {5, 4} -> {{4, 0, 1}}], 
+     Tooltip[1, {5, 5} -> {{5, 0, 0}}]}, {
+     Tooltip[1, {6, -6} -> {{0, 6, 0}}], 
+     Tooltip[1, {6, -5} -> {{0, 5, 1}}], 
+     Tooltip[2, {6, -4} -> {{0, 4, 2}, {1, 5, 0}}], 
+     Tooltip[2, {6, -3} -> {{0, 3, 3}, {1, 4, 1}}], 
+     Tooltip[3, {6, -2} -> {{0, 2, 4}, {1, 3, 2}, {2, 4, 0}}], 
+     Tooltip[3, {6, -1} -> {{0, 1, 5}, {1, 2, 3}, {2, 3, 1}}], 
+     Tooltip[4, {6, 0} -> {{0, 0, 6}, {1, 1, 4}, {2, 2, 2}, {3, 3, 0}}], 
+     Tooltip[3, {6, 1} -> {{1, 0, 5}, {2, 1, 3}, {3, 2, 1}}], 
+     Tooltip[3, {6, 2} -> {{2, 0, 4}, {3, 1, 2}, {4, 2, 0}}], 
+     Tooltip[2, {6, 3} -> {{3, 0, 3}, {4, 1, 1}}], 
+     Tooltip[2, {6, 4} -> {{4, 0, 2}, {5, 1, 0}}], 
+     Tooltip[1, {6, 5} -> {{5, 0, 1}}], 
+     Tooltip[1, {6, 6} -> {{6, 0, 0}}]}}]]], "Output",
+ CellLabel->
+  "Out[250]//TableForm=",ExpressionUUID->"de3c4bdc-94f6-454f-98be-\
+c24f0482bbcb"]
+}, Open  ]]
+}, Closed]],
 
 Cell[CellGroupData[{
 
@@ -3652,7 +4355,21 @@ may shadow or be shadowed by other definitions.\"", 2, 202, 1,
    21635247841999714536, "Local", "Global`COMfromPDFcartesian"},
   "MessageTemplate2",
   BaseStyle->"MSG"]], "Message",
- CellLabel->"",ExpressionUUID->"5963b4d6-743b-4678-b7d8-691afd84da8e"]
+ CellLabel->"",ExpressionUUID->"5963b4d6-743b-4678-b7d8-691afd84da8e"],
+
+Cell[BoxData[
+ TemplateBox[{
+  "Global`COMfromPDFcartesian", "shdw", 
+   "\"Symbol \
+\\!\\(\\*RowBox[{\\\"\\\\\\\"COMfromPDFcartesian\\\\\\\"\\\"}]\\) appears in \
+multiple contexts \\!\\(\\*RowBox[{\\\"{\\\", RowBox[{\\\"\\\\\\\"Global`\\\\\
+\\\"\\\", \\\",\\\", \\\"\\\\\\\"Chimera`\\\\\\\"\\\"}], \\\"}\\\"}]\\); \
+definitions in context \\!\\(\\*RowBox[{\\\"\\\\\\\"Global`\\\\\\\"\\\"}]\\) \
+may shadow or be shadowed by other definitions.\"", 2, 223, 8, 
+   21635260320646634790, "Local", "Global`COMfromPDFcartesian"},
+  "MessageTemplate2",
+  BaseStyle->"MSG"]], "Message",
+ CellLabel->"",ExpressionUUID->"c7d19cbd-7162-44db-8241-4ba9703c233a"]
 }, Open  ]],
 
 Cell[".... this seems to be too slow to be worth using...", "Text",
@@ -14476,8 +15193,7 @@ Cell[BoxData[{
        RowBox[{"SphericalRegion", "->", "True"}], "\[IndentingNewLine]", ",", 
        
        RowBox[{"ImageSize", "->", "700"}]}], "\[IndentingNewLine]", "]"}]}], 
-    "\[IndentingNewLine]", "]"}]}], "\[IndentingNewLine]"}], 
-"\[IndentingNewLine]", 
+    "\[IndentingNewLine]", "]"}]}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{"End", "[", "]"}], ";"}]}], "Input",
  InitializationCell->True,
@@ -20173,119 +20889,12 @@ TraditionalForm]],FormatType->TraditionalForm,ExpressionUUID->\"47454150-8465-\
   RowBox[{"End", "[", "]"}], ";"}]}], "Input",
  InitializationCell->True,
  CellLabel->"In[170]:=",ExpressionUUID->"7d48332c-b72b-4c97-9e39-9b79406fbbc1"]
-}, Open  ]],
+}, Closed]],
 
 Cell[CellGroupData[{
 
 Cell["MultipolarBasisTensorT", \
 "Subsubsection",ExpressionUUID->"b4d1b52c-25e3-ad44-91b1-80c2d52f4015"],
-
-Cell[BoxData[
- RowBox[{"(*", 
-  RowBox[{
-   RowBox[{
-    RowBox[{"SolidHarmonicS", "::", "usage"}], 
-    "=", "\"\<SolidHarmonicS[l,m,x,y,z] calculates the solid harmonic \
-\!\(\*SubscriptBox[\(S\), \(lm\)]\)(x,y,z)=\!\(\*SuperscriptBox[\(r\), \(l\)]\
-\)\!\(\*SubscriptBox[\(Y\), \(lm\)]\)(x,y,z).\n\nSolidHarmonicS[l,m,{x,y,z}] \
-does the same.\>\""}], ";", "\[IndentingNewLine]", 
-   RowBox[{"Begin", "[", "\"\<`Private`\>\"", "]"}], ";", 
-   "\[IndentingNewLine]", "\[IndentingNewLine]", 
-   RowBox[{
-    RowBox[{"dpower", "[", 
-     RowBox[{"x_", ",", "y_"}], "]"}], ":=", 
-    RowBox[{
-     RowBox[{
-      RowBox[{
-       RowBox[{"Piecewise", "[", 
-        RowBox[{
-         RowBox[{"{", 
-          RowBox[{"{", 
-           RowBox[{"1", ",", 
-            RowBox[{"y", "==", "0"}]}], "}"}], "}"}], ",", 
-         RowBox[{"x", "^", "y"}]}], "]"}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
-       RowBox[{"SolidHarmonicS", "[", 
-        RowBox[{
-        "\[Lambda]_Integer", ",", "\[Mu]_Integer", ",", "x_", ",", "y_", ",", 
-         "z_"}], "]"}]}], "/;", 
-      RowBox[{"\[Lambda]", "\[GreaterEqual]", 
-       RowBox[{"Abs", "[", "\[Mu]", "]"}]}]}], ":=", 
-     RowBox[{
-      RowBox[{
-       RowBox[{
-        RowBox[{"Times", "[", "\[IndentingNewLine]", 
-         RowBox[{"(*", 
-          RowBox[{
-           RowBox[{"Sqrt", "[", 
-            FractionBox[
-             RowBox[{
-              RowBox[{"2", " ", "\[Lambda]"}], "+", "1", " "}], 
-             RowBox[{"4", " ", "\[Pi]", " "}]], "]"}], ","}], "*)"}], 
-         "\[IndentingNewLine]", 
-         RowBox[{
-          RowBox[{"Sqrt", "[", 
-           RowBox[{
-            RowBox[{
-             RowBox[{"(", 
-              RowBox[{"\[Lambda]", "-", "\[Mu]"}], ")"}], "!"}], 
-            RowBox[{
-             RowBox[{"(", 
-              RowBox[{"\[Lambda]", "+", "\[Mu]"}], ")"}], "!"}]}], "]"}], ",",
-           "\[IndentingNewLine]", 
-          RowBox[{"Sum", "[", 
-           RowBox[{
-            RowBox[{"If", "[", "\[IndentingNewLine]", 
-             RowBox[{
-              RowBox[{"Or", "[", 
-               RowBox[{
-                RowBox[{
-                 RowBox[{"p", "+", "q", "+", "r"}], "!=", "\[Lambda]"}], ",", 
-                
-                RowBox[{
-                 RowBox[{"p", "-", "q"}], "!=", "\[Mu]"}]}], "]"}], ",", "0", 
-              ",", "\[IndentingNewLine]", 
-              RowBox[{"Times", "[", "\[IndentingNewLine]", 
-               RowBox[{
-                FractionBox["1", 
-                 RowBox[{
-                  RowBox[{"p", "!"}], 
-                  RowBox[{"q", "!"}], 
-                  RowBox[{"r", "!"}]}]], ",", "\[IndentingNewLine]", 
-                RowBox[{"dpower", "[", 
-                 RowBox[{
-                  RowBox[{"-", 
-                   FractionBox[
-                    RowBox[{"x", "+", 
-                    RowBox[{"\[ImaginaryI]", " ", "y"}]}], "2"]}], ",", "p"}],
-                  "]"}], ",", "\[IndentingNewLine]", 
-                RowBox[{"dpower", "[", 
-                 RowBox[{
-                  FractionBox[
-                   RowBox[{"x", "-", 
-                    RowBox[{"\[ImaginaryI]", " ", "y"}]}], "2"], ",", "q"}], 
-                 "]"}], ",", "\[IndentingNewLine]", 
-                RowBox[{"dpower", "[", 
-                 RowBox[{"z", ",", "r"}], "]"}]}], "\[IndentingNewLine]", 
-               "]"}]}], "]"}], ",", 
-            RowBox[{"{", 
-             RowBox[{"p", ",", "0", ",", "\[Lambda]"}], "}"}], ",", 
-            RowBox[{"{", 
-             RowBox[{"q", ",", "0", ",", "\[Lambda]"}], "}"}], ",", 
-            RowBox[{"{", 
-             RowBox[{"r", ",", "0", ",", "\[Lambda]"}], "}"}]}], "]"}]}], 
-         "\[IndentingNewLine]", "]"}], "\[IndentingNewLine]", 
-        RowBox[{"SolidHarmonicS", "[", 
-         RowBox[{"\[Lambda]_Integer", ",", "\[Mu]_Integer", ",", 
-          RowBox[{"{", 
-           RowBox[{"x_", ",", "y_", ",", "z_"}], "}"}]}], "]"}]}], "/;", 
-       RowBox[{"\[Lambda]", "\[GreaterEqual]", 
-        RowBox[{"Abs", "[", "\[Mu]", "]"}]}]}], ":=", 
-      RowBox[{
-       RowBox[{"SolidHarmonicS", "[", 
-        RowBox[{"\[Lambda]", ",", "\[Mu]", ",", "x", ",", "y", ",", "z"}], 
-        "]"}], "\[IndentingNewLine]", 
-       RowBox[{"End", "[", "]"}]}]}]}]}], ";"}], 
-  "*)"}]], "Input",ExpressionUUID->"c65509e7-fda3-43a8-88b1-5f2e60a55fa1"],
 
 Cell[BoxData[{
  RowBox[{
@@ -20386,11 +20995,12 @@ Cell[BoxData[
       RowBox[{"{", 
        RowBox[{"l", ",", "m"}], "}"}], "->", 
       RowBox[{"MatrixForm", "@", 
-       RowBox[{"Normal", "@", 
-        RowBox[{"(*", 
-         RowBox[{"Simplify", "@"}], "*)"}], 
-        RowBox[{"MultipolarBasisTensorT", "[", 
-         RowBox[{"l", ",", "m"}], "]"}]}]}]}], "\[IndentingNewLine]", ",", 
+       RowBox[{"(*", 
+        RowBox[{"Normal", "@"}], "*)"}], 
+       RowBox[{"(*", 
+        RowBox[{"Simplify", "@"}], "*)"}], 
+       RowBox[{"MultipolarBasisTensorT", "[", 
+        RowBox[{"l", ",", "m"}], "]"}]}]}], "\[IndentingNewLine]", ",", 
      RowBox[{"{", 
       RowBox[{"m", ",", 
        RowBox[{"-", "l"}], ",", "l"}], "}"}]}], "]"}], "\[IndentingNewLine]", 
@@ -20398,7 +21008,7 @@ Cell[BoxData[
    RowBox[{"{", 
     RowBox[{"l", ",", "0", ",", "3"}], "}"}]}], "]"}]], "Input",
  CellLabel->
-  "In[206]:=",ExpressionUUID->"a850f8a9-04a3-4d11-b9e1-0e0a04188abf"],
+  "In[231]:=",ExpressionUUID->"a850f8a9-04a3-4d11-b9e1-0e0a04188abf"],
 
 Cell[BoxData[
  RowBox[{"{", 
@@ -20439,7 +21049,12 @@ Cell[BoxData[
               Offset[0.2]}}],
          Column], "\[NoBreak]", ")"}],
        Function[BoxForm`e$, 
-        MatrixForm[BoxForm`e$]]]}], ",", 
+        MatrixForm[
+         SymmetrizedArray[
+          
+          StructuredArray`StructuredData[{
+           3}, {{{1} -> 2^Rational[-1, 2], {2} -> 
+             Complex[0, -1] 2^Rational[-1, 2]}, {}}]]]]]}], ",", 
      RowBox[{
       RowBox[{"{", 
        RowBox[{"1", ",", "0"}], "}"}], "\[Rule]", 
@@ -20461,7 +21076,9 @@ Cell[BoxData[
               Offset[0.2]}}],
          Column], "\[NoBreak]", ")"}],
        Function[BoxForm`e$, 
-        MatrixForm[BoxForm`e$]]]}], ",", 
+        MatrixForm[
+         SymmetrizedArray[
+          StructuredArray`StructuredData[{3}, {{{3} -> 1}, {}}]]]]]}], ",", 
      RowBox[{
       RowBox[{"{", 
        RowBox[{"1", ",", "1"}], "}"}], "\[Rule]", 
@@ -20489,7 +21106,12 @@ Cell[BoxData[
               Offset[0.2]}}],
          Column], "\[NoBreak]", ")"}],
        Function[BoxForm`e$, 
-        MatrixForm[BoxForm`e$]]]}]}], "}"}], ",", 
+        MatrixForm[
+         SymmetrizedArray[
+          
+          StructuredArray`StructuredData[{
+           3}, {{{1} -> -2^Rational[-1, 2], {2} -> 
+             Complex[0, -1] 2^Rational[-1, 2]}, {}}]]]]]}]}], "}"}], ",", 
    RowBox[{"{", 
     RowBox[{
      RowBox[{
@@ -20528,7 +21150,16 @@ Cell[BoxData[
               Offset[0.4]}, 
              Offset[0.2]}}], "\[NoBreak]", ")"}],
        Function[BoxForm`e$, 
-        MatrixForm[BoxForm`e$]]]}], ",", 
+        MatrixForm[
+         SymmetrizedArray[
+          
+          StructuredArray`StructuredData[{3, 
+           3}, {{{1, 1} -> 
+             Rational[1, 2] Rational[3, 2]^Rational[1, 2], {1, 2} -> 
+             Complex[0, 
+                Rational[-1, 2]] Rational[3, 2]^Rational[1, 2], {2, 2} -> 
+             Rational[-1, 2] Rational[3, 2]^Rational[1, 2]}, 
+            Symmetric[{1, 2}]}]]]]]}], ",", 
      RowBox[{
       RowBox[{"{", 
        RowBox[{"2", ",", 
@@ -20564,7 +21195,15 @@ Cell[BoxData[
               Offset[0.4]}, 
              Offset[0.2]}}], "\[NoBreak]", ")"}],
        Function[BoxForm`e$, 
-        MatrixForm[BoxForm`e$]]]}], ",", 
+        MatrixForm[
+         SymmetrizedArray[
+          
+          StructuredArray`StructuredData[{3, 
+           3}, {{{1, 3} -> 
+             Rational[1, 2] Rational[3, 2]^Rational[1, 2], {2, 3} -> 
+             Complex[0, 
+                Rational[-1, 2]] Rational[3, 2]^Rational[1, 2]}, 
+            Symmetric[{1, 2}]}]]]]]}], ",", 
      RowBox[{
       RowBox[{"{", 
        RowBox[{"2", ",", "0"}], "}"}], "\[Rule]", 
@@ -20587,7 +21226,13 @@ Cell[BoxData[
               Offset[0.4]}, 
              Offset[0.2]}}], "\[NoBreak]", ")"}],
        Function[BoxForm`e$, 
-        MatrixForm[BoxForm`e$]]]}], ",", 
+        MatrixForm[
+         SymmetrizedArray[
+          
+          StructuredArray`StructuredData[{3, 
+           3}, {{{1, 1} -> Rational[-1, 2], {2, 2} -> Rational[-1, 2], {3, 3} -> 
+             1}, 
+            Symmetric[{1, 2}]}]]]]]}], ",", 
      RowBox[{
       RowBox[{"{", 
        RowBox[{"2", ",", "1"}], "}"}], "\[Rule]", 
@@ -20624,7 +21269,15 @@ Cell[BoxData[
               Offset[0.4]}, 
              Offset[0.2]}}], "\[NoBreak]", ")"}],
        Function[BoxForm`e$, 
-        MatrixForm[BoxForm`e$]]]}], ",", 
+        MatrixForm[
+         SymmetrizedArray[
+          
+          StructuredArray`StructuredData[{3, 
+           3}, {{{1, 3} -> 
+             Rational[-1, 2] Rational[3, 2]^Rational[1, 2], {2, 3} -> 
+             Complex[0, 
+                Rational[-1, 2]] Rational[3, 2]^Rational[1, 2]}, 
+            Symmetric[{1, 2}]}]]]]]}], ",", 
      RowBox[{
       RowBox[{"{", 
        RowBox[{"2", ",", "2"}], "}"}], "\[Rule]", 
@@ -20658,7 +21311,16 @@ Cell[BoxData[
               Offset[0.4]}, 
              Offset[0.2]}}], "\[NoBreak]", ")"}],
        Function[BoxForm`e$, 
-        MatrixForm[BoxForm`e$]]]}]}], "}"}], ",", 
+        MatrixForm[
+         SymmetrizedArray[
+          
+          StructuredArray`StructuredData[{3, 
+           3}, {{{1, 1} -> 
+             Rational[1, 2] Rational[3, 2]^Rational[1, 2], {1, 2} -> 
+             Complex[0, 
+                Rational[1, 2]] Rational[3, 2]^Rational[1, 2], {2, 2} -> 
+             Rational[-1, 2] Rational[3, 2]^Rational[1, 2]}, 
+            Symmetric[{1, 2}]}]]]]]}]}], "}"}], ",", 
    RowBox[{"{", 
     RowBox[{
      RowBox[{
@@ -20704,6 +21366,7 @@ Cell[BoxData[
                   SqrtBox["5"], "4"]}]},
                {"0"}
               },
+              
               GridBoxAlignment->{
                "Columns" -> {{Center}}, "Rows" -> {{Baseline}}},
               GridBoxSpacings->{"Columns" -> {
@@ -20858,7 +21521,16 @@ Cell[BoxData[
               Offset[0.4]}, 
              Offset[0.2]}}], "\[NoBreak]", ")"}],
        Function[BoxForm`e$, 
-        MatrixForm[BoxForm`e$]]]}], ",", 
+        MatrixForm[
+         SymmetrizedArray[
+          
+          StructuredArray`StructuredData[{3, 3, 
+           3}, {{{1, 1, 1} -> Rational[1, 4] 5^Rational[1, 2], {1, 1, 2} -> 
+             Complex[0, 
+                Rational[-1, 4]] 5^Rational[1, 2], {1, 2, 2} -> 
+             Rational[-1, 4] 5^Rational[1, 2], {2, 2, 2} -> Complex[0, 
+                Rational[1, 4]] 5^Rational[1, 2]}, 
+            Symmetric[{1, 2, 3}]}]]]]]}], ",", 
      RowBox[{
       RowBox[{"{", 
        RowBox[{"3", ",", 
@@ -21082,7 +21754,16 @@ Cell[BoxData[
               Offset[0.4]}, 
              Offset[0.2]}}], "\[NoBreak]", ")"}],
        Function[BoxForm`e$, 
-        MatrixForm[BoxForm`e$]]]}], ",", 
+        MatrixForm[
+         SymmetrizedArray[
+          
+          StructuredArray`StructuredData[{3, 3, 
+           3}, {{{1, 1, 3} -> 
+             Rational[1, 2] Rational[5, 6]^Rational[1, 2], {1, 2, 3} -> 
+             Complex[0, 
+                Rational[-1, 2]] Rational[5, 6]^Rational[1, 2], {2, 2, 3} -> 
+             Rational[-1, 2] Rational[5, 6]^Rational[1, 2]}, 
+            Symmetric[{1, 2, 3}]}]]]]]}], ",", 
      RowBox[{
       RowBox[{"{", 
        RowBox[{"3", ",", 
@@ -21297,7 +21978,18 @@ Cell[BoxData[
               Offset[0.4]}, 
              Offset[0.2]}}], "\[NoBreak]", ")"}],
        Function[BoxForm`e$, 
-        MatrixForm[BoxForm`e$]]]}], ",", 
+        MatrixForm[
+         SymmetrizedArray[
+          
+          StructuredArray`StructuredData[{3, 3, 
+           3}, {{{1, 1, 1} -> Rational[-1, 4] 3^Rational[1, 2], {1, 1, 2} -> 
+             Complex[0, 
+                Rational[1, 4]] 3^Rational[-1, 2], {1, 2, 2} -> 
+             Rational[-1, 4] 3^Rational[-1, 2], {1, 3, 3} -> 
+             3^Rational[-1, 2], {2, 2, 2} -> Complex[0, 
+                Rational[1, 4]] 3^Rational[1, 2], {2, 3, 3} -> 
+             Complex[0, -1] 3^Rational[-1, 2]}, 
+            Symmetric[{1, 2, 3}]}]]]]]}], ",", 
      RowBox[{
       RowBox[{"{", 
        RowBox[{"3", ",", "0"}], "}"}], "\[Rule]", 
@@ -21481,7 +22173,13 @@ Cell[BoxData[
               Offset[0.4]}, 
              Offset[0.2]}}], "\[NoBreak]", ")"}],
        Function[BoxForm`e$, 
-        MatrixForm[BoxForm`e$]]]}], ",", 
+        MatrixForm[
+         SymmetrizedArray[
+          
+          StructuredArray`StructuredData[{3, 3, 
+           3}, {{{1, 1, 3} -> Rational[-1, 2], {2, 2, 3} -> 
+             Rational[-1, 2], {3, 3, 3} -> 1}, 
+            Symmetric[{1, 2, 3}]}]]]]]}], ",", 
      RowBox[{
       RowBox[{"{", 
        RowBox[{"3", ",", "1"}], "}"}], "\[Rule]", 
@@ -21694,7 +22392,18 @@ Cell[BoxData[
               Offset[0.4]}, 
              Offset[0.2]}}], "\[NoBreak]", ")"}],
        Function[BoxForm`e$, 
-        MatrixForm[BoxForm`e$]]]}], ",", 
+        MatrixForm[
+         SymmetrizedArray[
+          
+          StructuredArray`StructuredData[{3, 3, 
+           3}, {{{1, 1, 1} -> Rational[1, 4] 3^Rational[1, 2], {1, 1, 2} -> 
+             Complex[0, 
+                Rational[1, 4]] 3^Rational[-1, 2], {1, 2, 2} -> 
+             Rational[1, 4] 3^Rational[-1, 2], {1, 3, 
+              3} -> -3^Rational[-1, 2], {2, 2, 2} -> Complex[0, 
+                Rational[1, 4]] 3^Rational[1, 2], {2, 3, 3} -> 
+             Complex[0, -1] 3^Rational[-1, 2]}, 
+            Symmetric[{1, 2, 3}]}]]]]]}], ",", 
      RowBox[{
       RowBox[{"{", 
        RowBox[{"3", ",", "2"}], "}"}], "\[Rule]", 
@@ -21911,7 +22620,16 @@ Cell[BoxData[
               Offset[0.4]}, 
              Offset[0.2]}}], "\[NoBreak]", ")"}],
        Function[BoxForm`e$, 
-        MatrixForm[BoxForm`e$]]]}], ",", 
+        MatrixForm[
+         SymmetrizedArray[
+          
+          StructuredArray`StructuredData[{3, 3, 
+           3}, {{{1, 1, 3} -> 
+             Rational[1, 2] Rational[5, 6]^Rational[1, 2], {1, 2, 3} -> 
+             Complex[0, 
+                Rational[1, 2]] Rational[5, 6]^Rational[1, 2], {2, 2, 3} -> 
+             Rational[-1, 2] Rational[5, 6]^Rational[1, 2]}, 
+            Symmetric[{1, 2, 3}]}]]]]]}], ",", 
      RowBox[{
       RowBox[{"{", 
        RowBox[{"3", ",", "3"}], "}"}], "\[Rule]", 
@@ -22107,8 +22825,17 @@ Cell[BoxData[
               Offset[0.4]}, 
              Offset[0.2]}}], "\[NoBreak]", ")"}],
        Function[BoxForm`e$, 
-        MatrixForm[BoxForm`e$]]]}]}], "}"}]}], "}"}]], "Output",
- CellLabel->"Out[206]=",ExpressionUUID->"505917e5-e45b-4f1c-9ac2-9f98b31246dd"]
+        MatrixForm[
+         SymmetrizedArray[
+          
+          StructuredArray`StructuredData[{3, 3, 
+           3}, {{{1, 1, 1} -> Rational[-1, 4] 5^Rational[1, 2], {1, 1, 2} -> 
+             Complex[0, 
+                Rational[-1, 4]] 5^Rational[1, 2], {1, 2, 2} -> 
+             Rational[1, 4] 5^Rational[1, 2], {2, 2, 2} -> Complex[0, 
+                Rational[1, 4]] 5^Rational[1, 2]}, 
+            Symmetric[{1, 2, 3}]}]]]]]}]}], "}"}]}], "}"}]], "Output",
+ CellLabel->"Out[231]=",ExpressionUUID->"c64066cc-959d-4b2f-8e1b-4511e5dc7b34"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -22434,152 +23161,169 @@ Cell[BoxData[
  CellLabel->"Out[222]=",ExpressionUUID->"33e81878-8d0a-41b5-b6b9-6b5d33453342"]
 }, Open  ]],
 
-Cell[BoxData[
- RowBox[{"(*", 
-  RowBox[{
-   RowBox[{
-    RowBox[{"MultipolarBasisTensorT", "::", "usage"}], 
-    "=", "\"\<MultipolarBasisTensorT[\[ScriptL],m] returns the multipolar \
-basis tensor \!\(\*SubsuperscriptBox[OverscriptBox[\(t\), \(^\)], \(m\), \((\
-\[ScriptL])\)]\).\>\""}], ";", "\[IndentingNewLine]", "\[IndentingNewLine]", 
-   RowBox[{"Begin", "[", "\"\<`Private`\>\"", "]"}], ";", 
-   "\[IndentingNewLine]", "\[IndentingNewLine]", 
-   RowBox[{
-    RowBox[{
-     RowBox[{"MultipolarBasisTensorT", "[", 
-      RowBox[{"\[Lambda]_Integer", ",", "\[Mu]_Integer"}], "]"}], "/;", 
-     RowBox[{"\[Lambda]", "\[GreaterEqual]", 
-      RowBox[{"Abs", "[", "\[Mu]", "]"}]}]}], ":=", 
-    RowBox[{"(*", 
-     RowBox[{"Sqrt", "[", 
-      FractionBox[
-       RowBox[{
-        RowBox[{"2", " ", "\[Lambda]"}], "+", "1"}], 
-       RowBox[{"4", " ", "\[Pi]"}]], "]"}], " ", "*)"}], 
-    RowBox[{
-     RowBox[{"Sqrt", "[", 
-      FractionBox[
-       RowBox[{"Gamma", "[", 
-        RowBox[{"\[Lambda]", "-", 
-         RowBox[{"Abs", "[", "\[Mu]", "]"}], "+", "1"}], "]"}], 
-       RowBox[{"Gamma", "[", 
-        RowBox[{"\[Lambda]", "+", 
-         RowBox[{"Abs", "[", "\[Mu]", "]"}], "+", "1"}], "]"}]], "]"}], " ", 
-     SuperscriptBox["2", 
-      RowBox[{"-", "\[Lambda]"}]], " ", 
-     SuperscriptBox[
-      RowBox[{"(", 
-       RowBox[{"-", "1"}], ")"}], 
-      RowBox[{
-       RowBox[{"(", 
-        RowBox[{"\[Mu]", "-", 
-         RowBox[{"Abs", "[", "\[Mu]", "]"}]}], ")"}], "/", "2"}]], "\[Times]",
-      "\[IndentingNewLine]", 
-     RowBox[{"Normal", "@", 
-      RowBox[{"Symmetrize", "@", 
-       RowBox[{"TensorProduct", "[", "\[IndentingNewLine]", 
-        RowBox[{
-         RowBox[{"If", "[", 
-          RowBox[{
-           RowBox[{
-            RowBox[{"Rationalize", "[", "\[Mu]", "]"}], "\[Equal]", "0"}], ",",
-            "1", ",", 
-           RowBox[{"TensorPower", "[", 
-            RowBox[{
-             RowBox[{
-              RowBox[{"{", 
-               RowBox[{"1", ",", "0", ",", "0"}], "}"}], "+", 
-              RowBox[{
-               RowBox[{"Sign", "[", "\[Mu]", "]"}], "\[ImaginaryI]", " ", 
-               RowBox[{"{", 
-                RowBox[{"0", ",", "1", ",", "0"}], "}"}]}]}], ",", 
-             RowBox[{"Abs", "[", "\[Mu]", "]"}]}], "]"}]}], "]"}], ",", 
-         "\[IndentingNewLine]", 
-         RowBox[{"Sum", "[", "\[IndentingNewLine]", 
-          RowBox[{
-           RowBox[{
-            SuperscriptBox[
-             RowBox[{"(", 
-              RowBox[{"-", "1"}], ")"}], 
-             RowBox[{"\[Mu]", "+", "k"}]], " ", 
-            RowBox[{"Binomial", "[", 
-             RowBox[{"\[Lambda]", ",", "k"}], "]"}], " ", 
-            RowBox[{"Binomial", "[", 
-             RowBox[{
-              RowBox[{
-               RowBox[{"2", " ", "\[Lambda]"}], "-", 
-               RowBox[{"2", " ", "k"}]}], ",", "\[Lambda]"}], "]"}], " ", 
-            RowBox[{"Pochhammer", "[", 
-             RowBox[{
-              RowBox[{"\[Lambda]", "-", 
-               RowBox[{"Abs", "[", "\[Mu]", "]"}], "-", 
-               RowBox[{"2", " ", "k"}], "+", "1"}], ",", 
-              RowBox[{"Abs", "[", "\[Mu]", "]"}]}], "]"}], " ", "\[Times]", 
-            "\[IndentingNewLine]", 
-            RowBox[{"If", "[", 
-             RowBox[{
-              RowBox[{"TrueQ", "[", 
-               RowBox[{
-                RowBox[{"Pochhammer", "[", 
-                 RowBox[{
-                  RowBox[{"\[Lambda]", "-", 
-                   RowBox[{"Abs", "[", "\[Mu]", "]"}], "-", 
-                   RowBox[{"2", " ", "k"}], "+", "1"}], ",", 
-                  RowBox[{"Abs", "[", "\[Mu]", "]"}]}], "]"}], "\[Equal]", 
-                "0"}], "]"}], ",", "1", ",", "\[IndentingNewLine]", 
-              RowBox[{"TensorProduct", "[", "\[IndentingNewLine]", 
-               RowBox[{
-                RowBox[{"If", "[", 
-                 RowBox[{
-                  RowBox[{
-                   RowBox[{"Rationalize", "[", "k", "]"}], "\[Equal]", "0"}], 
-                  ",", "1", ",", 
-                  RowBox[{"TensorPower", "[", 
-                   RowBox[{
-                    RowBox[{"IdentityMatrix", "[", "3", "]"}], ",", "k"}], 
-                   "]"}]}], "]"}], ",", "\[IndentingNewLine]", 
-                RowBox[{"If", "[", 
-                 RowBox[{
-                  RowBox[{
-                   RowBox[{"Rationalize", "[", 
-                    RowBox[{"\[Lambda]", "-", 
-                    RowBox[{"Abs", "[", "\[Mu]", "]"}], "-", 
-                    RowBox[{"2", " ", "k"}]}], "]"}], "\[Equal]", "0"}], ",", 
-                  "1", ",", 
-                  RowBox[{"TensorPower", "[", 
-                   RowBox[{
-                    RowBox[{"{", 
-                    RowBox[{"0", ",", "0", ",", "1"}], "}"}], ",", 
-                    RowBox[{"\[Lambda]", "-", 
-                    RowBox[{"Abs", "[", "\[Mu]", "]"}], "-", 
-                    RowBox[{"2", " ", "k"}]}]}], "]"}]}], "]"}]}], 
-               "\[IndentingNewLine]", "]"}]}], "\[IndentingNewLine]", "]"}]}],
-            "\[IndentingNewLine]", ",", 
-           RowBox[{"{", 
-            RowBox[{"k", ",", "0", ",", 
-             RowBox[{"Quotient", "[", 
-              RowBox[{"\[Lambda]", ",", "2"}], "]"}]}], "}"}]}], "]"}]}], 
-        "\[IndentingNewLine]", "]"}]}]}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
-     RowBox[{"End", "[", "]"}]}]}], ";"}], "*)"}]], "Input",
- InitializationCell->True,
- CellLabel->
-  "In[180]:=",ExpressionUUID->"d0d62745-a3b2-1a4e-99c3-5ca91acb0506"],
+Cell["Normalization:", \
+"Text",ExpressionUUID->"49c10de0-c660-401e-8b42-bb3454645faa"],
 
-Cell[TextData[{
- "Things to consider here:\n- re-normalizing. The current norm for this is ",
- Cell[BoxData[
-  FormBox[
-   FractionBox[
-    RowBox[{
-     RowBox[{"(", 
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Table", "[", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"MatrixForm", "[", "\[IndentingNewLine]", 
+    RowBox[{"Table", "[", "\[IndentingNewLine]", 
+     RowBox[{"(*", 
       RowBox[{
-       RowBox[{"2", "\[ScriptL]"}], "-", "1"}], ")"}], "!!"}], 
-    RowBox[{"\[ScriptL]", "!"}]], TraditionalForm]],ExpressionUUID->
-  "e2a0b8e3-3a5a-0d40-8154-b4b3b8c437cd"],
- ", and it should really be unit-normalized.\n- potentially taking the \
-complex conjugate of this."
-}], "Text",ExpressionUUID->"c991da37-0bdb-024d-a697-29a9c045390b"]
-}, Open  ]],
+       RowBox[{"{", 
+        RowBox[{"l", ",", "m"}], "}"}], "->"}], "*)"}], 
+     RowBox[{
+      RowBox[{
+       FractionBox[
+        RowBox[{"l", "!"}], 
+        RowBox[{
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{"2", "l"}], "-", "1"}], ")"}], "!!"}]], 
+       RowBox[{"TensorDot", "[", "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"MultipolarBasisTensorT", "[", 
+           RowBox[{"l", ",", "mm"}], "]"}], "\[Conjugate]"}], ",", 
+         "\[IndentingNewLine]", 
+         RowBox[{"MultipolarBasisTensorT", "[", 
+          RowBox[{"l", ",", "m"}], "]"}]}], "\[IndentingNewLine]", "]"}]}], 
+      "\[IndentingNewLine]", ",", 
+      RowBox[{"{", 
+       RowBox[{"m", ",", 
+        RowBox[{"-", "l"}], ",", "l"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"mm", ",", 
+        RowBox[{"-", "l"}], ",", "l"}], "}"}]}], "]"}], "\[IndentingNewLine]",
+     "]"}], "\[IndentingNewLine]", ",", 
+   RowBox[{"{", 
+    RowBox[{"l", ",", "0", ",", "5"}], "}"}]}], "]"}]], "Input",
+ CellLabel->
+  "In[230]:=",ExpressionUUID->"7589b64b-7746-48f7-984a-4d0fd897a60c"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   TagBox[
+    RowBox[{"(", "\[NoBreak]", GridBox[{
+       {"1"}
+      },
+      GridBoxAlignment->{"Columns" -> {{Center}}, "Rows" -> {{Baseline}}},
+      GridBoxSpacings->{"Columns" -> {
+          Offset[0.27999999999999997`], {
+           Offset[0.7]}, 
+          Offset[0.27999999999999997`]}, "Rows" -> {
+          Offset[0.2], {
+           Offset[0.4]}, 
+          Offset[0.2]}}], "\[NoBreak]", ")"}],
+    Function[BoxForm`e$, 
+     MatrixForm[BoxForm`e$]]], ",", 
+   TagBox[
+    RowBox[{"(", "\[NoBreak]", GridBox[{
+       {"1", "0", "0"},
+       {"0", "1", "0"},
+       {"0", "0", "1"}
+      },
+      GridBoxAlignment->{"Columns" -> {{Center}}, "Rows" -> {{Baseline}}},
+      GridBoxSpacings->{"Columns" -> {
+          Offset[0.27999999999999997`], {
+           Offset[0.7]}, 
+          Offset[0.27999999999999997`]}, "Rows" -> {
+          Offset[0.2], {
+           Offset[0.4]}, 
+          Offset[0.2]}}], "\[NoBreak]", ")"}],
+    Function[BoxForm`e$, 
+     MatrixForm[BoxForm`e$]]], ",", 
+   TagBox[
+    RowBox[{"(", "\[NoBreak]", GridBox[{
+       {"1", "0", "0", "0", "0"},
+       {"0", "1", "0", "0", "0"},
+       {"0", "0", "1", "0", "0"},
+       {"0", "0", "0", "1", "0"},
+       {"0", "0", "0", "0", "1"}
+      },
+      GridBoxAlignment->{"Columns" -> {{Center}}, "Rows" -> {{Baseline}}},
+      GridBoxSpacings->{"Columns" -> {
+          Offset[0.27999999999999997`], {
+           Offset[0.7]}, 
+          Offset[0.27999999999999997`]}, "Rows" -> {
+          Offset[0.2], {
+           Offset[0.4]}, 
+          Offset[0.2]}}], "\[NoBreak]", ")"}],
+    Function[BoxForm`e$, 
+     MatrixForm[BoxForm`e$]]], ",", 
+   TagBox[
+    RowBox[{"(", "\[NoBreak]", GridBox[{
+       {"1", "0", "0", "0", "0", "0", "0"},
+       {"0", "1", "0", "0", "0", "0", "0"},
+       {"0", "0", "1", "0", "0", "0", "0"},
+       {"0", "0", "0", "1", "0", "0", "0"},
+       {"0", "0", "0", "0", "1", "0", "0"},
+       {"0", "0", "0", "0", "0", "1", "0"},
+       {"0", "0", "0", "0", "0", "0", "1"}
+      },
+      GridBoxAlignment->{"Columns" -> {{Center}}, "Rows" -> {{Baseline}}},
+      GridBoxSpacings->{"Columns" -> {
+          Offset[0.27999999999999997`], {
+           Offset[0.7]}, 
+          Offset[0.27999999999999997`]}, "Rows" -> {
+          Offset[0.2], {
+           Offset[0.4]}, 
+          Offset[0.2]}}], "\[NoBreak]", ")"}],
+    Function[BoxForm`e$, 
+     MatrixForm[BoxForm`e$]]], ",", 
+   TagBox[
+    RowBox[{"(", "\[NoBreak]", GridBox[{
+       {"1", "0", "0", "0", "0", "0", "0", "0", "0"},
+       {"0", "1", "0", "0", "0", "0", "0", "0", "0"},
+       {"0", "0", "1", "0", "0", "0", "0", "0", "0"},
+       {"0", "0", "0", "1", "0", "0", "0", "0", "0"},
+       {"0", "0", "0", "0", "1", "0", "0", "0", "0"},
+       {"0", "0", "0", "0", "0", "1", "0", "0", "0"},
+       {"0", "0", "0", "0", "0", "0", "1", "0", "0"},
+       {"0", "0", "0", "0", "0", "0", "0", "1", "0"},
+       {"0", "0", "0", "0", "0", "0", "0", "0", "1"}
+      },
+      GridBoxAlignment->{"Columns" -> {{Center}}, "Rows" -> {{Baseline}}},
+      GridBoxSpacings->{"Columns" -> {
+          Offset[0.27999999999999997`], {
+           Offset[0.7]}, 
+          Offset[0.27999999999999997`]}, "Rows" -> {
+          Offset[0.2], {
+           Offset[0.4]}, 
+          Offset[0.2]}}], "\[NoBreak]", ")"}],
+    Function[BoxForm`e$, 
+     MatrixForm[BoxForm`e$]]], ",", 
+   TagBox[
+    RowBox[{"(", "\[NoBreak]", GridBox[{
+       {"1", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0"},
+       {"0", "1", "0", "0", "0", "0", "0", "0", "0", "0", "0"},
+       {"0", "0", "1", "0", "0", "0", "0", "0", "0", "0", "0"},
+       {"0", "0", "0", "1", "0", "0", "0", "0", "0", "0", "0"},
+       {"0", "0", "0", "0", "1", "0", "0", "0", "0", "0", "0"},
+       {"0", "0", "0", "0", "0", "1", "0", "0", "0", "0", "0"},
+       {"0", "0", "0", "0", "0", "0", "1", "0", "0", "0", "0"},
+       {"0", "0", "0", "0", "0", "0", "0", "1", "0", "0", "0"},
+       {"0", "0", "0", "0", "0", "0", "0", "0", "1", "0", "0"},
+       {"0", "0", "0", "0", "0", "0", "0", "0", "0", "1", "0"},
+       {"0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "1"}
+      },
+      GridBoxAlignment->{"Columns" -> {{Center}}, "Rows" -> {{Baseline}}},
+      GridBoxSpacings->{"Columns" -> {
+          Offset[0.27999999999999997`], {
+           Offset[0.7]}, 
+          Offset[0.27999999999999997`]}, "Rows" -> {
+          Offset[0.2], {
+           Offset[0.4]}, 
+          Offset[0.2]}}], "\[NoBreak]", ")"}],
+    Function[BoxForm`e$, 
+     MatrixForm[BoxForm`e$]]]}], "}"}]], "Output",
+ CellLabel->"Out[230]=",ExpressionUUID->"ae253f46-3dc9-4a7f-bf0a-baba897542d2"]
+}, Open  ]]
+}, Closed]],
 
 Cell[CellGroupData[{
 

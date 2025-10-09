@@ -50,7 +50,7 @@ End[];
 
 
 (* ::Input::Initialization:: *)
-Begin["`Private`"];$ChimeraTimestamp="Thu 9 Oct 2025 13:07:50";End[];
+Begin["`Private`"];$ChimeraTimestamp="Thu 9 Oct 2025 13:19:04";End[];
 
 
 (* ::Input::Initialization:: *)
@@ -949,28 +949,6 @@ TensorPower[UnitE[0],r]
 ]
 
 End[];
-
-
-(* ::Input::Initialization:: *)
-(*MultipolarBasisTensorT::usage="MultipolarBasisTensorT[\[ScriptL],m] returns the multipolar basis tensor Subsuperscript[Overscript[t, ^], m, (\[ScriptL])].";
-
-Begin["`Private`"];
-
-MultipolarBasisTensorT[\[Lambda]_Integer,\[Mu]_Integer]/;\[Lambda]\[GreaterEqual]Abs[\[Mu]]:=(*Sqrt[(2 \[Lambda]+1)/(4 \[Pi])] *)Sqrt[Gamma[\[Lambda]-Abs[\[Mu]]+1]/Gamma[\[Lambda]+Abs[\[Mu]]+1]] 2^-\[Lambda] (-1)^((\[Mu]-Abs[\[Mu]])/2)\[Times]
-Normal@Symmetrize@TensorProduct[
-If[Rationalize[\[Mu]]\[Equal]0,1,TensorPower[{1,0,0}+Sign[\[Mu]]\[ImaginaryI] {0,1,0},Abs[\[Mu]]]],
-Sum[
-(-1)^(\[Mu]+k) Binomial[\[Lambda],k] Binomial[2 \[Lambda]-2 k,\[Lambda]] Pochhammer[\[Lambda]-Abs[\[Mu]]-2 k+1,Abs[\[Mu]]] \[Times]
-If[TrueQ[Pochhammer[\[Lambda]-Abs[\[Mu]]-2 k+1,Abs[\[Mu]]]\[Equal]0],1,
-TensorProduct[
-If[Rationalize[k]\[Equal]0,1,TensorPower[IdentityMatrix[3],k]],
-If[Rationalize[\[Lambda]-Abs[\[Mu]]-2 k]\[Equal]0,1,TensorPower[{0,0,1},\[Lambda]-Abs[\[Mu]]-2 k]]
-]
-]
-,{k,0,Quotient[\[Lambda],2]}]
-]
-
-End[];*)
 
 
 (* ::Input::Initialization:: *)
