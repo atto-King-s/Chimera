@@ -50,7 +50,7 @@ End[];
 
 
 (* ::Input::Initialization:: *)
-Begin["`Private`"];$ChimeraTimestamp="Thu 9 Oct 2025 12:43:22";End[];
+Begin["`Private`"];$ChimeraTimestamp="Thu 9 Oct 2025 13:07:50";End[];
 
 
 (* ::Input::Initialization:: *)
@@ -76,23 +76,6 @@ MegabyteCount[expr_]:=UnitConvert[Quantity[N@ByteCount[expr],"Bytes"],"Megabytes
 
 (* ::Input::Initialization:: *)
 electronCount[data_,h_]:=electronCount[data,h]=Total[data[h][[All,4]]]
-
-
-(* ::Input::Initialization:: *)
-(*SolidHarmonicS::usage="SolidHarmonicS[l,m,x,y,z] calculates the solid harmonic Subscript[S, lm](x,y,z)=r^lSubscript[Y, lm](x,y,z).
-
-SolidHarmonicS[l,m,{x,y,z}] does the same.";
-Begin["`Private`"];
-SolidHarmonicS[\[Lambda]_Integer,\[Mu]_Integer,x_,y_,z_]/;\[Lambda]\[GreaterEqual]Abs[\[Mu]]:=(*Sqrt[(2 \[Lambda]+1)/(4 \[Pi])] *)Sqrt[Gamma[\[Lambda]-Abs[\[Mu]]+1]/Gamma[\[Lambda]+Abs[\[Mu]]+1]] 2^-\[Lambda] (-1)^((\[Mu]-Abs[\[Mu]])/2)\[Times]
-If[Rationalize[\[Mu]]\[Equal]0,1,(x+Sign[\[Mu]]\[ImaginaryI] y)^Abs[\[Mu]]]\[Times]
-Sum[
-(-1)^(\[Mu]+k) Binomial[\[Lambda],k] Binomial[2 \[Lambda]-2 k,\[Lambda]] Pochhammer[\[Lambda]-Abs[\[Mu]]-2 k+1,Abs[\[Mu]]] \[Times]
-If[TrueQ[Pochhammer[\[Lambda]-Abs[\[Mu]]-2 k+1,Abs[\[Mu]]]\[Equal]0],1,
-If[Rationalize[k]\[Equal]0,1,(x^2+y^2+z^2)^k]If[Rationalize[\[Lambda]-Abs[\[Mu]]-2 k]\[Equal]0,1,z^(\[Lambda]-Abs[\[Mu]]-2 k)]
-]
-,{k,0,Quotient[\[Lambda],2]}]
-SolidHarmonicS[\[Lambda]_Integer,\[Mu]_Integer,{x_,y_,z_}]/;\[Lambda]\[GreaterEqual]Abs[\[Mu]]:=SolidHarmonicS[\[Lambda],\[Mu],x,y,z]
-End[];*)
 
 
 (* ::Input::Initialization:: *)
@@ -935,25 +918,59 @@ End[];
 
 
 (* ::Input::Initialization:: *)
-MultipolarBasisTensorT::usage="MultipolarBasisTensorT[\[ScriptL],m] returns the multipolar basis tensor \!\(\*SubsuperscriptBox[OverscriptBox[\(t\), \(^\)], \(m\), \((\[ScriptL])\)]\).";
+UnitE::usage="UnitE[s] returns the spherical basis vector Subscript[\!\(\*OverscriptBox[
+StyleBox["e",
+FontWeight->"Bold",
+FontSlant->"Plain"], \(^\)]\), s].";
+
+Begin["`Private`"];
+UnitE[1]:=-(1/Sqrt[2]){1,I,0}
+UnitE[-1]:=1/Sqrt[2] {1,-I,0}
+UnitE[0]:={0,0,1}
+End[];
+
+
+(* ::Input::Initialization:: *)
+MultipolarBasisTensorT::usage="MultipolarBasisTensorT[\[ScriptL],m] returns the multipolar basis tensor \!\(\*SubscriptBox[OverscriptBox[\(t\), \(^\)], \(l, m\)]\).";
 
 Begin["`Private`"];
 
-MultipolarBasisTensorT[\[Lambda]_Integer,\[Mu]_Integer]/;\[Lambda]>=Abs[\[Mu]]:=(*Sqrt[(2 \[Lambda]+1)/(4 \[Pi])] *)Sqrt[Gamma[\[Lambda]-Abs[\[Mu]]+1]/Gamma[\[Lambda]+Abs[\[Mu]]+1]] 2^-\[Lambda] (-1)^((\[Mu]-Abs[\[Mu]])/2)*
+MultipolarBasisTensorT[\[Lambda]_Integer,\[Mu]_Integer]/;\[Lambda]>=Abs[\[Mu]]:=Times[
+(*Sqrt[(2 \[Lambda]+1 )/(4 \[Pi] )],*)
+Sqrt[(\[Lambda]-\[Mu])!(\[Lambda]+\[Mu])!],
+Sum[If[
+Or[p+q+r!=\[Lambda],p-q!=\[Mu]],0,
+2^(-((p+q)/2))/(p!q!r!)*Symmetrize[TensorProduct[
+TensorPower[UnitE[1],p],
+TensorPower[UnitE[-1],q],
+TensorPower[UnitE[0],r]
+]]
+],{p,0,\[Lambda]},{q,0,\[Lambda]},{r,0,\[Lambda]}]
+]
+
+End[];
+
+
+(* ::Input::Initialization:: *)
+(*MultipolarBasisTensorT::usage="MultipolarBasisTensorT[\[ScriptL],m] returns the multipolar basis tensor Subsuperscript[Overscript[t, ^], m, (\[ScriptL])].";
+
+Begin["`Private`"];
+
+MultipolarBasisTensorT[\[Lambda]_Integer,\[Mu]_Integer]/;\[Lambda]\[GreaterEqual]Abs[\[Mu]]:=(*Sqrt[(2 \[Lambda]+1)/(4 \[Pi])] *)Sqrt[Gamma[\[Lambda]-Abs[\[Mu]]+1]/Gamma[\[Lambda]+Abs[\[Mu]]+1]] 2^-\[Lambda] (-1)^((\[Mu]-Abs[\[Mu]])/2)\[Times]
 Normal@Symmetrize@TensorProduct[
-If[Rationalize[\[Mu]]==0,1,TensorPower[{1,0,0}+Sign[\[Mu]]I {0,1,0},Abs[\[Mu]]]],
+If[Rationalize[\[Mu]]\[Equal]0,1,TensorPower[{1,0,0}+Sign[\[Mu]]\[ImaginaryI] {0,1,0},Abs[\[Mu]]]],
 Sum[
-(-1)^(\[Mu]+k) Binomial[\[Lambda],k] Binomial[2 \[Lambda]-2 k,\[Lambda]] Pochhammer[\[Lambda]-Abs[\[Mu]]-2 k+1,Abs[\[Mu]]] *
-If[TrueQ[Pochhammer[\[Lambda]-Abs[\[Mu]]-2 k+1,Abs[\[Mu]]]==0],1,
+(-1)^(\[Mu]+k) Binomial[\[Lambda],k] Binomial[2 \[Lambda]-2 k,\[Lambda]] Pochhammer[\[Lambda]-Abs[\[Mu]]-2 k+1,Abs[\[Mu]]] \[Times]
+If[TrueQ[Pochhammer[\[Lambda]-Abs[\[Mu]]-2 k+1,Abs[\[Mu]]]\[Equal]0],1,
 TensorProduct[
-If[Rationalize[k]==0,1,TensorPower[IdentityMatrix[3],k]],
-If[Rationalize[\[Lambda]-Abs[\[Mu]]-2 k]==0,1,TensorPower[{0,0,1},\[Lambda]-Abs[\[Mu]]-2 k]]
+If[Rationalize[k]\[Equal]0,1,TensorPower[IdentityMatrix[3],k]],
+If[Rationalize[\[Lambda]-Abs[\[Mu]]-2 k]\[Equal]0,1,TensorPower[{0,0,1},\[Lambda]-Abs[\[Mu]]-2 k]]
 ]
 ]
 ,{k,0,Quotient[\[Lambda],2]}]
 ]
 
-End[];
+End[];*)
 
 
 (* ::Input::Initialization:: *)
