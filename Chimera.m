@@ -50,7 +50,7 @@ End[];
 
 
 (* ::Input::Initialization:: *)
-Begin["`Private`"];$ChimeraTimestamp="Fri 31 Oct 2025 19:56:56";End[];
+Begin["`Private`"];$ChimeraTimestamp="Fri 31 Oct 2025 20:22:10";End[];
 
 
 (* ::Input::Initialization:: *)
@@ -747,15 +747,23 @@ End[];
 TensorCross::usage="TensorCross[A,B,k] returns the tensor cross product (A\[Times]B\!\(\*SubscriptBox[\()\), \(k\)]\) of the two tensors A and B with output rank k.";
 
 Begin["`Private`"];
-TensorCross[tensor1_,tensor2_,outputRank_]:=Normal[Identity[Symmetrize[
+TensorCross[tensor1_,tensor2_,outputRank_]:=Normal[Symmetrize[
 TensorContract[
-TensorContract[
-Identity[TensorProduct][LeviCivitaTensor[3],tensor1,tensor2],
-{{2,4},{3,ArrayDepth[tensor1]+4}}
-],
-Table[{1+contractionIndex,ArrayDepth[tensor1]+contractionIndex},{contractionIndex,1,((ArrayDepth[tensor1]+ArrayDepth[tensor2]-1)-outputRank)/2}]
+TensorProduct[LeviCivitaTensor[3],tensor1,tensor2],
+Join[
+{
+(*i1*){1,3+1},
+(*i2*){2,3+ArrayDepth[tensor1]+1}
+},
+Table[
+{
+3+1+contractionIndex,
+3+ArrayDepth[tensor1]+1+contractionIndex
+}
+,(*{Subscript[j, 1],\[Ellipsis],Subscript[j, m]}, m=(Subscript[n, 1]+Subscript[n, 2]-Subscript[n, 3]-1)/2*){contractionIndex,1,(ArrayDepth[tensor1]+ArrayDepth[tensor2]-outputRank-1)/2}]
 ]
-]]]
+]
+]]
 
 End[];
 
