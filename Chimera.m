@@ -50,7 +50,7 @@ End[];
 
 
 (* ::Input::Initialization:: *)
-Begin["`Private`"];$ChimeraTimestamp="Fri 31 Oct 2025 20:22:10";End[];
+Begin["`Private`"];$ChimeraTimestamp="Fri 31 Oct 2025 20:31:15";End[];
 
 
 (* ::Input::Initialization:: *)
@@ -748,8 +748,8 @@ TensorCross::usage="TensorCross[A,B,k] returns the tensor cross product (A\[Time
 
 Begin["`Private`"];
 TensorCross[tensor1_,tensor2_,outputRank_]:=Normal[Symmetrize[
-TensorContract[
-TensorProduct[LeviCivitaTensor[3],tensor1,tensor2],
+Activate[TensorContract[
+Inactive[TensorProduct][LeviCivitaTensor[3],tensor1,tensor2],
 Join[
 {
 (*i1*){1,3+1},
@@ -762,7 +762,7 @@ Table[
 }
 ,(*{Subscript[j, 1],\[Ellipsis],Subscript[j, m]}, m=(Subscript[n, 1]+Subscript[n, 2]-Subscript[n, 3]-1)/2*){contractionIndex,1,(ArrayDepth[tensor1]+ArrayDepth[tensor2]-outputRank-1)/2}]
 ]
-]
+]]
 ]]
 
 End[];
