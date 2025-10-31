@@ -50,7 +50,7 @@ End[];
 
 
 (* ::Input::Initialization:: *)
-Begin["`Private`"];$ChimeraTimestamp="Fri 31 Oct 2025 13:22:00";End[];
+Begin["`Private`"];$ChimeraTimestamp="Fri 31 Oct 2025 19:10:32";End[];
 
 
 (* ::Input::Initialization:: *)
@@ -928,22 +928,49 @@ End[];
 
 
 (* ::Input::Initialization:: *)
-MultipolarBasisTensorT::usage="MultipolarBasisTensorT[\[ScriptL],m] returns the multipolar basis tensor \!\(\*SubscriptBox[OverscriptBox[\(t\), \(^\)], \(l, m\)]\).";
+(*MultipolarBasisTensorT::usage="MultipolarBasisTensorT[\[ScriptL],m] returns the multipolar basis tensor Subscript[Overscript[t, ^], l,m].";
 
 Begin["`Private`"];
 
-MultipolarBasisTensorT[\[Lambda]_Integer,\[Mu]_Integer]/;\[Lambda]>=Abs[\[Mu]]:=Times[
+MultipolarBasisTensorT[\[Lambda]_Integer,\[Mu]_Integer]/;\[Lambda]\[GreaterEqual]Abs[\[Mu]]:=Times[
 (*Sqrt[(2 \[Lambda]+1 )/(4 \[Pi] )],*)
 Sqrt[(\[Lambda]-\[Mu])!(\[Lambda]+\[Mu])!],
 Sum[If[
 Or[p+q+r!=\[Lambda],p-q!=\[Mu]],0,
-2^(-((p+q)/2))/(p!q!r!)*Symmetrize[TensorProduct[
+2^(-((p+q)/2))/(p!q!r!)\[Times]Symmetrize[TensorProduct[
 TensorPower[UnitE[1],p],
 TensorPower[UnitE[-1],q],
 TensorPower[UnitE[0],r]
 ]]
 ],{p,0,\[Lambda]},{q,0,\[Lambda]},{r,0,\[Lambda]}]
 ]
+
+End[];*)
+
+
+(* ::Input::Initialization:: *)
+MultipolarBasisTensorT::usage="MultipolarBasisTensorT[\[ScriptL],m] returns the multipolar basis tensor \!\(\*SubscriptBox[OverscriptBox[\(t\), \(^\)], \(l, m\)]\).
+MultipolarBasisTensorT[n,\[ScriptL],m] returns the multipolar basis tensor \!\(\*SubsuperscriptBox[OverscriptBox[\(t\), \(^\)], \(l, m\), \((n)\)]\) with tensor rank n.";
+
+Begin["`Private`"];
+
+MultipolarBasisTensorT[n_Integer,\[ScriptL]_Integer,m_Integer]/;And[Abs[m]<=\[ScriptL]<=n,EvenQ[n-\[ScriptL]]]:=Times[
+(-1)^m,
+Sqrt[b[\[ScriptL],(n-\[ScriptL])/2]],
+Sqrt[\[ScriptL]!/(2\[ScriptL]-1)!!],
+Sqrt[(\[ScriptL]-m)!(\[ScriptL]+m)!],
+Sum[If[
+Or[p+q+r!=\[ScriptL],p-q!=m],0,
+2^(-((p+q)/2))/(p!q!r!)*Symmetrize[TensorProduct[
+TensorPower[UnitE[-1],p],
+TensorPower[UnitE[1],q],
+TensorPower[UnitE[0],r],
+TensorPower[IdentityMatrix[3],(n-\[ScriptL])/2]
+]]
+],{p,0,\[ScriptL]},{q,0,\[ScriptL]},{r,0,\[ScriptL]}]
+]
+
+MultipolarBasisTensorT[\[ScriptL]_,m_]:=MultipolarBasisTensorT[\[ScriptL],\[ScriptL],m]
 
 End[];
 
