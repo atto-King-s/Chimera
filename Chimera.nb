@@ -88,9 +88,8 @@ helixDataDistribution as well as three-gaussians distributions?\n- In ",
  ", if the w3jproduct\[CloseCurlyQuote]s are all zero (cf. example in the \
 notebook from 2024-11-27), throw an error and don\[CloseCurlyQuote]t attempt \
 to plot.\n\n- Build tensor visualization tools, both on the sphere and as \
-surface 3D plots of the corresponding potential\n\n- Remove \
-TensorMultipoleOld code, after making sure that the replacement version does \
-work as intended."
+surface 3D plots of the corresponding potential\n\n- Apply the \
+Inactive/Activate trick to TensorCross, similarly to TensorDot."
 }], "Text",ExpressionUUID->"7760ff8a-a77f-9c49-9cf2-64a8f6fa928a"]
 }, Open  ]],
 
@@ -364,11 +363,11 @@ Cell["Timestamp", \
 Cell[BoxData[
  RowBox[{
   RowBox[{"Begin", "[", "\"\<`Private`\>\"", "]"}], ";", 
-  RowBox[{"$ChimeraTimestamp", "=", "\"\<Fri 31 Oct 2025 19:15:11\>\""}], ";", 
+  RowBox[{"$ChimeraTimestamp", "=", "\"\<Fri 31 Oct 2025 19:56:56\>\""}], ";", 
   RowBox[{"End", "[", "]"}], ";"}]], "Input",
  InitializationCell->True,
  CellTags->
-  "version-timestamp",ExpressionUUID->"de6845b6-4dd3-419d-a96b-ed1596c6c571"]
+  "version-timestamp",ExpressionUUID->"1f8826dd-442b-4228-8a91-a3196183fc33"]
 }, Open  ]]
 }, Open  ]],
 
@@ -15210,8 +15209,15 @@ Cell[CellGroupData[{
 
 Cell["TensorCross", "Subsubsection",
  CellChangeTimes->{{3.947138443675684*^9, 
-  3.9471384452981796`*^9}},ExpressionUUID->"d2ce82b5-4671-4cf0-83ca-\
-5e5f9cddbecc"],
+  3.9471384452981796`*^9}},ExpressionUUID->"519b3de4-2802-457b-9042-\
+1cb0fa6f0076"],
+
+Cell["\<\
+It would be good to do something like the Inactive/Activate trick used in \
+TensorDot below. It doesn\[CloseCurlyQuote]t work naively, though  (replacing \
+the Identity calls with Activate and Inactive, resp.) - it produces error \
+messages with TensorTranspose. So needs to be tested in more detail.\
+\>", "Text",ExpressionUUID->"8852e714-4606-4510-9207-fee0a2c377cf"],
 
 Cell[BoxData[{
  RowBox[{
@@ -15228,49 +15234,51 @@ rank k.\>\""}], ";"}], "\[IndentingNewLine]"}], "\[IndentingNewLine]",
    RowBox[{"TensorCross", "[", 
     RowBox[{"tensor1_", ",", "tensor2_", ",", "outputRank_"}], "]"}], ":=", 
    RowBox[{"Normal", "[", 
-    RowBox[{"Symmetrize", "[", "\[IndentingNewLine]", 
-     RowBox[{"TensorContract", "[", "\[IndentingNewLine]", 
-      RowBox[{
-       RowBox[{"TensorContract", "[", "\[IndentingNewLine]", 
-        RowBox[{
-         RowBox[{"TensorProduct", "[", 
+    RowBox[{"Identity", "[", 
+     RowBox[{"Symmetrize", "[", "\[IndentingNewLine]", 
+      RowBox[{"TensorContract", "[", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"TensorContract", "[", "\[IndentingNewLine]", 
+         RowBox[{
           RowBox[{
-           RowBox[{"LeviCivitaTensor", "[", "3", "]"}], ",", "tensor1", ",", 
-           "tensor2"}], "]"}], ",", "\[IndentingNewLine]", 
-         RowBox[{"{", 
-          RowBox[{
-           RowBox[{"{", 
-            RowBox[{"2", ",", "4"}], "}"}], ",", 
-           RowBox[{"{", 
-            RowBox[{"3", ",", 
-             RowBox[{
-              RowBox[{"ArrayDepth", "[", "tensor1", "]"}], "+", "4"}]}], 
-            "}"}]}], "}"}]}], "\[IndentingNewLine]", "]"}], ",", 
-       "\[IndentingNewLine]", 
-       RowBox[{"Table", "[", 
-        RowBox[{
-         RowBox[{"{", 
-          RowBox[{
-           RowBox[{"1", "+", "contractionIndex"}], ",", 
+           RowBox[{"Identity", "[", "TensorProduct", "]"}], "[", 
            RowBox[{
-            RowBox[{"ArrayDepth", "[", "tensor1", "]"}], "+", 
-            "contractionIndex"}]}], "}"}], ",", 
-         RowBox[{"{", 
-          RowBox[{"contractionIndex", ",", "1", ",", 
-           FractionBox[
-            RowBox[{
-             RowBox[{"(", 
+            RowBox[{"LeviCivitaTensor", "[", "3", "]"}], ",", "tensor1", ",", 
+            "tensor2"}], "]"}], ",", "\[IndentingNewLine]", 
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"{", 
+             RowBox[{"2", ",", "4"}], "}"}], ",", 
+            RowBox[{"{", 
+             RowBox[{"3", ",", 
               RowBox[{
-               RowBox[{"ArrayDepth", "[", "tensor1", "]"}], "+", 
-               RowBox[{"ArrayDepth", "[", "tensor2", "]"}], "-", "1"}], ")"}],
-              "-", "outputRank"}], "2"]}], "}"}]}], "]"}]}], 
-      "\[IndentingNewLine]", "]"}], "\[IndentingNewLine]", "]"}], "]"}]}], 
-  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+               RowBox[{"ArrayDepth", "[", "tensor1", "]"}], "+", "4"}]}], 
+             "}"}]}], "}"}]}], "\[IndentingNewLine]", "]"}], ",", 
+        "\[IndentingNewLine]", 
+        RowBox[{"Table", "[", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"1", "+", "contractionIndex"}], ",", 
+            RowBox[{
+             RowBox[{"ArrayDepth", "[", "tensor1", "]"}], "+", 
+             "contractionIndex"}]}], "}"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"contractionIndex", ",", "1", ",", 
+            FractionBox[
+             RowBox[{
+              RowBox[{"(", 
+               RowBox[{
+                RowBox[{"ArrayDepth", "[", "tensor1", "]"}], "+", 
+                RowBox[{"ArrayDepth", "[", "tensor2", "]"}], "-", "1"}], 
+               ")"}], "-", "outputRank"}], "2"]}], "}"}]}], "]"}]}], 
+       "\[IndentingNewLine]", "]"}], "\[IndentingNewLine]", "]"}], "]"}], 
+    "]"}]}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{"End", "[", "]"}], ";"}]}], "Input",
- InitializationCell->True,
- CellLabel->"In[150]:=",ExpressionUUID->"d0a18a26-560f-4757-9498-9a814e6f5cf6"]
-}, Closed]],
+ InitializationCell->
+  True,ExpressionUUID->"d74086f9-fc92-4c88-af15-85aeed1633e9"]
+}, Open  ]],
 
 Cell[CellGroupData[{
 
@@ -15606,8 +15614,7 @@ Cell[TextData[{
  "For the \[OpenCurlyQuote]simple\[CloseCurlyQuote] case ",
  Cell[BoxData[
   FormBox[
-   RowBox[{"n", "=", "l"}], TraditionalForm]],
-  FormatType->TraditionalForm,ExpressionUUID->
+   RowBox[{"n", "=", "l"}], TraditionalForm]],ExpressionUUID->
   "984a8122-7497-46d0-8749-66a071680e26"],
  ":"
 }], "Text",ExpressionUUID->"66d5bc30-fdfd-4e90-b733-0b76105eea82"],
@@ -16486,6 +16493,7 @@ Cell[BoxData[
                 SqrtBox[
                  FractionBox["2", "15"]]}
               },
+              
               GridBoxAlignment->{
                "Columns" -> {{Center}}, "Rows" -> {{Baseline}}},
               GridBoxSpacings->{"Columns" -> {
@@ -16934,6 +16942,7 @@ Cell[BoxData[
                  SqrtBox[
                   FractionBox["2", "15"]]}]}
               },
+              
               GridBoxAlignment->{
                "Columns" -> {{Center}}, "Rows" -> {{Baseline}}},
               GridBoxSpacings->{"Columns" -> {
@@ -20468,7 +20477,6 @@ Cell[BoxData[
                     SqrtBox["2"]}]]},
                  {"0"}
                 },
-                
                 GridBoxAlignment->{
                  "Columns" -> {{Center}}, "Rows" -> {{Baseline}}},
                 GridBoxSpacings->{"Columns" -> {
@@ -22953,7 +22961,7 @@ NotebookEventActions->{{"MenuCommand", "Save"} :> (NotebookWrite[
       "version-timestamp"], None, AutoScroll -> False]; NotebookSave[]), 
   PassEventsDown -> True},
 WindowSize->{1356.75, 874.5},
-WindowMargins->{{Automatic, 597}, {63, Automatic}},
+WindowMargins->{{332.25, Automatic}, {79.5, Automatic}},
 PrintingCopies->1,
 PrintingStartingPageNumber->1,
 PrintingPageRange->{Automatic, Automatic},
