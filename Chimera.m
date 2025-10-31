@@ -50,7 +50,7 @@ End[];
 
 
 (* ::Input::Initialization:: *)
-Begin["`Private`"];$ChimeraTimestamp="Fri 31 Oct 2025 19:10:32";End[];
+Begin["`Private`"];$ChimeraTimestamp="Fri 31 Oct 2025 19:14:30";End[];
 
 
 (* ::Input::Initialization:: *)
@@ -744,120 +744,6 @@ End[];
 
 
 (* ::Input::Initialization:: *)
-TensorMultipoleOld::usage="TensorMultipoleOld[T,\[ScriptL]] returns the \[ScriptL]-polar component of the tensor T.
-TensorMultipole[\[ScriptL]] gives the functionalized form of the projector onto \[ScriptL]-polar tensors.";
-
-Begin["`Private`"];
-
-
-(* ::Input::Initialization:: *)
-TensorMultipoleOld[\[ScriptL]_][tensor_]:=TensorMultipoleOld[tensor,\[ScriptL]]
-
-
-(* ::Input::Initialization:: *)
-TensorMultipoleOld[tensor_/;(ArrayDepth[tensor]==2),0]:=1/3 Tr[tensor]IdentityMatrix[3]
-TensorMultipoleOld[tensor_/;(ArrayDepth[tensor]==2),2]:=tensor-TensorMultipoleOld[tensor,0]
-
-
-(* ::Input::Initialization:: *)
-TensorMultipoleOld[tensor_/;(ArrayDepth[tensor]==3),1]:=Normal[Symmetrize[
-3/5 TensorProduct[
-TensorContract[tensor,{{2,3}}],
-IdentityMatrix[3]
-]
-]]
-TensorMultipoleOld[tensor_/;(ArrayDepth[tensor]==3),3]:=tensor-TensorMultipoleOld[tensor,1]
-
-
-(* ::Input::Initialization:: *)
-TensorMultipoleOld[tensor_/;(ArrayDepth[tensor]==4),0]:=1/5 TensorContract[tensor,{{1,2},{3,4}}]Normal[Symmetrize[TensorProduct[
-IdentityMatrix[3],
-IdentityMatrix[3]
-]]]
-TensorMultipoleOld[tensor_/;(ArrayDepth[tensor]==4),2]:=Normal[Symmetrize[
-6/7 TensorProduct[
-TensorContract[
-tensor-TensorMultipoleOld[tensor,0]
-,{{3,4}}],
-IdentityMatrix[3]
-]
-]]
-TensorMultipoleOld[tensor_/;(ArrayDepth[tensor]==4),4]:=tensor-TensorMultipoleOld[tensor,2]-TensorMultipoleOld[tensor,0]
-
-
-(* ::Input::Initialization:: *)
-TensorMultipoleOld[tensor_/;(ArrayDepth[tensor]==5),1]:=Normal[Symmetrize[
-3/7 TensorProduct[
-TensorContract[tensor,{{2,3},{4,5}}],
-IdentityMatrix[3],
-IdentityMatrix[3]
-]
-]]
-TensorMultipoleOld[tensor_/;(ArrayDepth[tensor]==5),3]:=Normal[Symmetrize[
-10/9 TensorProduct[
-TensorContract[tensor-TensorMultipoleOld[tensor,1],{{4,5}}],
-IdentityMatrix[3]
-]
-]]
-TensorMultipoleOld[tensor_/;(ArrayDepth[tensor]==5),5]:=tensor-TensorMultipoleOld[tensor,3]-TensorMultipoleOld[tensor,1]
-
-
-(* ::Input::Initialization:: *)
-TensorMultipoleOld[tensor_/;(ArrayDepth[tensor]==6),0]:=1/7 TensorContract[tensor,{{1,2},{3,4},{5,6}}]Normal[Symmetrize[TensorProduct[
-IdentityMatrix[3],
-IdentityMatrix[3],
-IdentityMatrix[3]
-]]]
-TensorMultipoleOld[tensor_/;(ArrayDepth[tensor]==6),2]:=Normal[Symmetrize[
-5/7 TensorProduct[
-TensorContract[
-tensor-TensorMultipoleOld[tensor,0]
-,{{3,4},{5,6}}],
-IdentityMatrix[3],
-IdentityMatrix[3]
-]
-]]
-TensorMultipoleOld[tensor_/;(ArrayDepth[tensor]==6),4]:=Normal[Symmetrize[
-15/11 TensorProduct[
-TensorContract[
-tensor-TensorMultipoleOld[tensor,2]-TensorMultipoleOld[tensor,0]
-,{{5,6}}],
-IdentityMatrix[3]
-]
-]]
-TensorMultipoleOld[tensor_/;(ArrayDepth[tensor]==6),6]:=tensor-TensorMultipoleOld[tensor,4]-TensorMultipoleOld[tensor,2]-TensorMultipoleOld[tensor,0]
-
-
-(* ::Input::Initialization:: *)
-TensorMultipoleOld[tensor_/;(ArrayDepth[tensor]==7),1]:=Normal[Symmetrize[
-1/3 TensorProduct[
-TensorContract[tensor,{{2,3},{4,5},{6,7}}],
-IdentityMatrix[3],
-IdentityMatrix[3],
-IdentityMatrix[3]
-]
-]]
-TensorMultipoleOld[tensor_/;(ArrayDepth[tensor]==7),3]:=Normal[Symmetrize[
-35/33 TensorProduct[
-TensorContract[tensor-TensorMultipoleOld[tensor,1],{{4,5},{6,7}}],
-IdentityMatrix[3],
-IdentityMatrix[3]
-]
-]]
-TensorMultipoleOld[tensor_/;(ArrayDepth[tensor]==7),5]:=Normal[Symmetrize[
-21/13 TensorProduct[
-TensorContract[tensor-TensorMultipoleOld[tensor,3]-TensorMultipoleOld[tensor,1],{{6,7}}],
-IdentityMatrix[3]
-]
-]]
-TensorMultipoleOld[tensor_/;(ArrayDepth[tensor]==7),7]:=tensor-TensorMultipoleOld[tensor,5]-TensorMultipoleOld[tensor,3]-TensorMultipoleOld[tensor,1]
-
-
-(* ::Input::Initialization:: *)
-End[];
-
-
-(* ::Input::Initialization:: *)
 TensorCross::usage="TensorCross[A,B,k] returns the tensor cross product (A\[Times]B\!\(\*SubscriptBox[\()\), \(k\)]\) of the two tensors A and B with output rank k.";
 
 Begin["`Private`"];
@@ -925,27 +811,6 @@ UnitE[1]:=-(1/Sqrt[2]){1,I,0}
 UnitE[-1]:=1/Sqrt[2] {1,-I,0}
 UnitE[0]:={0,0,1}
 End[];
-
-
-(* ::Input::Initialization:: *)
-(*MultipolarBasisTensorT::usage="MultipolarBasisTensorT[\[ScriptL],m] returns the multipolar basis tensor Subscript[Overscript[t, ^], l,m].";
-
-Begin["`Private`"];
-
-MultipolarBasisTensorT[\[Lambda]_Integer,\[Mu]_Integer]/;\[Lambda]\[GreaterEqual]Abs[\[Mu]]:=Times[
-(*Sqrt[(2 \[Lambda]+1 )/(4 \[Pi] )],*)
-Sqrt[(\[Lambda]-\[Mu])!(\[Lambda]+\[Mu])!],
-Sum[If[
-Or[p+q+r!=\[Lambda],p-q!=\[Mu]],0,
-2^(-((p+q)/2))/(p!q!r!)\[Times]Symmetrize[TensorProduct[
-TensorPower[UnitE[1],p],
-TensorPower[UnitE[-1],q],
-TensorPower[UnitE[0],r]
-]]
-],{p,0,\[Lambda]},{q,0,\[Lambda]},{r,0,\[Lambda]}]
-]
-
-End[];*)
 
 
 (* ::Input::Initialization:: *)
