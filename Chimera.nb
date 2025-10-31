@@ -364,11 +364,11 @@ Cell["Timestamp", \
 Cell[BoxData[
  RowBox[{
   RowBox[{"Begin", "[", "\"\<`Private`\>\"", "]"}], ";", 
-  RowBox[{"$ChimeraTimestamp", "=", "\"\<Thu 30 Oct 2025 17:35:36\>\""}], ";", 
+  RowBox[{"$ChimeraTimestamp", "=", "\"\<Fri 31 Oct 2025 13:07:48\>\""}], ";", 
   RowBox[{"End", "[", "]"}], ";"}]], "Input",
  InitializationCell->True,
  CellTags->
-  "version-timestamp",ExpressionUUID->"f3a3e3af-2c07-4273-a910-852809780afb"]
+  "version-timestamp",ExpressionUUID->"e8d99aec-aab5-4012-b8c2-e3b0d32f683b"]
 }, Open  ]]
 }, Open  ]],
 
@@ -20702,6 +20702,18 @@ Cell[CellGroupData[{
 Cell["TensorDot", \
 "Subsubsection",ExpressionUUID->"c33a6d85-ab8c-436d-a825-3f0e48b8532b"],
 
+Cell[TextData[{
+ "Note the use of Inactive and Activate, used to prevent TensorProduct from \
+creating a huge intermediate tensor (which performs very badly at high \
+ranks), as suggested by SE user ",
+ ButtonBox["jose",
+  BaseStyle->"Hyperlink",
+  ButtonData->{
+    URL["https://mathematica.stackexchange.com/users/10552/jose"], None},
+  ButtonNote->"https://mathematica.stackexchange.com/users/10552/jose"],
+ " at https://mathematica.stackexchange.com/a/111544/1000."
+}], "Text",ExpressionUUID->"cb363073-cf98-49cf-a884-dadb0c4a25b0"],
+
 Cell[BoxData[{
  RowBox[{
   RowBox[{
@@ -20717,27 +20729,28 @@ A and B.\>\""}], ";"}], "\[IndentingNewLine]"}], "\[IndentingNewLine]",
   RowBox[{
    RowBox[{"TensorDot", "[", 
     RowBox[{"tensor1_", ",", "tensor2_"}], "]"}], ":=", 
-   RowBox[{"TensorContract", "[", "\[IndentingNewLine]", 
-    RowBox[{
-     RowBox[{"TensorProduct", "[", 
-      RowBox[{"tensor1", ",", "tensor2"}], "]"}], ",", "\[IndentingNewLine]", 
-     
-     RowBox[{"Table", "[", 
+   RowBox[{"Activate", "[", 
+    RowBox[{"TensorContract", "[", "\[IndentingNewLine]", 
+     RowBox[{
       RowBox[{
-       RowBox[{"{", 
-        RowBox[{"index", ",", 
-         RowBox[{
-          RowBox[{"ArrayDepth", "[", "tensor1", "]"}], "+", "index"}]}], 
-        "}"}], ",", 
-       RowBox[{"{", 
-        RowBox[{"index", ",", "1", ",", 
-         RowBox[{"ArrayDepth", "[", "tensor1", "]"}]}], "}"}]}], "]"}]}], 
-    "\[IndentingNewLine]", "]"}]}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+       RowBox[{"Inactive", "[", "TensorProduct", "]"}], "[", 
+       RowBox[{"tensor1", ",", "tensor2"}], "]"}], ",", "\[IndentingNewLine]", 
+      RowBox[{"Table", "[", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"index", ",", 
+          RowBox[{
+           RowBox[{"ArrayDepth", "[", "tensor1", "]"}], "+", "index"}]}], 
+         "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"index", ",", "1", ",", 
+          RowBox[{"ArrayDepth", "[", "tensor1", "]"}]}], "}"}]}], "]"}]}], 
+     "\[IndentingNewLine]", "]"}], "]"}]}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{"End", "[", "]"}], ";"}]}], "Input",
- InitializationCell->True,
- CellLabel->"In[154]:=",ExpressionUUID->"a0afdbe5-9d61-4e7c-b684-933093acc035"]
-}, Closed]],
+ InitializationCell->
+  True,ExpressionUUID->"a0afdbe5-9d61-4e7c-b684-933093acc035"]
+}, Open  ]],
 
 Cell[CellGroupData[{
 
@@ -23490,7 +23503,7 @@ Cell[BoxData[
   "}"}]], "Output",
  CellLabel->"Out[282]=",ExpressionUUID->"58ad02b8-9501-4104-843a-6a928801493d"]
 }, Open  ]]
-}, Closed]],
+}, Open  ]],
 
 Cell[CellGroupData[{
 

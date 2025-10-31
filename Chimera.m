@@ -50,7 +50,7 @@ End[];
 
 
 (* ::Input::Initialization:: *)
-Begin["`Private`"];$ChimeraTimestamp="Thu 30 Oct 2025 17:35:36";End[];
+Begin["`Private`"];$ChimeraTimestamp="Fri 31 Oct 2025 13:07:48";End[];
 
 
 (* ::Input::Initialization:: *)
@@ -879,10 +879,10 @@ TensorDot::usage="TensorDot[A,B] returns the full contraction of the two tensors
 
 Begin["`Private`"];
 
-TensorDot[tensor1_,tensor2_]:=TensorContract[
-TensorProduct[tensor1,tensor2],
+TensorDot[tensor1_,tensor2_]:=Activate[TensorContract[
+Inactive[TensorProduct][tensor1,tensor2],
 Table[{index,ArrayDepth[tensor1]+index},{index,1,ArrayDepth[tensor1]}]
-]
+]]
 
 End[];
 
