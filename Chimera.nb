@@ -88,8 +88,8 @@ helixDataDistribution as well as three-gaussians distributions?\n- In ",
  ", if the w3jproduct\[CloseCurlyQuote]s are all zero (cf. example in the \
 notebook from 2024-11-27), throw an error and don\[CloseCurlyQuote]t attempt \
 to plot.\n\n- Build tensor visualization tools, both on the sphere and as \
-surface 3D plots of the corresponding potential\n\n- Apply the \
-Inactive/Activate trick to TensorCross, similarly to TensorDot."
+surface 3D plots of the corresponding potential\n\n-  Consider  removing \
+Normal and returning a SymmetrizedArray object."
 }], "Text",ExpressionUUID->"7760ff8a-a77f-9c49-9cf2-64a8f6fa928a"]
 }, Open  ]],
 
@@ -363,11 +363,11 @@ Cell["Timestamp", \
 Cell[BoxData[
  RowBox[{
   RowBox[{"Begin", "[", "\"\<`Private`\>\"", "]"}], ";", 
-  RowBox[{"$ChimeraTimestamp", "=", "\"\<Fri 31 Oct 2025 20:31:15\>\""}], ";", 
+  RowBox[{"$ChimeraTimestamp", "=", "\"\<Fri 31 Oct 2025 20:38:20\>\""}], ";", 
   RowBox[{"End", "[", "]"}], ";"}]], "Input",
  InitializationCell->True,
  CellTags->
-  "version-timestamp",ExpressionUUID->"cc5ed55c-86bd-47ed-8c7b-3c543dc2e969"]
+  "version-timestamp",ExpressionUUID->"b7325a53-6b18-40bc-a101-57c317abcee3"]
 }, Open  ]]
 }, Open  ]],
 
@@ -15213,10 +15213,16 @@ Cell["TensorCross", "Subsubsection",
 1cb0fa6f0076"],
 
 Cell["\<\
-It would be good to do something like the Inactive/Activate trick used in \
-TensorDot below. It doesn\[CloseCurlyQuote]t work naively, though  (replacing \
-the Identity calls with Activate and Inactive, resp.) - it produces error \
-messages with TensorTranspose. So needs to be tested in more detail.\
+Note the use of Inactive and Activate, inspired by the solution to TensorDot \
+below.
+
+To potentially explore in the future -- are there efficiency gains to be had \
+by pulling Activate out of Symmetrize? (For some cases -- \
+I\[CloseCurlyQuote]m unsure which ones -- it produces errors, it seems that \
+TensorTranspose gets called and then gets confused.)
+
+Also, to consider for the future: removing Normal and returning a \
+SymmetrizedArray object.\
 \>", "Text",ExpressionUUID->"8852e714-4606-4510-9207-fee0a2c377cf"],
 
 Cell[BoxData[{
@@ -15348,7 +15354,7 @@ A and B.\>\""}], ";"}], "\[IndentingNewLine]"}], "\[IndentingNewLine]",
   RowBox[{"End", "[", "]"}], ";"}]}], "Input",
  InitializationCell->True,
  CellLabel->"In[154]:=",ExpressionUUID->"a0afdbe5-9d61-4e7c-b684-933093acc035"]
-}, Closed]],
+}, Open  ]],
 
 Cell[CellGroupData[{
 
@@ -18868,6 +18874,7 @@ Cell[BoxData[
                  {"0"},
                  {"0"}
                 },
+                
                 GridBoxAlignment->{
                  "Columns" -> {{Center}}, "Rows" -> {{Baseline}}},
                 GridBoxSpacings->{"Columns" -> {
@@ -19721,6 +19728,7 @@ Cell[BoxData[
                    SqrtBox[
                     FractionBox["2", "15"]]}]}
                 },
+                
                 GridBoxAlignment->{
                  "Columns" -> {{Center}}, "Rows" -> {{Baseline}}},
                 GridBoxSpacings->{"Columns" -> {
