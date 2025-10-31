@@ -364,12 +364,11 @@ Cell["Timestamp", \
 Cell[BoxData[
  RowBox[{
   RowBox[{"Begin", "[", "\"\<`Private`\>\"", "]"}], ";", 
-  RowBox[{"$ChimeraTimestamp", "=", "\"\<Thu 9 Oct 2025 18:05:47\>\""}], ";", 
-  
+  RowBox[{"$ChimeraTimestamp", "=", "\"\<Thu 30 Oct 2025 17:35:36\>\""}], ";", 
   RowBox[{"End", "[", "]"}], ";"}]], "Input",
  InitializationCell->True,
  CellTags->
-  "version-timestamp",ExpressionUUID->"8e6a2fd2-2b24-40c3-b418-c365d696c02a"]
+  "version-timestamp",ExpressionUUID->"f3a3e3af-2c07-4273-a910-852809780afb"]
 }, Open  ]]
 }, Open  ]],
 
@@ -676,8 +675,7 @@ spherical harmonics.\n\nThe code below implements the identity\n\n    ",
          FractionBox[
           RowBox[{"x", "-", 
            RowBox[{"i", " ", "y"}]}], "2"], ")"}], "q"], 
-       SuperscriptBox["z", "r"]}]}]}]}], TraditionalForm]],
-  FormatType->TraditionalForm,ExpressionUUID->
+       SuperscriptBox["z", "r"]}]}]}]}], TraditionalForm]],ExpressionUUID->
   "6c485527-766a-4c93-8b71-931937d9fa30"],
  "\n    \nProvided as Eq. (16), \[Section]5.1.7, in D. A. Varshalovich, A. N. \
 Moskalev, and V. K. Khersonskii, Quantum Theory Of Angular Momentum \
@@ -20851,47 +20849,54 @@ Cell[CellGroupData[{
 Cell["UnitE", \
 "Subsubsection",ExpressionUUID->"b5f9f628-ede5-4c80-bf3e-fd037d5fb90c"],
 
-Cell[BoxData[{
+Cell[BoxData[
  RowBox[{
-  RowBox[{
+  RowBox[{"(*", 
    RowBox[{
-    RowBox[{"UnitE", "::", "usage"}], 
-    "=", "\"\<UnitE[s] returns the spherical basis vector \
+    RowBox[{
+     RowBox[{"UnitE", "::", "usage"}], 
+     "=", "\"\<UnitE[s] returns the spherical basis vector \
 \!\(\*Cell[TextData[Cell[BoxData[FormBox[
 SubscriptBox[
 OverscriptBox[StyleBox[\"e\",FontWeight->\"Bold\",FontSlant->\"Plain\"], \
 \"^\"], \"s\"], \
-TraditionalForm]],FormatType->TraditionalForm,ExpressionUUID->\"47454150-8465-\
-4a05-9652-701150898085\"]],ExpressionUUID->\"44c6d8ce-e08e-467b-9996-\
-5c052efe4c30\"]\).\>\""}], ";"}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
- RowBox[{
-  RowBox[{"Begin", "[", "\"\<`Private`\>\"", "]"}], ";"}], "\[IndentingNewLine]", 
- RowBox[{
-  RowBox[{"UnitE", "[", "1", "]"}], ":=", 
+TraditionalForm]],ExpressionUUID->\"10bf3cfe-ebe5-4404-94f0-5a41458c8f75\"]],\
+ExpressionUUID->\"fd590ab2-8674-4b53-a817-f1671400dd3b\"]\).\>\""}], ";"}], 
+   "*)"}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
   RowBox[{
-   RowBox[{"-", 
-    FractionBox["1", 
-     SqrtBox["2"]]}], 
-   RowBox[{"{", 
-    RowBox[{"1", ",", "\[ImaginaryI]", ",", "0"}], "}"}]}]}], "\[IndentingNewLine]", 
- RowBox[{
-  RowBox[{"UnitE", "[", 
-   RowBox[{"-", "1"}], "]"}], ":=", 
-  RowBox[{
-   FractionBox["1", 
-    SqrtBox["2"]], 
-   RowBox[{"{", 
-    RowBox[{"1", ",", 
-     RowBox[{"-", "\[ImaginaryI]"}], ",", "0"}], "}"}]}]}], "\[IndentingNewLine]", 
- RowBox[{
-  RowBox[{"UnitE", "[", "0", "]"}], ":=", 
-  RowBox[{"{", 
-   RowBox[{"0", ",", "0", ",", "1"}], "}"}]}], "\[IndentingNewLine]", 
- RowBox[{
-  RowBox[{"End", "[", "]"}], ";"}]}], "Input",
- InitializationCell->True,
- CellLabel->"In[170]:=",ExpressionUUID->"7d48332c-b72b-4c97-9e39-9b79406fbbc1"]
-}, Closed]],
+   RowBox[{
+    RowBox[{
+     RowBox[{"UnitE", "::", "usage"}], 
+     "=", "\"\<UnitE[s] returns the spherical basis vector \
+\!\(\*SubscriptBox[\(e\), \(s\)]\).\>\""}], ";"}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Begin", "[", "\"\<`Private`\>\"", "]"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"UnitE", "[", "1", "]"}], ":=", 
+    RowBox[{
+     RowBox[{"-", 
+      FractionBox["1", 
+       SqrtBox["2"]]}], 
+     RowBox[{"{", 
+      RowBox[{"1", ",", "\[ImaginaryI]", ",", "0"}], "}"}]}]}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"UnitE", "[", 
+     RowBox[{"-", "1"}], "]"}], ":=", 
+    RowBox[{
+     FractionBox["1", 
+      SqrtBox["2"]], 
+     RowBox[{"{", 
+      RowBox[{"1", ",", 
+       RowBox[{"-", "\[ImaginaryI]"}], ",", "0"}], "}"}]}]}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"UnitE", "[", "0", "]"}], ":=", 
+    RowBox[{"{", 
+     RowBox[{"0", ",", "0", ",", "1"}], "}"}]}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"End", "[", "]"}], ";"}]}]}]], "Input",
+ InitializationCell->
+  True,ExpressionUUID->"7d48332c-b72b-4c97-9e39-9b79406fbbc1"]
+}, Open  ]],
 
 Cell[CellGroupData[{
 
@@ -23423,8 +23428,7 @@ Cell[TextData[{
      SubscriptBox[
       OverscriptBox["\[CapitalPi]", "^"], "l"], 
      StyleBox["A",
-      FontWeight->"Bold"]}]}], TraditionalForm]],
-  FormatType->TraditionalForm,ExpressionUUID->
+      FontWeight->"Bold"]}]}], TraditionalForm]],ExpressionUUID->
   "2cbd72fa-2c16-4c40-804a-758cabfba00b"],
  "."
 }], "Text",ExpressionUUID->"af6b216b-cffc-4f85-a85e-2c5b78d00ea0"],
@@ -23486,7 +23490,7 @@ Cell[BoxData[
   "}"}]], "Output",
  CellLabel->"Out[282]=",ExpressionUUID->"58ad02b8-9501-4104-843a-6a928801493d"]
 }, Open  ]]
-}, Open  ]],
+}, Closed]],
 
 Cell[CellGroupData[{
 
@@ -23531,7 +23535,7 @@ tensor A.\>\""}], ";"}], "\[IndentingNewLine]"}], "\[IndentingNewLine]",
   RowBox[{"End", "[", "]"}], ";"}]}], "Input",
  InitializationCell->True,
  CellLabel->"In[181]:=",ExpressionUUID->"c311e578-a9b1-43b0-91d3-8908c8d15040"]
-}, Closed]],
+}, Open  ]],
 
 Cell[CellGroupData[{
 
@@ -24713,7 +24717,7 @@ Cell[BoxData[
   "Out[25]//MatrixForm=",ExpressionUUID->"28676cdd-b5ad-4a01-af31-\
 8cbbba65f594"]
 }, Open  ]]
-}, Closed]]
+}, Open  ]]
 }, Open  ]]
 }, Open  ]],
 
@@ -24767,7 +24771,7 @@ NotebookEventActions->{{"MenuCommand", "Save"} :> (NotebookWrite[
       "version-timestamp"], None, AutoScroll -> False]; NotebookSave[]), 
   PassEventsDown -> True},
 WindowSize->{1356.75, 874.5},
-WindowMargins->{{Automatic, 36}, {56.25, Automatic}},
+WindowMargins->{{Automatic, 36}, {28.5, Automatic}},
 PrintingCopies->1,
 PrintingStartingPageNumber->1,
 PrintingPageRange->{Automatic, Automatic},
@@ -24804,7 +24808,7 @@ TrackCellChangeTimes->False,
 SpellingDictionaries->{"CorrectWords"->{
  "subpackage", "Pisanty", "subpackages"}},
 Background->None,
-FrontEndVersion->"14.2 for Linux x86 (64-bit) (December 26, 2024)",
+FrontEndVersion->"14.3 for Linux x86 (64-bit) (July 8, 2025)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[StyleDefinitions -> "Default.nb"]], 
@@ -24814,7 +24818,7 @@ StyleDefinitions->Notebook[{
     FontVariations -> {
      "Outline" -> False, "Shadow" -> False, "StrikeThrough" -> False, 
       "Underline" -> False}]}, Visible -> False, FrontEndVersion -> 
-  "14.2 for Linux x86 (64-bit) (December 26, 2024)", StyleDefinitions -> 
+  "14.3 for Linux x86 (64-bit) (July 8, 2025)", StyleDefinitions -> 
   "PrivateStylesheetFormatting.nb"],
 ExpressionUUID->"d1cc7f40-ea02-494c-9758-0c8d4ee5ba2e"
 ]
