@@ -364,11 +364,11 @@ Cell["Timestamp", \
 Cell[BoxData[
  RowBox[{
   RowBox[{"Begin", "[", "\"\<`Private`\>\"", "]"}], ";", 
-  RowBox[{"$ChimeraTimestamp", "=", "\"\<Fri 31 Oct 2025 19:14:30\>\""}], ";", 
+  RowBox[{"$ChimeraTimestamp", "=", "\"\<Fri 31 Oct 2025 19:15:11\>\""}], ";", 
   RowBox[{"End", "[", "]"}], ";"}]], "Input",
  InitializationCell->True,
  CellTags->
-  "version-timestamp",ExpressionUUID->"c409637a-67df-4f23-b19f-601130d42d50"]
+  "version-timestamp",ExpressionUUID->"de6845b6-4dd3-419d-a96b-ed1596c6c571"]
 }, Open  ]]
 }, Open  ]],
 
@@ -15599,7 +15599,7 @@ tensor rank n.\>\""}], ";"}], "\[IndentingNewLine]"}], "\[IndentingNewLine]",
 
 Cell[CellGroupData[{
 
-Cell["MultipolarBasisTensorT", \
+Cell["Benchmarking for MultipolarBasisTensorT", \
 "Subsubsection",ExpressionUUID->"0305114f-1be3-4bad-bddd-20e57ea8f3d8"],
 
 Cell[TextData[{
