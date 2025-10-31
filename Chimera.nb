@@ -364,11 +364,11 @@ Cell["Timestamp", \
 Cell[BoxData[
  RowBox[{
   RowBox[{"Begin", "[", "\"\<`Private`\>\"", "]"}], ";", 
-  RowBox[{"$ChimeraTimestamp", "=", "\"\<Fri 31 Oct 2025 13:07:48\>\""}], ";", 
+  RowBox[{"$ChimeraTimestamp", "=", "\"\<Fri 31 Oct 2025 13:22:00\>\""}], ";", 
   RowBox[{"End", "[", "]"}], ";"}]], "Input",
  InitializationCell->True,
  CellTags->
-  "version-timestamp",ExpressionUUID->"e8d99aec-aab5-4012-b8c2-e3b0d32f683b"]
+  "version-timestamp",ExpressionUUID->"adbd93c7-343c-4540-80bc-7d604e82bac1"]
 }, Open  ]]
 }, Open  ]],
 
@@ -20862,51 +20862,38 @@ Cell[CellGroupData[{
 Cell["UnitE", \
 "Subsubsection",ExpressionUUID->"b5f9f628-ede5-4c80-bf3e-fd037d5fb90c"],
 
-Cell[BoxData[
+Cell[BoxData[{
  RowBox[{
-  RowBox[{"(*", 
-   RowBox[{
-    RowBox[{
-     RowBox[{"UnitE", "::", "usage"}], 
-     "=", "\"\<UnitE[s] returns the spherical basis vector \
-\!\(\*Cell[TextData[Cell[BoxData[FormBox[
-SubscriptBox[
-OverscriptBox[StyleBox[\"e\",FontWeight->\"Bold\",FontSlant->\"Plain\"], \
-\"^\"], \"s\"], \
-TraditionalForm]],ExpressionUUID->\"10bf3cfe-ebe5-4404-94f0-5a41458c8f75\"]],\
-ExpressionUUID->\"fd590ab2-8674-4b53-a817-f1671400dd3b\"]\).\>\""}], ";"}], 
-   "*)"}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
   RowBox[{
    RowBox[{
-    RowBox[{
-     RowBox[{"UnitE", "::", "usage"}], 
-     "=", "\"\<UnitE[s] returns the spherical basis vector \
-\!\(\*SubscriptBox[\(e\), \(s\)]\).\>\""}], ";"}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
-   RowBox[{
-    RowBox[{"Begin", "[", "\"\<`Private`\>\"", "]"}], ";"}], "\[IndentingNewLine]", 
-   RowBox[{
-    RowBox[{"UnitE", "[", "1", "]"}], ":=", 
-    RowBox[{
-     RowBox[{"-", 
-      FractionBox["1", 
-       SqrtBox["2"]]}], 
-     RowBox[{"{", 
-      RowBox[{"1", ",", "\[ImaginaryI]", ",", "0"}], "}"}]}]}], "\[IndentingNewLine]", 
-   RowBox[{
-    RowBox[{"UnitE", "[", 
-     RowBox[{"-", "1"}], "]"}], ":=", 
-    RowBox[{
-     FractionBox["1", 
-      SqrtBox["2"]], 
-     RowBox[{"{", 
-      RowBox[{"1", ",", 
-       RowBox[{"-", "\[ImaginaryI]"}], ",", "0"}], "}"}]}]}], "\[IndentingNewLine]", 
-   RowBox[{
-    RowBox[{"UnitE", "[", "0", "]"}], ":=", 
-    RowBox[{"{", 
-     RowBox[{"0", ",", "0", ",", "1"}], "}"}]}], "\[IndentingNewLine]", 
-   RowBox[{
-    RowBox[{"End", "[", "]"}], ";"}]}]}]], "Input",
+    RowBox[{"UnitE", "::", "usage"}], 
+    "=", "\"\<UnitE[s] returns the spherical basis vector \!\(\*SubscriptBox[\
+\(e\), \(s\)]\).\>\""}], ";"}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Begin", "[", "\"\<`Private`\>\"", "]"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"UnitE", "[", "1", "]"}], ":=", 
+  RowBox[{
+   RowBox[{"-", 
+    FractionBox["1", 
+     SqrtBox["2"]]}], 
+   RowBox[{"{", 
+    RowBox[{"1", ",", "\[ImaginaryI]", ",", "0"}], "}"}]}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"UnitE", "[", 
+   RowBox[{"-", "1"}], "]"}], ":=", 
+  RowBox[{
+   FractionBox["1", 
+    SqrtBox["2"]], 
+   RowBox[{"{", 
+    RowBox[{"1", ",", 
+     RowBox[{"-", "\[ImaginaryI]"}], ",", "0"}], "}"}]}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"UnitE", "[", "0", "]"}], ":=", 
+  RowBox[{"{", 
+   RowBox[{"0", ",", "0", ",", "1"}], "}"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"End", "[", "]"}], ";"}]}], "Input",
  InitializationCell->
   True,ExpressionUUID->"7d48332c-b72b-4c97-9e39-9b79406fbbc1"]
 }, Open  ]],

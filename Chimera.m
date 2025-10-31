@@ -50,7 +50,7 @@ End[];
 
 
 (* ::Input::Initialization:: *)
-Begin["`Private`"];$ChimeraTimestamp="Fri 31 Oct 2025 13:07:48";End[];
+Begin["`Private`"];$ChimeraTimestamp="Fri 31 Oct 2025 13:22:00";End[];
 
 
 (* ::Input::Initialization:: *)
@@ -918,8 +918,6 @@ End[];
 
 
 (* ::Input::Initialization:: *)
-(*UnitE::usage="UnitE[s] returns the spherical basis vector Subscript[Overscript[e, ^], s].";*)
-
 UnitE::usage="UnitE[s] returns the spherical basis vector \!\(\*SubscriptBox[\(e\), \(s\)]\).";
 
 Begin["`Private`"];
