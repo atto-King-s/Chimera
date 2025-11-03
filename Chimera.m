@@ -50,7 +50,7 @@ End[];
 
 
 (* ::Input::Initialization:: *)
-Begin["`Private`"];$ChimeraTimestamp="Fri 31 Oct 2025 20:38:20";End[];
+Begin["`Private`"];$ChimeraTimestamp="Sun 2 Nov 2025 21:15:20";End[];
 
 
 (* ::Input::Initialization:: *)
@@ -849,16 +849,20 @@ End[];
 
 
 (* ::Input::Initialization:: *)
-TensorLift::usage="TensorLift[A] returns the tensor lift \!\(\*OverscriptBox[\(\[ScriptCapitalL]\), \(^\)]\)(A)=\!\(\*OverscriptBox[\(\[ScriptCapitalS]\), \(^\)]\)(A\[CircleTimes]I) for the given tensor A.";
+TensorLift::usage="TensorLift[A] returns the tensor lift \!\(\*OverscriptBox[\(\[ScriptCapitalL]\), \(^\)]\)(A)=\!\(\*OverscriptBox[\(\[ScriptCapitalS]\), \(^\)]\)(A\[CircleTimes]\[DoubleStruckCapitalI]) for the given tensor A.
+TensorLift[A,n] returns the n-fold tensor lift \!\(\*FormBox[SuperscriptBox[OverscriptBox[\(\[ScriptCapitalL]\), \(^\)], \(n\)],
+TraditionalForm]\)(A)=\!\(\*FormBox[\(\\\ \*OverscriptBox[\(\[ScriptCapitalS]\), \(^\)]\),
+TraditionalForm]\)(A\[CircleTimes]\!\(\*SuperscriptBox[\(\[DoubleStruckCapitalI]\), \(n\)]\)) for the given tensor A.";
 
 Begin["`Private`"];
-TensorLift[tensor_List|tensor_SymmetrizedArray]:=Symmetrize[
+TensorLift[tensor_List|tensor_SymmetrizedArray,n_]:=Symmetrize[
 TensorProduct[
 tensor,
-IdentityMatrix[3]
+TensorPower[IdentityMatrix[3],n]
 ]
 ]
-TensorLift[scalar_]:=scalar IdentityMatrix[3]
+TensorLift[scalar_,n_]:=scalar TensorPower[IdentityMatrix[3],n]
+TensorLift[A_]:=TensorLift[A,1]
 
 End[];
 
