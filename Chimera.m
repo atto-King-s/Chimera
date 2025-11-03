@@ -50,7 +50,7 @@ End[];
 
 
 (* ::Input::Initialization:: *)
-Begin["`Private`"];$ChimeraTimestamp="Sun 2 Nov 2025 21:15:20";End[];
+Begin["`Private`"];$ChimeraTimestamp="Mon 3 Nov 2025 18:07:42";End[];
 
 
 (* ::Input::Initialization:: *)
@@ -868,10 +868,12 @@ End[];
 
 
 (* ::Input::Initialization:: *)
-TensorTrace::usage="TensorTrace[A] returns the tensor trace Tr(A), contracted on the first and second indices.";
+TensorTrace::usage="TensorTrace[A] returns the tensor trace Tr(A), contracted on the first and second indices.
+TensorTrace[A,n] returns the iterated tensor trace Tr^n(A), contracted on the first and second indices.";
 
 Begin["`Private`"];
 TensorTrace[tensor_]:=TensorContract[tensor,{{1,2}}]
+TensorTrace[tensor_,n_]:=Nest[TensorTrace,tensor,n]
 
 End[];
 
