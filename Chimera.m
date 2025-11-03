@@ -4,7 +4,7 @@
 
 (* ::Input::Initialization:: *)
 (* Chimera: Chiral Measures Research Assistant *)
-(* \[Copyright] Emilio Pisanty, 2024 *)
+(* \[Copyright] Emilio Pisanty, 2025 *)
 
 (* For more information, see https://github.com/????/???? *)
 
