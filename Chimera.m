@@ -50,7 +50,7 @@ End[];
 
 
 (* ::Input::Initialization:: *)
-Begin["`Private`"];$ChimeraTimestamp="Mon 3 Nov 2025 18:07:42";End[];
+Begin["`Private`"];$ChimeraTimestamp="Fri 21 Nov 2025 12:19:18";End[];
 
 
 (* ::Input::Initialization:: *)
@@ -876,6 +876,21 @@ TensorTrace[tensor_]:=TensorContract[tensor,{{1,2}}]
 TensorTrace[tensor_,n_]:=Nest[TensorTrace,tensor,n]
 
 End[];
+
+
+(* ::Input::Initialization:: *)
+Begin["`Private`"];
+If[
+$VersionNumber<14.1,
+
+Unprotect[Nest];
+Nest[f_,n_]:=Function[expr,Nest[f,expr,n]];
+
+Nest::usage="\!\(\*RowBox[{\"Nest\", \"[\", RowBox[{StyleBox[\"f\", \"TI\"], \",\", StyleBox[\"expr\", \"TI\"], \",\", StyleBox[\"n\", \"TI\"]}], \"]\"}]\) gives an expression with \!\(\*StyleBox[\"f\", \"TI\"]\) applied \!\(\*StyleBox[\"n\", \"TI\"]\) times to \!\(\*StyleBox[\"expr\", \"TI\"]\).\n\!\(\*RowBox[{\"Nest\", \"[\", RowBox[{StyleBox[\"f\", \"TI\"], \",\", StyleBox[\"n\", \"TI\"]}], \"]\"}]\) represents an operator form of Nest that can be applied to expressions.";
+Protect[Nest];
+]
+End[];
+
 
 
 (* ::Input::Initialization:: *)
