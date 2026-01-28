@@ -5,7 +5,7 @@ Cell[TextData[StyleBox["Chimera: Chiral Measures Research Assistant",
  FontSize->
   24]], "Title",ExpressionUUID->"7f209d14-bba5-4705-b124-d36a87c1beee"],
 
-Cell["\[Copyright] Emilio Pisanty 2025", \
+Cell["\[Copyright] Emilio Pisanty 2026", \
 "Text",ExpressionUUID->"d33e8ba8-08ed-4b04-9664-dabb00321cca"],
 
 Cell[CellGroupData[{
@@ -69,7 +69,8 @@ Cell[BoxData[
     RowBox[{"update", " ", "this"}]}], "*)"}]}]], "Input",
  CellGroupingRules->{GroupTogetherGrouping, 10000.},
  InitializationCell->True,
- CellLabel->"In[16]:=",ExpressionUUID->"ac44aa9d-1eed-401b-86e5-fd78cdf4c3f0"]
+ CellLabel->
+  "In[16]:=",ExpressionUUID->"ac44aa9d-1eed-401b-86e5-fd78cdf4c3f0"]
 }, Closed]]
 }, Open  ]],
 
@@ -127,7 +128,8 @@ Cell[BoxData[
  RowBox[{
   RowBox[{"BeginPackage", "[", "\"\<Chimera`\>\"", "]"}], ";"}]], "Input",
  InitializationCell->True,
- CellLabel->"In[17]:=",ExpressionUUID->"a3fe781e-8db1-4219-aeaa-3f8c593d8fa5"]
+ CellLabel->
+  "In[17]:=",ExpressionUUID->"a3fe781e-8db1-4219-aeaa-3f8c593d8fa5"]
 }, Closed]],
 
 Cell[CellGroupData[{
@@ -298,7 +300,8 @@ Cell[BoxData[{
  RowBox[{
   RowBox[{"End", "[", "]"}], ";"}]}], "Input",
  InitializationCell->True,
- CellLabel->"In[24]:=",ExpressionUUID->"2b7faeb3-0b7f-4278-a4ce-f42af4a5710c"]
+ CellLabel->
+  "In[24]:=",ExpressionUUID->"2b7faeb3-0b7f-4278-a4ce-f42af4a5710c"]
 }, Closed]],
 
 Cell[CellGroupData[{
@@ -322,8 +325,7 @@ Chimera package if there is one.\>\""}], ";"}], "\[IndentingNewLine]",
 
 Cell[BoxData[{
  RowBox[{
-  RowBox[{"Begin", "[", "\"\<`Private`\>\"", "]"}], ";"}], 
-"\[IndentingNewLine]", 
+  RowBox[{"Begin", "[", "\"\<`Private`\>\"", "]"}], ";"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{"$ChimeraCommit", ":=", 
    RowBox[{"(", 
@@ -346,7 +348,8 @@ Cell[BoxData[{
  RowBox[{
   RowBox[{"End", "[", "]"}], ";"}]}], "Input",
  InitializationCell->True,
- CellLabel->"In[29]:=",ExpressionUUID->"a8480c42-c519-423d-a120-4aa44435c59d"]
+ CellLabel->
+  "In[29]:=",ExpressionUUID->"a8480c42-c519-423d-a120-4aa44435c59d"]
 }, Closed]]
 }, Open  ]],
 
@@ -382,7 +385,8 @@ Cell[BoxData["$ChimeraVersion"], "Input",
  CellLabel->"In[25]:=",ExpressionUUID->"527689ac-2432-47cc-8f05-db58812bafd0"],
 
 Cell[BoxData["\<\"Chimera v1.0.0, Mon 13 Feb 2023 17:44:42\"\>"], "Output",
- CellLabel->"Out[25]=",ExpressionUUID->"d31a4710-7056-406a-bb22-3703e344629e"]
+ CellLabel->
+  "Out[25]=",ExpressionUUID->"d31a4710-7056-406a-bb22-3703e344629e"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -391,7 +395,8 @@ Cell[BoxData["$ChimeraTimestamp"], "Input",
  CellLabel->"In[26]:=",ExpressionUUID->"f0576bbe-58c6-4120-bc07-10f60357dbc7"],
 
 Cell[BoxData["\<\"Mon 13 Feb 2023 17:44:42\"\>"], "Output",
- CellLabel->"Out[26]=",ExpressionUUID->"2a8f34f0-72cb-4ed9-8b2a-92899007ecc5"]
+ CellLabel->
+  "Out[26]=",ExpressionUUID->"2a8f34f0-72cb-4ed9-8b2a-92899007ecc5"]
 }, Open  ]],
 
 Cell[BoxData["$ChimeraDirectory"], "Input",
@@ -408,7 +413,8 @@ Cell[BoxData["$ChimeraCommit"], "Input",
  CellLabel->"In[28]:=",ExpressionUUID->"095a6e5e-777b-4250-a1f1-aa5fbd436ce6"],
 
 Cell[BoxData["\<\"\"\>"], "Output",
- CellLabel->"Out[28]=",ExpressionUUID->"74316309-74a1-45d1-a127-a4da943fce60"]
+ CellLabel->
+  "Out[28]=",ExpressionUUID->"74316309-74a1-45d1-a127-a4da943fce60"]
 }, Open  ]]
 }, Closed]]
 }, Open  ]],
@@ -442,7 +448,8 @@ Cell[BoxData[{
  CellChangeTimes->{{3.897108407315451*^9, 3.897108410830072*^9}, {
   3.897110930012847*^9, 3.897110937877269*^9}, {3.8999626465635157`*^9, 
   3.8999626469299097`*^9}},
- CellLabel->"In[33]:=",ExpressionUUID->"a7199599-b1ed-4c74-856e-276e7b8d89b1"]
+ CellLabel->
+  "In[33]:=",ExpressionUUID->"a7199599-b1ed-4c74-856e-276e7b8d89b1"]
 }, Closed]],
 
 Cell[CellGroupData[{
@@ -458,7 +465,8 @@ Cell[BoxData[
   ";"}]], "Input",
  InitializationCell->True,
  CellChangeTimes->{{3.899965709355588*^9, 3.899965719914709*^9}},
- CellLabel->"In[35]:=",ExpressionUUID->"1a2faff1-be08-4968-852a-31a15b74a6c4"]
+ CellLabel->
+  "In[35]:=",ExpressionUUID->"1a2faff1-be08-4968-852a-31a15b74a6c4"]
 }, Closed]],
 
 Cell[CellGroupData[{
@@ -483,7 +491,8 @@ Cell[BoxData[{
   RowBox[{"Protect", "[", "Sign", "]"}], ";"}]}], "Input",
  InitializationCell->True,
  CellChangeTimes->{{3.901709082892302*^9, 3.901709109543913*^9}},
- CellLabel->"In[36]:=",ExpressionUUID->"fd309fce-e401-4b87-8b9c-79612a158d77"]
+ CellLabel->
+  "In[36]:=",ExpressionUUID->"fd309fce-e401-4b87-8b9c-79612a158d77"]
 }, Closed]],
 
 Cell[CellGroupData[{
@@ -503,7 +512,8 @@ Cell[BoxData[
      "]"}], ",", "\"\<Megabytes\>\""}], "]"}]}]], "Input",
  InitializationCell->True,
  CellChangeTimes->{{3.899962560446334*^9, 3.8999625767429595`*^9}},
- CellLabel->"In[41]:=",ExpressionUUID->"fbb2740f-f46c-4dc5-99fb-5eddddad3331"]
+ CellLabel->
+  "In[41]:=",ExpressionUUID->"fbb2740f-f46c-4dc5-99fb-5eddddad3331"]
 }, Closed]],
 
 Cell[CellGroupData[{
@@ -525,7 +535,8 @@ Cell[BoxData[
       RowBox[{"All", ",", "4"}], "]"}], "]"}], "]"}]}]}]], "Input",
  InitializationCell->True,
  CellChangeTimes->{{3.900072772321396*^9, 3.900072824738744*^9}},
- CellLabel->"In[42]:=",ExpressionUUID->"a3e3f7a4-033b-4e99-aee5-3b3f673818a1"]
+ CellLabel->
+  "In[42]:=",ExpressionUUID->"a3e3f7a4-033b-4e99-aee5-3b3f673818a1"]
 }, Closed]]
 }, Open  ]],
 
@@ -2415,7 +2426,8 @@ Cell[BoxData[{
  RowBox[{
   RowBox[{"End", "[", "]"}], ";"}]}], "Input",
  InitializationCell->True,
- CellLabel->"In[50]:=",ExpressionUUID->"b0830100-951f-e041-98a0-4cd75a9bd257"]
+ CellLabel->
+  "In[50]:=",ExpressionUUID->"b0830100-951f-e041-98a0-4cd75a9bd257"]
 }, Closed]]
 }, Open  ]],
 
@@ -2546,7 +2558,8 @@ standard format, using bin width \[CapitalDelta]p.\>\""}], ";"}],
  RowBox[{
   RowBox[{"End", "[", "]"}], ";"}]}], "Input",
  InitializationCell->True,
- CellLabel->"In[53]:=",ExpressionUUID->"27d562e3-c452-af46-bdd6-1a0189009280"]
+ CellLabel->
+  "In[53]:=",ExpressionUUID->"27d562e3-c452-af46-bdd6-1a0189009280"]
 }, Closed]],
 
 Cell[CellGroupData[{
@@ -2580,12 +2593,14 @@ the given range, using bin width \[CapitalDelta]p.\>\""}], ";"}],
       RowBox[{"photoElectronSpectrum", "[", 
        RowBox[{
         RowBox[{"dataSet", "[", "#", "]"}], ",", "pBin", ",", "options", ",", 
+        
         RowBox[{"PlotLabel", "->", "#"}]}], "]"}], "&"}], ",", 
      "\[IndentingNewLine]", "range"}], "]"}]}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{"End", "[", "]"}], ";"}]}], "Input",
  InitializationCell->True,
- CellLabel->"In[57]:=",ExpressionUUID->"528a5102-5294-df4c-9dc9-e2b1be1eefd4"]
+ CellLabel->
+  "In[57]:=",ExpressionUUID->"528a5102-5294-df4c-9dc9-e2b1be1eefd4"]
 }, Closed]]
 }, Open  ]],
 
@@ -2679,6 +2694,7 @@ Cell[BoxData[
      RowBox[{"{", 
       RowBox[{"m", ",", 
        RowBox[{"-", "\[ScriptL]"}], ",", "\[ScriptL]"}], "}"}]}], "]"}], ",", 
+   
    RowBox[{"{", 
     RowBox[{"\[ScriptL]", ",", "0", ",", "4"}], "}"}]}], "]"}]], "Input",
  CellChangeTimes->{{3.90050074074869*^9, 3.900500763157174*^9}, {
@@ -3290,6 +3306,7 @@ symbollically calculated for the distribution \>\"", ",",
                 RowBox[{"\[ScriptL]", ",", "m", ",", 
                  RowBox[{"{", 
                   RowBox[{"px", ",", "py", ",", "pz"}], "}"}]}], "]"}], "/.", 
+               
                RowBox[{"{", 
                 RowBox[{"\[ImaginaryI]", "->", 
                  RowBox[{"-", "\[ImaginaryI]"}]}], "}"}]}], ",", 
@@ -3760,7 +3777,8 @@ Cell[BoxData[{
  RowBox[{
   RowBox[{"End", "[", "]"}], ";"}], "\[IndentingNewLine]"}], "Input",
  InitializationCell->True,
- CellLabel->"In[75]:=",ExpressionUUID->"380663b1-5377-1a43-88c4-066723103036"]
+ CellLabel->
+  "In[75]:=",ExpressionUUID->"380663b1-5377-1a43-88c4-066723103036"]
 }, Closed]],
 
 Cell[CellGroupData[{
@@ -14478,7 +14496,8 @@ NxLC86Tvy33CawETw//L8Di7RNH/4j8f3A==
   3.900695330820404*^9, {3.900695392252988*^9, 3.9006954105945983`*^9}, 
    3.9006954421215*^9, {3.9006959127761874`*^9, 3.900695937330127*^9}, {
    3.9016996709756107`*^9, 3.90169968605711*^9}},
- CellLabel->"Out[92]=",ExpressionUUID->"560c18ce-c019-2547-8113-754d6000c01a"]
+ CellLabel->
+  "Out[92]=",ExpressionUUID->"560c18ce-c019-2547-8113-754d6000c01a"]
 }, Open  ]]
 }, Closed]],
 
@@ -14547,6 +14566,7 @@ Cell[BoxData[{
                     RowBox[{"0", ",", "0", ",", "0"}], "}"}], ",", 
                     RowBox[{"0.9", "COM"}]}], "}"}], ",", 
                   RowBox[{"0.02", "s"}]}], "]"}], ",", "\[IndentingNewLine]", 
+                
                 RowBox[{"Cone", "[", 
                  RowBox[{
                   RowBox[{"{", 
@@ -14562,6 +14582,7 @@ Cell[BoxData[{
                RowBox[{"COM", ",", "COMs"}], "}"}]}], "]"}], ",", 
             "\[IndentingNewLine]", 
             RowBox[{"Opacity", "[", "0.1", "]"}], ",", "\[IndentingNewLine]", 
+            
             RowBox[{"Parallelepiped", "[", 
              RowBox[{
               RowBox[{"{", 
@@ -14670,7 +14691,8 @@ specify which ",
  Cell[BoxData[
   FormBox["m", TraditionalForm]],ExpressionUUID->
   "12ce0b23-96a3-441e-b30a-e1fc46f37648"],
- " triplets to keep in the plot. The intended purpose is syntax of the form ",
+ " triplets to keep in the plot. The intended purpose is syntax of the form \
+",
  Cell[BoxData[
   RowBox[{"\"\<mFilter\>\"", "->", 
    RowBox[{"Function", "[", 
@@ -15169,6 +15191,7 @@ Cell[BoxData[{
        "\[IndentingNewLine]", ",", 
        RowBox[{"BoxRatios", "->", "Automatic"}], "\[IndentingNewLine]", ",", 
        RowBox[{"SphericalRegion", "->", "True"}], "\[IndentingNewLine]", ",", 
+       
        RowBox[{"ImageSize", "->", "700"}]}], "\[IndentingNewLine]", "]"}]}], 
     "\[IndentingNewLine]", "]"}]}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
  RowBox[{
@@ -15495,6 +15518,7 @@ basis tensor \!\(\*SubscriptBox[OverscriptBox[\(t\), \(^\)], \(l, m\)]\).\n\
 MultipolarBasisTensorT[n,\[ScriptL],m] returns the multipolar basis tensor \!\
 \(\*SubsuperscriptBox[OverscriptBox[\(t\), \(^\)], \(l, m\), \((n)\)]\) with \
 tensor rank n.\>\""}], ";"}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+
  RowBox[{
   RowBox[{
    RowBox[{"Begin", "[", "\"\<`Private`\>\"", "]"}], ";"}], 
@@ -15671,6 +15695,7 @@ Cell[BoxData[
            {"0"}
           },
           GridBoxAlignment->{"Columns" -> {{Center}}, "Rows" -> {{Baseline}}},
+          
           GridBoxSpacings->{"Columns" -> {
               Offset[0.27999999999999997`], {
                Offset[0.5599999999999999]}, 
@@ -15697,6 +15722,7 @@ Cell[BoxData[
            {"1"}
           },
           GridBoxAlignment->{"Columns" -> {{Center}}, "Rows" -> {{Baseline}}},
+          
           GridBoxSpacings->{"Columns" -> {
               Offset[0.27999999999999997`], {
                Offset[0.5599999999999999]}, 
@@ -15725,6 +15751,7 @@ Cell[BoxData[
            {"0"}
           },
           GridBoxAlignment->{"Columns" -> {{Center}}, "Rows" -> {{Baseline}}},
+          
           GridBoxSpacings->{"Columns" -> {
               Offset[0.27999999999999997`], {
                Offset[0.5599999999999999]}, 
@@ -18331,6 +18358,7 @@ Cell[BoxData[
              SqrtBox["3"]]}
           },
           GridBoxAlignment->{"Columns" -> {{Center}}, "Rows" -> {{Baseline}}},
+          
           GridBoxSpacings->{"Columns" -> {
               Offset[0.27999999999999997`], {
                Offset[0.7]}, 
@@ -18374,6 +18402,7 @@ Cell[BoxData[
          Function[BoxForm`e$, 
           MatrixForm[
            SymmetrizedArray[
+            
             StructuredArray`StructuredData[{3, 
              3}, {{{1, 1} -> Rational[1, 2], {1, 2} -> Complex[0, 
                  Rational[1, 2]], {2, 2} -> Rational[-1, 2]}, 
@@ -20680,6 +20709,7 @@ Cell[BoxData[
            RowBox[{
             RowBox[{"MultipolarBasisTensorT", "[", 
              RowBox[{"n", ",", "l", ",", "m"}], "]"}], "\[Conjugate]"}], ",", 
+           
            RowBox[{"TensorPower", "[", 
             RowBox[{
              RowBox[{"{", 
@@ -20957,6 +20987,7 @@ Cell[BoxData[
            RowBox[{
             RowBox[{"MultipolarBasisTensorT", "[", 
              RowBox[{"n", ",", "l", ",", "m"}], "]"}], "\[Conjugate]"}], ",", 
+           
            RowBox[{"TensorPower", "[", 
             RowBox[{
              RowBox[{"{", 
@@ -22344,6 +22375,7 @@ Cell[BoxData[
                 TemplateBox[{"1"}, "OutputSizeLimit`Skeleton"], ",", 
                 RowBox[{"{", 
                   TemplateBox[{"1"}, "OutputSizeLimit`Skeleton"], "}"}], ",", 
+                
                 RowBox[{"{", 
                   TemplateBox[{"1"}, "OutputSizeLimit`Skeleton"], "}"}]}], 
               "}"}]}]}}, RowSpacings -> 1, ColumnAlignments -> Left, 
@@ -22572,7 +22604,8 @@ Cell[BoxData[
 
 Cell[BoxData["\<\"Wed 8 Oct 2025 17:09:39\"\>"], "Output",
  CellChangeTimes->{{3.9689285645181437`*^9, 3.968928579463792*^9}},
- CellLabel->"Out[10]=",ExpressionUUID->"ffa46bb3-1f7d-42f7-9dce-2a7db1d901dc"]
+ CellLabel->
+  "Out[10]=",ExpressionUUID->"ffa46bb3-1f7d-42f7-9dce-2a7db1d901dc"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -23017,8 +23050,7 @@ NotebookEventActions->{{"MenuCommand", "Save"} :> (NotebookWrite[
       "version-timestamp"], None, AutoScroll -> False]; NotebookSave[]), 
   PassEventsDown -> True},
 WindowSize->{1152, 652.5},
-WindowMargins->{{
-  Automatic, -4.7999999999999545`}, {-4.7999999999999545`, Automatic}},
+WindowMargins->{{Automatic, 0}, {0, Automatic}},
 PrintingCopies->1,
 PrintingStartingPageNumber->1,
 PrintingPageRange->{Automatic, Automatic},
@@ -23055,7 +23087,7 @@ TrackCellChangeTimes->False,
 SpellingDictionaries->{"CorrectWords"->{
  "subpackage", "Pisanty", "subpackages"}},
 Background->None,
-FrontEndVersion->"14.3 for Microsoft Windows (64-bit) (July 8, 2025)",
+FrontEndVersion->"14.3 for Linux x86 (64-bit) (July 8, 2025)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[StyleDefinitions -> "Default.nb"]], 
@@ -23065,7 +23097,7 @@ StyleDefinitions->Notebook[{
     FontVariations -> {
      "Outline" -> False, "Shadow" -> False, "StrikeThrough" -> False, 
       "Underline" -> False}]}, Visible -> False, FrontEndVersion -> 
-  "14.3 for Microsoft Windows (64-bit) (July 8, 2025)", StyleDefinitions -> 
+  "14.3 for Linux x86 (64-bit) (July 8, 2025)", StyleDefinitions -> 
   "PrivateStylesheetFormatting.nb"],
 ExpressionUUID->"d1cc7f40-ea02-494c-9758-0c8d4ee5ba2e"
 ]
