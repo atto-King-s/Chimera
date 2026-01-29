@@ -363,11 +363,11 @@ Cell["Timestamp", \
 Cell[BoxData[
  RowBox[{
   RowBox[{"Begin", "[", "\"\<`Private`\>\"", "]"}], ";", 
-  RowBox[{"$ChimeraTimestamp", "=", "\"\<Wed 28 Jan 2026 14:22:04\>\""}], ";", 
+  RowBox[{"$ChimeraTimestamp", "=", "\"\<Thu 29 Jan 2026 11:49:03\>\""}], ";", 
   RowBox[{"End", "[", "]"}], ";"}]], "Input",
  InitializationCell->True,
  CellTags->
-  "version-timestamp",ExpressionUUID->"889fc35b-ea62-4c8f-a37a-4ddd902d0efe"]
+  "version-timestamp",ExpressionUUID->"ede58f06-8a5e-4a1d-8f97-633432cbb7f4"]
 }, Open  ]]
 }, Open  ]],
 
@@ -15540,7 +15540,7 @@ tensor rank n.\>\""}], ";"}], "\[IndentingNewLine]"}], "\[IndentingNewLine]",
       RowBox[{"(", 
        RowBox[{"-", "1"}], ")"}], "m"], ",", "\[IndentingNewLine]", 
      RowBox[{"Sqrt", "[", 
-      RowBox[{"b", "[", 
+      RowBox[{"ChimeraB", "[", 
        RowBox[{"\[ScriptL]", ",", 
         FractionBox[
          RowBox[{"n", "-", "\[ScriptL]"}], "2"]}], "]"}], "]"}], ",", 
@@ -15622,8 +15622,8 @@ tensor rank n.\>\""}], ";"}], "\[IndentingNewLine]"}], "\[IndentingNewLine]",
   "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{"End", "[", "]"}], ";"}]}], "Input",
- InitializationCell->True,
- CellLabel->"In[154]:=",ExpressionUUID->"a4511e4c-db4f-4d56-a6d7-05037ea7985e"]
+ InitializationCell->
+  True,ExpressionUUID->"a4511e4c-db4f-4d56-a6d7-05037ea7985e"]
 }, Closed]],
 
 Cell[CellGroupData[{
@@ -21886,8 +21886,7 @@ operator \!\(\*Cell[TextData[{
 Cell[BoxData[FormBox[
 SuperscriptBox[
 OverscriptBox[\"\[ScriptCapitalL]\", \"^\"], \"m\"], \
-TraditionalForm]],FormatType->TraditionalForm,ExpressionUUID->\"7bb0ee80-d774-\
-46e9-9a73-e239cb9aec53\"],
+TraditionalForm]],ExpressionUUID->\"7bb0ee80-d774-46e9-9a73-e239cb9aec53\"],
 \"(A)=\",
 Cell[BoxData[FormBox[
 OverscriptBox[\"\[ScriptCapitalS]\", \"^\"], \
@@ -23248,7 +23247,7 @@ NotebookEventActions->{{"MenuCommand", "Save"} :> (NotebookWrite[
       "version-timestamp"], None, AutoScroll -> False]; NotebookSave[]), 
   PassEventsDown -> True},
 WindowSize->{1438.5, 926.25},
-WindowMargins->{{Automatic, 181.5}, {31.5, Automatic}},
+WindowMargins->{{Automatic, 181.5}, {3.75, Automatic}},
 PrintingCopies->1,
 PrintingStartingPageNumber->1,
 PrintingPageRange->{Automatic, Automatic},

@@ -50,7 +50,7 @@ End[];
 
 
 (* ::Input::Initialization:: *)
-Begin["`Private`"];$ChimeraTimestamp="Wed 28 Jan 2026 14:22:04";End[];
+Begin["`Private`"];$ChimeraTimestamp="Thu 29 Jan 2026 11:49:03";End[];
 
 
 (* ::Input::Initialization:: *)
@@ -829,7 +829,7 @@ Begin["`Private`"];
 
 MultipolarBasisTensorT[n_Integer,\[ScriptL]_Integer,m_Integer]/;And[Abs[m]<=\[ScriptL]<=n,EvenQ[n-\[ScriptL]]]:=Times[
 (-1)^m,
-Sqrt[b[\[ScriptL],(n-\[ScriptL])/2]],
+Sqrt[ChimeraB[\[ScriptL],(n-\[ScriptL])/2]],
 Sqrt[\[ScriptL]!/(2\[ScriptL]-1)!!],
 Sqrt[(\[ScriptL]-m)!(\[ScriptL]+m)!],
 Sum[If[
