@@ -363,11 +363,11 @@ Cell["Timestamp", \
 Cell[BoxData[
  RowBox[{
   RowBox[{"Begin", "[", "\"\<`Private`\>\"", "]"}], ";", 
-  RowBox[{"$ChimeraTimestamp", "=", "\"\<Thu 29 Jan 2026 11:49:03\>\""}], ";", 
+  RowBox[{"$ChimeraTimestamp", "=", "\"\<Thu 29 Jan 2026 11:50:49\>\""}], ";", 
   RowBox[{"End", "[", "]"}], ";"}]], "Input",
  InitializationCell->True,
  CellTags->
-  "version-timestamp",ExpressionUUID->"ede58f06-8a5e-4a1d-8f97-633432cbb7f4"]
+  "version-timestamp",ExpressionUUID->"3410326c-72fd-49a6-be7a-10c8cffdfe44"]
 }, Open  ]]
 }, Open  ]],
 
@@ -15504,6 +15504,134 @@ Cell[BoxData[{
 
 Cell[CellGroupData[{
 
+Cell["ChimeraC", \
+"Subsubsection",ExpressionUUID->"be7d3960-0cc4-47a8-8c61-ec063ac2d98b"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"ChimeraC", "::", "usage"}], 
+    "=", "\"\<ChimeraC[n,\[ScriptL]] returns the coefficient \
+\!\(\*SubscriptBox[\(c\), \(n, \[ScriptL]\)]\)=\!\(\*FractionBox[\(\((n + \
+2)\) \((n + 1)\)\), \(\((n + 2 - \[ScriptL])\) \((n + \[ScriptL] + d)\)\)]\), \
+where d=3 by default, for which \!\(\*SubscriptBox[\(c\), \(n, \
+\[ScriptL]\)]\)Tr is an inverse to the lift operator \!\(\*Cell[TextData[{
+Cell[BoxData[FormBox[
+OverscriptBox[\"\[ScriptCapitalL]\", \"^\"], \
+TraditionalForm]],ExpressionUUID->\"933e390e-9b12-4cef-a416-5221cbb7929d\"],
+\"(A)=\",
+Cell[BoxData[FormBox[
+OverscriptBox[\"\[ScriptCapitalS]\", \"^\"], \
+TraditionalForm]],ExpressionUUID->\"8963e3c0-18ba-4b2b-8ad7-17d709c48a8e\"],
+\"(A\",
+Cell[BoxData[\"\[CircleTimes]\"], \
+\"Input\",ExpressionUUID->\"95014ff6-722a-48b4-98f1-b7899f3fd57f\"],
+\"\[DoubleStruckCapitalI])\"
+}],ExpressionUUID->\"3cc2d194-60cf-45b9-ad50-2b561177c639\"]\) on the \
+subspace of \[ScriptL]-polar symmetric tensors of rank n.\>\""}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"Begin", "[", "\"\<`Private`\>\"", "]"}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"ChimeraC", "[", 
+    RowBox[{"n_", ",", "\[ScriptL]_", ",", 
+     RowBox[{"dim_", ":", "3"}]}], "]"}], ":=", 
+   FractionBox[
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{"n", "+", "2"}], ")"}], 
+     RowBox[{"(", 
+      RowBox[{"n", "+", "1"}], ")"}]}], 
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{"n", "+", "2", "-", "\[ScriptL]"}], ")"}], 
+     RowBox[{"(", 
+      RowBox[{"n", "+", "\[ScriptL]", "+", "dim"}], ")"}]}]]}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"End", "[", "]"}], ";"}]}], "Input",
+ InitializationCell->True,
+ CellLabel->"In[170]:=",ExpressionUUID->"ecc42099-6b03-4b9c-9b8c-f1987968f84e"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["ChimeraB", \
+"Subsubsection",ExpressionUUID->"66e1c33e-34a1-4fe6-8f51-83ee86922dd9"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"ChimeraB", "::", "usage"}], 
+    "=", "\"\<ChimeraB[n,\[ScriptL]]\>\""}], ";"}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"ChimeraB", "::", "usage"}], 
+    "=", "\"\<ChimeraB[n,m] returns the coefficient \!\(\*SubscriptBox[\(b\), \
+\(n, m\)]\)=\!\(\*FractionBox[\(\(\((n + 2  m)\)!\) \((2  n - 2 + dim)\)!!\), \
+\(\*SuperscriptBox[\(2\), \(m\)] \(m!\) \(n!\) \((2  n + 2 \((m - 1)\) + dim)\
+\)!!\)]\), where d=3 by default, for which \!\(\*SubscriptBox[\(b\), \(n, \
+m\)]\)\!\(\*SuperscriptBox[\(Tr\), \(m\)]\) is an inverse to the m-fold lift \
+operator \!\(\*Cell[TextData[{
+Cell[BoxData[FormBox[
+SuperscriptBox[
+OverscriptBox[\"\[ScriptCapitalL]\", \"^\"], \"m\"], \
+TraditionalForm]],ExpressionUUID->\"7bb0ee80-d774-46e9-9a73-e239cb9aec53\"],
+\"(A)=\",
+Cell[BoxData[FormBox[
+OverscriptBox[\"\[ScriptCapitalS]\", \"^\"], \
+TraditionalForm]],ExpressionUUID->\"6ff7cbe4-28ad-4458-b02c-5f2a457f030c\"],
+\"(A\",
+Cell[BoxData[\"\[CircleTimes]\"], \
+\"Input\",ExpressionUUID->\"5190ba27-1f38-4e0c-b933-569e51be8e9f\"],
+Cell[BoxData[
+SuperscriptBox[\"\[DoubleStruckCapitalI]\", RowBox[{\"\[CircleTimes]\", \
+\"m\"}]]], \"Input\",ExpressionUUID->\"fdf6d88a-0616-4305-bda2-ec64bf8ce990\"],
+\")\"
+}],ExpressionUUID->\"84211960-717f-4ca0-9e5c-9b8af8613773\"]\) on the \
+subspace of fully traceless symmetric tensors of rank n (which are thus fully \
+(n=\[ScriptL])-polar).\>\""}], ";"}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Begin", "[", "\"\<`Private`\>\"", "]"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"ChimeraB", "[", 
+   RowBox[{"n_", ",", "m_", ",", 
+    RowBox[{"dim_", ":", "3"}]}], "]"}], ":=", 
+  FractionBox[
+   RowBox[{
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{"n", "+", 
+       RowBox[{"2", "m"}]}], ")"}], "!"}], 
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"2", "n"}], "-", "2", "+", "dim"}], ")"}], "!!"}]}], 
+   RowBox[{
+    SuperscriptBox["2", "m"], 
+    RowBox[{"m", "!"}], 
+    RowBox[{"n", "!"}], 
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"2", "n"}], "+", 
+       RowBox[{"2", 
+        RowBox[{"(", 
+         RowBox[{"m", "-", "1"}], ")"}]}], "+", "dim"}], ")"}], "!!"}]}]]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"End", "[", "]"}], ";"}]}], "Input",
+ InitializationCell->True,
+ CellLabel->"In[174]:=",ExpressionUUID->"e09a8f0e-40a2-4539-810b-377f79ad9f8b"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
 Cell["MultipolarBasisTensorT", \
 "Subsubsection",ExpressionUUID->"b4d1b52c-25e3-ad44-91b1-80c2d52f4015"],
 
@@ -18638,7 +18766,6 @@ Cell[BoxData[
                     FractionBox["3", "10"]]}]},
                  {"0"}
                 },
-                
                 GridBoxAlignment->{
                  "Columns" -> {{Center}}, "Rows" -> {{Baseline}}},
                 GridBoxSpacings->{"Columns" -> {
@@ -21808,134 +21935,6 @@ the first and second indices.\>\""}], ";"}], "\[IndentingNewLine]"}], "\[Indenti
 
 Cell[CellGroupData[{
 
-Cell["ChimeraC", \
-"Subsubsection",ExpressionUUID->"be7d3960-0cc4-47a8-8c61-ec063ac2d98b"],
-
-Cell[BoxData[{
- RowBox[{
-  RowBox[{
-   RowBox[{
-    RowBox[{"ChimeraC", "::", "usage"}], 
-    "=", "\"\<ChimeraC[n,\[ScriptL]] returns the coefficient \
-\!\(\*SubscriptBox[\(c\), \(n, \[ScriptL]\)]\)=\!\(\*FractionBox[\(\((n + \
-2)\) \((n + 1)\)\), \(\((n + 2 - \[ScriptL])\) \((n + \[ScriptL] + d)\)\)]\), \
-where d=3 by default, for which \!\(\*SubscriptBox[\(c\), \(n, \
-\[ScriptL]\)]\)Tr is an inverse to the lift operator \!\(\*Cell[TextData[{
-Cell[BoxData[FormBox[
-OverscriptBox[\"\[ScriptCapitalL]\", \"^\"], \
-TraditionalForm]],ExpressionUUID->\"933e390e-9b12-4cef-a416-5221cbb7929d\"],
-\"(A)=\",
-Cell[BoxData[FormBox[
-OverscriptBox[\"\[ScriptCapitalS]\", \"^\"], \
-TraditionalForm]],ExpressionUUID->\"8963e3c0-18ba-4b2b-8ad7-17d709c48a8e\"],
-\"(A\",
-Cell[BoxData[\"\[CircleTimes]\"], \
-\"Input\",ExpressionUUID->\"95014ff6-722a-48b4-98f1-b7899f3fd57f\"],
-\"\[DoubleStruckCapitalI])\"
-}],ExpressionUUID->\"3cc2d194-60cf-45b9-ad50-2b561177c639\"]\) on the \
-subspace of \[ScriptL]-polar symmetric tensors of rank n.\>\""}], ";"}], 
-  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
- RowBox[{
-  RowBox[{
-   RowBox[{"Begin", "[", "\"\<`Private`\>\"", "]"}], ";"}], 
-  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
- RowBox[{
-  RowBox[{
-   RowBox[{"ChimeraC", "[", 
-    RowBox[{"n_", ",", "\[ScriptL]_", ",", 
-     RowBox[{"dim_", ":", "3"}]}], "]"}], ":=", 
-   FractionBox[
-    RowBox[{
-     RowBox[{"(", 
-      RowBox[{"n", "+", "2"}], ")"}], 
-     RowBox[{"(", 
-      RowBox[{"n", "+", "1"}], ")"}]}], 
-    RowBox[{
-     RowBox[{"(", 
-      RowBox[{"n", "+", "2", "-", "\[ScriptL]"}], ")"}], 
-     RowBox[{"(", 
-      RowBox[{"n", "+", "\[ScriptL]", "+", "dim"}], ")"}]}]]}], 
-  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
- RowBox[{
-  RowBox[{"End", "[", "]"}], ";"}]}], "Input",
- InitializationCell->True,
- CellLabel->"In[170]:=",ExpressionUUID->"ecc42099-6b03-4b9c-9b8c-f1987968f84e"]
-}, Closed]],
-
-Cell[CellGroupData[{
-
-Cell["ChimeraB", \
-"Subsubsection",ExpressionUUID->"66e1c33e-34a1-4fe6-8f51-83ee86922dd9"],
-
-Cell[BoxData[{
- RowBox[{
-  RowBox[{
-   RowBox[{
-    RowBox[{"ChimeraB", "::", "usage"}], 
-    "=", "\"\<ChimeraB[n,\[ScriptL]]\>\""}], ";"}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
- RowBox[{
-  RowBox[{
-   RowBox[{
-    RowBox[{"ChimeraB", "::", "usage"}], 
-    "=", "\"\<ChimeraB[n,m] returns the coefficient \!\(\*SubscriptBox[\(b\), \
-\(n, m\)]\)=\!\(\*FractionBox[\(\(\((n + 2  m)\)!\) \((2  n - 2 + dim)\)!!\), \
-\(\*SuperscriptBox[\(2\), \(m\)] \(m!\) \(n!\) \((2  n + 2 \((m - 1)\) + dim)\
-\)!!\)]\), where d=3 by default, for which \!\(\*SubscriptBox[\(b\), \(n, \
-m\)]\)\!\(\*SuperscriptBox[\(Tr\), \(m\)]\) is an inverse to the m-fold lift \
-operator \!\(\*Cell[TextData[{
-Cell[BoxData[FormBox[
-SuperscriptBox[
-OverscriptBox[\"\[ScriptCapitalL]\", \"^\"], \"m\"], \
-TraditionalForm]],ExpressionUUID->\"7bb0ee80-d774-46e9-9a73-e239cb9aec53\"],
-\"(A)=\",
-Cell[BoxData[FormBox[
-OverscriptBox[\"\[ScriptCapitalS]\", \"^\"], \
-TraditionalForm]],ExpressionUUID->\"6ff7cbe4-28ad-4458-b02c-5f2a457f030c\"],
-\"(A\",
-Cell[BoxData[\"\[CircleTimes]\"], \
-\"Input\",ExpressionUUID->\"5190ba27-1f38-4e0c-b933-569e51be8e9f\"],
-Cell[BoxData[
-SuperscriptBox[\"\[DoubleStruckCapitalI]\", RowBox[{\"\[CircleTimes]\", \
-\"m\"}]]], \"Input\",ExpressionUUID->\"fdf6d88a-0616-4305-bda2-ec64bf8ce990\"],
-\")\"
-}],ExpressionUUID->\"84211960-717f-4ca0-9e5c-9b8af8613773\"]\) on the \
-subspace of fully traceless symmetric tensors of rank n (which are thus fully \
-(n=\[ScriptL])-polar).\>\""}], ";"}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
- RowBox[{
-  RowBox[{"Begin", "[", "\"\<`Private`\>\"", "]"}], ";"}], "\[IndentingNewLine]", 
- RowBox[{
-  RowBox[{"ChimeraB", "[", 
-   RowBox[{"n_", ",", "m_", ",", 
-    RowBox[{"dim_", ":", "3"}]}], "]"}], ":=", 
-  FractionBox[
-   RowBox[{
-    RowBox[{
-     RowBox[{"(", 
-      RowBox[{"n", "+", 
-       RowBox[{"2", "m"}]}], ")"}], "!"}], 
-    RowBox[{
-     RowBox[{"(", 
-      RowBox[{
-       RowBox[{"2", "n"}], "-", "2", "+", "dim"}], ")"}], "!!"}]}], 
-   RowBox[{
-    SuperscriptBox["2", "m"], 
-    RowBox[{"m", "!"}], 
-    RowBox[{"n", "!"}], 
-    RowBox[{
-     RowBox[{"(", 
-      RowBox[{
-       RowBox[{"2", "n"}], "+", 
-       RowBox[{"2", 
-        RowBox[{"(", 
-         RowBox[{"m", "-", "1"}], ")"}]}], "+", "dim"}], ")"}], "!!"}]}]]}], "\[IndentingNewLine]", 
- RowBox[{
-  RowBox[{"End", "[", "]"}], ";"}]}], "Input",
- InitializationCell->True,
- CellLabel->"In[174]:=",ExpressionUUID->"e09a8f0e-40a2-4539-810b-377f79ad9f8b"]
-}, Closed]],
-
-Cell[CellGroupData[{
-
 Cell["TensorMultipole", \
 "Subsubsection",ExpressionUUID->"609903e9-9f4f-491e-843d-e81f81d3d751"],
 
@@ -23247,7 +23246,7 @@ NotebookEventActions->{{"MenuCommand", "Save"} :> (NotebookWrite[
       "version-timestamp"], None, AutoScroll -> False]; NotebookSave[]), 
   PassEventsDown -> True},
 WindowSize->{1438.5, 926.25},
-WindowMargins->{{Automatic, 181.5}, {3.75, Automatic}},
+WindowMargins->{{Automatic, 181.5}, {0, Automatic}},
 PrintingCopies->1,
 PrintingStartingPageNumber->1,
 PrintingPageRange->{Automatic, Automatic},

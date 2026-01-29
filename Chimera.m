@@ -50,7 +50,7 @@ End[];
 
 
 (* ::Input::Initialization:: *)
-Begin["`Private`"];$ChimeraTimestamp="Thu 29 Jan 2026 11:49:03";End[];
+Begin["`Private`"];$ChimeraTimestamp="Thu 29 Jan 2026 11:50:49";End[];
 
 
 (* ::Input::Initialization:: *)
@@ -822,6 +822,26 @@ End[];
 
 
 (* ::Input::Initialization:: *)
+ChimeraC::usage="ChimeraC[n,\[ScriptL]] returns the coefficient \!\(\*SubscriptBox[\(c\), \(n, \[ScriptL]\)]\)=\!\(\*FractionBox[\(\((n + 2)\) \((n + 1)\)\), \(\((n + 2 - \[ScriptL])\) \((n + \[ScriptL] + d)\)\)]\), where d=3 by default, for which \!\(\*SubscriptBox[\(c\), \(n, \[ScriptL]\)]\)Tr is an inverse to the lift operator \!\(\*OverscriptBox[\(\[ScriptCapitalL]\), \(^\)]\)(A)=\!\(\*OverscriptBox[\(\[ScriptCapitalS]\), \(^\)]\)(A\[CircleTimes]\[DoubleStruckCapitalI]) on the subspace of \[ScriptL]-polar symmetric tensors of rank n.";
+
+Begin["`Private`"];
+
+ChimeraC[n_,\[ScriptL]_,dim_:3]:=((n+2)(n+1))/((n+2-\[ScriptL])(n+\[ScriptL]+dim))
+
+End[];
+
+
+(* ::Input::Initialization:: *)
+ChimeraB::usage="ChimeraB[n,\[ScriptL]]";
+
+ChimeraB::usage="ChimeraB[n,m] returns the coefficient \!\(\*SubscriptBox[\(b\), \(n, m\)]\)=\!\(\*FractionBox[\(\(\((n + 2  m)\)!\) \((2  n - 2 + dim)\)!!\), \(\*SuperscriptBox[\(2\), \(m\)] \(m!\) \(n!\) \((2  n + 2 \((m - 1)\) + dim)\)!!\)]\), where d=3 by default, for which \!\(\*SubscriptBox[\(b\), \(n, m\)]\)\!\(\*SuperscriptBox[\(Tr\), \(m\)]\) is an inverse to the m-fold lift operator \!\(\*OverscriptBox[\(\[ScriptCapitalL]\), \(^\)]\)^m(A)=\!\(\*OverscriptBox[\(\[ScriptCapitalS]\), \(^\)]\)(A\[CircleTimes]\!\(\*SuperscriptBox[\(\[DoubleStruckCapitalI]\), \(\[CircleTimes]m\)]\)) on the subspace of fully traceless symmetric tensors of rank n (which are thus fully (n=\[ScriptL])-polar).";
+
+Begin["`Private`"];
+ChimeraB[n_,m_,dim_:3]:=((n+2m)!(2n-2+dim)!!)/(2^m m!n!(2n+2(m-1)+dim)!!)
+End[];
+
+
+(* ::Input::Initialization:: *)
 MultipolarBasisTensorT::usage="MultipolarBasisTensorT[\[ScriptL],m] returns the multipolar basis tensor \!\(\*SubscriptBox[OverscriptBox[\(t\), \(^\)], \(l, m\)]\).
 MultipolarBasisTensorT[n,\[ScriptL],m] returns the multipolar basis tensor \!\(\*SubsuperscriptBox[OverscriptBox[\(t\), \(^\)], \(l, m\), \((n)\)]\) with tensor rank n.";
 
@@ -875,26 +895,6 @@ Begin["`Private`"];
 TensorTrace[tensor_]:=TensorContract[tensor,{{1,2}}]
 TensorTrace[tensor_,n_]:=Nest[TensorTrace,tensor,n]
 
-End[];
-
-
-(* ::Input::Initialization:: *)
-ChimeraC::usage="ChimeraC[n,\[ScriptL]] returns the coefficient \!\(\*SubscriptBox[\(c\), \(n, \[ScriptL]\)]\)=\!\(\*FractionBox[\(\((n + 2)\) \((n + 1)\)\), \(\((n + 2 - \[ScriptL])\) \((n + \[ScriptL] + d)\)\)]\), where d=3 by default, for which \!\(\*SubscriptBox[\(c\), \(n, \[ScriptL]\)]\)Tr is an inverse to the lift operator \!\(\*OverscriptBox[\(\[ScriptCapitalL]\), \(^\)]\)(A)=\!\(\*OverscriptBox[\(\[ScriptCapitalS]\), \(^\)]\)(A\[CircleTimes]\[DoubleStruckCapitalI]) on the subspace of \[ScriptL]-polar symmetric tensors of rank n.";
-
-Begin["`Private`"];
-
-ChimeraC[n_,\[ScriptL]_,dim_:3]:=((n+2)(n+1))/((n+2-\[ScriptL])(n+\[ScriptL]+dim))
-
-End[];
-
-
-(* ::Input::Initialization:: *)
-ChimeraB::usage="ChimeraB[n,\[ScriptL]]";
-
-ChimeraB::usage="ChimeraB[n,m] returns the coefficient \!\(\*SubscriptBox[\(b\), \(n, m\)]\)=\!\(\*FractionBox[\(\(\((n + 2  m)\)!\) \((2  n - 2 + dim)\)!!\), \(\*SuperscriptBox[\(2\), \(m\)] \(m!\) \(n!\) \((2  n + 2 \((m - 1)\) + dim)\)!!\)]\), where d=3 by default, for which \!\(\*SubscriptBox[\(b\), \(n, m\)]\)\!\(\*SuperscriptBox[\(Tr\), \(m\)]\) is an inverse to the m-fold lift operator \!\(\*OverscriptBox[\(\[ScriptCapitalL]\), \(^\)]\)^m(A)=\!\(\*OverscriptBox[\(\[ScriptCapitalS]\), \(^\)]\)(A\[CircleTimes]\!\(\*SuperscriptBox[\(\[DoubleStruckCapitalI]\), \(\[CircleTimes]m\)]\)) on the subspace of fully traceless symmetric tensors of rank n (which are thus fully (n=\[ScriptL])-polar).";
-
-Begin["`Private`"];
-ChimeraB[n_,m_,dim_:3]:=((n+2m)!(2n-2+dim)!!)/(2^m m!n!(2n+2(m-1)+dim)!!)
 End[];
 
 
