@@ -363,11 +363,11 @@ Cell["Timestamp", \
 Cell[BoxData[
  RowBox[{
   RowBox[{"Begin", "[", "\"\<`Private`\>\"", "]"}], ";", 
-  RowBox[{"$ChimeraTimestamp", "=", "\"\<Thu 29 Jan 2026 11:50:49\>\""}], ";", 
+  RowBox[{"$ChimeraTimestamp", "=", "\"\<Wed 18 Feb 2026 16:14:10\>\""}], ";", 
   RowBox[{"End", "[", "]"}], ";"}]], "Input",
  InitializationCell->True,
  CellTags->
-  "version-timestamp",ExpressionUUID->"3410326c-72fd-49a6-be7a-10c8cffdfe44"]
+  "version-timestamp",ExpressionUUID->"53c2e0fb-965e-4c77-854e-da9a09c4da03"]
 }, Open  ]]
 }, Open  ]],
 
@@ -15219,10 +15219,7 @@ below.
 To potentially explore in the future -- are there efficiency gains to be had \
 by pulling Activate out of Symmetrize? (For some cases -- \
 I\[CloseCurlyQuote]m unsure which ones -- it produces errors, it seems that \
-TensorTranspose gets called and then gets confused.)
-
-Also, to consider for the future: removing Normal and returning a \
-SymmetrizedArray object.\
+TensorTranspose gets called and then gets confused.)\
 \>", "Text",ExpressionUUID->"8852e714-4606-4510-9207-fee0a2c377cf"],
 
 Cell[BoxData[{
@@ -15239,67 +15236,65 @@ rank k.\>\""}], ";"}], "\[IndentingNewLine]"}], "\[IndentingNewLine]",
   RowBox[{
    RowBox[{"TensorCross", "[", 
     RowBox[{"tensor1_", ",", "tensor2_", ",", "outputRank_"}], "]"}], ":=", 
-   RowBox[{"Normal", "[", 
-    RowBox[{"Symmetrize", "[", "\[IndentingNewLine]", 
-     RowBox[{"Activate", "[", 
-      RowBox[{"TensorContract", "[", "\[IndentingNewLine]", 
+   RowBox[{"Symmetrize", "[", "\[IndentingNewLine]", 
+    RowBox[{"Activate", "[", 
+     RowBox[{"TensorContract", "[", "\[IndentingNewLine]", 
+      RowBox[{
        RowBox[{
+        RowBox[{"Inactive", "[", "TensorProduct", "]"}], "[", 
         RowBox[{
-         RowBox[{"Inactive", "[", "TensorProduct", "]"}], "[", 
-         RowBox[{
-          RowBox[{"LeviCivitaTensor", "[", "3", "]"}], ",", "tensor1", ",", 
-          "tensor2"}], "]"}], ",", "\[IndentingNewLine]", 
-        RowBox[{"Join", "[", "\[IndentingNewLine]", 
-         RowBox[{
-          RowBox[{"{", "\[IndentingNewLine]", 
-           RowBox[{"(*", "i1", "*)"}], 
-           RowBox[{
-            RowBox[{"{", 
-             RowBox[{"1", ",", 
-              RowBox[{"3", "+", "1"}]}], "}"}], ",", "\[IndentingNewLine]", 
-            RowBox[{"(*", "i2", "*)"}], 
-            RowBox[{"{", 
-             RowBox[{"2", ",", 
-              RowBox[{"3", "+", 
-               RowBox[{"ArrayDepth", "[", "tensor1", "]"}], "+", "1"}]}], 
-             "}"}]}], "\[IndentingNewLine]", "}"}], ",", 
-          "\[IndentingNewLine]", 
-          RowBox[{"Table", "[", "\[IndentingNewLine]", 
-           RowBox[{
-            RowBox[{"{", "\[IndentingNewLine]", 
-             RowBox[{
-              RowBox[{"3", "+", "1", "+", "contractionIndex"}], ",", 
-              "\[IndentingNewLine]", 
-              RowBox[{"3", "+", 
-               RowBox[{"ArrayDepth", "[", "tensor1", "]"}], "+", "1", "+", 
-               "contractionIndex"}]}], "\[IndentingNewLine]", "}"}], 
-            "\[IndentingNewLine]", ",", 
-            RowBox[{"(*", 
-             RowBox[{
-              RowBox[{"{", 
-               RowBox[{
-                SubscriptBox["j", "1"], ",", "\[Ellipsis]", ",", 
-                SubscriptBox["j", "m"]}], "}"}], ",", " ", 
-              RowBox[{"m", "=", 
-               FractionBox[
-                RowBox[{
-                 SubscriptBox["n", "1"], "+", 
-                 SubscriptBox["n", "2"], "-", 
-                 SubscriptBox["n", "3"], "-", "1"}], "2"]}]}], "*)"}], 
-            RowBox[{"{", 
-             RowBox[{"contractionIndex", ",", "1", ",", 
+         RowBox[{"LeviCivitaTensor", "[", "3", "]"}], ",", "tensor1", ",", 
+         "tensor2"}], "]"}], ",", "\[IndentingNewLine]", 
+       RowBox[{"Join", "[", "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"{", "\[IndentingNewLine]", 
+          RowBox[{"(*", "i1", "*)"}], 
+          RowBox[{
+           RowBox[{"{", 
+            RowBox[{"1", ",", 
+             RowBox[{"3", "+", "1"}]}], "}"}], ",", "\[IndentingNewLine]", 
+           RowBox[{"(*", "i2", "*)"}], 
+           RowBox[{"{", 
+            RowBox[{"2", ",", 
+             RowBox[{"3", "+", 
+              RowBox[{"ArrayDepth", "[", "tensor1", "]"}], "+", "1"}]}], 
+            "}"}]}], "\[IndentingNewLine]", "}"}], ",", "\[IndentingNewLine]", 
+         RowBox[{"Table", "[", "\[IndentingNewLine]", 
+          RowBox[{
+           RowBox[{"{", "\[IndentingNewLine]", 
+            RowBox[{
+             RowBox[{"3", "+", "1", "+", "contractionIndex"}], ",", 
+             "\[IndentingNewLine]", 
+             RowBox[{"3", "+", 
+              RowBox[{"ArrayDepth", "[", "tensor1", "]"}], "+", "1", "+", 
+              "contractionIndex"}]}], "\[IndentingNewLine]", "}"}], 
+           "\[IndentingNewLine]", ",", 
+           RowBox[{"(*", 
+            RowBox[{
+             RowBox[{"{", 
+              RowBox[{
+               SubscriptBox["j", "1"], ",", "\[Ellipsis]", ",", 
+               SubscriptBox["j", "m"]}], "}"}], ",", " ", 
+             RowBox[{"m", "=", 
               FractionBox[
                RowBox[{
-                RowBox[{"ArrayDepth", "[", "tensor1", "]"}], "+", 
-                RowBox[{"ArrayDepth", "[", "tensor2", "]"}], "-", 
-                "outputRank", "-", "1"}], "2"]}], "}"}]}], "]"}]}], 
-         "\[IndentingNewLine]", "]"}]}], "\[IndentingNewLine]", "]"}], "]"}], 
-     "\[IndentingNewLine]", "]"}], "]"}]}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+                SubscriptBox["n", "1"], "+", 
+                SubscriptBox["n", "2"], "-", 
+                SubscriptBox["n", "3"], "-", "1"}], "2"]}]}], "*)"}], 
+           RowBox[{"{", 
+            RowBox[{"contractionIndex", ",", "1", ",", 
+             FractionBox[
+              RowBox[{
+               RowBox[{"ArrayDepth", "[", "tensor1", "]"}], "+", 
+               RowBox[{"ArrayDepth", "[", "tensor2", "]"}], "-", "outputRank",
+                "-", "1"}], "2"]}], "}"}]}], "]"}]}], "\[IndentingNewLine]", 
+        "]"}]}], "\[IndentingNewLine]", "]"}], "]"}], "\[IndentingNewLine]", 
+    "]"}]}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{"End", "[", "]"}], ";"}]}], "Input",
- InitializationCell->True,
- CellLabel->"In[128]:=",ExpressionUUID->"d74086f9-fc92-4c88-af15-85aeed1633e9"]
-}, Closed]],
+ InitializationCell->
+  True,ExpressionUUID->"d74086f9-fc92-4c88-af15-85aeed1633e9"]
+}, Open  ]],
 
 Cell[CellGroupData[{
 
@@ -15568,7 +15563,8 @@ Cell[BoxData[{
   RowBox[{
    RowBox[{
     RowBox[{"ChimeraB", "::", "usage"}], 
-    "=", "\"\<ChimeraB[n,\[ScriptL]]\>\""}], ";"}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+    "=", "\"\<ChimeraB[n,\[ScriptL]]\>\""}], ";"}], "\[IndentingNewLine]"}], 
+"\[IndentingNewLine]", 
  RowBox[{
   RowBox[{
    RowBox[{
@@ -18766,6 +18762,7 @@ Cell[BoxData[
                     FractionBox["3", "10"]]}]},
                  {"0"}
                 },
+                
                 GridBoxAlignment->{
                  "Columns" -> {{Center}}, "Rows" -> {{Baseline}}},
                 GridBoxSpacings->{"Columns" -> {
@@ -23245,8 +23242,8 @@ NotebookEventActions->{{"MenuCommand", "Save"} :> (NotebookWrite[
          "\";End[];"}]], "Input", InitializationCell -> True, CellTags -> 
       "version-timestamp"], None, AutoScroll -> False]; NotebookSave[]), 
   PassEventsDown -> True},
-WindowSize->{1438.5, 926.25},
-WindowMargins->{{Automatic, 181.5}, {0, Automatic}},
+WindowSize->{1473.75, 1032},
+WindowMargins->{{46.5, Automatic}, {0, Automatic}},
 PrintingCopies->1,
 PrintingStartingPageNumber->1,
 PrintingPageRange->{Automatic, Automatic},
