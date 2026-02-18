@@ -4,11 +4,9 @@
 
 (* ::Input::Initialization:: *)
 (* Chimera: Chiral Measures Research Assistant *)
-(* \[Copyright] Emilio Pisanty, 2025 *)
+(* \[Copyright] Emilio Pisanty & Margarita Khokhlova, 2026 *)
 
-(* For more information, see https://github.com/????/???? *)
-
-(*TODO - update this*)
+(* For more information, see https://github.com/atto-king-s/Chimera *)
 
 
 (* ::Input::Initialization:: *)
@@ -50,7 +48,7 @@ End[];
 
 
 (* ::Input::Initialization:: *)
-Begin["`Private`"];$ChimeraTimestamp="Wed 18 Feb 2026 16:59:07";End[];
+Begin["`Private`"];$ChimeraTimestamp="Wed 18 Feb 2026 17:14:38";End[];
 
 
 (* ::Input::Initialization:: *)

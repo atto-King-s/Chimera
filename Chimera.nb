@@ -5,8 +5,17 @@ Cell[TextData[StyleBox["Chimera: Chiral Measures Research Assistant",
  FontSize->
   24]], "Title",ExpressionUUID->"7f209d14-bba5-4705-b124-d36a87c1beee"],
 
-Cell["\[Copyright] Emilio Pisanty 2026", \
-"Text",ExpressionUUID->"d33e8ba8-08ed-4b04-9664-dabb00321cca"],
+Cell[TextData[{
+ "\[Copyright] Emilio Pisanty & Margarita Khokhlova (2026), licensed under \
+GPL and CC BY-SA\nThis notebook generates the package file for the Chimera \
+package. For updates and additional information, go to ",
+ ButtonBox["https://github.com/a",
+  BaseStyle->"Hyperlink",
+  ButtonData->{
+    URL["https://github.com/ComplexFocus/ComplexFocus"], None},
+  ButtonNote->"https://github.com/ComplexFocus/ComplexFocus"],
+ "tto-king-s/Chimera."
+}], "Text",ExpressionUUID->"d33e8ba8-08ed-4b04-9664-dabb00321cca"],
 
 Cell[CellGroupData[{
 
@@ -20,23 +29,28 @@ Cell["Readme", \
 "Subsection",ExpressionUUID->"d2f11658-47f6-4acb-beb4-751bcdb6d763"],
 
 Cell["\<\
-The Mathematica package Chimera \[Dash] Chiral Measures Research Assistant \
-\[Dash] contains code and tools useful to quantify the chirality of a \
+Chimera (Chiral Measures Research Assistant) is a Wolfram Mathematica package \
+which contains code and tools useful to quantify the chirality of a \
 distribution, and to apply those tools to photoelectron momentum spectra, \
 such as might be obtained from strong-field ionization of chiral molecules, \
-or of achiral systems driven by chiral fields.\
+or of achiral systems driven by chiral fields.
+
+The formalism and an outline of the software tools are described in the paper
+
+       - Chiral moments make chiral measures. Emilio Pisanty, Nicola Mayer, \
+Andr\[EAcute]s Ord\[OAcute]\[NTilde]ez, Alexander L\[ODoubleDot]hr and \
+Margarita Khokhlova (author list to be confirmed). In preparation (2026).
+
+The package and its documentation are currently in the process of being \
+finalized for initial release. If you find any of these tools interesting, \
+please get in touch!\
 \>", "Text",ExpressionUUID->"39ad9fd6-028d-a244-9262-68dd80b62ab5"],
 
 Cell[CellGroupData[{
 
-Cell[TextData[{
- StyleBox["(Expand the cell below for a brief package description which will \
-be included in the package .m file)\n",
-  FontSize->14],
- StyleBox["TO DO: update this",
-  FontSize->14,
-  FontWeight->"Bold"]
-}], "Text",
+Cell[TextData[StyleBox["",
+ FontSize->14,
+ FontWeight->"Bold"]], "Text",
  CellGroupingRules->{
   GroupTogetherGrouping, 
    10000.},ExpressionUUID->"9a8d960d-6d88-4fad-945a-a1f7691d577b"],
@@ -49,8 +63,11 @@ Cell[BoxData[
    " ", "*)"}], "\[IndentingNewLine]", 
   RowBox[{"(*", " ", 
    RowBox[{
-    RowBox[{"\[Copyright]", " ", "Emilio", " ", "Pisanty"}], ",", " ", 
-    "2025"}], " ", "*)"}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"\[Copyright]", " ", "Emilio", " ", "Pisanty"}], " ", "&"}], " ",
+      "Margarita", " ", "Khokhlova"}], ",", " ", "2026"}], " ", "*)"}], 
+  "\[IndentingNewLine]", "\[IndentingNewLine]", 
   RowBox[{"(*", " ", 
    RowBox[{
     RowBox[{"For", " ", "more", " ", "information"}], ",", " ", 
@@ -58,24 +75,18 @@ Cell[BoxData[
      RowBox[{"see", " ", 
       RowBox[{"https", ":"}]}], "//", 
      RowBox[{
-      RowBox[{"github", ".", "com"}], "/", 
-      RowBox[{"??", 
-       RowBox[{"??", 
-        RowBox[{"/", 
-         RowBox[{"??", "??"}]}]}]}]}]}]}], " ", "*)"}], "\[IndentingNewLine]",
-   "\[IndentingNewLine]", 
-  RowBox[{"(*", 
-   RowBox[{"TODO", " ", "-", " ", 
-    RowBox[{"update", " ", "this"}]}], "*)"}]}]], "Input",
+      RowBox[{
+       RowBox[{"github", ".", "com"}], "/", "atto"}], "-", "king", "-", 
+      RowBox[{"s", "/", "Chimera"}]}]}]}], " ", "*)"}]}]], "Input",
  CellGroupingRules->{GroupTogetherGrouping, 10000.},
- InitializationCell->True,
- CellLabel->"In[1]:=",ExpressionUUID->"ac44aa9d-1eed-401b-86e5-fd78cdf4c3f0"]
+ InitializationCell->
+  True,ExpressionUUID->"ac44aa9d-1eed-401b-86e5-fd78cdf4c3f0"]
 }, Closed]]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
-Cell["TO DO", \
+Cell["Development roadmap notes", \
 "Subsection",ExpressionUUID->"bfd84542-7b8f-604a-9eee-157164c0d04d"],
 
 Cell[TextData[{
@@ -96,11 +107,26 @@ Normal and returning a SymmetrizedArray object."
 Cell[CellGroupData[{
 
 Cell["Licensing", \
-"Subsection",ExpressionUUID->"a68d7089-cb80-4cb6-9591-e6af9b4adf98"],
+"Subsection",ExpressionUUID->"5300bb9d-1184-4b45-9c1d-b0b2ce1ed3e9"],
 
-Cell["This package is licensed under ?????.", \
-"Text",ExpressionUUID->"e4dc8b2a-3f71-489d-9066-76331a14d173"]
-}, Closed]]
+Cell[TextData[{
+ "This code is dual-licensed under the GPL and CC-BY-SA licenses; you are \
+free to use, modify, and redistribute it, but you must abide by the terms in \
+either of those licenses.\n\nIn addition to that ",
+ StyleBox["legal",
+  FontSlant->"Italic"],
+ " obligation, if you use this code in calculations for an academic \
+publication, you have an ",
+ StyleBox["academic",
+  FontSlant->"Italic"],
+ " obligation to cite it correctly. For that purpose, please cite the paper \
+\[OpenCurlyQuote]Chiral moments make chiral measures\[CloseCurlyQuote] \
+detailed above, or use a direct citation to the code such as\n\n    Emilio \
+Pisanty and Margarita Khokhlova. Chimera: Chiral Measures Research Assistant. \
+https://github.com/atto-king-s/Chimera (2026).\n    \nIf you wish to include \
+a DOI in your citation, please use one of the numbered-version releases."
+}], "Text",ExpressionUUID->"68026bde-ebed-41de-b3c6-396b95bdf564"]
+}, Open  ]]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -363,11 +389,11 @@ Cell["Timestamp", \
 Cell[BoxData[
  RowBox[{
   RowBox[{"Begin", "[", "\"\<`Private`\>\"", "]"}], ";", 
-  RowBox[{"$ChimeraTimestamp", "=", "\"\<Wed 18 Feb 2026 16:59:07\>\""}], ";", 
+  RowBox[{"$ChimeraTimestamp", "=", "\"\<Wed 18 Feb 2026 17:14:38\>\""}], ";", 
   RowBox[{"End", "[", "]"}], ";"}]], "Input",
  InitializationCell->True,
  CellTags->
-  "version-timestamp",ExpressionUUID->"400cd75f-a647-41e4-8230-9f76431f1a8a"]
+  "version-timestamp",ExpressionUUID->"9817211c-5df6-4f0d-95b1-7a8e52b0746a"]
 }, Open  ]]
 }, Open  ]],
 
@@ -1465,8 +1491,8 @@ Cell[BoxData[
          Complex[0, -1] $CellContext`y)^2 $CellContext`z^2 + 
       Rational[1, 48] ($CellContext`x + 
         Complex[0, -1] $CellContext`y) $CellContext`z^4), 
-     120 (Rational[
-        1, 64] (-$CellContext`x + 
+     120 (
+      Rational[1, 64] (-$CellContext`x + 
          Complex[0, -1] $CellContext`y)^2 ($CellContext`x + 
          Complex[0, -1] $CellContext`y)^2 $CellContext`z + 
       Rational[1, 24] (-$CellContext`x + 
@@ -18862,6 +18888,7 @@ Cell[BoxData[
                     FractionBox["3", "10"]]}]},
                  {"0"}
                 },
+                
                 GridBoxAlignment->{
                  "Columns" -> {{Center}}, "Rows" -> {{Baseline}}},
                 GridBoxSpacings->{"Columns" -> {
@@ -20217,7 +20244,6 @@ Cell[BoxData[
                   SqrtBox[
                    FractionBox["2", "5"]]}
                 },
-                
                 GridBoxAlignment->{
                  "Columns" -> {{Center}}, "Rows" -> {{Baseline}}},
                 GridBoxSpacings->{"Columns" -> {
