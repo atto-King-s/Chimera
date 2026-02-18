@@ -19,6 +19,6 @@ This code is dual-licensed under the GPL and CC-BY-SA licenses; you are free to 
 
 In addition to that legal obligation, if you use this code in calculations for an academic publication, you have an academic obligation to cite it correctly. For that purpose, please cite the paper 'Chiral moments make chiral measures' detailed above, or use a direct citation to the code such as
 
-    Emilio Pisanty and Margarita Khokhlova. Chimera: Chiral Measures Research Assistant. https://github.com/atto-king-s/Chimera (2026).
+- Emilio Pisanty and Margarita Khokhlova. Chimera: Chiral Measures Research Assistant. https://github.com/atto-king-s/Chimera (2026).
     
 If you wish to include a DOI in your citation, please use one of the numbered-version releases.
