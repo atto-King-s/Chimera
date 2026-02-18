@@ -7,7 +7,7 @@ Chimera (Chiral Measures Research Assistant) is a Wolfram Mathematica package wh
 
 The formalism and an outline of the software tools are described in the paper
 
-       - Chiral moments make chiral measures. Emilio Pisanty, Nicola Mayer, Andrés Ordóñez, Alexander Löhr and Margarita Khokhlova (author list to be confirmed). In preparation (2026).
+ - Chiral moments make chiral measures. Emilio Pisanty, Nicola Mayer, Andrés Ordóñez, Alexander Löhr and Margarita Khokhlova (author list to be confirmed). In preparation (2026).
 
 The package and its documentation are currently in the process of being finalized for initial release. If you find any of these tools interesting, please get in touch!
 
