@@ -363,11 +363,11 @@ Cell["Timestamp", \
 Cell[BoxData[
  RowBox[{
   RowBox[{"Begin", "[", "\"\<`Private`\>\"", "]"}], ";", 
-  RowBox[{"$ChimeraTimestamp", "=", "\"\<Wed 18 Feb 2026 16:14:10\>\""}], ";", 
+  RowBox[{"$ChimeraTimestamp", "=", "\"\<Wed 18 Feb 2026 16:59:07\>\""}], ";", 
   RowBox[{"End", "[", "]"}], ";"}]], "Input",
  InitializationCell->True,
  CellTags->
-  "version-timestamp",ExpressionUUID->"53c2e0fb-965e-4c77-854e-da9a09c4da03"]
+  "version-timestamp",ExpressionUUID->"400cd75f-a647-41e4-8230-9f76431f1a8a"]
 }, Open  ]]
 }, Open  ]],
 
@@ -15228,14 +15228,64 @@ Cell[BoxData[{
    RowBox[{
     RowBox[{"TensorCross", "::", "usage"}], 
     "=", "\"\<TensorCross[A,B,k] returns the tensor cross product (A\[Times]B\
-\!\(\*SubscriptBox[\()\), \(k\)]\) of the two tensors A and B with output \
+\!\(\*SuperscriptBox[\()\), \((k)\)]\) of the two tensors A and B with output \
 rank k.\>\""}], ";"}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
  RowBox[{
-  RowBox[{"Begin", "[", "\"\<`Private`\>\"", "]"}], ";"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"TensorCross", "::", "undefinedParity"}], 
+    "=", "\"\<TensorCross was called with ranks `1` of undefined \
+parity.\>\""}], ";"}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"Begin", "[", "\"\<`Private`\>\"", "]"}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{
    RowBox[{"TensorCross", "[", 
     RowBox[{"tensor1_", ",", "tensor2_", ",", "outputRank_"}], "]"}], ":=", 
+   RowBox[{"Which", "[", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"OddQ", "[", 
+      RowBox[{
+       RowBox[{"ArrayDepth", "[", "tensor1", "]"}], "+", 
+       RowBox[{"ArrayDepth", "[", "tensor2", "]"}], "+", "outputRank"}], 
+      "]"}], ",", "\[IndentingNewLine]", "        ", 
+     RowBox[{"TensorCrossOdd", "[", 
+      RowBox[{"tensor1", ",", "tensor2", ",", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"ArrayDepth", "[", "tensor1", "]"}], ",", 
+         RowBox[{"ArrayDepth", "[", "tensor2", "]"}], ",", "outputRank"}], 
+        "}"}]}], "]"}], ",", "\[IndentingNewLine]", 
+     RowBox[{"EvenQ", "[", 
+      RowBox[{
+       RowBox[{"ArrayDepth", "[", "tensor1", "]"}], "+", 
+       RowBox[{"ArrayDepth", "[", "tensor2", "]"}], "+", "outputRank"}], 
+      "]"}], ",", "\[IndentingNewLine]", "        ", 
+     RowBox[{"TensorCrossEven", "[", 
+      RowBox[{"tensor1", ",", "tensor2", ",", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"ArrayDepth", "[", "tensor1", "]"}], ",", 
+         RowBox[{"ArrayDepth", "[", "tensor2", "]"}], ",", "outputRank"}], 
+        "}"}]}], "]"}], ",", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+     "True", ",", 
+     RowBox[{"Message", "[", 
+      RowBox[{
+       RowBox[{"TensorCross", "::", "undefinedParity"}], ",", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"ArrayDepth", "[", "tensor1", "]"}], ",", 
+         RowBox[{"ArrayDepth", "[", "tensor2", "]"}], ",", "outputRank"}], 
+        "}"}]}], "]"}]}], "\[IndentingNewLine]", "]"}]}], 
+  "\[IndentingNewLine]", "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"TensorCrossOdd", "[", 
+    RowBox[{"tensor1_", ",", "tensor2_", ",", 
+     RowBox[{"{", 
+      RowBox[{"rank1_", ",", "rank2_", ",", "outputRank_"}], "}"}]}], "]"}], ":=", 
    RowBox[{"Symmetrize", "[", "\[IndentingNewLine]", 
     RowBox[{"Activate", "[", 
      RowBox[{"TensorContract", "[", "\[IndentingNewLine]", 
@@ -15284,17 +15334,68 @@ rank k.\>\""}], ";"}], "\[IndentingNewLine]"}], "\[IndentingNewLine]",
            RowBox[{"{", 
             RowBox[{"contractionIndex", ",", "1", ",", 
              FractionBox[
+              RowBox[{"rank1", "+", "rank2", "-", "outputRank", "-", "1"}], 
+              "2"]}], 
+            RowBox[{"(*", 
+             FractionBox[
               RowBox[{
                RowBox[{"ArrayDepth", "[", "tensor1", "]"}], "+", 
                RowBox[{"ArrayDepth", "[", "tensor2", "]"}], "-", "outputRank",
-                "-", "1"}], "2"]}], "}"}]}], "]"}]}], "\[IndentingNewLine]", 
-        "]"}]}], "\[IndentingNewLine]", "]"}], "]"}], "\[IndentingNewLine]", 
-    "]"}]}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+                "-", "1"}], "2"], "*)"}], "}"}]}], "]"}]}], 
+        "\[IndentingNewLine]", "]"}]}], "\[IndentingNewLine]", "]"}], "]"}], 
+    "\[IndentingNewLine]", "]"}]}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"TensorCrossEven", "[", 
+    RowBox[{"tensor1_", ",", "tensor2_", ",", 
+     RowBox[{"{", 
+      RowBox[{"rank1_", ",", "rank2_", ",", "outputRank_"}], "}"}]}], "]"}], ":=", 
+   RowBox[{"Symmetrize", "[", "\[IndentingNewLine]", 
+    RowBox[{"Activate", "[", 
+     RowBox[{"TensorContract", "[", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Inactive", "[", "TensorProduct", "]"}], "[", 
+        RowBox[{"tensor1", ",", "tensor2"}], "]"}], ",", 
+       "\[IndentingNewLine]", 
+       RowBox[{"Join", "[", "\[IndentingNewLine]", 
+        RowBox[{"Table", "[", "\[IndentingNewLine]", 
+         RowBox[{
+          RowBox[{"{", "\[IndentingNewLine]", 
+           RowBox[{"contractionIndex", ",", "\[IndentingNewLine]", 
+            RowBox[{
+             RowBox[{"ArrayDepth", "[", "tensor1", "]"}], "+", 
+             "contractionIndex"}]}], "\[IndentingNewLine]", "}"}], 
+          "\[IndentingNewLine]", ",", 
+          RowBox[{"(*", 
+           RowBox[{
+            RowBox[{"{", 
+             RowBox[{
+              SubscriptBox["j", "1"], ",", "\[Ellipsis]", ",", 
+              SubscriptBox["j", "m"]}], "}"}], ",", " ", 
+            RowBox[{"m", "=", 
+             FractionBox[
+              RowBox[{
+               SubscriptBox["n", "1"], "+", 
+               SubscriptBox["n", "2"], "-", 
+               SubscriptBox["n", "3"]}], "2"]}]}], "*)"}], 
+          RowBox[{"{", 
+           RowBox[{"contractionIndex", ",", "1", ",", 
+            FractionBox[
+             RowBox[{"rank1", "+", "rank2", "-", "outputRank"}], "2"]}], 
+           RowBox[{"(*", 
+            FractionBox[
+             RowBox[{
+              RowBox[{"ArrayDepth", "[", "tensor1", "]"}], "+", 
+              RowBox[{"ArrayDepth", "[", "tensor2", "]"}], "-", 
+              "outputRank"}], "2"], "*)"}], "}"}]}], "]"}], 
+        "\[IndentingNewLine]", "]"}]}], "\[IndentingNewLine]", "]"}], "]"}], 
+    "\[IndentingNewLine]", "]"}]}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{"End", "[", "]"}], ";"}]}], "Input",
  InitializationCell->
   True,ExpressionUUID->"d74086f9-fc92-4c88-af15-85aeed1633e9"]
-}, Open  ]],
+}, Closed]],
 
 Cell[CellGroupData[{
 
@@ -15563,8 +15664,7 @@ Cell[BoxData[{
   RowBox[{
    RowBox[{
     RowBox[{"ChimeraB", "::", "usage"}], 
-    "=", "\"\<ChimeraB[n,\[ScriptL]]\>\""}], ";"}], "\[IndentingNewLine]"}], 
-"\[IndentingNewLine]", 
+    "=", "\"\<ChimeraB[n,\[ScriptL]]\>\""}], ";"}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{
    RowBox[{
@@ -18762,7 +18862,6 @@ Cell[BoxData[
                     FractionBox["3", "10"]]}]},
                  {"0"}
                 },
-                
                 GridBoxAlignment->{
                  "Columns" -> {{Center}}, "Rows" -> {{Baseline}}},
                 GridBoxSpacings->{"Columns" -> {

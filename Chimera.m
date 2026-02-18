@@ -50,7 +50,7 @@ End[];
 
 
 (* ::Input::Initialization:: *)
-Begin["`Private`"];$ChimeraTimestamp="Wed 18 Feb 2026 16:14:10";End[];
+Begin["`Private`"];$ChimeraTimestamp="Wed 18 Feb 2026 16:59:07";End[];
 
 
 (* ::Input::Initialization:: *)
@@ -744,10 +744,23 @@ End[];
 
 
 (* ::Input::Initialization:: *)
-TensorCross::usage="TensorCross[A,B,k] returns the tensor cross product (A\[Times]B\!\(\*SubscriptBox[\()\), \(k\)]\) of the two tensors A and B with output rank k.";
+TensorCross::usage="TensorCross[A,B,k] returns the tensor cross product (A\[Times]B\!\(\*SuperscriptBox[\()\), \((k)\)]\) of the two tensors A and B with output rank k.";
+
+TensorCross::undefinedParity="TensorCross was called with ranks `1` of undefined parity.";
 
 Begin["`Private`"];
-TensorCross[tensor1_,tensor2_,outputRank_]:=Symmetrize[
+
+TensorCross[tensor1_,tensor2_,outputRank_]:=Which[
+OddQ[ArrayDepth[tensor1]+ArrayDepth[tensor2]+outputRank],
+        TensorCrossOdd[tensor1,tensor2,{ArrayDepth[tensor1],ArrayDepth[tensor2],outputRank}],
+EvenQ[ArrayDepth[tensor1]+ArrayDepth[tensor2]+outputRank],
+        TensorCrossEven[tensor1,tensor2,{ArrayDepth[tensor1],ArrayDepth[tensor2],outputRank}],
+
+True,Message[TensorCross::undefinedParity,{ArrayDepth[tensor1],ArrayDepth[tensor2],outputRank}]
+]
+
+
+TensorCrossOdd[tensor1_,tensor2_,{rank1_,rank2_,outputRank_}]:=Symmetrize[
 Activate[TensorContract[
 Inactive[TensorProduct][LeviCivitaTensor[3],tensor1,tensor2],
 Join[
@@ -760,7 +773,21 @@ Table[
 3+1+contractionIndex,
 3+ArrayDepth[tensor1]+1+contractionIndex
 }
-,(*{Subscript[j, 1],\[Ellipsis],Subscript[j, m]}, m=(Subscript[n, 1]+Subscript[n, 2]-Subscript[n, 3]-1)/2*){contractionIndex,1,(ArrayDepth[tensor1]+ArrayDepth[tensor2]-outputRank-1)/2}]
+,(*{Subscript[j, 1],\[Ellipsis],Subscript[j, m]}, m=(Subscript[n, 1]+Subscript[n, 2]-Subscript[n, 3]-1)/2*){contractionIndex,1,(rank1+rank2-outputRank-1)/2(*(ArrayDepth[tensor1]+ArrayDepth[tensor2]-outputRank-1)/2*)}]
+]
+]]
+]
+
+TensorCrossEven[tensor1_,tensor2_,{rank1_,rank2_,outputRank_}]:=Symmetrize[
+Activate[TensorContract[
+Inactive[TensorProduct][tensor1,tensor2],
+Join[
+Table[
+{
+contractionIndex,
+ArrayDepth[tensor1]+contractionIndex
+}
+,(*{Subscript[j, 1],\[Ellipsis],Subscript[j, m]}, m=(Subscript[n, 1]+Subscript[n, 2]-Subscript[n, 3])/2*){contractionIndex,1,(rank1+rank2-outputRank)/2(*(ArrayDepth[tensor1]+ArrayDepth[tensor2]-outputRank)/2*)}]
 ]
 ]]
 ]
