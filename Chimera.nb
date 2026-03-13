@@ -48,9 +48,7 @@ please get in touch!\
 
 Cell[CellGroupData[{
 
-Cell[TextData[StyleBox["",
- FontSize->14,
- FontWeight->"Bold"]], "Text",
+Cell["", "Text",
  CellGroupingRules->{
   GroupTogetherGrouping, 
    10000.},ExpressionUUID->"9a8d960d-6d88-4fad-945a-a1f7691d577b"],
@@ -389,11 +387,11 @@ Cell["Timestamp", \
 Cell[BoxData[
  RowBox[{
   RowBox[{"Begin", "[", "\"\<`Private`\>\"", "]"}], ";", 
-  RowBox[{"$ChimeraTimestamp", "=", "\"\<Wed 18 Feb 2026 17:33:55\>\""}], ";", 
+  RowBox[{"$ChimeraTimestamp", "=", "\"\<Fri 13 Mar 2026 17:37:30\>\""}], ";", 
   RowBox[{"End", "[", "]"}], ";"}]], "Input",
  InitializationCell->True,
  CellTags->
-  "version-timestamp",ExpressionUUID->"48e6f808-66ca-485b-a5dd-5ab782b1a1bb"]
+  "version-timestamp",ExpressionUUID->"69c31775-bf58-46d4-a29c-f42588d052fb"]
 }, Open  ]]
 }, Open  ]],
 
@@ -15696,10 +15694,10 @@ Cell[BoxData[{
    RowBox[{
     RowBox[{"ChimeraB", "::", "usage"}], 
     "=", "\"\<ChimeraB[n,m] returns the coefficient \!\(\*SubscriptBox[\(b\), \
-\(n, m\)]\)=\!\(\*FractionBox[\(\(\((n + 2  m)\)!\) \((2  n - 2 + dim)\)!!\), \
-\(\*SuperscriptBox[\(2\), \(m\)] \(m!\) \(n!\) \((2  n + 2 \((m - 1)\) + dim)\
-\)!!\)]\), where d=3 by default, for which \!\(\*SubscriptBox[\(b\), \(n, \
-m\)]\)\!\(\*SuperscriptBox[\(Tr\), \(m\)]\) is an inverse to the m-fold lift \
+\(n, m\)]\)=\!\(\*FractionBox[\(\(\((n + 2  m)\)!\) \((2  n - 2 + d)\)!!\), \
+\(\*SuperscriptBox[\(2\), \(m\)] \(m!\) \(n!\) \((2  n + 2 \((m - 1)\) + \
+d)\)!!\)]\), where d=3 by default, for which \!\(\*SubscriptBox[\(b\), \(n, m\
+\)]\)\!\(\*SuperscriptBox[\(Tr\), \(m\)]\) is an inverse to the m-fold lift \
 operator \!\(\*Cell[TextData[{
 Cell[BoxData[FormBox[
 SuperscriptBox[
@@ -15748,8 +15746,8 @@ subspace of fully traceless symmetric tensors of rank n (which are thus fully \
          RowBox[{"m", "-", "1"}], ")"}]}], "+", "dim"}], ")"}], "!!"}]}]]}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{"End", "[", "]"}], ";"}]}], "Input",
- InitializationCell->True,
- CellLabel->"In[174]:=",ExpressionUUID->"e09a8f0e-40a2-4539-810b-377f79ad9f8b"]
+ InitializationCell->
+  True,ExpressionUUID->"e09a8f0e-40a2-4539-810b-377f79ad9f8b"]
 }, Closed]],
 
 Cell[CellGroupData[{
@@ -20244,6 +20242,7 @@ Cell[BoxData[
                   SqrtBox[
                    FractionBox["2", "5"]]}
                 },
+                
                 GridBoxAlignment->{
                  "Columns" -> {{Center}}, "Rows" -> {{Baseline}}},
                 GridBoxSpacings->{"Columns" -> {
@@ -21999,9 +21998,11 @@ tensor A.\nTensorLift[A,n] returns the n-fold tensor lift \!\(TraditionalForm\
   RowBox[{"TensorLift", "[", 
    RowBox[{"scalar_", ",", "n_"}], "]"}], ":=", 
   RowBox[{"scalar", " ", 
-   RowBox[{"TensorPower", "[", 
-    RowBox[{
-     RowBox[{"IdentityMatrix", "[", "3", "]"}], ",", "n"}], "]"}]}]}], "\[IndentingNewLine]", 
+   RowBox[{"Symmetrize", "[", 
+    RowBox[{"TensorPower", "[", 
+     RowBox[{
+      RowBox[{"IdentityMatrix", "[", "3", "]"}], ",", "n"}], "]"}], 
+    "]"}]}]}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{
    RowBox[{"TensorLift", "[", "A_", "]"}], ":=", 
@@ -22009,9 +22010,9 @@ tensor A.\nTensorLift[A,n] returns the n-fold tensor lift \!\(TraditionalForm\
     RowBox[{"A", ",", "1"}], "]"}]}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{"End", "[", "]"}], ";"}]}], "Input",
- InitializationCell->True,
- CellLabel->"In[159]:=",ExpressionUUID->"c311e578-a9b1-43b0-91d3-8908c8d15040"]
-}, Closed]],
+ InitializationCell->
+  True,ExpressionUUID->"c311e578-a9b1-43b0-91d3-8908c8d15040"]
+}, Open  ]],
 
 Cell[CellGroupData[{
 
@@ -23314,7 +23315,7 @@ Cell[BoxData[
   "Out[197]//MatrixForm=",ExpressionUUID->"c5e30df6-03e0-406c-bb1d-\
 f01477641bd9"]
 }, Open  ]]
-}, Closed]]
+}, Open  ]]
 }, Open  ]]
 }, Open  ]],
 
@@ -23368,8 +23369,8 @@ NotebookEventActions->{{"MenuCommand", "Save"} :> (NotebookWrite[
          "\";End[];"}]], "Input", InitializationCell -> True, CellTags -> 
       "version-timestamp"], None, AutoScroll -> False]; NotebookSave[]), 
   PassEventsDown -> True},
-WindowSize->{1473.75, 1032},
-WindowMargins->{{46.5, Automatic}, {0, Automatic}},
+WindowSize->{1229.25, 856.5},
+WindowMargins->{{-1410, Automatic}, {Automatic, 78}},
 PrintingCopies->1,
 PrintingStartingPageNumber->1,
 PrintingPageRange->{Automatic, Automatic},

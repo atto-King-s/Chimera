@@ -48,7 +48,7 @@ End[];
 
 
 (* ::Input::Initialization:: *)
-Begin["`Private`"];$ChimeraTimestamp="Wed 18 Feb 2026 17:33:55";End[];
+Begin["`Private`"];$ChimeraTimestamp="Fri 13 Mar 2026 17:37:30";End[];
 
 
 (* ::Input::Initialization:: *)
@@ -859,7 +859,7 @@ End[];
 (* ::Input::Initialization:: *)
 ChimeraB::usage="ChimeraB[n,\[ScriptL]]";
 
-ChimeraB::usage="ChimeraB[n,m] returns the coefficient \!\(\*SubscriptBox[\(b\), \(n, m\)]\)=\!\(\*FractionBox[\(\(\((n + 2  m)\)!\) \((2  n - 2 + dim)\)!!\), \(\*SuperscriptBox[\(2\), \(m\)] \(m!\) \(n!\) \((2  n + 2 \((m - 1)\) + dim)\)!!\)]\), where d=3 by default, for which \!\(\*SubscriptBox[\(b\), \(n, m\)]\)\!\(\*SuperscriptBox[\(Tr\), \(m\)]\) is an inverse to the m-fold lift operator \!\(\*OverscriptBox[\(\[ScriptCapitalL]\), \(^\)]\)^m(A)=\!\(\*OverscriptBox[\(\[ScriptCapitalS]\), \(^\)]\)(A\[CircleTimes]\!\(\*SuperscriptBox[\(\[DoubleStruckCapitalI]\), \(\[CircleTimes]m\)]\)) on the subspace of fully traceless symmetric tensors of rank n (which are thus fully (n=\[ScriptL])-polar).";
+ChimeraB::usage="ChimeraB[n,m] returns the coefficient \!\(\*SubscriptBox[\(b\), \(n, m\)]\)=\!\(\*FractionBox[\(\(\((n + 2  m)\)!\) \((2  n - 2 + d)\)!!\), \(\*SuperscriptBox[\(2\), \(m\)] \(m!\) \(n!\) \((2  n + 2 \((m - 1)\) + d)\)!!\)]\), where d=3 by default, for which \!\(\*SubscriptBox[\(b\), \(n, m\)]\)\!\(\*SuperscriptBox[\(Tr\), \(m\)]\) is an inverse to the m-fold lift operator \!\(\*OverscriptBox[\(\[ScriptCapitalL]\), \(^\)]\)^m(A)=\!\(\*OverscriptBox[\(\[ScriptCapitalS]\), \(^\)]\)(A\[CircleTimes]\!\(\*SuperscriptBox[\(\[DoubleStruckCapitalI]\), \(\[CircleTimes]m\)]\)) on the subspace of fully traceless symmetric tensors of rank n (which are thus fully (n=\[ScriptL])-polar).";
 
 Begin["`Private`"];
 ChimeraB[n_,m_,dim_:3]:=((n+2m)!(2n-2+dim)!!)/(2^m m!n!(2n+2(m-1)+dim)!!)
@@ -906,7 +906,7 @@ tensor,
 TensorPower[IdentityMatrix[3],n]
 ]
 ]
-TensorLift[scalar_,n_]:=scalar TensorPower[IdentityMatrix[3],n]
+TensorLift[scalar_,n_]:=scalar Symmetrize[TensorPower[IdentityMatrix[3],n]]
 TensorLift[A_]:=TensorLift[A,1]
 
 End[];
