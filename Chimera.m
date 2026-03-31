@@ -48,7 +48,7 @@ End[];
 
 
 (* ::Input::Initialization:: *)
-Begin["`Private`"];$ChimeraTimestamp="Fri 13 Mar 2026 17:37:30";End[];
+Begin["`Private`"];$ChimeraTimestamp="Mon 30 Mar 2026 15:02:38";End[];
 
 
 (* ::Input::Initialization:: *)
@@ -69,11 +69,19 @@ Protect[Sign];
 
 
 (* ::Input::Initialization:: *)
+MegabyteCount::usage="MegabyteCount[expression] provides the memory size of the given expression in megabytes (i.e. a Quantity-valued counterpart to ByteCount).";
+
+Begin["`Private`"];
 MegabyteCount[expr_]:=UnitConvert[Quantity[N@ByteCount[expr],"Bytes"],"Megabytes"]
+End[];
 
 
 (* ::Input::Initialization:: *)
+electronCount::usage="electronCount[data,h] provides the total count for the given data object and the chosen handedness h.";
+
+Begin["`Private`"];
 electronCount[data_,h_]:=electronCount[data,h]=Total[data[h][[All,4]]]
+End[];
 
 
 (* ::Input::Initialization:: *)
