@@ -48,7 +48,7 @@ End[];
 
 
 (* ::Input::Initialization:: *)
-Begin["`Private`"];$ChimeraTimestamp="Mon 30 Mar 2026 15:02:38";End[];
+Begin["`Private`"];$ChimeraTimestamp="Fri 31 Jul 2026 19:53:14";End[];
 
 
 (* ::Input::Initialization:: *)
@@ -810,6 +810,83 @@ TensorDot[tensor1_,tensor2_]:=Activate[TensorContract[
 Inactive[TensorProduct][tensor1,tensor2],
 Table[{index,ArrayDepth[tensor1]+index},{index,1,ArrayDepth[tensor1]}]
 ]]
+
+End[];
+
+
+(* ::Input::Initialization:: *)
+TensorTripleProduct::usage="TensorTripleProduct[A,B,C] returns the tensor triple product (A\[Times]B\!\(\*SuperscriptBox[\()\), \((k)\)]\)\[CenterDot]C of the three tensors A, B and C.";
+
+TensorTripleProduct::rankMismatch="TensorTripleProduct was called with mis-matched ranks `1`.";
+TensorTripleProduct::undefinedParity="TensorTripleProduct was called with ranks `1` of undefined parity."
+
+Begin["`Private`"];
+
+TensorTripleProduct[tensor1_,tensor2_,tensor3_]:=Which[
+OddQ[ArrayDepth[tensor1]+ArrayDepth[tensor2]+ArrayDepth[tensor3]],
+        TensorTripleProductOdd[tensor1,tensor2,tensor3,{ArrayDepth[tensor1],ArrayDepth[tensor2],ArrayDepth[tensor3]}],
+EvenQ[ArrayDepth[tensor1]+ArrayDepth[tensor2]+ArrayDepth[tensor3]],
+        TensorTripleProductEven[tensor1,tensor2,tensor3,{ArrayDepth[tensor1],ArrayDepth[tensor2],ArrayDepth[tensor3]}],
+
+True,Message[TensorTripleProduct::undefinedParity,{ArrayDepth[tensor1],ArrayDepth[tensor2],ArrayDepth[tensor3]}]
+]
+
+TensorTripleProductOdd[tensor1_,tensor2_,tensor3_,{rank1_,rank2_,rank3_}]:=Symmetrize[
+Activate[TensorContract[
+Inactive[TensorProduct][LeviCivitaTensor[3],tensor1,tensor2,tensor3],
+Join[
+{
+(*i1*){1,3+1},
+(*i2*){2,3+rank1+1},
+(*i3*){3,3+rank1+rank2+1}
+},
+Table[
+{
+3+1+contractionIndex,
+3+rank1+1+contractionIndex
+}
+,(*{Subscript[j, 1],\[Ellipsis],Subscript[j, m]}, m=(Subscript[n, 1]+Subscript[n, 2]-Subscript[n, 3]-1)/2*){contractionIndex,1,(rank1+rank2-rank3-1)/2}],
+Table[
+{
+3+1+(rank1+rank2-rank3-1)/2+contractionIndex,
+3+rank1+rank2+1+contractionIndex
+}
+,(*{Subscript[k, 1],\[Ellipsis],Subscript[k, n]}, n=(Subscript[n, 1]-Subscript[n, 2]+Subscript[n, 3]-1)/2*){contractionIndex,1,(rank1-rank2+rank3-1)/2}],
+Table[
+{
+3+rank1+1+(rank1+rank2-rank3-1)/2+contractionIndex,
+3+rank1+rank2+1+(rank1-rank2+rank3-1)/2+contractionIndex
+}
+,(*{Subscript[l, 1],\[Ellipsis],Subscript[l, p]}, p=(-Subscript[n, 1]+Subscript[n, 2]+Subscript[n, 3]-1)/2*){contractionIndex,1,(-rank1+rank2+rank3-1)/2}]
+]
+]]
+]
+
+TensorTripleProductEven[tensor1_,tensor2_,tensor3_,{rank1_,rank2_,rank3_}]:=Symmetrize[
+Activate[TensorContract[
+Inactive[TensorProduct][tensor1,tensor2,tensor3],
+Join[
+Table[
+{
+contractionIndex,
+rank1+contractionIndex
+}
+,(*{Subscript[j, 1],\[Ellipsis],Subscript[j, m]}, m=(Subscript[n, 1]+Subscript[n, 2]-Subscript[n, 3])/2*){contractionIndex,1,(rank1+rank2-rank3)/2}],
+Table[
+{
+(rank1+rank2-rank3)/2+contractionIndex,
+rank1+rank2+contractionIndex
+}
+,(*{Subscript[k, 1],\[Ellipsis],Subscript[k, n]}, n=(Subscript[n, 1]-Subscript[n, 2]+Subscript[n, 3])/2*){contractionIndex,1,(rank1-rank2+rank3)/2}],
+Table[
+{
+rank1+(rank1+rank2-rank3)/2+contractionIndex,
+rank1+rank2+(rank1-rank2+rank3)/2+contractionIndex
+}
+,(*{Subscript[l, 1],\[Ellipsis],Subscript[l, p]}, p=(-Subscript[n, 1]+Subscript[n, 2]+Subscript[n, 3]1)/2*){contractionIndex,1,(-rank1+rank2+rank3)/2}]
+]
+]]
+]
 
 End[];
 
