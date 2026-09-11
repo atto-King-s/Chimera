@@ -48,7 +48,7 @@ End[];
 
 
 (* ::Input::Initialization:: *)
-Begin["`Private`"];$ChimeraTimestamp="Fri 31 Jul 2026 19:53:14";End[];
+Begin["`Private`"];$ChimeraTimestamp="Fri 11 Sep 2026 01:24:21";End[];
 
 
 (* ::Input::Initialization:: *)
@@ -1047,6 +1047,438 @@ Nest[TensorTrace,tensor,(n-\[ScriptL])/2]
 
 (TensorMultipole[\[ScriptL]_,n_]/;And[EvenQ[n-\[ScriptL]],n>=\[ScriptL]])[tensor_]:=TensorMultipole[tensor,\[ScriptL],n]
 TensorMultipole[\[ScriptL]_][tensor_]:=TensorMultipole[tensor,\[ScriptL],\[ScriptL]]
+
+End[];
+
+
+(* ::Input::Initialization:: *)
+WignerContract::usage="WignerContract[\[Rho]1,\[Rho]2,\[Rho]3] returns TBC.";
+
+Begin["`Private`"];
+
+WignerContract[\[Rho]1_,\[Rho]2_,\[Rho]3_]:=WignerContract[{\[Rho]1,\[Rho]2,\[Rho]3},Max[Keys[#]]&/@{\[Rho]1,\[Rho]2,\[Rho]3}]
+
+WignerContract[{\[Rho]1_,\[Rho]2_,\[Rho]3_},{\[ScriptL]1_,\[ScriptL]2_,\[ScriptL]3_}]:=Block[{},
+Quiet[
+Sum[
+Times[
+ThreeJSymbol[{\[ScriptL]1,m1},{\[ScriptL]2,m2},{\[ScriptL]3,m3}],
+\[Rho]1[m1],\[Rho]2[m2],\[Rho]3[m3]
+]
+,{m1,-\[ScriptL]1,\[ScriptL]1},{m2,-\[ScriptL]2,\[ScriptL]2},{m3,-\[ScriptL]3,\[ScriptL]3}]
+,{ClebschGordan::phy}]
+]
+
+End[];
+
+
+(* ::Input::Initialization:: *)
+TensorRotate::usage="TensorRotate[tensor, n, R] rotates a fully symmetric tensor of rank by the rotation matrix R.";
+
+
+(* ::Input::Initialization:: *)
+Begin["`Private`"];
+
+
+(* ::Input::Initialization:: *)
+symmetricTensorToPolynomial::usage="symmetricTensorToPolynomial[tensor, {x,y,z}] converts a fully symmetric rank-n SymmetrizedArray (dimension 3) to its homogeneous polynomial T(v,...,v).";
+
+symmetricTensorToPolynomial[tensor_SymmetrizedArray,{x_,y_,z_}]:=Total[Map[
+Function[rule,
+With[{idx=First[rule],val=Last[rule]},
+With[{a=Count[idx,1],b=Count[idx,2],c=Count[idx,3]},
+Multinomial[a,b,c] val x^a y^b z^c
+]]],
+SymmetrizedArrayRules[tensor]
+]];
+
+
+(* ::Input::Initialization:: *)
+polynomialToSymmetricTensor::usage="polynomialToSymmetricTensor[poly, n, {x,y,z}] converts a homogeneous degree-n polynomial back to the corresponding symmetric rank-n SymmetrizedArray.";
+
+polynomialToSymmetricTensor[poly_,n_Integer,{x_,y_,z_}]:=Block[{tensorRules},
+tensorRules=Map[
+Function[constArr,With[{a=constArr[[1,1]],b=constArr[[1,2]],c=constArr[[1,3]],coeff=constArr[[2]]},
+Join[ConstantArray[1,a],ConstantArray[2,b],ConstantArray[3,c]]->coeff/Multinomial[a,b,c]
+]],
+CoefficientRules[poly,{x,y,z}]
+];
+SymmetrizedArray[
+tensorRules,
+ConstantArray[3,n],
+Symmetric[Range[n]]
+]
+];
+
+
+(* ::Input::Initialization:: *)
+TensorRotate[tensor_,n_Integer,R_?MatrixQ]:=Block[{vars={x$,y$,z$},poly},
+poly=symmetricTensorToPolynomial[Symmetrize[tensor],vars];
+polynomialToSymmetricTensor[Expand[poly/. Thread[vars->Transpose[R] . vars]],n,vars]
+];
+
+
+(* ::Input::Initialization:: *)
+End[];
+
+
+(* ::Input::Initialization:: *)
+RandomSO3Variate::usage="RandomSO3Variate[\[ScriptL]] returns an SO(3)-equivariant vector in the (real) SO(3) irrep with angular momentum number \[ScriptL], as an Association in the format \[LeftAssociation]-\[ScriptL]\[RightArrow]\!\(\*SubscriptBox[\(c\), \(-\[ScriptL]\)]\),\[Ellipsis],\[ScriptL]\[RightArrow]\!\(\*SubscriptBox[\(c\), \(\[ScriptL]\)]\)\[RightAssociation].";
+
+Begin["`Private`"];
+
+RandomSO3Variate[\[ScriptL]_]:=Block[{reals,imags},
+reals=RandomVariate[NormalDistribution[0,1/2],\[ScriptL]];
+imags=RandomVariate[NormalDistribution[0,1/2],\[ScriptL]];
+KeySort[Join[
+<|0->RandomVariate[NormalDistribution[0,1]]|>,
+Association[Thread[Range[\[ScriptL]]->reals+I imags]],
+Association[Thread[-Range[\[ScriptL]]->(-1)^Range[\[ScriptL]] (reals-I imags)]]
+]]
+]
+
+End[];
+
+
+(* ::Input::Initialization:: *)
+RandomSymmetricTracelessTensor::usage="RandomSymmetricTracelessTensor[\[ScriptL]] returns a random symmetric traceless real tensor of rank \[ScriptL], equivariantly with respect to SO(3).";
+
+Begin["`Private`"];
+
+RandomSymmetricTracelessTensor[\[ScriptL]_]:=With[{c=RandomSO3Variate[\[ScriptL]]},
+Re[#/Sqrt[TensorDot[#\[Conjugate],#]]]&[
+Sum[
+c[m]MultipolarBasisTensorT[\[ScriptL],m]
+,{m,-\[ScriptL],\[ScriptL]}]
+]
+]
+
+End[];
+
+
+(* ::Input::Initialization:: *)
+RandomSymmetricTensor::usage="RandomSymmetricTensor[n] ";
+
+Begin["`Private`"];
+
+RandomSymmetricTensor[n_]:=With[{},
+Re[#/Sqrt[TensorDot[#\[Conjugate],#]]]&[
+Sum[With[{c=RandomSO3Variate[\[ScriptL]]},
+TensorLift[
+RandomReal[{-1,1}]RandomSymmetricTracelessTensor[\[ScriptL]]
+,(n-\[ScriptL])/2]
+],{\[ScriptL],Mod[n,2],n,2}]
+]
+]
+
+End[];
+
+
+(* ::Input::Initialization:: *)
+ExtractMultipoleComponents::usage="ExtractMultipoleComponents[tensor,\[ScriptL],n] returns <|-\[ScriptL]\[Rule]T[-\[ScriptL]],...,\[ScriptL]\[Rule]T[\[ScriptL]]|>, the spherical components of the l-polar layer of a rank-n tensor.";
+
+MajoranaCoefficients::usage="MajoranaCoefficients[tensorCoefficients,\[ScriptL]] returns {\!\(\*SubscriptBox[\(a\), \(0\)]\),...,\!\(\*SubscriptBox[\(a\), \(2  \[ScriptL]\)]\)}, coefficients of the Majorana polynomial in ascending power, from the tensorCoefficients in the format <|-\[ScriptL]\[Rule]T[-\[ScriptL]],...,\[ScriptL]\[Rule]T[\[ScriptL]]|>.";
+
+CompanionPencil::usage="CompanionPencil[{\!\(\*SubscriptBox[\(a\), \(0\)]\),...,\!\(\*SubscriptBox[\(a\), \(n\)]\)}] returns {A,B} such that det(x B - A) = \!\(\*SubscriptBox[\(a\), \(n\)]\)\!\(\*SuperscriptBox[\(x\), \(n\)]\)+\[CenterEllipsis]+\!\(\*SubscriptBox[\(a\), \(0\)]\), valid even if \!\(\*SubscriptBox[\(a\), \(n\)]\)=0.";
+
+MajoranaRoots::usage="MajoranaRoots[coeffs] solves the Majorana polynomial for the given coefficients coeffs.";
+
+RootToSphere::usage="RootToSphere[\[Zeta]] maps a root \[Zeta] of the Majorana polynomial (possibly infinite) to a unit vector via stereographic projection.";
+
+
+(* ::Input::Initialization:: *)
+Begin["`Private`"];
+
+
+(* ::Input::Initialization:: *)
+ExtractMultipoleComponents[tensor_,\[ScriptL]_Integer,n_Integer]:=Association[Table[
+m->TensorDot[
+TensorMultipole[tensor,\[ScriptL],n],
+MultipolarBasisTensorT[n,\[ScriptL],m]
+]
+,{m,-\[ScriptL],\[ScriptL]}]]
+
+
+(* ::Input::Initialization:: *)
+MajoranaCoefficients[Tm_Association,\[ScriptL]_Integer]:=Table[\[Sqrt]Binomial[2 \[ScriptL],\[ScriptL]+m] Tm[m],{m,-\[ScriptL],\[ScriptL]}]
+
+
+(* ::Input::Initialization:: *)
+CompanionPencil[coeffs_List]:=Block[{n=Length[coeffs]-1,A,B},
+A=Plus[
+DiagonalMatrix[ConstantArray[1,n-1],-1],
+-Join[ConstantArray[0,n-1],{#}]&/@Most[coeffs]
+];
+B=DiagonalMatrix[Join[ConstantArray[1,n-1],{coeffs[[-1]]}]];
+{A,B}
+];
+
+
+(* ::Input::Initialization:: *)
+MajoranaRoots[coeffs_List]:=Block[{A,B},
+{A,B}=CompanionPencil[coeffs];
+(*generalized eigenvalue problem,QZ-based*)
+Eigenvalues[{N[A],N[B]}]  
+];
+
+
+(* ::Input::Initialization:: *)
+RootToSphere[\[Zeta]_]:=If[Abs[\[Zeta]]==Infinity,{0,0,1},
+{2 Re[\[Zeta]],2 Im[\[Zeta]],Abs[\[Zeta]]^2-1}/(Abs[\[Zeta]]^2+1)
+];
+
+
+(* ::Input::Initialization:: *)
+End[];
+
+
+(* ::Input::Initialization:: *)
+MajoranaStars::usage="MajoranaStars[tensor,\[ScriptL]] returns the 2\[ScriptL] Majorana stars (unit vectors on S^2) of the \[ScriptL]-polar layer of a symmetric tensor.";
+
+Begin["`Private`"];
+
+MajoranaStars[tensor_,\[ScriptL]_Integer]:=Map[
+RootToSphere,
+MajoranaRoots[
+MajoranaCoefficients[
+ExtractMultipoleComponents[tensor,\[ScriptL],ArrayDepth[tensor]]
+,\[ScriptL]]
+]
+]
+
+End[];
+
+
+(* ::Input::Initialization:: *)
+MajoranaStarPlot[tensor_,opts__:OptionsPattern[]]:=Block[{stars,n=ArrayDepth[tensor]},
+Table[
+stars=MajoranaStars[tensor,\[ScriptL]];
+Show[{
+Graphics3D[{Opacity[0.5],
+Sphere[]
+}],
+Graphics3D[{
+Opacity[0.75],
+Blue,
+Sphere[#,0.05]&/@stars
+}]
+}
+,opts
+,BoxRatios->Automatic
+,ImageSize->300
+,SphericalRegion->True
+,PlotLabel->Row[{"\[ScriptL]=",\[ScriptL] ", norm=",NumberForm[\[Sqrt]TensorDot[#,#]&@TensorMultipole[tensor,\[ScriptL],n],3]}]
+]
+,{\[ScriptL],Mod[n,2,1],n,2}]
+]
+
+
+(* ::Input::Initialization:: *)
+GroupElement::usage="GroupElement[R, perm] is a symmetry element: rotation R applied to every tensor, with perm specifying which slot's content lands where. perm may only permute slots of equal rank.";
+
+Identity3::usage="Identity3 represents the identity element as used in TensorTripleProductMaximization.";
+
+ApplyGroupElement::usage="ApplyGroupElement[g, {A,B,C}, {n1,n2,n3}] applies the group element g (in the GroupElement format) to a tensor triple.";
+
+ComposeGroupElements::usage="ComposeGroupElements[g1, g2] composes two group elements (g1 after g2).";
+
+sameElementQ::usage="sameElementQ[g1, g2] tests whether two GroupElements are numerically equal (same permutation, rotation matrices equal to within tolerance). Used internally by CloseGroup for deduplication.";
+
+CloseGroup::usage="CloseGroup[generators, {n1,n2,n3}, maxOrder] closes a generator list into the full finite group under composition.";
+CloseGroup::nonclosing="Generators did not close into a finite group of order < `1`. Check that all rotations have exact finite order.";
+
+ValidateSymmetryGroup::usage="ValidateSymmetryGroup[elements, {n1,n2,n3}, F, trials] checks numerically that each element leaves F invariant on random tensor triples.";
+ValidateSymmetryGroup::notsym="Element `1` does not leave the triple product invariant. Likely a parity mismatch: an odd permutation of equal-rank slots needs an improper rotation when \[Sum]\[ScriptL] is odd.";
+
+DiagonalRotation::usage="DiagonalRotation[R] applies rotation R to every tensor slot, with no permutation.";
+DiagonalCyclicGroup::usage="DiagonalCyclicGroup[axis, order] gives the diagonal cyclic group of rotations about the given axis, applied identically to every slot.";
+
+SwapElement::usage="SwapElement[i, j, R, {n1,n2,n3}] swaps equal-rank slots i and j while applying rotation R to every slot. R is usually improper \[LongDash] check with ValidateSymmetryGroup.";
+SwapElement::rankmismatch="Slots `1` and `2` have unequal rank and cannot be swapped.";
+
+
+(* ::Input::Initialization:: *)
+Begin["`Private`"];
+
+
+(* ::Input::Initialization:: *)
+GroupElement[R_?MatrixQ,perm_List]:=<|"Rotation"->R,"Permutation"->perm|>;
+
+Identity3=GroupElement[IdentityMatrix[3],{1,2,3}];
+
+
+(* ::Input::Initialization:: *)
+ApplyGroupElement[groupElement_Association,{A_,B_,C_},{n1_,n2_,n3_}]:=Block[{
+R=groupElement["Rotation"],perm=groupElement["Permutation"],
+tensors={A,B,C},ranks={n1,n2,n3}
+},
+MapThread[TensorRotate[tensors[[#2]],ranks[[#1]],R]&,{Range[3],perm}]
+]
+
+
+(* ::Input::Initialization:: *)
+ComposeGroupElements[g1_Association,g2_Association]:=GroupElement[g1["Rotation"] . g2["Rotation"],g2["Permutation"][[g1["Permutation"]]]]
+
+
+(* ::Input::Initialization:: *)
+sameElementQ[g1_,g2_]:=And[
+g1["Permutation"]===g2["Permutation"],
+Norm[g1["Rotation"]-g2["Rotation"],"Frobenius"]<10^-8
+]
+
+
+(* ::Input::Initialization:: *)
+CloseGroup[generators_List,{n1_,n2_,n3_},maxOrder_:48]:=Block[{elements=DeleteDuplicates[Prepend[generators,Identity3],sameElementQ],grown=True},
+While[
+grown&&Length[elements]<maxOrder,
+grown=False;
+Do[With[{new=ComposeGroupElements[g1,g2]},
+If[
+!AnyTrue[elements,sameElementQ[new,#]&],
+AppendTo[elements,new];
+grown=True
+]
+],{g1,elements},{g2,generators}]
+];
+If[
+Length[elements]>=maxOrder,
+Message[CloseGroup::nonclosing];  Return[$Failed]
+];
+
+elements
+]
+
+
+(* ::Input::Initialization:: *)
+ValidateSymmetryGroup[elements_List,{n1_,n2_,n3_},tripleProductF_,trials_:5]:=Block[{test,val0,valg,okValue=True},
+Do[
+test=RandomSymmetricTensor/@{n1,n2,n3};
+val0=tripleProductF@@test;
+Do[
+valg=tripleProductF@@ApplyGroupElement[g,test,{n1,n2,n3}];
+If[
+Abs[val0-valg]>10^-6 Abs[val0],
+Message[ValidateSymmetryGroup::notsym,g];okValue=False
+]
+,{g,elements}]
+,{trials}
+];
+okValue
+];
+
+
+(* ::Input::Initialization:: *)
+(*diagonal,no permutation:same rotation on every slot*)
+DiagonalRotation[R_]:=GroupElement[R,{1,2,3}];
+DiagonalCyclicGroup[axis_,order_]:=Table[
+DiagonalRotation[RotationMatrix[(2 \[Pi] k)/order,axis]]
+,{k,0,order-1}]
+
+(*permuting element:swap slots i,j (equal rank only),paired with R*)
+SwapElement[i_,j_,R_,{n1_,n2_,n3_}]:=Block[{ranks={n1,n2,n3},perm={1,2,3}},
+If[ranks[[i]]!=ranks[[j]],Message[SwapElement::rankmismatch,i,j];Return[$Failed]];
+perm[[{i,j}]]=perm[[{j,i}]];
+GroupElement[R,perm]
+];
+
+
+(* ::Input::Initialization:: *)
+End[];
+
+
+(* ::Input::Initialization:: *)
+TensorTripleProductMaximizationIterationStep::usage="TensorTripleProductMaximizationIterationStep[{A,B,C}, {n1,n2,n3}] performs one iteration step for Gauss-Seidel maximization of the tensor triple product of the tensors A, B, C of ranks n1, n2, n3. It accepts the options \"Method\" (\"Unabridged\" and \"Multipolar\") and \"SymmetryGroup\" (None, by default, or a closed list of symmetry group generators, in GroupElement form, to impose.";
+
+Begin["`Private`"];
+
+TensorTripleProductMaximizationIterationStep[
+{oldA_,oldB_,oldC_},{n1_,n2_,n3_},
+OptionsPattern[{"Method"->"Unabridged","SymmetryGroup"->None}]
+]:=Block[{newA,newB,newC,projector,group},
+projector=Which[
+OptionValue["Method"]=="Unabridged",Identity&,
+OptionValue["Method"]=="Multipolar"||OptionValue["Method"]=="Traceless",TensorMultipole
+];
+
+newA=projector[n1]@TensorCross[oldB,oldC,n1];
+newB=projector[n2]@TensorCross[oldC,newA,n2];
+newC=projector[n3]@TensorCross[newA,newB,n3];
+
+group=OptionValue["SymmetryGroup"];
+If[group=!=None,
+{newA,newB,newC}=1/Length[group] Total[Map[
+ApplyGroupElement[#,{newA,newB,newC},{n1,n2,n3}]&,group
+]]
+];
+
+{newA,newB,newC}=#/Sqrt[TensorDot[#,#]]&/@{newA,newB,newC}
+]
+
+End[];
+
+
+(* ::Input::Initialization:: *)
+TensorTripleProductMaximization::usage="TensorTripleProductMaximization[{n1,n2,n3},iterations] runs a maximization procedure, for the specified number of iterations, to find the maximum of the tensor triple product at the given ranks. It accepts the options \"Method\" (\"Unabridged\" and \"Multipolar\") and \"SymmetryGroup\" (None, by default, or a closed list of symmetry group generators, in GroupElement form, to impose.
+
+TensorTripleProductMaximization[{n1,n2,n3},iterations,\"SeedTensors\"\[RightArrow]{A,B,C}] uses the specified tensors as seeds for the maximization.";
+
+TensorTripleProductMaximization::badseed="SeedTensors -> `1` is not a list of three tensors.";
+
+Begin["`Private`"];
+
+TensorTripleProductMaximization[
+{n1_,n2_,n3_},iterations_,
+OptionsPattern[{"Method"->"Unabridged","SymmetryGroup"->None,"SeedTensors"->"Random"}]
+]:=Block[{\[Chi]List,tensorA,tensorB,tensorC,timing},
+
+
+Which[
+OptionValue["SeedTensors"]==="Random",
+{tensorA,tensorB,tensorC}=RandomSymmetricTensor/@{n1,n2,n3},
+MatchQ[OptionValue["SeedTensors"],{_,_,_}],
+{tensorA,tensorB,tensorC}=OptionValue["SeedTensors"],
+True,Message[TensorTripleProductMaximization::badseed,OptionValue["SeedTensors"]];Return[$Failed]
+];
+
+timing=First@AbsoluteTiming[
+\[Chi]List=Join[{TensorTripleProduct[tensorA,tensorB,tensorC]},
+Table[
+{tensorA,tensorB,tensorC}=TensorTripleProductMaximizationIterationStep[
+{tensorA,tensorB,tensorC},{n1,n2,n3},
+"Method"->OptionValue["Method"],"SymmetryGroup"->OptionValue["SymmetryGroup"]
+];
+TensorTripleProduct[tensorA,tensorB,tensorC]
+,{iterations}]
+];];
+<|
+"\[Chi]Max"->\[Chi]List[[-1]],
+"\[Chi]Delta"->\[Chi]List[[-1]]-\[Chi]List[[-2]],
+"\[Chi]List"->\[Chi]List,
+"tensors"->{tensorA,tensorB,tensorC},
+"timing"->timing
+|>
+]
+
+End[];
+
+
+(* ::Input::Initialization:: *)
+TensorTripleProductMaximum::usage="TensorTripleProductMaximum[{n1,n2,n3},method] calculates (and memoizes) the maximal value of the tensor triple product for normalized symmetric tensors of the given ranks, for either \"Unabridged\" or \"Multipolar\" (alt. \"Traceless\") tensors as the method argument.
+
+TensorTripleProductMaximum[{n1,n2,n3},method,iterations,restarts] calculates the tensor triple product maximum using the specified number of iterations (for each loop) and restarts.";
+
+Begin["`Private`"];
+
+TensorTripleProductMaximum[{n1_,n2_,n3_},method_]:=TensorTripleProductMaximum[{n1,n2,n3},method]=TensorTripleProductMaximum[{n1,n2,n3},method,100,10]
+
+TensorTripleProductMaximum[{n1_,n2_,n3_},method_,iterations_,restarts_]:=Block[{},
+MaximalBy[
+Table[
+TensorTripleProductMaximization[{n1,n2,n3},iterations,"Method"->method]
+,{restarts}],
+#["\[Chi]Max"]&
+][[1]]["\[Chi]Max"]
+]
 
 End[];
 
