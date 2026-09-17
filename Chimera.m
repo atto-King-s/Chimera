@@ -48,7 +48,7 @@ End[];
 
 
 (* ::Input::Initialization:: *)
-Begin["`Private`"];$ChimeraTimestamp="Fri 11 Sep 2026 20:58:50";End[];
+Begin["`Private`"];$ChimeraTimestamp="Thu 17 Sep 2026 17:32:09";End[];
 
 
 (* ::Input::Initialization:: *)
@@ -896,16 +896,22 @@ TensorPower::usage="TensorPower[T,n] returns the tensor power \!\(\*SuperscriptB
 
 Begin["`Private`"];
 
-TensorPower[vector_/;(ArrayDepth[vector]==1),n_]:=Block[{dim=Length[vector]},
+TensorPower[vector_/;(ArrayDepth[vector]==1),n_/;(n>1)]:=Block[{dim=Length[vector],componentValue},
 SymmetrizedArray[StructuredArray`StructuredData[
 ConstantArray[dim,n],
 {
 Table[
-component->Times@@(vector[[#1]]^#2&@@@Tally[component])
+componentValue=Times@@(vector[[#1]]^#2&@@@Tally[component]);
+If[componentValue==0,Nothing,
+component->componentValue
+]
 ,{component,SymmetrizedIndependentComponents[ConstantArray[dim,n],Symmetric[Range[n]]]}],
 Symmetric[Range[n]]}
 ]]
 ]
+
+TensorPower[tensor_,0]:=1
+TensorPower[tensor_,1]:=tensor
 
 TensorPower[tensor_,n_]:=TensorProduct@@Table[tensor,{n}]
 
