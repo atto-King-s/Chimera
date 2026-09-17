@@ -48,7 +48,7 @@ End[];
 
 
 (* ::Input::Initialization:: *)
-Begin["`Private`"];$ChimeraTimestamp="Thu 17 Sep 2026 17:32:09";End[];
+Begin["`Private`"];$ChimeraTimestamp="Thu 17 Sep 2026 17:59:45";End[];
 
 
 (* ::Input::Initialization:: *)
@@ -959,12 +959,20 @@ End[];
 
 
 (* ::Input::Initialization:: *)
-ChimeraB::usage="ChimeraB[n,\[ScriptL]]";
-
 ChimeraB::usage="ChimeraB[n,m] returns the coefficient \!\(\*SubscriptBox[\(b\), \(n, m\)]\)=\!\(\*FractionBox[\(\(\((n + 2  m)\)!\) \((2  n - 2 + d)\)!!\), \(\*SuperscriptBox[\(2\), \(m\)] \(m!\) \(n!\) \((2  n + 2 \((m - 1)\) + d)\)!!\)]\), where d=3 by default, for which \!\(\*SubscriptBox[\(b\), \(n, m\)]\)\!\(\*SuperscriptBox[\(Tr\), \(m\)]\) is an inverse to the m-fold lift operator \!\(\*OverscriptBox[\(\[ScriptCapitalL]\), \(^\)]\)^m(A)=\!\(\*OverscriptBox[\(\[ScriptCapitalS]\), \(^\)]\)(A\[CircleTimes]\!\(\*SuperscriptBox[\(\[DoubleStruckCapitalI]\), \(\[CircleTimes]m\)]\)) on the subspace of fully traceless symmetric tensors of rank n (which are thus fully (n=\[ScriptL])-polar).";
 
 Begin["`Private`"];
 ChimeraB[n_,m_,dim_:3]:=((n+2m)!(2n-2+dim)!!)/(2^m m!n!(2n+2(m-1)+dim)!!)
+End[];
+
+
+(* ::Input::Initialization:: *)
+ChimeraN::usage="ChimeraN[{\!\(\*SubscriptBox[\(\[ScriptL]\), \(1\)]\),\!\(\*SubscriptBox[\(\[ScriptL]\), \(2\)]\),\!\(\*SubscriptBox[\(\[ScriptL]\), \(3\)]\)}] returns the normalization constant \!\(\*SubscriptBox[\(N\), \(\*SubscriptBox[\(\[ScriptL]\), \(1\)] \*SubscriptBox[\(\[ScriptL]\), \(2\)] \*SubscriptBox[\(\[ScriptL]\), \(3\)]\)]\) between the triple tensor product of multipolar basis tensors and the Wigner 3j symbols.";
+
+Begin["`Private`"];
+ChimeraN[{l1_,l2_,l3_}]/;OddQ[l1+l2+l3]:=I (-1)^((l1+l2+l3-1)/2) Sqrt[(2 (-l1+l2+l3)!(l1-l2+l3)!(l1+l2-l3)!(l1+l2+l3+1)!)/((2l1)!(2l2)!(2l3)!)]
+
+ChimeraN[{l1_,l2_,l3_}]/;EvenQ[l1+l2+l3]:=(-1)^((l1+l2+l3)/2) Sqrt[((-l1+l2+l3)!(l1-l2+l3)!(l1+l2-l3)!(l1+l2+l3+1)!)/((2l1)!(2l2)!(2l3)!)]
 End[];
 
 
@@ -1288,6 +1296,45 @@ Sphere[#,0.05]&/@stars
 ]
 ,{\[ScriptL],Mod[n,2,1],n,2}]
 ]
+
+
+(* ::Input::Initialization:: *)
+RankCombinations::usage="RankCombinations[nMax,nSumMax] returns the combinations of ranks {\!\(\*SubscriptBox[\(n\), \(1\)]\),\!\(\*SubscriptBox[\(n\), \(2\)]\),\!\(\*SubscriptBox[\(n\), \(3\)]\)} which satisfy the triangle inequality, with the given maximal values of \!\(\*SubscriptBox[\(n\), \(i\)]\) and \!\(\*SubscriptBox[\(n\), \(1\)]\)+\!\(\*SubscriptBox[\(n\), \(2\)]\)+\!\(\*SubscriptBox[\(n\), \(3\)]\), de-duplicated and sorted by \!\(\*SubscriptBox[\(n\), \(1\)]\)+\!\(\*SubscriptBox[\(n\), \(2\)]\)+\!\(\*SubscriptBox[\(n\), \(3\)]\).
+RankCombinations[nMax,nSumMax,\"Odd\"] returns only combinations of ranks {\!\(\*SubscriptBox[\(n\), \(1\)]\),\!\(\*SubscriptBox[\(n\), \(2\)]\),\!\(\*SubscriptBox[\(n\), \(3\)]\)} with odd \!\(\*SubscriptBox[\(n\), \(1\)]\)+\!\(\*SubscriptBox[\(n\), \(2\)]\)+\!\(\*SubscriptBox[\(n\), \(3\)]\).
+RankCombinations[nMax,nSumMax,\"Even\"] returns only combinations of ranks {\!\(\*SubscriptBox[\(n\), \(1\)]\),\!\(\*SubscriptBox[\(n\), \(2\)]\),\!\(\*SubscriptBox[\(n\), \(3\)]\)} with even \!\(\*SubscriptBox[\(n\), \(1\)]\)+\!\(\*SubscriptBox[\(n\), \(2\)]\)+\!\(\*SubscriptBox[\(n\), \(3\)]\).";
+
+Begin["`Private`"];
+
+RankCombinations[nMax_,nSumMax_]:=RankCombinations[nMax,nSumMax]=SortBy[
+Flatten[
+Table[
+If[
+And[
+l1<=l2<=l3,
+Abs[l1-l2]<=l3,
+Abs[l2-l3]<=l1,
+Abs[l3-l1]<=l2,
+(*OddQ[l1+l2+l3],*)
+l1+l2+l3<=nSumMax
+],
+{l1,l2,l3}
+,Nothing
+]
+,{l1,0,nMax},{l2,0,nMax},{l3,0,nMax}]
+,2]
+,Total]
+
+RankCombinations[nMax_,nSumMax_,"Odd"]:=RankCombinations[nMax,nSumMax,"Odd"]=Select[
+RankCombinations[nMax,nSumMax],
+OddQ[Total[#]]&
+]
+
+RankCombinations[nMax_,nSumMax_,"Even"]:=RankCombinations[nMax,nSumMax,"Odd"]=Select[
+RankCombinations[nMax,nSumMax],
+EvenQ[Total[#]]&
+]
+
+End[];
 
 
 (* ::Input::Initialization:: *)

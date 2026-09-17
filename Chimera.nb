@@ -388,11 +388,11 @@ Cell["Timestamp", \
 Cell[BoxData[
  RowBox[{
   RowBox[{"Begin", "[", "\"\<`Private`\>\"", "]"}], ";", 
-  RowBox[{"$ChimeraTimestamp", "=", "\"\<Thu 17 Sep 2026 17:32:09\>\""}], ";", 
+  RowBox[{"$ChimeraTimestamp", "=", "\"\<Thu 17 Sep 2026 17:59:45\>\""}], ";", 
   RowBox[{"End", "[", "]"}], ";"}]], "Input",
  InitializationCell->True,
  CellTags->
-  "version-timestamp",ExpressionUUID->"1ccfe342-8ec4-4d7b-9f85-60c045e973c4"]
+  "version-timestamp",ExpressionUUID->"765697be-0ed9-482e-abc2-313938f10340"]
 }, Open  ]]
 }, Open  ]],
 
@@ -15964,10 +15964,8 @@ a vector v.\>\""}], ";"}], "\[IndentingNewLine]"}], "\[IndentingNewLine]",
 
 Cell[CellGroupData[{
 
-Cell["TensorPolynomial", "Subsubsection",
- CellChangeTimes->{{3.947570988363701*^9, 
-  3.947570991075284*^9}},ExpressionUUID->"2aeb3b65-61e3-465b-824d-\
-fc7254ad3676"],
+Cell["TensorPolynomial", \
+"Subsubsection",ExpressionUUID->"2aeb3b65-61e3-465b-824d-fc7254ad3676"],
 
 Cell[BoxData[{
  RowBox[{
@@ -16108,11 +16106,6 @@ Cell[BoxData[{
   RowBox[{
    RowBox[{
     RowBox[{"ChimeraB", "::", "usage"}], 
-    "=", "\"\<ChimeraB[n,\[ScriptL]]\>\""}], ";"}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
- RowBox[{
-  RowBox[{
-   RowBox[{
-    RowBox[{"ChimeraB", "::", "usage"}], 
     "=", "\"\<ChimeraB[n,m] returns the coefficient \!\(\*SubscriptBox[\(b\), \
 \(n, m\)]\)=\!\(\*FractionBox[\(\(\((n + 2  m)\)!\) \((2  n - 2 + d)\)!!\), \
 \(\*SuperscriptBox[\(2\), \(m\)] \(m!\) \(n!\) \((2  n + 2 \((m - 1)\) + \
@@ -16166,8 +16159,112 @@ subspace of fully traceless symmetric tensors of rank n (which are thus fully \
          RowBox[{"m", "-", "1"}], ")"}]}], "+", "dim"}], ")"}], "!!"}]}]]}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{"End", "[", "]"}], ";"}]}], "Input",
- InitializationCell->True,
- CellLabel->"In[175]:=",ExpressionUUID->"e09a8f0e-40a2-4539-810b-377f79ad9f8b"]
+ InitializationCell->
+  True,ExpressionUUID->"e09a8f0e-40a2-4539-810b-377f79ad9f8b"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["ChimeraN", \
+"Subsubsection",ExpressionUUID->"b246abe5-0546-4d17-8646-bd6eeedd8f86"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"ChimeraN", "::", "usage"}], 
+    "=", "\"\<ChimeraN[{\!\(\*SubscriptBox[\(\[ScriptL]\), \
+\(1\)]\),\!\(\*SubscriptBox[\(\[ScriptL]\), \(2\)]\),\!\(\*SubscriptBox[\(\
+\[ScriptL]\), \(3\)]\)}] returns the normalization constant \
+\!\(\*SubscriptBox[\(N\), \(\*SubscriptBox[\(\[ScriptL]\), \(1\)] \
+\*SubscriptBox[\(\[ScriptL]\), \(2\)] \*SubscriptBox[\(\[ScriptL]\), \
+\(3\)]\)]\) between the triple tensor product of multipolar basis tensors and \
+the Wigner 3j symbols.\>\""}], ";"}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Begin", "[", "\"\<`Private`\>\"", "]"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"ChimeraN", "[", 
+     RowBox[{"{", 
+      RowBox[{"l1_", ",", "l2_", ",", "l3_"}], "}"}], "]"}], "/;", 
+    RowBox[{"OddQ", "[", 
+     RowBox[{"l1", "+", "l2", "+", "l3"}], "]"}]}], ":=", 
+   RowBox[{"\[ImaginaryI]", " ", 
+    SuperscriptBox[
+     RowBox[{"(", 
+      RowBox[{"-", "1"}], ")"}], 
+     FractionBox[
+      RowBox[{"l1", "+", "l2", "+", "l3", "-", "1"}], "2"]], 
+    SqrtBox[
+     FractionBox[
+      RowBox[{"2", " ", 
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"-", "l1"}], "+", "l2", "+", "l3"}], ")"}], "!"}], 
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{"l1", "-", "l2", "+", "l3"}], ")"}], "!"}], 
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{"l1", "+", "l2", "-", "l3"}], ")"}], "!"}], 
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{"l1", "+", "l2", "+", "l3", "+", "1"}], ")"}], "!"}]}], 
+      RowBox[{
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{"2", "l1"}], ")"}], "!"}], 
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{"2", "l2"}], ")"}], "!"}], 
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{"2", "l3"}], ")"}], "!"}]}]]]}]}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"ChimeraN", "[", 
+    RowBox[{"{", 
+     RowBox[{"l1_", ",", "l2_", ",", "l3_"}], "}"}], "]"}], "/;", 
+   RowBox[{"EvenQ", "[", 
+    RowBox[{"l1", "+", "l2", "+", "l3"}], "]"}]}], ":=", 
+  RowBox[{
+   SuperscriptBox[
+    RowBox[{"(", 
+     RowBox[{"-", "1"}], ")"}], 
+    FractionBox[
+     RowBox[{"l1", "+", "l2", "+", "l3"}], "2"]], 
+   SqrtBox[
+    FractionBox[
+     RowBox[{
+      RowBox[{
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{"-", "l1"}], "+", "l2", "+", "l3"}], ")"}], "!"}], 
+      RowBox[{
+       RowBox[{"(", 
+        RowBox[{"l1", "-", "l2", "+", "l3"}], ")"}], "!"}], 
+      RowBox[{
+       RowBox[{"(", 
+        RowBox[{"l1", "+", "l2", "-", "l3"}], ")"}], "!"}], 
+      RowBox[{
+       RowBox[{"(", 
+        RowBox[{"l1", "+", "l2", "+", "l3", "+", "1"}], ")"}], "!"}]}], 
+     RowBox[{
+      RowBox[{
+       RowBox[{"(", 
+        RowBox[{"2", "l1"}], ")"}], "!"}], 
+      RowBox[{
+       RowBox[{"(", 
+        RowBox[{"2", "l2"}], ")"}], "!"}], 
+      RowBox[{
+       RowBox[{"(", 
+        RowBox[{"2", "l3"}], ")"}], "!"}]}]]]}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"End", "[", "]"}], ";"}]}], "Input",
+ InitializationCell->
+  True,ExpressionUUID->"cf9f66c0-1d70-47e1-b60c-5b7e94da47ec"]
 }, Closed]],
 
 Cell[CellGroupData[{
@@ -16841,7 +16938,6 @@ Cell[BoxData[
                  RowBox[{"2", " ", 
                   SqrtBox["3"]}]]}
               },
-              
               GridBoxAlignment->{
                "Columns" -> {{Center}}, "Rows" -> {{Baseline}}},
               GridBoxSpacings->{"Columns" -> {
@@ -21166,7 +21262,6 @@ Cell[BoxData[
                     SqrtBox["2"]}]]},
                  {"0"}
                 },
-                
                 GridBoxAlignment->{
                  "Columns" -> {{Center}}, "Rows" -> {{Baseline}}},
                 GridBoxSpacings->{"Columns" -> {
@@ -25189,6 +25284,125 @@ Cell[BoxData[
  CellLabel->
   "Out[73]=",ExpressionUUID->"120938c7-7094-4c1d-a23d-4c761f5ac1f9"]
 }, Open  ]]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["RankCombinations", \
+"Subsubsection",ExpressionUUID->"932684b5-c158-4881-a95d-a842e6ee569f"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"RankCombinations", "::", "usage"}], 
+    "=", "\"\<RankCombinations[nMax,nSumMax] returns the combinations of \
+ranks {\!\(\*SubscriptBox[\(n\), \(1\)]\),\!\(\*SubscriptBox[\(n\), \(2\)]\),\
+\!\(\*SubscriptBox[\(n\), \(3\)]\)} which satisfy the triangle inequality, \
+with the given maximal values of \!\(\*SubscriptBox[\(n\), \(i\)]\) and \
+\!\(\*SubscriptBox[\(n\), \(1\)]\)+\!\(\*SubscriptBox[\(n\), \
+\(2\)]\)+\!\(\*SubscriptBox[\(n\), \(3\)]\), de-duplicated and sorted by \!\(\
+\*SubscriptBox[\(n\), \(1\)]\)+\!\(\*SubscriptBox[\(n\), \
+\(2\)]\)+\!\(\*SubscriptBox[\(n\), \(3\)]\).\n\
+RankCombinations[nMax,nSumMax,\\\"Odd\\\"] returns only combinations of ranks \
+{\!\(\*SubscriptBox[\(n\), \(1\)]\),\!\(\*SubscriptBox[\(n\), \
+\(2\)]\),\!\(\*SubscriptBox[\(n\), \(3\)]\)} with odd \
+\!\(\*SubscriptBox[\(n\), \(1\)]\)+\!\(\*SubscriptBox[\(n\), \
+\(2\)]\)+\!\(\*SubscriptBox[\(n\), \(3\)]\).\n\
+RankCombinations[nMax,nSumMax,\\\"Even\\\"] returns only combinations of \
+ranks {\!\(\*SubscriptBox[\(n\), \(1\)]\),\!\(\*SubscriptBox[\(n\), \(2\)]\),\
+\!\(\*SubscriptBox[\(n\), \(3\)]\)} with even \!\(\*SubscriptBox[\(n\), \
+\(1\)]\)+\!\(\*SubscriptBox[\(n\), \(2\)]\)+\!\(\*SubscriptBox[\(n\), \
+\(3\)]\).\>\""}], ";"}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"Begin", "[", "\"\<`Private`\>\"", "]"}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"RankCombinations", "[", 
+    RowBox[{"nMax_", ",", "nSumMax_"}], "]"}], ":=", 
+   RowBox[{
+    RowBox[{"RankCombinations", "[", 
+     RowBox[{"nMax", ",", "nSumMax"}], "]"}], "=", 
+    RowBox[{"SortBy", "[", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"Flatten", "[", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"Table", "[", "\[IndentingNewLine]", 
+         RowBox[{
+          RowBox[{"If", "[", "\[IndentingNewLine]", 
+           RowBox[{
+            RowBox[{"And", "[", "\[IndentingNewLine]", 
+             RowBox[{
+              RowBox[{"l1", "<=", "l2", "<=", "l3"}], ",", 
+              "\[IndentingNewLine]", 
+              RowBox[{
+               RowBox[{"Abs", "[", 
+                RowBox[{"l1", "-", "l2"}], "]"}], "<=", "l3"}], ",", 
+              "\[IndentingNewLine]", 
+              RowBox[{
+               RowBox[{"Abs", "[", 
+                RowBox[{"l2", "-", "l3"}], "]"}], "<=", "l1"}], ",", 
+              "\[IndentingNewLine]", 
+              RowBox[{
+               RowBox[{"Abs", "[", 
+                RowBox[{"l3", "-", "l1"}], "]"}], "<=", "l2"}], ",", 
+              "\[IndentingNewLine]", 
+              RowBox[{"(*", 
+               RowBox[{
+                RowBox[{"OddQ", "[", 
+                 RowBox[{"l1", "+", "l2", "+", "l3"}], "]"}], ","}], "*)"}], 
+              "\[IndentingNewLine]", 
+              RowBox[{
+               RowBox[{"l1", "+", "l2", "+", "l3"}], "<=", "nSumMax"}]}], 
+             "\[IndentingNewLine]", "]"}], ",", "\[IndentingNewLine]", 
+            RowBox[{"{", 
+             RowBox[{"l1", ",", "l2", ",", "l3"}], "}"}], 
+            "\[IndentingNewLine]", ",", "Nothing"}], "\[IndentingNewLine]", 
+           "]"}], "\[IndentingNewLine]", ",", 
+          RowBox[{"{", 
+           RowBox[{"l1", ",", "0", ",", "nMax"}], "}"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"l2", ",", "0", ",", "nMax"}], "}"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"l3", ",", "0", ",", "nMax"}], "}"}]}], "]"}], 
+        "\[IndentingNewLine]", ",", "2"}], "]"}], "\[IndentingNewLine]", ",", 
+      "Total"}], "]"}]}]}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"RankCombinations", "[", 
+    RowBox[{"nMax_", ",", "nSumMax_", ",", "\"\<Odd\>\""}], "]"}], ":=", 
+   RowBox[{
+    RowBox[{"RankCombinations", "[", 
+     RowBox[{"nMax", ",", "nSumMax", ",", "\"\<Odd\>\""}], "]"}], "=", 
+    RowBox[{"Select", "[", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"RankCombinations", "[", 
+       RowBox[{"nMax", ",", "nSumMax"}], "]"}], ",", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"OddQ", "[", 
+        RowBox[{"Total", "[", "#", "]"}], "]"}], "&"}]}], 
+     "\[IndentingNewLine]", "]"}]}]}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"RankCombinations", "[", 
+    RowBox[{"nMax_", ",", "nSumMax_", ",", "\"\<Even\>\""}], "]"}], ":=", 
+   RowBox[{
+    RowBox[{"RankCombinations", "[", 
+     RowBox[{"nMax", ",", "nSumMax", ",", "\"\<Odd\>\""}], "]"}], "=", 
+    RowBox[{"Select", "[", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"RankCombinations", "[", 
+       RowBox[{"nMax", ",", "nSumMax"}], "]"}], ",", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"EvenQ", "[", 
+        RowBox[{"Total", "[", "#", "]"}], "]"}], "&"}]}], 
+     "\[IndentingNewLine]", "]"}]}]}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"End", "[", "]"}], ";"}]}], "Input",
+ InitializationCell->True,
+ CellLabel->"In[295]:=",ExpressionUUID->"d3c2c5fa-b561-4e67-8dbb-fab7be6253d7"]
 }, Closed]]
 }, Open  ]],
 
