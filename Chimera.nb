@@ -15300,18 +15300,84 @@ parity.\>\""}], ";"}], "\[IndentingNewLine]"}], "\[IndentingNewLine]",
  RowBox[{
   RowBox[{
    RowBox[{"Begin", "[", "\"\<`Private`\>\"", "]"}], ";"}], 
-  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+  "\[IndentingNewLine]", "\[IndentingNewLine]", 
+  RowBox[{"(*", 
+   RowBox[{
+    RowBox[{"TensorCross", "[", 
+     RowBox[{"tensor1_", ",", "tensor2_", ",", "outputRank_"}], "]"}], ":=", 
+    RowBox[{"Which", "[", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"OddQ", "[", 
+       RowBox[{
+        RowBox[{"ArrayDepth", "[", "tensor1", "]"}], "+", 
+        RowBox[{"ArrayDepth", "[", "tensor2", "]"}], "+", "outputRank"}], 
+       "]"}], ",", "\[IndentingNewLine]", "        ", 
+      RowBox[{"TensorCrossOdd", "[", 
+       RowBox[{"tensor1", ",", "tensor2", ",", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"ArrayDepth", "[", "tensor1", "]"}], ",", 
+          RowBox[{"ArrayDepth", "[", "tensor2", "]"}], ",", "outputRank"}], 
+         "}"}]}], "]"}], ",", "\[IndentingNewLine]", 
+      RowBox[{"EvenQ", "[", 
+       RowBox[{
+        RowBox[{"ArrayDepth", "[", "tensor1", "]"}], "+", 
+        RowBox[{"ArrayDepth", "[", "tensor2", "]"}], "+", "outputRank"}], 
+       "]"}], ",", "\[IndentingNewLine]", "        ", 
+      RowBox[{"TensorCrossEven", "[", 
+       RowBox[{"tensor1", ",", "tensor2", ",", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"ArrayDepth", "[", "tensor1", "]"}], ",", 
+          RowBox[{"ArrayDepth", "[", "tensor2", "]"}], ",", "outputRank"}], 
+         "}"}]}], "]"}], ",", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+      "True", ",", 
+      RowBox[{"Message", "[", 
+       RowBox[{
+        RowBox[{"TensorCross", "::", "undefinedParity"}], ",", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"ArrayDepth", "[", "tensor1", "]"}], ",", 
+          RowBox[{"ArrayDepth", "[", "tensor2", "]"}], ",", "outputRank"}], 
+         "}"}]}], "]"}]}], "\[IndentingNewLine]", "]"}]}], "*)"}]}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{
    RowBox[{"TensorCross", "[", 
     RowBox[{"tensor1_", ",", "tensor2_", ",", "outputRank_"}], "]"}], ":=", 
+   RowBox[{"TensorCross", "[", 
+    RowBox[{"tensor1", ",", "tensor2", ",", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"ArrayDepth", "[", "tensor1", "]"}], ",", 
+       RowBox[{"ArrayDepth", "[", "tensor2", "]"}], ",", "outputRank"}], 
+      "}"}]}], "]"}]}], "\[IndentingNewLine]", "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"TensorCross", "[", 
+    RowBox[{"tensor1_", ",", "tensor2_", ",", 
+     RowBox[{"{", 
+      RowBox[{"rank1_", ",", "rank2_", ",", "outputRank_"}], "}"}]}], "]"}], ":=", 
    RowBox[{"Which", "[", "\[IndentingNewLine]", 
     RowBox[{
-     RowBox[{"OddQ", "[", 
+     RowBox[{"Or", "[", 
       RowBox[{
-       RowBox[{"ArrayDepth", "[", "tensor1", "]"}], "+", 
-       RowBox[{"ArrayDepth", "[", "tensor2", "]"}], "+", "outputRank"}], 
-      "]"}], ",", "\[IndentingNewLine]", "        ", 
+       RowBox[{"rank1", "==", "0"}], ",", 
+       RowBox[{"rank2", "==", "0"}]}], "]"}], ",", "\[IndentingNewLine]", 
+     RowBox[{"SymmetrizedArray", "[", 
+      RowBox[{"StructuredArray`StructuredData", "[", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"ConstantArray", "[", 
+         RowBox[{"3", ",", "outputRank"}], "]"}], ",", "\[IndentingNewLine]", 
+        
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"{", "}"}], ",", 
+          RowBox[{"Symmetric", "[", 
+           RowBox[{"Range", "[", "outputRank", "]"}], "]"}]}], "}"}]}], 
+       "\[IndentingNewLine]", "]"}], "]"}], ",", "\[IndentingNewLine]", 
+     RowBox[{"OddQ", "[", 
+      RowBox[{"rank1", "+", "rank2", "+", "outputRank"}], "]"}], ",", 
+     "\[IndentingNewLine]", "        ", 
      RowBox[{"TensorCrossOdd", "[", 
       RowBox[{"tensor1", ",", "tensor2", ",", 
        RowBox[{"{", 
@@ -15320,10 +15386,8 @@ parity.\>\""}], ";"}], "\[IndentingNewLine]"}], "\[IndentingNewLine]",
          RowBox[{"ArrayDepth", "[", "tensor2", "]"}], ",", "outputRank"}], 
         "}"}]}], "]"}], ",", "\[IndentingNewLine]", 
      RowBox[{"EvenQ", "[", 
-      RowBox[{
-       RowBox[{"ArrayDepth", "[", "tensor1", "]"}], "+", 
-       RowBox[{"ArrayDepth", "[", "tensor2", "]"}], "+", "outputRank"}], 
-      "]"}], ",", "\[IndentingNewLine]", "        ", 
+      RowBox[{"rank1", "+", "rank2", "+", "outputRank"}], "]"}], ",", 
+     "\[IndentingNewLine]", "        ", 
      RowBox[{"TensorCrossEven", "[", 
       RowBox[{"tensor1", ",", "tensor2", ",", 
        RowBox[{"{", 
@@ -15336,11 +15400,9 @@ parity.\>\""}], ";"}], "\[IndentingNewLine]"}], "\[IndentingNewLine]",
       RowBox[{
        RowBox[{"TensorCross", "::", "undefinedParity"}], ",", 
        RowBox[{"{", 
-        RowBox[{
-         RowBox[{"ArrayDepth", "[", "tensor1", "]"}], ",", 
-         RowBox[{"ArrayDepth", "[", "tensor2", "]"}], ",", "outputRank"}], 
-        "}"}]}], "]"}]}], "\[IndentingNewLine]", "]"}]}], 
-  "\[IndentingNewLine]", "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+        RowBox[{"rank1", ",", "rank2", ",", "outputRank"}], "}"}]}], "]"}]}], 
+    "\[IndentingNewLine]", "]"}]}], "\[IndentingNewLine]", 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{
    RowBox[{"TensorCrossOdd", "[", 
@@ -15454,9 +15516,9 @@ parity.\>\""}], ";"}], "\[IndentingNewLine]"}], "\[IndentingNewLine]",
     "\[IndentingNewLine]", "]"}]}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{"End", "[", "]"}], ";"}]}], "Input",
- InitializationCell->True,
- CellLabel->"In[134]:=",ExpressionUUID->"d74086f9-fc92-4c88-af15-85aeed1633e9"]
-}, Closed]],
+ InitializationCell->
+  True,ExpressionUUID->"d74086f9-fc92-4c88-af15-85aeed1633e9"]
+}, Open  ]],
 
 Cell[CellGroupData[{
 
@@ -16938,6 +17000,7 @@ Cell[BoxData[
                  RowBox[{"2", " ", 
                   SqrtBox["3"]}]]}
               },
+              
               GridBoxAlignment->{
                "Columns" -> {{Center}}, "Rows" -> {{Baseline}}},
               GridBoxSpacings->{"Columns" -> {
@@ -21262,6 +21325,7 @@ Cell[BoxData[
                     SqrtBox["2"]}]]},
                  {"0"}
                 },
+                
                 GridBoxAlignment->{
                  "Columns" -> {{Center}}, "Rows" -> {{Baseline}}},
                 GridBoxSpacings->{"Columns" -> {
@@ -23944,7 +24008,7 @@ Cell[BoxData[{
     RowBox[{"symmetricTensorToPolynomial", "::", "usage"}], 
     "=", "\"\<symmetricTensorToPolynomial[tensor, {x,y,z}] converts a fully \
 symmetric rank-n SymmetrizedArray (dimension 3) to its homogeneous polynomial \
-T(v,...,v).\>\""}], ";"}], "\n"}], "\[IndentingNewLine]", 
+T(v,...,v).\>\""}], ";"}], "\[IndentingNewLine]"}], "\n", 
  RowBox[{
   RowBox[{
    RowBox[{"symmetricTensorToPolynomial", "[", 
@@ -24936,7 +25000,7 @@ Cell[BoxData[{
     RowBox[{"MajoranaStars", "::", "usage"}], 
     "=", "\"\<MajoranaStars[tensor,\[ScriptL]] returns the 2\[ScriptL] \
 Majorana stars (unit vectors on S^2) of the \[ScriptL]-polar layer of a \
-symmetric tensor.\>\""}], ";"}], "\[IndentingNewLine]"}], "\n", 
+symmetric tensor.\>\""}], ";"}], "\n"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{
    RowBox[{"Begin", "[", "\"\<`Private`\>\"", "]"}], ";"}], 
@@ -25430,14 +25494,14 @@ may only permute slots of equal rank.\>\""}], ";"}],
    RowBox[{
     RowBox[{"Identity3", "::", "usage"}], 
     "=", "\"\<Identity3 represents the identity element as used in \
-TensorTripleProductMaximization.\>\""}], ";"}], "\n"}], "\[IndentingNewLine]", 
+TensorTripleProductMaximization.\>\""}], ";"}], "\[IndentingNewLine]"}], "\n", 
  RowBox[{
   RowBox[{
    RowBox[{
     RowBox[{"ApplyGroupElement", "::", "usage"}], 
     "=", "\"\<ApplyGroupElement[g, {A,B,C}, {n1,n2,n3}] applies the group \
 element g (in the GroupElement format) to a tensor triple.\>\""}], ";"}], 
-  "\[IndentingNewLine]"}], "\n", 
+  "\n"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{
    RowBox[{
@@ -25451,7 +25515,7 @@ after g2).\>\""}], ";"}], "\[IndentingNewLine]"}], "\[IndentingNewLine]",
     "=", "\"\<sameElementQ[g1, g2] tests whether two GroupElements are \
 numerically equal (same permutation, rotation matrices equal to within \
 tolerance). Used internally by CloseGroup for deduplication.\>\""}], ";"}], 
-  "\n"}], "\[IndentingNewLine]", 
+  "\[IndentingNewLine]"}], "\n", 
  RowBox[{
   RowBox[{
    RowBox[{"CloseGroup", "::", "usage"}], 
@@ -25462,7 +25526,8 @@ list into the full finite group under composition.\>\""}], ";"}], "\[IndentingNe
    RowBox[{
     RowBox[{"CloseGroup", "::", "nonclosing"}], 
     "=", "\"\<Generators did not close into a finite group of order < `1`. \
-Check that all rotations have exact finite order.\>\""}], ";"}], "\n"}], "\[IndentingNewLine]", 
+Check that all rotations have exact finite order.\>\""}], ";"}], 
+  "\[IndentingNewLine]"}], "\n", 
  RowBox[{
   RowBox[{
    RowBox[{"ValidateSymmetryGroup", "::", "usage"}], 
@@ -25475,8 +25540,7 @@ triples.\>\""}], ";"}], "\n",
     RowBox[{"ValidateSymmetryGroup", "::", "notsym"}], 
     "=", "\"\<Element `1` does not leave the triple product invariant. Likely \
 a parity mismatch: an odd permutation of equal-rank slots needs an improper \
-rotation when \[Sum]\[ScriptL] is odd.\>\""}], ";"}], 
-  "\[IndentingNewLine]"}], "\n", 
+rotation when \[Sum]\[ScriptL] is odd.\>\""}], ";"}], "\n"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{
    RowBox[{"DiagonalRotation", "::", "usage"}], 
@@ -25488,7 +25552,7 @@ with no permutation.\>\""}], ";"}], "\[IndentingNewLine]",
     RowBox[{"DiagonalCyclicGroup", "::", "usage"}], 
     "=", "\"\<DiagonalCyclicGroup[axis, order] gives the diagonal cyclic \
 group of rotations about the given axis, applied identically to every slot.\>\
-\""}], ";"}], "\n"}], "\[IndentingNewLine]", 
+\""}], ";"}], "\[IndentingNewLine]"}], "\n", 
  RowBox[{
   RowBox[{
    RowBox[{"SwapElement", "::", "usage"}], 
@@ -25522,7 +25586,7 @@ Cell[BoxData[{
      RowBox[{
       RowBox[{"\"\<Rotation\>\"", "->", "R"}], ",", 
       RowBox[{"\"\<Permutation\>\"", "->", "perm"}]}], "|>"}]}], ";"}], 
-  "\[IndentingNewLine]"}], "\n", 
+  "\n"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{"Identity3", "=", 
    RowBox[{"GroupElement", "[", 
@@ -25782,7 +25846,7 @@ Cell[BoxData[
       RowBox[{"{", 
        RowBox[{"k", ",", "0", ",", 
         RowBox[{"order", "-", "1"}]}], "}"}]}], "]"}]}], 
-   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", "\n", 
    RowBox[{"(*", 
     RowBox[{
      RowBox[{"permuting", " ", 
@@ -25791,7 +25855,7 @@ Cell[BoxData[
      RowBox[{"j", " ", 
       RowBox[{"(", 
        RowBox[{"equal", " ", "rank", " ", "only"}], ")"}]}], ",", 
-     RowBox[{"paired", " ", "with", " ", "R"}]}], "*)"}], "\n", 
+     RowBox[{"paired", " ", "with", " ", "R"}]}], "*)"}], "\[IndentingNewLine]", 
    RowBox[{
     RowBox[{
      RowBox[{"SwapElement", "[", 

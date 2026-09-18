@@ -756,13 +756,29 @@ TensorCross::undefinedParity="TensorCross was called with ranks `1` of undefined
 
 Begin["`Private`"];
 
-TensorCross[tensor1_,tensor2_,outputRank_]:=Which[
+(*TensorCross[tensor1_,tensor2_,outputRank_]:=Which[
 OddQ[ArrayDepth[tensor1]+ArrayDepth[tensor2]+outputRank],
         TensorCrossOdd[tensor1,tensor2,{ArrayDepth[tensor1],ArrayDepth[tensor2],outputRank}],
 EvenQ[ArrayDepth[tensor1]+ArrayDepth[tensor2]+outputRank],
         TensorCrossEven[tensor1,tensor2,{ArrayDepth[tensor1],ArrayDepth[tensor2],outputRank}],
 
 True,Message[TensorCross::undefinedParity,{ArrayDepth[tensor1],ArrayDepth[tensor2],outputRank}]
+]*)
+TensorCross[tensor1_,tensor2_,outputRank_]:=TensorCross[tensor1,tensor2,{ArrayDepth[tensor1],ArrayDepth[tensor2],outputRank}]
+
+
+TensorCross[tensor1_,tensor2_,{rank1_,rank2_,outputRank_}]:=Which[
+Or[rank1==0,rank2==0],
+SymmetrizedArray[StructuredArray`StructuredData[
+ConstantArray[3,outputRank],
+{{},Symmetric[Range[outputRank]]}
+]],
+OddQ[rank1+rank2+outputRank],
+        TensorCrossOdd[tensor1,tensor2,{ArrayDepth[tensor1],ArrayDepth[tensor2],outputRank}],
+EvenQ[rank1+rank2+outputRank],
+        TensorCrossEven[tensor1,tensor2,{ArrayDepth[tensor1],ArrayDepth[tensor2],outputRank}],
+
+True,Message[TensorCross::undefinedParity,{rank1,rank2,outputRank}]
 ]
 
 
