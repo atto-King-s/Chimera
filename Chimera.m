@@ -48,7 +48,7 @@ End[];
 
 
 (* ::Input::Initialization:: *)
-Begin["`Private`"];$ChimeraTimestamp="Thu 17 Sep 2026 17:59:45";End[];
+Begin["`Private`"];$ChimeraTimestamp="Sun 20 Sep 2026 19:52:44";End[];
 
 
 (* ::Input::Initialization:: *)
@@ -918,7 +918,7 @@ ConstantArray[dim,n],
 {
 Table[
 componentValue=Times@@(vector[[#1]]^#2&@@@Tally[component]);
-If[componentValue==0,Nothing,
+If[componentValue===0,Nothing,
 component->componentValue
 ]
 ,{component,SymmetrizedIndependentComponents[ConstantArray[dim,n],Symmetric[Range[n]]]}],
