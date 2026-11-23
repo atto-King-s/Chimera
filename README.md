@@ -8,6 +8,10 @@ Chimera (Chiral Measures Research Assistant) is a Wolfram Mathematica package wh
 The formalism and an outline of the software tools are described in the paper
 
  - Chiral moments make chiral measures. Emilio Pisanty, Nicola Mayer, Andrés Ordóñez, Alexander Löhr and Margarita Khokhlova. [arXiv:2603.26793](https://arxiv.org/abs/2603.26793) (2026).
+ 
+To cite the software, we suggest the following format:
+
+ - Chimera: Chiral Measures Research Assistant. Emilio Pisanty and Margarita Khokhlova. GitHub, [github.com/atto-King-s/Chimera](https://github.com/atto-King-s/Chimera) (2026), [doi:10.5281/zenodo.18684467]( https://doi.org/10.5281/zenodo.18684467).
 
 
 Licensing
