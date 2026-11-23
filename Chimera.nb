@@ -370,7 +370,8 @@ Cell[BoxData[{
  RowBox[{
   RowBox[{"End", "[", "]"}], ";"}]}], "Input",
  InitializationCell->True,
- CellLabel->"In[14]:=",ExpressionUUID->"a8480c42-c519-423d-a120-4aa44435c59d"]
+ CellLabel->
+  "In[14]:=",ExpressionUUID->"a8480c42-c519-423d-a120-4aa44435c59d"]
 }, Closed]]
 }, Open  ]],
 
@@ -387,11 +388,11 @@ Cell["Timestamp", \
 Cell[BoxData[
  RowBox[{
   RowBox[{"Begin", "[", "\"\<`Private`\>\"", "]"}], ";", 
-  RowBox[{"$ChimeraTimestamp", "=", "\"\<Sun 20 Sep 2026 19:52:44\>\""}], ";", 
+  RowBox[{"$ChimeraTimestamp", "=", "\"\<Mon 21 Sep 2026 15:28:01\>\""}], ";", 
   RowBox[{"End", "[", "]"}], ";"}]], "Input",
  InitializationCell->True,
  CellTags->
-  "version-timestamp",ExpressionUUID->"6b9e7fe0-04f2-e849-b06e-752155155cf0"]
+  "version-timestamp",ExpressionUUID->"79d4784d-cbfa-40eb-b789-b6b5740d6550"]
 }, Open  ]]
 }, Open  ]],
 
@@ -406,7 +407,8 @@ Cell[BoxData["$ChimeraVersion"], "Input",
  CellLabel->"In[25]:=",ExpressionUUID->"527689ac-2432-47cc-8f05-db58812bafd0"],
 
 Cell[BoxData["\<\"Chimera v1.0.0, Mon 13 Feb 2023 17:44:42\"\>"], "Output",
- CellLabel->"Out[25]=",ExpressionUUID->"d31a4710-7056-406a-bb22-3703e344629e"]
+ CellLabel->
+  "Out[25]=",ExpressionUUID->"d31a4710-7056-406a-bb22-3703e344629e"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -415,7 +417,8 @@ Cell[BoxData["$ChimeraTimestamp"], "Input",
  CellLabel->"In[26]:=",ExpressionUUID->"f0576bbe-58c6-4120-bc07-10f60357dbc7"],
 
 Cell[BoxData["\<\"Mon 13 Feb 2023 17:44:42\"\>"], "Output",
- CellLabel->"Out[26]=",ExpressionUUID->"2a8f34f0-72cb-4ed9-8b2a-92899007ecc5"]
+ CellLabel->
+  "Out[26]=",ExpressionUUID->"2a8f34f0-72cb-4ed9-8b2a-92899007ecc5"]
 }, Open  ]],
 
 Cell[BoxData["$ChimeraDirectory"], "Input",
@@ -432,7 +435,8 @@ Cell[BoxData["$ChimeraCommit"], "Input",
  CellLabel->"In[28]:=",ExpressionUUID->"095a6e5e-777b-4250-a1f1-aa5fbd436ce6"],
 
 Cell[BoxData["\<\"\"\>"], "Output",
- CellLabel->"Out[28]=",ExpressionUUID->"74316309-74a1-45d1-a127-a4da943fce60"]
+ CellLabel->
+  "Out[28]=",ExpressionUUID->"74316309-74a1-45d1-a127-a4da943fce60"]
 }, Open  ]]
 }, Closed]]
 }, Open  ]],
@@ -466,7 +470,8 @@ Cell[BoxData[{
  CellChangeTimes->{{3.897108407315451*^9, 3.897108410830072*^9}, {
   3.897110930012847*^9, 3.897110937877269*^9}, {3.8999626465635157`*^9, 
   3.8999626469299097`*^9}},
- CellLabel->"In[18]:=",ExpressionUUID->"a7199599-b1ed-4c74-856e-276e7b8d89b1"]
+ CellLabel->
+  "In[18]:=",ExpressionUUID->"a7199599-b1ed-4c74-856e-276e7b8d89b1"]
 }, Closed]],
 
 Cell[CellGroupData[{
@@ -482,7 +487,8 @@ Cell[BoxData[
   ";"}]], "Input",
  InitializationCell->True,
  CellChangeTimes->{{3.899965709355588*^9, 3.899965719914709*^9}},
- CellLabel->"In[20]:=",ExpressionUUID->"1a2faff1-be08-4968-852a-31a15b74a6c4"]
+ CellLabel->
+  "In[20]:=",ExpressionUUID->"1a2faff1-be08-4968-852a-31a15b74a6c4"]
 }, Closed]],
 
 Cell[CellGroupData[{
@@ -507,7 +513,8 @@ Cell[BoxData[{
   RowBox[{"Protect", "[", "Sign", "]"}], ";"}]}], "Input",
  InitializationCell->True,
  CellChangeTimes->{{3.901709082892302*^9, 3.901709109543913*^9}},
- CellLabel->"In[21]:=",ExpressionUUID->"fd309fce-e401-4b87-8b9c-79612a158d77"]
+ CellLabel->
+  "In[21]:=",ExpressionUUID->"fd309fce-e401-4b87-8b9c-79612a158d77"]
 }, Closed]],
 
 Cell[CellGroupData[{
@@ -537,7 +544,8 @@ ByteCount).\>\""}], ";"}], "\[IndentingNewLine]"}], "\[IndentingNewLine]",
  RowBox[{
   RowBox[{"End", "[", "]"}], ";"}]}], "Input",
  InitializationCell->True,
- CellLabel->"In[26]:=",ExpressionUUID->"fbb2740f-f46c-4dc5-99fb-5eddddad3331"]
+ CellLabel->
+  "In[26]:=",ExpressionUUID->"fbb2740f-f46c-4dc5-99fb-5eddddad3331"]
 }, Closed]],
 
 Cell[CellGroupData[{
@@ -569,7 +577,8 @@ data object and the chosen handedness h.\>\""}], ";"}],
  RowBox[{
   RowBox[{"End", "[", "]"}], ";"}]}], "Input",
  InitializationCell->True,
- CellLabel->"In[30]:=",ExpressionUUID->"a3e3f7a4-033b-4e99-aee5-3b3f673818a1"]
+ CellLabel->
+  "In[30]:=",ExpressionUUID->"a3e3f7a4-033b-4e99-aee5-3b3f673818a1"]
 }, Closed]]
 }, Open  ]],
 
@@ -2459,7 +2468,8 @@ Cell[BoxData[{
  RowBox[{
   RowBox[{"End", "[", "]"}], ";"}]}], "Input",
  InitializationCell->True,
- CellLabel->"In[41]:=",ExpressionUUID->"b0830100-951f-e041-98a0-4cd75a9bd257"]
+ CellLabel->
+  "In[41]:=",ExpressionUUID->"b0830100-951f-e041-98a0-4cd75a9bd257"]
 }, Closed]]
 }, Closed]],
 
@@ -2590,7 +2600,8 @@ standard format, using bin width \[CapitalDelta]p.\>\""}], ";"}],
  RowBox[{
   RowBox[{"End", "[", "]"}], ";"}]}], "Input",
  InitializationCell->True,
- CellLabel->"In[44]:=",ExpressionUUID->"27d562e3-c452-af46-bdd6-1a0189009280"]
+ CellLabel->
+  "In[44]:=",ExpressionUUID->"27d562e3-c452-af46-bdd6-1a0189009280"]
 }, Closed]],
 
 Cell[CellGroupData[{
@@ -2624,12 +2635,14 @@ the given range, using bin width \[CapitalDelta]p.\>\""}], ";"}],
       RowBox[{"photoElectronSpectrum", "[", 
        RowBox[{
         RowBox[{"dataSet", "[", "#", "]"}], ",", "pBin", ",", "options", ",", 
+        
         RowBox[{"PlotLabel", "->", "#"}]}], "]"}], "&"}], ",", 
      "\[IndentingNewLine]", "range"}], "]"}]}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{"End", "[", "]"}], ";"}]}], "Input",
  InitializationCell->True,
- CellLabel->"In[48]:=",ExpressionUUID->"528a5102-5294-df4c-9dc9-e2b1be1eefd4"]
+ CellLabel->
+  "In[48]:=",ExpressionUUID->"528a5102-5294-df4c-9dc9-e2b1be1eefd4"]
 }, Closed]]
 }, Open  ]],
 
@@ -2723,6 +2736,7 @@ Cell[BoxData[
      RowBox[{"{", 
       RowBox[{"m", ",", 
        RowBox[{"-", "\[ScriptL]"}], ",", "\[ScriptL]"}], "}"}]}], "]"}], ",", 
+   
    RowBox[{"{", 
     RowBox[{"\[ScriptL]", ",", "0", ",", "4"}], "}"}]}], "]"}]], "Input",
  CellChangeTimes->{{3.90050074074869*^9, 3.900500763157174*^9}, {
@@ -3334,6 +3348,7 @@ symbollically calculated for the distribution \>\"", ",",
                 RowBox[{"\[ScriptL]", ",", "m", ",", 
                  RowBox[{"{", 
                   RowBox[{"px", ",", "py", ",", "pz"}], "}"}]}], "]"}], "/.", 
+               
                RowBox[{"{", 
                 RowBox[{"\[ImaginaryI]", "->", 
                  RowBox[{"-", "\[ImaginaryI]"}]}], "}"}]}], ",", 
@@ -3804,7 +3819,8 @@ Cell[BoxData[{
  RowBox[{
   RowBox[{"End", "[", "]"}], ";"}], "\[IndentingNewLine]"}], "Input",
  InitializationCell->True,
- CellLabel->"In[66]:=",ExpressionUUID->"380663b1-5377-1a43-88c4-066723103036"]
+ CellLabel->
+  "In[66]:=",ExpressionUUID->"380663b1-5377-1a43-88c4-066723103036"]
 }, Closed]],
 
 Cell[CellGroupData[{
@@ -4565,7 +4581,8 @@ integrated between momenta p1, p2, p3 and p1+\[CapitalDelta]p, p2+\
  RowBox[{
   RowBox[{"End", "[", "]"}], ";"}]}], "Input",
  InitializationCell->True,
- CellLabel->"In[91]:=",ExpressionUUID->"0c0495dd-cfd6-b448-a5dc-15829137bf9b"]
+ CellLabel->
+  "In[91]:=",ExpressionUUID->"0c0495dd-cfd6-b448-a5dc-15829137bf9b"]
 }, Closed]],
 
 Cell[CellGroupData[{
@@ -4688,7 +4705,8 @@ spherical decomposition \>\"", ",", "\[IndentingNewLine]",
  RowBox[{
   RowBox[{"End", "[", "]"}], ";"}]}], "Input",
  InitializationCell->True,
- CellLabel->"In[95]:=",ExpressionUUID->"593b4912-8d91-df48-933f-4fae62929f8e"]
+ CellLabel->
+  "In[95]:=",ExpressionUUID->"593b4912-8d91-df48-933f-4fae62929f8e"]
 }, Closed]]
 }, Open  ]],
 
@@ -4774,7 +4792,8 @@ Cell[BoxData[{
  RowBox[{
   RowBox[{"End", "[", "]"}], ";"}]}], "Input",
  InitializationCell->True,
- CellLabel->"In[99]:=",ExpressionUUID->"b88381d6-44f1-da47-bddb-d8026398d64b"]
+ CellLabel->
+  "In[99]:=",ExpressionUUID->"b88381d6-44f1-da47-bddb-d8026398d64b"]
 }, Closed]],
 
 Cell[CellGroupData[{
@@ -14536,7 +14555,8 @@ NxLC86Tvy33CawETw//L8Di7RNH/4j8f3A==
   3.900695330820404*^9, {3.900695392252988*^9, 3.9006954105945983`*^9}, 
    3.9006954421215*^9, {3.9006959127761874`*^9, 3.900695937330127*^9}, {
    3.9016996709756107`*^9, 3.90169968605711*^9}},
- CellLabel->"Out[92]=",ExpressionUUID->"560c18ce-c019-2547-8113-754d6000c01a"]
+ CellLabel->
+  "Out[92]=",ExpressionUUID->"560c18ce-c019-2547-8113-754d6000c01a"]
 }, Open  ]]
 }, Closed]],
 
@@ -14605,6 +14625,7 @@ Cell[BoxData[{
                     RowBox[{"0", ",", "0", ",", "0"}], "}"}], ",", 
                     RowBox[{"0.9", "COM"}]}], "}"}], ",", 
                   RowBox[{"0.02", "s"}]}], "]"}], ",", "\[IndentingNewLine]", 
+                
                 RowBox[{"Cone", "[", 
                  RowBox[{
                   RowBox[{"{", 
@@ -14620,6 +14641,7 @@ Cell[BoxData[{
                RowBox[{"COM", ",", "COMs"}], "}"}]}], "]"}], ",", 
             "\[IndentingNewLine]", 
             RowBox[{"Opacity", "[", "0.1", "]"}], ",", "\[IndentingNewLine]", 
+            
             RowBox[{"Parallelepiped", "[", 
              RowBox[{
               RowBox[{"{", 
@@ -14728,7 +14750,8 @@ specify which ",
  Cell[BoxData[
   FormBox["m", TraditionalForm]],ExpressionUUID->
   "12ce0b23-96a3-441e-b30a-e1fc46f37648"],
- " triplets to keep in the plot. The intended purpose is syntax of the form ",
+ " triplets to keep in the plot. The intended purpose is syntax of the form \
+",
  Cell[BoxData[
   RowBox[{"\<\"mFilter\"\>", "->", 
    RowBox[{"Function", "[", 
@@ -14834,6 +14857,7 @@ Cell[BoxData[{
                    
                    RowBox[{"\"\<\[ScriptL]=\>\"", ",", "\[ScriptL]", 
                     ",", "\"\<, m=\>\"", ",", "m", 
+                    
                     ",", "\"\<, |\!\(\*SubscriptBox[OverscriptBox[\(\[Rho]\), \
 \(~\)], \(\[ScriptL], m\)]\)\!\(\*SuperscriptBox[\(|\), \
 \(1/\[ScriptL]\)]\)=\>\"", ",", 
@@ -15227,6 +15251,7 @@ Cell[BoxData[{
        "\[IndentingNewLine]", ",", 
        RowBox[{"BoxRatios", "->", "Automatic"}], "\[IndentingNewLine]", ",", 
        RowBox[{"SphericalRegion", "->", "True"}], "\[IndentingNewLine]", ",", 
+       
        RowBox[{"ImageSize", "->", "700"}]}], "\[IndentingNewLine]", "]"}]}], 
     "\[IndentingNewLine]", "]"}]}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
  RowBox[{
@@ -15343,6 +15368,7 @@ parity.\>\""}], ";"}], "\[IndentingNewLine]"}], "\[IndentingNewLine]",
        RowBox[{
         RowBox[{"ConstantArray", "[", 
          RowBox[{"3", ",", "outputRank"}], "]"}], ",", "\[IndentingNewLine]", 
+        
         RowBox[{"{", 
          RowBox[{
           RowBox[{"{", "}"}], ",", 
@@ -15492,7 +15518,7 @@ parity.\>\""}], ";"}], "\[IndentingNewLine]"}], "\[IndentingNewLine]",
   RowBox[{"End", "[", "]"}], ";"}]}], "Input",
  InitializationCell->
   True,ExpressionUUID->"d74086f9-fc92-4c88-af15-85aeed1633e9"]
-}, Open  ]],
+}, Closed]],
 
 Cell[CellGroupData[{
 
@@ -15637,6 +15663,7 @@ parity.\>\""}], "\[IndentingNewLine]"}], "\[IndentingNewLine]",
     RowBox[{"tensor1_", ",", "tensor2_", ",", "tensor3_", ",", 
      RowBox[{"{", 
       RowBox[{"rank1_", ",", "rank2_", ",", "rank3_"}], "}"}]}], "]"}], ":=", 
+   
    RowBox[{"Symmetrize", "[", "\[IndentingNewLine]", 
     RowBox[{"Activate", "[", 
      RowBox[{"TensorContract", "[", "\[IndentingNewLine]", 
@@ -15758,6 +15785,7 @@ parity.\>\""}], "\[IndentingNewLine]"}], "\[IndentingNewLine]",
     RowBox[{"tensor1_", ",", "tensor2_", ",", "tensor3_", ",", 
      RowBox[{"{", 
       RowBox[{"rank1_", ",", "rank2_", ",", "rank3_"}], "}"}]}], "]"}], ":=", 
+   
    RowBox[{"Symmetrize", "[", "\[IndentingNewLine]", 
     RowBox[{"Activate", "[", 
      RowBox[{"TensorContract", "[", "\[IndentingNewLine]", 
@@ -15960,7 +15988,7 @@ Cell[BoxData[{
   RowBox[{"End", "[", "]"}], ";"}]}], "Input",
  InitializationCell->
   True,ExpressionUUID->"663ede5f-0702-47f4-a8d6-2b99a6c018ac"]
-}, Open  ]],
+}, Closed]],
 
 Cell[CellGroupData[{
 
@@ -16213,7 +16241,13 @@ Cell[BoxData[{
 \!\(\*SubscriptBox[\(N\), \(\*SubscriptBox[\(\[ScriptL]\), \(1\)] \
 \*SubscriptBox[\(\[ScriptL]\), \(2\)] \*SubscriptBox[\(\[ScriptL]\), \
 \(3\)]\)]\) between the triple tensor product of multipolar basis tensors and \
-the Wigner 3j symbols.\>\""}], ";"}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+the Wigner 3j symbols.\nChimeraN[{\!\(\*SubscriptBox[\(\[ScriptL]\), \
+\(1\)]\),\!\(\*SubscriptBox[\(\[ScriptL]\), \(2\)]\),\!\(\*SubscriptBox[\(\
+\[ScriptL]\), \(3\)]\)},parity] specifies the given parity for \
+\!\(\*SubscriptBox[\(\[ScriptL]\), \
+\(1\)]\)+\!\(\*SubscriptBox[\(\[ScriptL]\), \(2\)]\)+\!\(\*SubscriptBox[\(\
+\[ScriptL]\), \(3\)]\), either \\\"Even\\\" or \\\"Odd\\\".\>\""}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{"Begin", "[", "\"\<`Private`\>\"", "]"}], ";"}], "\[IndentingNewLine]", 
  RowBox[{
@@ -16224,6 +16258,18 @@ the Wigner 3j symbols.\>\""}], ";"}], "\[IndentingNewLine]"}], "\[IndentingNewLi
       RowBox[{"l1_", ",", "l2_", ",", "l3_"}], "}"}], "]"}], "/;", 
     RowBox[{"OddQ", "[", 
      RowBox[{"l1", "+", "l2", "+", "l3"}], "]"}]}], ":=", 
+   RowBox[{"ChimeraN", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"l1", ",", "l2", ",", "l3"}], "}"}], ",", "\"\<Odd\>\""}], 
+    "]"}]}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"ChimeraN", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"l1_", ",", "l2_", ",", "l3_"}], "}"}], ",", "\"\<Odd\>\""}], 
+    "]"}], ":=", 
    RowBox[{"\[ImaginaryI]", " ", 
     SuperscriptBox[
      RowBox[{"(", 
@@ -16263,6 +16309,17 @@ the Wigner 3j symbols.\>\""}], ";"}], "\[IndentingNewLine]"}], "\[IndentingNewLi
      RowBox[{"l1_", ",", "l2_", ",", "l3_"}], "}"}], "]"}], "/;", 
    RowBox[{"EvenQ", "[", 
     RowBox[{"l1", "+", "l2", "+", "l3"}], "]"}]}], ":=", 
+  RowBox[{"ChimeraN", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"l1", ",", "l2", ",", "l3"}], "}"}], ",", "\"\<Even\>\""}], 
+   "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"ChimeraN", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"l1_", ",", "l2_", ",", "l3_"}], "}"}], ",", "\"\<Even\>\""}], 
+   "]"}], ":=", 
   RowBox[{
    SuperscriptBox[
     RowBox[{"(", 
@@ -16316,6 +16373,7 @@ basis tensor \!\(\*SubscriptBox[OverscriptBox[\(t\), \(^\)], \(l, m\)]\).\n\
 MultipolarBasisTensorT[n,\[ScriptL],m] returns the multipolar basis tensor \!\
 \(\*SubsuperscriptBox[OverscriptBox[\(t\), \(^\)], \(l, m\), \((n)\)]\) with \
 tensor rank n.\>\""}], ";"}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+
  RowBox[{
   RowBox[{
    RowBox[{"Begin", "[", "\"\<`Private`\>\"", "]"}], ";"}], 
@@ -16492,6 +16550,7 @@ Cell[BoxData[
            {"0"}
           },
           GridBoxAlignment->{"Columns" -> {{Center}}, "Rows" -> {{Baseline}}},
+          
           GridBoxSpacings->{"Columns" -> {
               Offset[0.27999999999999997`], {
                Offset[0.5599999999999999]}, 
@@ -16518,6 +16577,7 @@ Cell[BoxData[
            {"1"}
           },
           GridBoxAlignment->{"Columns" -> {{Center}}, "Rows" -> {{Baseline}}},
+          
           GridBoxSpacings->{"Columns" -> {
               Offset[0.27999999999999997`], {
                Offset[0.5599999999999999]}, 
@@ -16546,6 +16606,7 @@ Cell[BoxData[
            {"0"}
           },
           GridBoxAlignment->{"Columns" -> {{Center}}, "Rows" -> {{Baseline}}},
+          
           GridBoxSpacings->{"Columns" -> {
               Offset[0.27999999999999997`], {
                Offset[0.5599999999999999]}, 
@@ -16867,7 +16928,6 @@ Cell[BoxData[
                {"0"},
                {"0"}
               },
-              
               GridBoxAlignment->{
                "Columns" -> {{Center}}, "Rows" -> {{Baseline}}},
               GridBoxSpacings->{"Columns" -> {
@@ -19152,6 +19212,7 @@ Cell[BoxData[
              SqrtBox["3"]]}
           },
           GridBoxAlignment->{"Columns" -> {{Center}}, "Rows" -> {{Baseline}}},
+          
           GridBoxSpacings->{"Columns" -> {
               Offset[0.27999999999999997`], {
                Offset[0.7]}, 
@@ -19490,7 +19551,6 @@ Cell[BoxData[
                   FractionBox["\[ImaginaryI]", 
                    SqrtBox["30"]]}
                 },
-                
                 GridBoxAlignment->{
                  "Columns" -> {{Center}}, "Rows" -> {{Baseline}}},
                 GridBoxSpacings->{"Columns" -> {
@@ -21502,6 +21562,7 @@ Cell[BoxData[
            RowBox[{
             RowBox[{"MultipolarBasisTensorT", "[", 
              RowBox[{"n", ",", "l", ",", "m"}], "]"}], "\[Conjugate]"}], ",", 
+           
            RowBox[{"TensorPower", "[", 
             RowBox[{
              RowBox[{"{", 
@@ -21779,6 +21840,7 @@ Cell[BoxData[
            RowBox[{
             RowBox[{"MultipolarBasisTensorT", "[", 
              RowBox[{"n", ",", "l", ",", "m"}], "]"}], "\[Conjugate]"}], ",", 
+           
            RowBox[{"TensorPower", "[", 
             RowBox[{
              RowBox[{"{", 
@@ -23240,6 +23302,7 @@ Cell[BoxData[
                    "}"}], ",", 
                 RowBox[{"{", 
                   TemplateBox[{"1"}, "OutputSizeLimit`Skeleton"], "}"}], ",", 
+                
                 RowBox[{"{", 
                   TemplateBox[{"1"}, "OutputSizeLimit`Skeleton"], "}"}]}], 
               "}"}]}]}, {
@@ -23972,7 +24035,7 @@ Cell[BoxData[{
     RowBox[{"symmetricTensorToPolynomial", "::", "usage"}], 
     "=", "\"\<symmetricTensorToPolynomial[tensor, {x,y,z}] converts a fully \
 symmetric rank-n SymmetrizedArray (dimension 3) to its homogeneous polynomial \
-T(v,...,v).\>\""}], ";"}], "\n"}], "\[IndentingNewLine]", 
+T(v,...,v).\>\""}], ";"}], "\[IndentingNewLine]"}], "\n", 
  RowBox[{
   RowBox[{
    RowBox[{"symmetricTensorToPolynomial", "[", 
@@ -24251,7 +24314,8 @@ Cell[BoxData[
      RowBox[{"-", "0.3313563864045442`"}], "-", 
      RowBox[{"0.3115931632210607`", " ", "\[ImaginaryI]"}]}]}]}], 
   "\[RightAssociation]"}]], "Output",
- CellLabel->"Out[11]=",ExpressionUUID->"7a1a7d4c-52ef-4793-b721-de7e1621848d"]
+ CellLabel->
+  "Out[11]=",ExpressionUUID->"7a1a7d4c-52ef-4793-b721-de7e1621848d"]
 }, Open  ]]
 }, Closed]],
 
@@ -24275,6 +24339,7 @@ respect to SO(3).\>\""}], ";"}], "\[IndentingNewLine]"}], "\[IndentingNewLine]",
  RowBox[{
   RowBox[{
    RowBox[{"RandomSymmetricTracelessTensor", "[", "\[ScriptL]_", "]"}], ":=", 
+   
    RowBox[{"With", "[", 
     RowBox[{
      RowBox[{"{", 
@@ -24962,7 +25027,7 @@ Cell[BoxData[{
     RowBox[{"MajoranaStars", "::", "usage"}], 
     "=", "\"\<MajoranaStars[tensor,\[ScriptL]] returns the 2\[ScriptL] \
 Majorana stars (unit vectors on S^2) of the \[ScriptL]-polar layer of a \
-symmetric tensor.\>\""}], ";"}], "\[IndentingNewLine]"}], "\n", 
+symmetric tensor.\>\""}], ";"}], "\n"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{
    RowBox[{"Begin", "[", "\"\<`Private`\>\"", "]"}], ";"}], 
@@ -25025,7 +25090,8 @@ Cell[BoxData[
      RowBox[{"-", "1.`"}]}], "}"}]}], "}"}]], "Output",
  CellChangeTimes->{3.996640799643715*^9, 3.996664893885047*^9, 
   3.9966650342396317`*^9, 3.9966651218968973`*^9, 3.996666014551059*^9},
- CellLabel->"Out[36]=",ExpressionUUID->"63a89a2f-c907-4499-8b85-07203996ece3"]
+ CellLabel->
+  "Out[36]=",ExpressionUUID->"63a89a2f-c907-4499-8b85-07203996ece3"]
 }, Open  ]]
 }, Closed]],
 
@@ -25306,7 +25372,8 @@ Cell[BoxData[
    3.996669943940277*^9, 3.9966699531439323`*^9}, 3.9966699957168827`*^9, 
    3.996670075285943*^9, {3.996670222853732*^9, 3.9966702315098333`*^9}, {
    3.9966702625507812`*^9, 3.996670291054235*^9}},
- CellLabel->"Out[73]=",ExpressionUUID->"120938c7-7094-4c1d-a23d-4c761f5ac1f9"]
+ CellLabel->
+  "Out[73]=",ExpressionUUID->"120938c7-7094-4c1d-a23d-4c761f5ac1f9"]
 }, Open  ]]
 }, Closed]],
 
@@ -25454,14 +25521,14 @@ may only permute slots of equal rank.\>\""}], ";"}],
    RowBox[{
     RowBox[{"Identity3", "::", "usage"}], 
     "=", "\"\<Identity3 represents the identity element as used in \
-TensorTripleProductMaximization.\>\""}], ";"}], "\n"}], "\[IndentingNewLine]", 
+TensorTripleProductMaximization.\>\""}], ";"}], "\[IndentingNewLine]"}], "\n", 
  RowBox[{
   RowBox[{
    RowBox[{
     RowBox[{"ApplyGroupElement", "::", "usage"}], 
     "=", "\"\<ApplyGroupElement[g, {A,B,C}, {n1,n2,n3}] applies the group \
 element g (in the GroupElement format) to a tensor triple.\>\""}], ";"}], 
-  "\[IndentingNewLine]"}], "\n", 
+  "\n"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{
    RowBox[{
@@ -25475,7 +25542,7 @@ after g2).\>\""}], ";"}], "\[IndentingNewLine]"}], "\[IndentingNewLine]",
     "=", "\"\<sameElementQ[g1, g2] tests whether two GroupElements are \
 numerically equal (same permutation, rotation matrices equal to within \
 tolerance). Used internally by CloseGroup for deduplication.\>\""}], ";"}], 
-  "\n"}], "\[IndentingNewLine]", 
+  "\[IndentingNewLine]"}], "\n", 
  RowBox[{
   RowBox[{
    RowBox[{"CloseGroup", "::", "usage"}], 
@@ -25486,7 +25553,8 @@ list into the full finite group under composition.\>\""}], ";"}], "\[IndentingNe
    RowBox[{
     RowBox[{"CloseGroup", "::", "nonclosing"}], 
     "=", "\"\<Generators did not close into a finite group of order < `1`. \
-Check that all rotations have exact finite order.\>\""}], ";"}], "\n"}], "\[IndentingNewLine]", 
+Check that all rotations have exact finite order.\>\""}], ";"}], 
+  "\[IndentingNewLine]"}], "\n", 
  RowBox[{
   RowBox[{
    RowBox[{"ValidateSymmetryGroup", "::", "usage"}], 
@@ -25499,8 +25567,7 @@ triples.\>\""}], ";"}], "\n",
     RowBox[{"ValidateSymmetryGroup", "::", "notsym"}], 
     "=", "\"\<Element `1` does not leave the triple product invariant. Likely \
 a parity mismatch: an odd permutation of equal-rank slots needs an improper \
-rotation when \[Sum]\[ScriptL] is odd.\>\""}], ";"}], 
-  "\[IndentingNewLine]"}], "\n", 
+rotation when \[Sum]\[ScriptL] is odd.\>\""}], ";"}], "\n"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{
    RowBox[{"DiagonalRotation", "::", "usage"}], 
@@ -25512,7 +25579,7 @@ with no permutation.\>\""}], ";"}], "\[IndentingNewLine]",
     RowBox[{"DiagonalCyclicGroup", "::", "usage"}], 
     "=", "\"\<DiagonalCyclicGroup[axis, order] gives the diagonal cyclic \
 group of rotations about the given axis, applied identically to every slot.\>\
-\""}], ";"}], "\n"}], "\[IndentingNewLine]", 
+\""}], ";"}], "\[IndentingNewLine]"}], "\n", 
  RowBox[{
   RowBox[{
    RowBox[{"SwapElement", "::", "usage"}], 
@@ -25546,7 +25613,7 @@ Cell[BoxData[{
      RowBox[{
       RowBox[{"\"\<Rotation\>\"", "->", "R"}], ",", 
       RowBox[{"\"\<Permutation\>\"", "->", "perm"}]}], "|>"}]}], ";"}], 
-  "\[IndentingNewLine]"}], "\n", 
+  "\n"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{"Identity3", "=", 
    RowBox[{"GroupElement", "[", 
@@ -25725,6 +25792,7 @@ Cell[BoxData[
      RowBox[{"{", 
       RowBox[{"test", ",", "val0", ",", "valg", ",", 
        RowBox[{"okValue", "=", "True"}]}], "}"}], ",", "\[IndentingNewLine]", 
+     
      RowBox[{
       RowBox[{"Do", "[", "\[IndentingNewLine]", 
        RowBox[{
@@ -25804,8 +25872,8 @@ Cell[BoxData[
         "]"}], "]"}], "\[IndentingNewLine]", ",", 
       RowBox[{"{", 
        RowBox[{"k", ",", "0", ",", 
-        RowBox[{"order", "-", "1"}]}], "}"}]}], "]"}]}], "\n", 
-   "\[IndentingNewLine]", 
+        RowBox[{"order", "-", "1"}]}], "}"}]}], "]"}]}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
    RowBox[{"(*", 
     RowBox[{
      RowBox[{"permuting", " ", 
@@ -25814,7 +25882,7 @@ Cell[BoxData[
      RowBox[{"j", " ", 
       RowBox[{"(", 
        RowBox[{"equal", " ", "rank", " ", "only"}], ")"}]}], ",", 
-     RowBox[{"paired", " ", "with", " ", "R"}]}], "*)"}], "\[IndentingNewLine]", 
+     RowBox[{"paired", " ", "with", " ", "R"}]}], "*)"}], "\n", 
    RowBox[{
     RowBox[{
      RowBox[{"SwapElement", "[", 
@@ -26070,6 +26138,7 @@ maximization.\>\""}], ";"}], "\[IndentingNewLine]"}], "\[IndentingNewLine]",
          RowBox[{"Message", "[", 
           RowBox[{
            RowBox[{"TensorTripleProductMaximization", "::", "badseed"}], ",", 
+           
            RowBox[{"OptionValue", "[", "\"\<SeedTensors\>\"", "]"}]}], "]"}], 
          ";", 
          RowBox[{"Return", "[", "$Failed", "]"}]}]}], "\[IndentingNewLine]", 
@@ -26108,6 +26177,7 @@ maximization.\>\""}], ";"}], "\[IndentingNewLine]"}], "\[IndentingNewLine]",
                     RowBox[{
                     "OptionValue", "[", "\"\<SymmetryGroup\>\"", "]"}]}]}], 
                   "\[IndentingNewLine]", "]"}]}], ";", "\[IndentingNewLine]", 
+                
                 RowBox[{"TensorTripleProduct", "[", 
                  RowBox[{"tensorA", ",", "tensorB", ",", "tensorC"}], "]"}]}],
                 "\[IndentingNewLine]", ",", 
@@ -26128,6 +26198,7 @@ maximization.\>\""}], ";"}], "\[IndentingNewLine]"}], "\[IndentingNewLine]",
           RowBox[{"\[Chi]List", "[", 
            RowBox[{"[", 
             RowBox[{"-", "2"}], "]"}], "]"}]}]}], ",", "\[IndentingNewLine]", 
+        
         RowBox[{"\"\<\[Chi]List\>\"", "->", "\[Chi]List"}], ",", 
         "\[IndentingNewLine]", 
         RowBox[{"\"\<tensors\>\"", "->", 
@@ -26269,8 +26340,8 @@ NotebookEventActions->{{"MenuCommand", "Save"} :> (NotebookWrite[
          "\";End[];"}]], "Input", InitializationCell -> True, CellTags -> 
       "version-timestamp"], None, AutoScroll -> False]; NotebookSave[]), 
   PassEventsDown -> True},
-WindowSize->{1142.1, 678.9},
-WindowMargins->{{0, Automatic}, {Automatic, 0}},
+WindowSize->{1142.25, 679.5},
+WindowMargins->{{Automatic, 274.5}, {Automatic, 146.25}},
 PrintingCopies->1,
 PrintingStartingPageNumber->1,
 PrintingPageRange->{Automatic, Automatic},
@@ -26307,7 +26378,7 @@ TrackCellChangeTimes->False,
 SpellingDictionaries->{"CorrectWords"->{
  "subpackage", "Pisanty", "subpackages"}},
 Background->None,
-FrontEndVersion->"15.0 for Microsoft Windows (64-bit) (July 2, 2026)",
+FrontEndVersion->"15.0 for Linux x86 (64-bit) (May 19, 2026)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[StyleDefinitions -> "Default.nb"]], 
@@ -26317,7 +26388,7 @@ StyleDefinitions->Notebook[{
     FontVariations -> {
      "Outline" -> False, "Shadow" -> False, "StrikeThrough" -> False, 
       "Underline" -> False}]}, Visible -> False, FrontEndVersion -> 
-  "15.0 for Microsoft Windows (64-bit) (July 2, 2026)", StyleDefinitions -> 
+  "15.0 for Linux x86 (64-bit) (May 19, 2026)", StyleDefinitions -> 
   "PrivateStylesheetFormatting.nb"],
 ExpressionUUID->"d1cc7f40-ea02-494c-9758-0c8d4ee5ba2e"
 ]

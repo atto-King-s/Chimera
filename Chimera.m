@@ -48,7 +48,7 @@ End[];
 
 
 (* ::Input::Initialization:: *)
-Begin["`Private`"];$ChimeraTimestamp="Sun 20 Sep 2026 19:52:44";End[];
+Begin["`Private`"];$ChimeraTimestamp="Mon 21 Sep 2026 15:28:01";End[];
 
 
 (* ::Input::Initialization:: *)
@@ -983,12 +983,16 @@ End[];
 
 
 (* ::Input::Initialization:: *)
-ChimeraN::usage="ChimeraN[{\!\(\*SubscriptBox[\(\[ScriptL]\), \(1\)]\),\!\(\*SubscriptBox[\(\[ScriptL]\), \(2\)]\),\!\(\*SubscriptBox[\(\[ScriptL]\), \(3\)]\)}] returns the normalization constant \!\(\*SubscriptBox[\(N\), \(\*SubscriptBox[\(\[ScriptL]\), \(1\)] \*SubscriptBox[\(\[ScriptL]\), \(2\)] \*SubscriptBox[\(\[ScriptL]\), \(3\)]\)]\) between the triple tensor product of multipolar basis tensors and the Wigner 3j symbols.";
+ChimeraN::usage="ChimeraN[{\!\(\*SubscriptBox[\(\[ScriptL]\), \(1\)]\),\!\(\*SubscriptBox[\(\[ScriptL]\), \(2\)]\),\!\(\*SubscriptBox[\(\[ScriptL]\), \(3\)]\)}] returns the normalization constant \!\(\*SubscriptBox[\(N\), \(\*SubscriptBox[\(\[ScriptL]\), \(1\)] \*SubscriptBox[\(\[ScriptL]\), \(2\)] \*SubscriptBox[\(\[ScriptL]\), \(3\)]\)]\) between the triple tensor product of multipolar basis tensors and the Wigner 3j symbols.
+ChimeraN[{\!\(\*SubscriptBox[\(\[ScriptL]\), \(1\)]\),\!\(\*SubscriptBox[\(\[ScriptL]\), \(2\)]\),\!\(\*SubscriptBox[\(\[ScriptL]\), \(3\)]\)},parity] specifies the given parity for \!\(\*SubscriptBox[\(\[ScriptL]\), \(1\)]\)+\!\(\*SubscriptBox[\(\[ScriptL]\), \(2\)]\)+\!\(\*SubscriptBox[\(\[ScriptL]\), \(3\)]\), either \"Even\" or \"Odd\".";
 
 Begin["`Private`"];
-ChimeraN[{l1_,l2_,l3_}]/;OddQ[l1+l2+l3]:=I (-1)^((l1+l2+l3-1)/2) Sqrt[(2 (-l1+l2+l3)!(l1-l2+l3)!(l1+l2-l3)!(l1+l2+l3+1)!)/((2l1)!(2l2)!(2l3)!)]
+ChimeraN[{l1_,l2_,l3_}]/;OddQ[l1+l2+l3]:=ChimeraN[{l1,l2,l3},"Odd"]
 
-ChimeraN[{l1_,l2_,l3_}]/;EvenQ[l1+l2+l3]:=(-1)^((l1+l2+l3)/2) Sqrt[((-l1+l2+l3)!(l1-l2+l3)!(l1+l2-l3)!(l1+l2+l3+1)!)/((2l1)!(2l2)!(2l3)!)]
+ChimeraN[{l1_,l2_,l3_},"Odd"]:=I (-1)^((l1+l2+l3-1)/2) Sqrt[(2 (-l1+l2+l3)!(l1-l2+l3)!(l1+l2-l3)!(l1+l2+l3+1)!)/((2l1)!(2l2)!(2l3)!)]
+
+ChimeraN[{l1_,l2_,l3_}]/;EvenQ[l1+l2+l3]:=ChimeraN[{l1,l2,l3},"Even"]
+ChimeraN[{l1_,l2_,l3_},"Even"]:=(-1)^((l1+l2+l3)/2) Sqrt[((-l1+l2+l3)!(l1-l2+l3)!(l1+l2-l3)!(l1+l2+l3+1)!)/((2l1)!(2l2)!(2l3)!)]
 End[];
 
 
